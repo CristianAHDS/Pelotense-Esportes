@@ -359,24 +359,30 @@ function PainelTimes() {
             <Botao className="redondo" onClick={() => gol(lado, +1)}>+</Botao>
             <Botao className="gol" onClick={() => gol(lado, +1)}>⚽ GOL</Botao>
           </LinhaGols>
-          <Rotulo style={{ marginTop: 12 }}>Cor do time</Rotulo>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <GradeCores>
-              {CORES_PRESET.map((p) => (
-                <Swatch
-                  key={p.nome}
-                  $cor={p.fundo}
-                  $ativo={cor === p.fundo}
-                  onClick={() => definirCorPreset(lado, p)}
-                  title={p.nome}
-                />
-              ))}
-            </GradeCores>
-            <CorInputBorda>
-              <input type="color" value={corBorda} onChange={(e) => definirCorTime(lado, e.target.value, 'borda')} />
-              <span>Borda</span>
-            </CorInputBorda>
-          </div>
+          <Rotulo style={{ marginTop: 12 }}>Fundo</Rotulo>
+          <GradeCores>
+            {CORES_PRESET.map((p) => (
+              <Swatch
+                key={'fundo-' + p.nome}
+                $cor={p.fundo}
+                $ativo={cor === p.fundo}
+                onClick={() => definirCorTime(lado, p.fundo)}
+                title={p.nome}
+              />
+            ))}
+          </GradeCores>
+          <Rotulo style={{ marginTop: 8 }}>Borda</Rotulo>
+          <GradeCores>
+            {CORES_PRESET.map((p) => (
+              <Swatch
+                key={'borda-' + p.nome}
+                $cor={p.borda}
+                $ativo={corBorda === p.borda}
+                onClick={() => definirCorTime(lado, p.borda, 'borda')}
+                title={p.nome}
+              />
+            ))}
+          </GradeCores>
         </BlocoTime>
       ))}
     </Painel>
