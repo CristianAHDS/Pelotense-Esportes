@@ -5,7 +5,6 @@ import { GlobalStyle } from './styles/GlobalStyle'
 import Hub from './pages/Hub'
 import PlacarBroadcast from './pages/PlacarBroadcast'
 import ControlePlacarBroadcast from './pages/ControlePlacarBroadcast'
-
 export default function App() {
   return (
     <ThemeProvider theme={theme}>

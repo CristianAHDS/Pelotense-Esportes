@@ -19,7 +19,7 @@ const Tela = styled.div`
   justify-content: flex-start;
   padding-top: 60px;
   background: transparent;
-  gap: 48px;
+  gap: 16px;
 `
 
 const BarraPlacar = styled.div`
@@ -28,6 +28,7 @@ const BarraPlacar = styled.div`
   align-items: center;
   gap: 0;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  position: relative;
 `
 
 const FaixaTempo = styled.div`
@@ -63,7 +64,8 @@ const CorpoPlacar = styled.div`
   display: flex;
   align-items: stretch;
   border-radius: 0 0 6px 6px;
-  overflow: hidden;
+  overflow: visible;
+  animation: ${({ $penaltis }) => $penaltis ? transicaoModo : 'none'} 0.5s ease;
 `
 
 const BlocoTime = styled.div`
@@ -91,6 +93,8 @@ const BlocoTime = styled.div`
     font-weight: 700;
     color: ${({ $cor }) => corContraste($cor)};
     line-height: 1;
+    min-width: 1.2em;
+    text-align: center;
   }
 `
 
@@ -101,6 +105,7 @@ const Separador = styled.div`
   padding: 10px 8px;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(4px);
+  position: relative;
 
   span {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
@@ -164,71 +169,52 @@ const Voltar = styled(Link)`
   }
 `
 
-/* ---------- Animação de gol ---------- */
+/* ---------- Indicador de gol ---------- */
 
-const pulsoFundo = keyframes`
-  from { background: radial-gradient(circle at center, rgba(255,215,0,0.15), rgba(5, 8, 16, 0.96) 70%); }
-  to { background: radial-gradient(circle at center, rgba(255,215,0,0.35), rgba(5, 8, 16, 0.96) 70%); }
+const bolaEntra = keyframes`
+  0% { transform: translateY(-24px) scale(0); opacity: 0; }
+  50% { transform: translateY(0) scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 `
 
-const textoEntrando = keyframes`
-  0% { transform: scale(0.15) rotate(-10deg); opacity: 0; }
-  60% { transform: scale(1.15) rotate(2deg); opacity: 1; }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+const bolaGira = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 `
 
-const brilhoTexto = keyframes`
-  from { text-shadow: 0 0 24px rgba(255,215,0,0.9), 0 0 70px rgba(255,215,0,0.4); }
-  to { text-shadow: 0 0 50px rgba(255,215,0,1), 0 0 140px rgba(255,215,0,0.6); }
-`
+const IndicadorGol = styled.div`
+  position: absolute;
+  top: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+  animation: ${bolaEntra} 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  filter: drop-shadow(0 0 6px rgba(255,215,0,0.7));
+  z-index: 10;
 
-const bolaEntrando = keyframes`
-  0% { opacity: 0; transform: scale(0.2) rotate(-30deg); }
-  50% { opacity: 1; transform: scale(1.3) rotate(15deg); }
-  100% { opacity: 1; transform: scale(1) rotate(0deg); }
-`
-
-const SobreposicaoGol = styled.div`
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  animation: ${pulsoFundo} 0.8s ease-in-out infinite alternate;
-`
-
-const BolaGol = styled.div`
-  font-size: 3rem;
-  animation: ${bolaEntrando} 1s ease forwards;
-`
-
-const TextoGol = styled.div`
-  font-family: 'Inter', 'Roboto', sans-serif;
-  font-size: clamp(3rem, 16vw, 10rem);
-  font-weight: 900;
-  letter-spacing: 2px;
-  color: #ffd700;
-  animation:
-    ${textoEntrando} 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards,
-    ${brilhoTexto} 1s ease-in-out infinite alternate;
-`
-
-const NomeTimeGol = styled.div`
-  font-family: 'Inter', 'Roboto', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 700;
-  letter-spacing: 4px;
-  color: #fff;
-  opacity: 0;
-  animation: fadeIn 0.4s 0.2s ease forwards;
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  span {
+    display: inline-block;
+    animation: ${bolaGira} 0.8s linear infinite;
   }
+`
+
+/* ---------- Transição modo pênaltis ---------- */
+
+const transicaoModo = keyframes`
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(0.85); }
+  100% { transform: scaleX(1); }
+`
+
+/* ---------- Traços de cartão ---------- */
+
+const TracoCartao = styled.span`
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  border-radius: 1px;
+  background: ${({ $cor }) => $cor === 'amarelo' ? '#eab308' : '#dc2626'};
+  margin: 0 1px;
 `
 
 const Marca = styled.div`
@@ -265,12 +251,17 @@ export default function PlacarBroadcast() {
     return () => clearTimeout(t)
   }, [golAtivo])
 
-  const { timeCasa, timeVisitante, cronometro, periodo, estadoPartida } = estado
+  const { timeCasa, timeVisitante, cronometro, periodo, estadoPartida, cartoesCasa, cartoesVisitante } = estado
   const tempo = formatarTempo(segundosAtuais(cronometro))
-  const nomeTimeGol =
-    golAtivo?.lado === 'casa'
-      ? timeCasa.nome
-      : timeVisitante.nome
+
+  const tracosCasa = [
+    ...Array(cartoesCasa?.amarelo || 0).fill('amarelo'),
+    ...Array(cartoesCasa?.vermelho || 0).fill('vermelho'),
+  ]
+  const tracosVisitante = [
+    ...Array(cartoesVisitante?.amarelo || 0).fill('amarelo'),
+    ...Array(cartoesVisitante?.vermelho || 0).fill('vermelho'),
+  ]
 
   return (
     <Tela>
@@ -282,20 +273,46 @@ export default function PlacarBroadcast() {
           <span className="tempo">{tempo}</span>
         </FaixaTempo>
 
-        <CorpoPlacar>
-          <BlocoTime $cor={estado.corCasa} style={{ borderLeft: `6px solid ${estado.corCasaBorda}` }}>
-            <span className="sigla">{timeCasa.nome}</span>
-            <span className="gols">{timeCasa.gols}</span>
-          </BlocoTime>
-
-          <Separador>
-            <span>×</span>
-          </Separador>
-
-          <BlocoTime $cor={estado.corVisitante} style={{ borderRight: `6px solid ${estado.corVisitanteBorda}` }}>
-            <span className="gols">{timeVisitante.gols}</span>
-            <span className="sigla">{timeVisitante.nome}</span>
-          </BlocoTime>
+        <div style={{ display: 'flex', height: 5, width: '100%' }}>
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 2 }}>
+            {tracosCasa.map((cor, i) => (<TracoCartao key={`casa-${cor}-${i}`} $cor={cor} />))}
+          </div>
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 2 }}>
+            {tracosVisitante.map((cor, i) => (<TracoCartao key={`vis-${cor}-${i}`} $cor={cor} />))}
+          </div>
+        </div>
+        <CorpoPlacar $penaltis={periodo === 'PÊNALTIS'}>
+          {periodo === 'PÊNALTIS' ? (
+            <>
+              <BlocoTime $cor={estado.corCasa} style={{ borderLeft: `6px solid ${estado.corCasaBorda}` }}>
+                <span className="sigla">{timeCasa.nome}</span>
+              </BlocoTime>
+              <Separador style={{ padding: '10px 14px', gap: 8 }}>
+                {golAtivo && <IndicadorGol key={golAtivo.em}><span>⚽</span></IndicadorGol>}
+                <span style={{ fontSize: '1.3rem', fontWeight: 700, color: '#fff' }}>{timeCasa.gols}</span>
+                <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.3)' }}>×</span>
+                <span style={{ fontSize: '1.3rem', fontWeight: 700, color: '#fff' }}>{timeVisitante.gols}</span>
+              </Separador>
+              <BlocoTime $cor={estado.corVisitante} style={{ borderRight: `6px solid ${estado.corVisitanteBorda}` }}>
+                <span className="sigla">{timeVisitante.nome}</span>
+              </BlocoTime>
+            </>
+          ) : (
+            <>
+              <BlocoTime $cor={estado.corCasa} style={{ borderLeft: `6px solid ${estado.corCasaBorda}` }}>
+                <span className="sigla">{timeCasa.nome}</span>
+                <span className="gols">{timeCasa.gols}</span>
+              </BlocoTime>
+              <Separador>
+                {golAtivo && <IndicadorGol key={golAtivo.em}><span>⚽</span></IndicadorGol>}
+                <span>×</span>
+              </Separador>
+              <BlocoTime $cor={estado.corVisitante} style={{ borderRight: `6px solid ${estado.corVisitanteBorda}` }}>
+                <span className="gols">{timeVisitante.gols}</span>
+                <span className="sigla">{timeVisitante.nome}</span>
+              </BlocoTime>
+            </>
+          )}
         </CorpoPlacar>
       </BarraPlacar>
 
@@ -305,14 +322,6 @@ export default function PlacarBroadcast() {
       </StatusBar>
 
       <Marca>PELOTENSE ESPORTES</Marca>
-
-      {golAtivo && (
-        <SobreposicaoGol key={golAtivo.em}>
-          <BolaGol>⚽</BolaGol>
-          <TextoGol>GOL!</TextoGol>
-          <NomeTimeGol>{nomeTimeGol}</NomeTimeGol>
-        </SobreposicaoGol>
-      )}
     </Tela>
   )
 }

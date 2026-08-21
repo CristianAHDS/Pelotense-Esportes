@@ -4,11 +4,12 @@ import { Header } from '../components/Header';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import {
   gol, renomearTime, alternarCronometro, zerarCronometro, ajustarSegundos,
-  definirPeriodo, definirEstadoPartida, definirCorTime, definirCorPreset, CORES_PRESET, resetarPartida,
+  definirPeriodo, definirEstadoPartida, definirCorTime, definirCorPreset, CORES_PRESET,
+  darCartao, removerCartao, resetarPartida,
   ESTADOS_PARTIDA, segundosAtuais, formatarTempo,
 } from '../store/placarBroadcastStore';
 
-const PERIODOS = ['1T', '2T', 'INTERVALO', 'PRORROGAÇÃO', 'PÊNALTIS', 'ENCERRADO'];
+const PERIODOS = ['1T', '2T', 'PRORROGAÇÃO', 'PÊNALTIS'];
 
 const Container = styled.div`
   min-height: 100vh;
@@ -225,32 +226,42 @@ const PreviewFaixaTempo = styled.div`
 
 const PreviewCorpo = styled.div`
   display: flex;
-  border-radius: 0 0 4px 4px;
   overflow: hidden;
+  border-radius: 0 0 4px 4px;
 `
 
 const PreviewBloco = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 6px 18px;
+  gap: 8px;
+  padding: 5px 14px;
   background: ${({ $cor }) => $cor};
   font-family: 'Inter', 'Roboto', sans-serif;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   color: ${({ $cor }) => corContraste($cor)};
-  .g { font-size: 1.1rem; }
+  .g { font-size: 1rem; }
 `
 
 const PreviewSep = styled.div`
   display: flex;
   align-items: center;
-  padding: 6px 6px;
+  padding: 5px 5px;
   background: rgba(0,0,0,0.85);
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 700;
   color: rgba(255,255,255,0.4);
+  position: relative;
+`
+
+const PreviewTraco = styled.span`
+  display: inline-block;
+  width: 10px;
+  height: 3px;
+  border-radius: 1px;
+  background: ${({ $cor }) => $cor === 'amarelo' ? '#eab308' : '#dc2626'};
+  margin: 0 1px;
 `
 
 function PreviewLive() {
@@ -258,18 +269,30 @@ function PreviewLive() {
   const [, tick] = useState(0)
   useEffect(() => { const i = setInterval(() => tick(t => t + 1), 500); return () => clearInterval(i) }, [])
   const tempo = formatarTempo(segundosAtuais(estado.cronometro))
+
+  const tc = [...Array(estado.cartoesCasa?.amarelo || 0).fill('amarelo'), ...Array(estado.cartoesCasa?.vermelho || 0).fill('vermelho')]
+  const tv = [...Array(estado.cartoesVisitante?.amarelo || 0).fill('amarelo'), ...Array(estado.cartoesVisitante?.vermelho || 0).fill('vermelho')]
+
   return (
     <PreviewBarra>
       <PreviewFaixaTempo>
         <span className="p">{estado.periodo}</span>
         <span>{tempo}</span>
       </PreviewFaixaTempo>
+      <div style={{ display: 'flex', height: 3, width: '100%', justifyContent: 'center' }}>
+        <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}>
+          {tc.map((c, i) => (<PreviewTraco key={`pc-${c}-${i}`} $cor={c} />))}
+        </div>
+        <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}>
+          {tv.map((c, i) => (<PreviewTraco key={`pv-${c}-${i}`} $cor={c} />))}
+        </div>
+      </div>
       <PreviewCorpo>
-        <PreviewBloco $cor={estado.corCasa} style={{ borderLeft: `4px solid ${estado.corCasaBorda}` }}>
+        <PreviewBloco $cor={estado.corCasa} style={{ borderLeft: `3px solid ${estado.corCasaBorda}` }}>
           <span>{estado.timeCasa.nome}</span><span className="g">{estado.timeCasa.gols}</span>
         </PreviewBloco>
         <PreviewSep>×</PreviewSep>
-        <PreviewBloco $cor={estado.corVisitante} style={{ borderRight: `4px solid ${estado.corVisitanteBorda}` }}>
+        <PreviewBloco $cor={estado.corVisitante} style={{ borderRight: `3px solid ${estado.corVisitanteBorda}` }}>
           <span className="g">{estado.timeVisitante.gols}</span><span>{estado.timeVisitante.nome}</span>
         </PreviewBloco>
       </PreviewCorpo>
@@ -335,16 +358,61 @@ const CorInputBorda = styled.label`
   }
 `;
 
+const LinhaCartoes = styled.div`
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+  align-items: center;
+`;
+
+const ContagemCartao = styled.span`
+  font-family: ${({ theme }) => theme.fontes.titulo};
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.cores.textoSuave};
+  min-width: 20px;
+  text-align: center;
+`;
+
+const BotaoCartao = styled(Botao)`
+  width: 36px; height: 36px; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  &.amarelo { background: #eab308; border: 1px solid #ca8a04; color: #000; font-size: 0.6rem; letter-spacing: 0; }
+  &.vermelho { background: #dc2626; border: 1px solid #991b1b; color: #fff; font-size: 0.6rem; letter-spacing: 0; }
+`;
+
+const ToggleCores = styled.button`
+  background: transparent;
+  border: none;
+  color: ${({ theme }) => theme.cores.textoSuave};
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+
+  &:hover { color: ${({ theme }) => theme.cores.texto}; }
+`;
+
 function PainelTimes() {
   const estado = usePlacarBroadcast();
+  const [coresAberto, setCoresAberto] = useState({});
+
+  const toggle = (lado) => setCoresAberto(p => ({ ...p, [lado]: !p[lado] }));
+
   const cfg = [
-    { lado: 'casa', time: estado.timeCasa, titulo: 'Time da casa', cor: estado.corCasa, corBorda: estado.corCasaBorda },
-    { lado: 'visitante', time: estado.timeVisitante, titulo: 'Time visitante', cor: estado.corVisitante, corBorda: estado.corVisitanteBorda },
+    { lado: 'casa', time: estado.timeCasa, titulo: 'Time da casa', cor: estado.corCasa, corBorda: estado.corCasaBorda, cartoes: estado.cartoesCasa || { amarelo: 0, vermelho: 0 } },
+    { lado: 'visitante', time: estado.timeVisitante, titulo: 'Time visitante', cor: estado.corVisitante, corBorda: estado.corVisitanteBorda, cartoes: estado.cartoesVisitante || { amarelo: 0, vermelho: 0 } },
   ];
   return (
     <Painel>
       <PainelTitulo>⚽ Times e Placar</PainelTitulo>
-      {cfg.map(({ lado, time, titulo, cor, corBorda }) => (
+      {cfg.map(({ lado, time, titulo, cor, corBorda, cartoes }) => (
         <BlocoTime key={lado}>
           <Rotulo>{titulo} (sigla 3 letras)</Rotulo>
           <EntradaNome
@@ -359,30 +427,38 @@ function PainelTimes() {
             <Botao className="redondo" onClick={() => gol(lado, +1)}>+</Botao>
             <Botao className="gol" onClick={() => gol(lado, +1)}>⚽ GOL</Botao>
           </LinhaGols>
-          <Rotulo style={{ marginTop: 12 }}>Fundo</Rotulo>
-          <GradeCores>
-            {CORES_PRESET.map((p) => (
-              <Swatch
-                key={'fundo-' + p.nome}
-                $cor={p.fundo}
-                $ativo={cor === p.fundo}
-                onClick={() => definirCorTime(lado, p.fundo)}
-                title={p.nome}
-              />
-            ))}
-          </GradeCores>
-          <Rotulo style={{ marginTop: 8 }}>Borda</Rotulo>
-          <GradeCores>
-            {CORES_PRESET.map((p) => (
-              <Swatch
-                key={'borda-' + p.nome}
-                $cor={p.borda}
-                $ativo={corBorda === p.borda}
-                onClick={() => definirCorTime(lado, p.borda, 'borda')}
-                title={p.nome}
-              />
-            ))}
-          </GradeCores>
+
+          <Rotulo style={{ marginTop: 14 }}>Cartões</Rotulo>
+          <LinhaCartoes>
+            <Botao className="redondo" onClick={() => removerCartao(lado, 'amarelo')} disabled={cartoes.amarelo === 0}>−</Botao>
+            <BotaoCartao className="amarelo" onClick={() => darCartao(lado, 'amarelo')}>█</BotaoCartao>
+            <Botao className="redondo" onClick={() => darCartao(lado, 'amarelo')}>+</Botao>
+            <ContagemCartao>{cartoes.amarelo}</ContagemCartao>
+            <Botao className="redondo" onClick={() => removerCartao(lado, 'vermelho')} disabled={cartoes.vermelho === 0}>−</Botao>
+            <BotaoCartao className="vermelho" onClick={() => darCartao(lado, 'vermelho')}>█</BotaoCartao>
+            <Botao className="redondo" onClick={() => darCartao(lado, 'vermelho')}>+</Botao>
+            <ContagemCartao>{cartoes.vermelho}</ContagemCartao>
+          </LinhaCartoes>
+
+          <ToggleCores onClick={() => toggle(lado)}>
+            {coresAberto[lado] ? '▾' : '▸'} Cores
+          </ToggleCores>
+          {coresAberto[lado] && (
+            <>
+              <Rotulo style={{ marginTop: 8 }}>Fundo</Rotulo>
+              <GradeCores>
+                {CORES_PRESET.map((p) => (
+                  <Swatch key={'fundo-' + p.nome} $cor={p.fundo} $ativo={cor === p.fundo} onClick={() => definirCorTime(lado, p.fundo)} title={p.nome} />
+                ))}
+              </GradeCores>
+              <Rotulo style={{ marginTop: 8 }}>Borda</Rotulo>
+              <GradeCores>
+                {CORES_PRESET.map((p) => (
+                  <Swatch key={'borda-' + p.nome} $cor={p.borda} $ativo={corBorda === p.borda} onClick={() => definirCorTime(lado, p.borda, 'borda')} title={p.nome} />
+                ))}
+              </GradeCores>
+            </>
+          )}
         </BlocoTime>
       ))}
     </Painel>

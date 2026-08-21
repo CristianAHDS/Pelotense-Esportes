@@ -21,7 +21,10 @@ const estadoPadrao = {
   corCasaBorda: '#006b2d',
   corVisitante: '#252525',
   corVisitanteBorda: '#1a1a1a',
-  estadoPartida: 'AO VIVO'
+  estadoPartida: 'AO VIVO',
+  cartoesCasa: { amarelo: 0, vermelho: 0 },
+  cartoesVisitante: { amarelo: 0, vermelho: 0 },
+  eventoCartao: null
 }
 
 export const ESTADOS_PARTIDA = ['AO VIVO', 'INTERVALO', 'ENCERRADO']
@@ -306,6 +309,23 @@ export function definirCorTime(lado, cor, tipo = 'fundo') {
     const prefixo = lado === 'casa' ? 'corCasa' : 'corVisitante'
     const chave = tipo === 'borda' ? prefixo + 'Borda' : prefixo
     estado[chave] = cor
+    return estado
+  })
+}
+
+export function darCartao(lado, cor) {
+  setEstado((estado) => {
+    const chave = lado === 'casa' ? 'cartoesCasa' : 'cartoesVisitante'
+    estado[chave][cor]++
+    estado.eventoCartao = { lado, cor, em: Date.now() }
+    return estado
+  })
+}
+
+export function removerCartao(lado, cor) {
+  setEstado((estado) => {
+    const chave = lado === 'casa' ? 'cartoesCasa' : 'cartoesVisitante'
+    estado[chave][cor] = Math.max(0, estado[chave][cor] - 1)
     return estado
   })
 }
