@@ -4,7 +4,7 @@ import { Header } from '../components/Header';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import {
   gol, renomearTime, alternarCronometro, zerarCronometro, ajustarSegundos,
-  definirPeriodo, definirEstadoPartida, definirCorPreset, CORES_PRESET, resetarPartida,
+  definirPeriodo, definirEstadoPartida, definirCorTime, definirCorPreset, CORES_PRESET, resetarPartida,
   ESTADOS_PARTIDA, segundosAtuais, formatarTempo,
 } from '../store/placarBroadcastStore';
 
@@ -285,37 +285,53 @@ const AvisoReset = styled.p`
 `;
 
 const GradeCores = styled.div`
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
-  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
 `;
 
 const Swatch = styled.button`
-  aspect-ratio: 1;
-  border: 2px solid ${({ $ativo, $cor }) => ($ativo ? '#fff' : 'transparent')};
-  border-radius: 8px;
+  width: 24px;
+  height: 24px;
+  border: 2px solid ${({ $ativo }) => ($ativo ? '#fff' : 'transparent')};
+  border-radius: 6px;
   padding: 0;
   cursor: pointer;
   background: ${({ $cor }) => $cor};
-  outline: ${({ $ativo, $cor }) => ($ativo ? `2px solid ${$cor}` : 'none')};
-  outline-offset: 2px;
-  transition: outline 0.15s ease, border-color 0.15s ease;
-  position: relative;
-  overflow: hidden;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 35%;
-    background: ${({ $borda }) => $borda};
-  }
+  transition: border-color 0.15s ease, transform 0.1s ease;
 
   &:hover {
-    border-color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.4);
+  }
+
+  ${({ $ativo }) => $ativo && `
+    border-color: #fff;
+    box-shadow: 0 0 0 2px ${({ $cor }) => $cor};
+    transform: scale(1.15);
+  `}
+`;
+
+const CorInputBorda = styled.label`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 6px;
+  cursor: pointer;
+  input {
+    width: 22px; height: 22px;
+    border: 1px solid ${({ theme }) => theme.cores.borda};
+    border-radius: 4px; padding: 0;
+    background: transparent; cursor: pointer;
+    &::-webkit-color-swatch-wrapper { padding: 0; }
+    &::-webkit-color-swatch { border: none; border-radius: 4px; }
+  }
+  span {
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.cores.textoSuave};
   }
 `;
 
@@ -344,18 +360,23 @@ function PainelTimes() {
             <Botao className="gol" onClick={() => gol(lado, +1)}>⚽ GOL</Botao>
           </LinhaGols>
           <Rotulo style={{ marginTop: 12 }}>Cor do time</Rotulo>
-          <GradeCores>
-            {CORES_PRESET.map((p) => (
-              <Swatch
-                key={p.nome}
-                $cor={p.fundo}
-                $borda={p.borda}
-                $ativo={cor === p.fundo && corBorda === p.borda}
-                onClick={() => definirCorPreset(lado, p)}
-                title={p.nome}
-              />
-            ))}
-          </GradeCores>
+          <div style={{ display: 'flex', alignItems: 'center' }}>
+            <GradeCores>
+              {CORES_PRESET.map((p) => (
+                <Swatch
+                  key={p.nome}
+                  $cor={p.fundo}
+                  $ativo={cor === p.fundo}
+                  onClick={() => definirCorPreset(lado, p)}
+                  title={p.nome}
+                />
+              ))}
+            </GradeCores>
+            <CorInputBorda>
+              <input type="color" value={corBorda} onChange={(e) => definirCorTime(lado, e.target.value, 'borda')} />
+              <span>Borda</span>
+            </CorInputBorda>
+          </div>
         </BlocoTime>
       ))}
     </Painel>
