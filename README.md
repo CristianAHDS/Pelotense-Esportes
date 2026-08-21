@@ -46,3 +46,13 @@ Abra no navegador:
 ```bash
 npm run build
 ```
+
+## Deploy no Netlify
+
+O projeto já inclui `netlify.toml`. Para publicar:
+
+1. Conecte o repositório no [Netlify](https://app.netlify.com)
+2. Build command: `npm run build` (já configurado no `netlify.toml`)
+3. Publish directory: `dist` (já configurado)
+
+> **Nota:** O WebSocket relay para sincronização entre dispositivos roda apenas no servidor de desenvolvimento (`npm run dev`). No Netlify o placar funciona normalmente, mas a sincronização fica limitada ao BroadcastChannel (mesmo dispositivo).
