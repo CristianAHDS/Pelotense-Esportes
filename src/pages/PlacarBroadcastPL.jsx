@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useFundoTransparente } from '../components/useFundoTransparente'
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
 import {
   getEstado,
@@ -303,6 +304,7 @@ const Marca = styled.div`
 
 export default function PlacarBroadcastPL() {
   const estado = usePlacarBroadcast(loja)
+  useFundoTransparente()
   const [, forcarTick] = useState(0)
   const [golAtivo, setGolAtivo] = useState(null)
   const ultimoEventoGol = useRef(null)

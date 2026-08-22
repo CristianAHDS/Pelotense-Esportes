@@ -1,3 +1,4 @@
+﻿import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Header } from '../components/Header';
@@ -14,19 +15,6 @@ const SCOREBOARDS = [
       'Design flat profissional com siglas e cores personalizáveis. Ideal para transmissões ao vivo e overlays.',
     accent: '#22c55e',
     glow: 'rgba(34, 197, 94, 0.2)',
-    previa: {
-      faixa: '#0b0b0b',
-      tempoFundo: 'transparent',
-      tempoTexto: '#ffffff',
-      corpo: '#101010',
-      casaFundo: '#008f3d',
-      visFundo: '#2a2a2a',
-      faixaCasa: '#00652c',
-      faixaVis: '#1d1d1d',
-      posicao: 'lados',
-      sep: '#000000',
-      texto: '#ffffff',
-    },
   },
   {
     rota: '/placar-pl',
@@ -36,19 +24,6 @@ const SCOREBOARDS = [
       'Identidade da Premier League em roxo e verde menta, com cronômetro em destaque.',
     accent: '#00ff87',
     glow: 'rgba(0, 255, 135, 0.16)',
-    previa: {
-      faixa: 'rgba(0,0,0,.78)',
-      tempoFundo: '#00ff87',
-      tempoTexto: '#001a0d',
-      corpo: '#38003c',
-      casaFundo: 'rgba(255,255,255,.08)',
-      visFundo: 'rgba(255,255,255,.08)',
-      faixaCasa: '#008f3d',
-      faixaVis: '#dc2626',
-      posicao: 'base',
-      sep: 'rgba(0,0,0,.55)',
-      texto: '#ffffff',
-    },
   },
   {
     rota: '/placar-bl',
@@ -58,20 +33,6 @@ const SCOREBOARDS = [
       'Estilo alemão: vermelho e grafite, paralelogramos inclinados e cantos retos.',
     accent: '#d20515',
     glow: 'rgba(210, 5, 21, 0.22)',
-    previa: {
-      faixa: 'rgba(0,0,0,.78)',
-      tempoFundo: '#d20515',
-      tempoTexto: '#ffffff',
-      corpo: '#17191d',
-      casaFundo: 'rgba(255,255,255,.07)',
-      visFundo: 'rgba(255,255,255,.07)',
-      faixaCasa: '#8e030e',
-      faixaVis: '#3f3f46',
-      posicao: 'lados',
-      sep: '#d20515',
-      texto: '#ffffff',
-      italico: true,
-    },
   },
   {
     rota: '/placar-ll',
@@ -81,35 +42,50 @@ const SCOREBOARDS = [
       'Visual espanhol: barra branca com coral e azul-marinho, limpo e arredondado.',
     accent: '#ff4b44',
     glow: 'rgba(255, 75, 68, 0.18)',
-    previa: {
-      faixa: '#0b1e3a',
-      tempoFundo: '#ff4b44',
-      tempoTexto: '#ffffff',
-      corpo: '#ffffff',
-      casaFundo: '#ffffff',
-      visFundo: '#ffffff',
-      faixaCasa: '#008f3d',
-      faixaVis: '#dc2626',
-      posicao: 'base',
-      sep: '#ff4b44',
-      texto: '#0b1e3a',
-    },
   },
 ];
 
-const TABELAS = [
+const GAUCHAO_A2 = [
   {
     titulo: 'Classificação',
+    tag: 'CLASSIFICAÇÃO',
     descricao:
-      'Tabela de classificação da competição atualizada em tempo real.',
+      'Tabela do Gauchão Série A2 com zonas de quartas de final e rebaixamento em tempo real.',
     rota: '/tabela',
     accent: '#22c55e',
     glow: 'rgba(34, 197, 94, 0.16)',
-    ativo: true,
+    preview: 'tabela',
   },
   {
-    titulo: 'Artilharia',
-    descricao: 'Ranking de artilheiros com gols por rodada e médias.',
+    titulo: 'Oitavas · Mata-Mata',
+    tag: 'MATA-MATA',
+    descricao:
+      'Chaveamento das fases finais com placares, pênaltis e vencedores destacados em tempo real.',
+    rota: '/mata-mata',
+    accent: '#f59e0b',
+    glow: 'rgba(245, 158, 11, 0.16)',
+    preview: 'mata',
+  },
+];
+
+const EXTRAS = [
+  {
+    rota: '/substituicao',
+    tag: 'SUBSTITUIÇÃO',
+    titulo: 'Card de Substituição',
+    descricao:
+      'Tarja animada com escudo e cor do time, jogador que sai (↓) e que entra (↑), com minuto da troca. Também integrada ao Placar Broadcast.',
+    accent: '#22c55e',
+    glow: 'rgba(34, 197, 94, 0.16)',
+  },
+  {
+    rota: '/penaltis',
+    tag: 'PÊNALTIS',
+    titulo: 'Disputa de Pênaltis',
+    descricao:
+      'Quadro detalhado de cobranças ✓/✕ por lado, placar em tempo real e indicação de morte súbita.',
+    accent: '#22c55e',
+    glow: 'rgba(34, 197, 94, 0.16)',
   },
 ];
 
@@ -381,230 +357,57 @@ const CardDescricao = styled.p`
   flex: 1;
 `;
 
-const Miniatura = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 112px;
-  overflow: hidden;
+const MolduraPreview = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: ${({ $largura, $altura }) => `${$largura} / ${$altura}`};
   border-radius: 10px;
+  overflow: hidden;
   border: 1px solid ${({ theme }) => theme.cores.borda};
   background:
-    radial-gradient(
-      circle at 25% 30%,
-      rgba(34, 197, 94, 0.06),
-      transparent 65%
-    ),
-    repeating-linear-gradient(
-      90deg,
-      ${({ theme }) => theme.cores.fundo} 0 44px,
-      #0c1220 44px 88px
-    );
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.03), transparent 60%),
+    #060a08;
 
-  .m-faixa {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 28px;
-    padding: 6px 16px;
-    border-radius: 6px 6px 0 0;
-    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
-  }
-
-  .m-periodo {
-    font-size: 0.62rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.65);
-  }
-
-  .m-tempo {
-    padding: 2px 12px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .m-acrescimo {
-    font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 1px;
-    color: #fbbf24;
-  }
-
-  .m-corpo {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    width: 100%;
-    border-radius: 0 0 6px 6px;
-  }
-
-  .m-bloco {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 18px;
-    font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-  }
-
-  .m-gol {
-    font-size: 1rem;
-    font-variant-numeric: tabular-nums;
-  }
-
-  .m-sep {
-    display: flex;
-    align-items: center;
-    font-size: 0.75rem;
-    font-weight: 700;
-    opacity: 0.55;
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: none;
+    transform-origin: top left;
+    pointer-events: none;
   }
 `;
 
-const MiniaturaTabela = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  height: 112px;
-  overflow: hidden;
-  padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid ${({ theme }) => theme.cores.borda};
-  background:
-    radial-gradient(circle at 25% 30%, rgba(34, 197, 94, 0.06), transparent 65%),
-    ${({ theme }) => theme.cores.fundo};
-`;
+function PreviewAoVivo({ rota, largura = 1280, altura = 720 }) {
+  const ref = useRef(null);
+  const [escala, setEscala] = useState(0);
 
-const MiniLinhaTab = styled.div`
-  display: grid;
-  grid-template-columns: 22px 1fr 30px;
-  align-items: center;
-  gap: 8px;
-  padding: 3px 6px;
-  border-left: 3px solid ${({ $zona }) => $zona || 'transparent'};
-  border-radius: 2px;
-  background: rgba(255, 255, 255, 0.03);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return undefined;
+    const medir = () => setEscala(el.clientWidth / largura);
+    medir();
+    const obs = new ResizeObserver(medir);
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [largura]);
 
-  .pos {
-    font-family: ${({ theme }) => theme.fontes.titulo};
-    font-size: 0.62rem;
-    font-weight: 700;
-    color: ${({ theme }) => theme.cores.textoSuave};
-    text-align: center;
-  }
-
-  .time {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    min-width: 0;
-  }
-
-  i {
-    width: 9px;
-    height: 9px;
-    border-radius: 2px;
-    flex-shrink: 0;
-  }
-
-  .sigla {
-    font-family: ${({ theme }) => theme.fontes.titulo};
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-  }
-
-  .p {
-    font-size: 0.68rem;
-    font-variant-numeric: tabular-nums;
-    font-weight: 700;
-    color: #22c55e;
-    text-align: center;
-  }
-`;
-
-const LINHAS_MINI_TAB = [
-  { pos: 1, sigla: 'FLA', cor: '#c52613', p: 64, zona: '#22c55e' },
-  { pos: 2, sigla: 'PAL', cor: '#006437', p: 61, zona: '#22c55e' },
-  { pos: 3, sigla: 'BOT', cor: '#2b2b2b', p: 57, zona: '#3b82f6' },
-  { pos: 4, sigla: 'FOR', cor: '#1b5faa', p: 53, zona: '#ef4444' },
-];
-
-function MiniaturaTabelaPreview() {
   return (
-    <MiniaturaTabela>
-      {LINHAS_MINI_TAB.map((l) => (
-        <MiniLinhaTab key={l.pos} $zona={l.zona}>
-          <span className="pos">{l.pos}</span>
-          <span className="time">
-            <i style={{ background: l.cor }} />
-            <span className="sigla">{l.sigla}</span>
-          </span>
-          <span className="p">{l.p}</span>
-        </MiniLinhaTab>
-      ))}
-    </MiniaturaTabela>
-  );
-}
-
-function faixaLateral(p, cor, primeiro) {
-  if (p.posicao === 'base') return { boxShadow: `inset 0 -3px 0 ${cor}` };
-  return primeiro
-    ? { borderLeft: `3px solid ${cor}` }
-    : { borderRight: `3px solid ${cor}` };
-}
-
-function PreviaEstatica({ p }) {
-  return (
-    <Miniatura>
-      <div className="m-faixa" style={{ background: p.faixa }}>
-        <span className="m-periodo">1T</span>
-        <span
-          className="m-tempo"
-          style={{
-            background: p.tempoFundo,
-            color: p.tempoTexto,
-            fontStyle: p.italico ? 'italic' : 'normal',
-          }}
-        >
-          45:00
-        </span>
-        <span className="m-acrescimo">+5:00</span>
-      </div>
-      <div className="m-corpo">
-        <div
-          className="m-bloco"
-          style={{
-            background: p.casaFundo,
-            color: p.texto,
-            ...faixaLateral(p, p.faixaCasa, true),
-          }}
-        >
-          <span>PAL</span>
-          <span className="m-gol">2</span>
-        </div>
-        <div className="m-sep" style={{ color: p.sep }}>
-          ×
-        </div>
-        <div
-          className="m-bloco"
-          style={{
-            background: p.visFundo,
-            color: p.texto,
-            ...faixaLateral(p, p.faixaVis, false),
-          }}
-        >
-          <span className="m-gol">1</span>
-          <span>VIS</span>
-        </div>
-      </div>
-    </Miniatura>
+    <MolduraPreview ref={ref} $largura={largura} $altura={altura}>
+      <iframe
+        title={`Prévia ${rota}`}
+        src={`${window.location.origin}${window.location.pathname}?previa=1#${rota}`}
+        scrolling="no"
+        loading="lazy"
+        tabIndex={-1}
+        style={{
+          width: largura,
+          height: altura,
+          transform: `scale(${escala})`,
+          opacity: escala ? 1 : 0,
+        }}
+      />
+    </MolduraPreview>
   );
 }
 
@@ -692,6 +495,59 @@ const Botao = styled(Link)`
   }
 `;
 
+const BotaoCopiar = styled.button`
+  flex: 0 0 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  background: transparent;
+  color: ${({ theme }) => theme.cores.textoSuave};
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: ${({ $copiado, theme }) => ($copiado ? '#22c55e' : theme.cores.texto)};
+    background: ${({ theme }) => theme.cores.superficieHover};
+  }
+
+  &.ok {
+    color: #22c55e;
+    border-color: rgba(34, 197, 94, 0.5);
+  }
+`;
+
+function CopiarLink({ rota }) {
+  const [copiado, setCopiado] = useState(false);
+
+  async function copiar() {
+    const url = `${window.location.origin}${window.location.pathname}#${rota}`;
+    try {
+      await navigator.clipboard.writeText(url);
+    } catch {
+      const area = document.createElement('textarea');
+      area.value = url;
+      document.body.appendChild(area);
+      area.select();
+      document.execCommand('copy');
+      area.remove();
+    }
+    setCopiado(true);
+    setTimeout(() => setCopiado(false), 1800);
+  }
+
+  return (
+    <BotaoCopiar onClick={copiar} title="Copiar link" className={copiado ? 'ok' : ''}>
+      {copiado ? '✓' : '⧉'}
+    </BotaoCopiar>
+  );
+}
+
 const Rodape = styled.footer`
   text-align: center;
   padding: 26px;
@@ -730,50 +586,69 @@ export default function Hub() {
               <CardTag $accent={m.accent}>{m.tag}</CardTag>
               <CardTitulo>{m.titulo}</CardTitulo>
               <CardDescricao>{m.descricao}</CardDescricao>
-              <PreviaRotulo>Prévia do placar</PreviaRotulo>
-              <PreviaEstatica p={m.previa} />
+              <PreviaRotulo>Prévia ao vivo</PreviaRotulo>
+              <PreviewAoVivo rota={m.rota} largura={720} altura={405} />
               <CardAcoes>
-                <Botao to={m.rota} className="primario">
+                <Botao as="a" href={`#${m.rota}`} target="_blank" rel="noreferrer" className="primario">
                   Abrir
                 </Botao>
                 <Botao to={`${m.rota}/controle`} className="secundario">
                   Controlar
                 </Botao>
+                <CopiarLink rota={m.rota} />
               </CardAcoes>
             </Card>
           ))}
         </Grade>
 
         <Segmento>
-          <SegmentoIcone>📊</SegmentoIcone>
-          <h2>Tabelas</h2>
-          <Contador>1 ativo</Contador>
+          <SegmentoIcone>🏆</SegmentoIcone>
+          <h2>Gauchão A2</h2>
+          <Contador>{GAUCHAO_A2.length} ativos</Contador>
         </Segmento>
         <Grade>
-          {TABELAS.map((t) =>
-            t.ativo ? (
-              <Card key={t.titulo} $accent={t.accent} $glow={t.glow}>
-                <CardTag $accent={t.accent}>CLASSIFICAÇÃO</CardTag>
-                <CardTitulo>{t.titulo}</CardTitulo>
-                <CardDescricao>{t.descricao}</CardDescricao>
-                <MiniaturaTabelaPreview />
-                <CardAcoes>
-                  <Botao to={t.rota} className="primario">
-                    Abrir
-                  </Botao>
-                  <Botao to={`${t.rota}/controle`} className="secundario">
-                    Controlar
-                  </Botao>
-                </CardAcoes>
-              </Card>
-            ) : (
-              <Card key={t.titulo} className="breve" $accent="#f59e0b">
-                <CardTitulo>{t.titulo}</CardTitulo>
-                <CardDescricao>{t.descricao}</CardDescricao>
-                <EmBreveChip>Em breve</EmBreveChip>
-              </Card>
-            )
-          )}
+          {GAUCHAO_A2.map((t) => (
+            <Card key={t.titulo} $accent={t.accent} $glow={t.glow}>
+              <CardTag $accent={t.accent}>{t.tag}</CardTag>
+              <CardTitulo>{t.titulo}</CardTitulo>
+              <CardDescricao>{t.descricao}</CardDescricao>
+                <PreviewAoVivo rota={t.rota} largura={760} altura={620} />
+              <CardAcoes>
+                <Botao as="a" href={`#${t.rota}`} target="_blank" rel="noreferrer" className="primario">
+                  Abrir
+                </Botao>
+                <Botao to={`${t.rota}/controle`} className="secundario">
+                  Controlar
+                </Botao>
+                <CopiarLink rota={t.rota} />
+              </CardAcoes>
+            </Card>
+          ))}
+        </Grade>
+
+        <Segmento>
+          <SegmentoIcone>⚡</SegmentoIcone>
+          <h2>Extras da Transmissão</h2>
+          <Contador>{EXTRAS.length} ativos</Contador>
+        </Segmento>
+        <Grade>
+          {EXTRAS.map((x) => (
+            <Card key={x.rota} $accent={x.accent} $glow={x.glow}>
+              <CardTag $accent={x.accent}>{x.tag}</CardTag>
+              <CardTitulo>{x.titulo}</CardTitulo>
+              <CardDescricao>{x.descricao}</CardDescricao>
+              <PreviewAoVivo rota={x.rota} largura={720} altura={405} />
+              <CardAcoes>
+                <Botao as="a" href={`#${x.rota}`} target="_blank" rel="noreferrer" className="primario">
+                  Abrir
+                </Botao>
+                <Botao to={`${x.rota}/controle`} className="secundario">
+                  Controlar
+                </Botao>
+                <CopiarLink rota={x.rota} />
+              </CardAcoes>
+            </Card>
+          ))}
         </Grade>
 
         <Segmento>

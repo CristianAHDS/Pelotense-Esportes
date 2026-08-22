@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useFundoTransparente } from '../components/useFundoTransparente';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
-import { getEstado, inscrever, ordenarClassificacao } from '../store/tabelaStore';
+import {
+  getEstado,
+  inscrever,
+  ordenarClassificacao,
+} from '../store/tabelaStore';
 import { Escudo } from '../components/Escudo';
 
 /* Regulamento Gauchão Série A2: 1º ao 8º avançam às quartas de final,
@@ -33,15 +38,13 @@ const Tela = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 64px 24px 48px;
-  background:
-    radial-gradient(ellipse 70% 30% at 50% -5%, rgba(34, 197, 94, 0.07), transparent),
-    ${({ theme }) => theme.cores.fundo};
+  padding: ${({ $previa }) => ($previa ? '10px 12px 16px' : '64px 24px 48px')};
+  background: transparent;
 `;
 
 const Voltar = styled(Link)`
   align-self: flex-start;
-  max-width: 1200px;
+  max-width: 1600px;
   width: 100%;
   margin: 0 auto 14px;
   text-decoration: none;
@@ -74,11 +77,7 @@ const Cabecalho = styled.header`
   gap: 18px;
   padding: 20px 26px;
   border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
-  background: linear-gradient(
-    90deg,
-    rgba(34, 197, 94, 0.1),
-    transparent 55%
-  );
+  background: linear-gradient(90deg, rgba(34, 197, 94, 0.1), transparent 55%);
 
   &::before {
     content: '';
@@ -294,13 +293,20 @@ const SeloAoVivo = styled.span`
   }
 
   @keyframes pulsoTabela {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.25; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.25;
+    }
   }
 `;
 
 export default function Tabela() {
+  useFundoTransparente();
   const estado = usePlacarBroadcast({ getEstado, inscrever });
+  const emPrevia = new URLSearchParams(window.location.search).has('previa');
   const times = ordenarClassificacao(estado.times);
   const total = times.length;
 
@@ -310,14 +316,20 @@ export default function Tabela() {
   ].filter((z) => times.some((_, i) => zonaDa(i + 1, total) === z.chave));
 
   return (
-    <Tela>
-      <Voltar to="/" title="Voltar ao hub">←</Voltar>
+    <Tela $previa={emPrevia}>
+      {!emPrevia && (
+        <Voltar to="/" title="Voltar ao hub">
+          ←
+        </Voltar>
+      )}
 
       <Painel>
         <Cabecalho>
           <div>
             <h1>{estado.competicao}</h1>
-            <span className="sub">Classificação · Temporada {new Date().getFullYear()}</span>
+            <span className="sub">
+              Classificação · Temporada {new Date().getFullYear()}
+            </span>
           </div>
           {estado.rodada > 0 && (
             <BadgeRodada>RODADA {estado.rodada}</BadgeRodada>
@@ -348,7 +360,12 @@ export default function Tabela() {
                 <LinhaTime key={`${t.sigla}-${i}`} $zona={zona}>
                   <span className="pos">{pos}</span>
                   <div className="time">
-                    <Escudo cor={t.cor} sigla={t.sigla} url={t.escudo} tamanho={24} />
+                    <Escudo
+                      cor={t.cor}
+                      sigla={t.sigla}
+                      url={t.escudo}
+                      tamanho={24}
+                    />
                     <span className="sigla">{t.sigla}</span>
                     <span className="nome">{t.nome}</span>
                   </div>
@@ -359,7 +376,9 @@ export default function Tabela() {
                   <span className="num">{t.d}</span>
                   <span className="num">{t.gp}</span>
                   <span className="num">{t.gc}</span>
-                  <span className={`num ${s > 0 ? 'saldoPos' : s < 0 ? 'saldoNeg' : ''}`}>
+                  <span
+                    className={`num ${s > 0 ? 'saldoPos' : s < 0 ? 'saldoNeg' : ''}`}
+                  >
                     {saldo(t.gp, t.gc)}
                   </span>
                   <span className="num">{aproveitamento(t.p, t.j)}</span>

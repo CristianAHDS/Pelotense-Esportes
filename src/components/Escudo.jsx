@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const Moldura = styled.span`
@@ -77,10 +78,19 @@ function EscudoSvg({ cor, sigla, tamanho }) {
 }
 
 export function Escudo({ cor, sigla, url, tamanho = 22 }) {
-  if (url) {
+  const [erro, setErro] = useState(false);
+  useEffect(() => setErro(false), [url]);
+
+  if (url && !erro) {
     return (
       <Moldura $tamanho={tamanho}>
-        <Img src={url} alt="" $tamanho={tamanho} draggable={false} />
+        <Img
+          src={url}
+          alt=""
+          $tamanho={tamanho}
+          draggable={false}
+          onError={() => setErro(true)}
+        />
       </Moldura>
     );
   }

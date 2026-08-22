@@ -3,6 +3,12 @@ import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
 import { segundosAtuais, formatarTempo } from '../store/placarBroadcastStore'
+import {
+  getEstado as getSubstituicao,
+  inscrever as inscreverSubstituicao,
+} from '../store/substituicaoStore'
+import { SubstituicaoCartao } from '../components/SubstituicaoCartao'
+import { useFundoTransparente } from '../components/useFundoTransparente'
 
 const compacto = new URLSearchParams(window.location.search).has('compacto')
 
@@ -258,11 +264,24 @@ const Marca = styled.div`
   text-transform: uppercase;
 `
 
+const CartaoSubFixo = styled.div`
+  position: fixed;
+  left: 48px;
+  bottom: 48px;
+  z-index: 20;
+`
+
 export default function PlacarBroadcast() {
   const estado = usePlacarBroadcast()
+  const substituicao = usePlacarBroadcast({
+    getEstado: getSubstituicao,
+    inscrever: inscreverSubstituicao,
+  })
   const [, forcarTick] = useState(0)
   const [golAtivo, setGolAtivo] = useState(null)
   const ultimoEventoGol = useRef(null)
+
+  useFundoTransparente()
 
   useEffect(() => {
     const intervalo = setInterval(() => forcarTick((t) => t + 1), 500)
@@ -370,6 +389,12 @@ export default function PlacarBroadcast() {
 
           <Marca>PELOTENSE ESPORTES</Marca>
         </>
+      )}
+
+      {substituicao.visivel && (
+        <CartaoSubFixo>
+          <SubstituicaoCartao dados={substituicao} />
+        </CartaoSubFixo>
       )}
     </Tela>
   )

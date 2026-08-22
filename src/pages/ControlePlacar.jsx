@@ -26,7 +26,7 @@ const Container = styled.div`
 const Conteudo = styled.main`
   flex: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 40px 32px;
   display: grid;
@@ -302,65 +302,71 @@ function PainelTimes() {
       time: estado.timeCasa,
       titulo: 'Time da casa',
       corPrimaria: estado.corCasaPrimaria,
-      corSecundaria: estado.corCasaSecundaria
+      corSecundaria: estado.corCasaSecundaria,
     },
     {
       lado: 'visitante',
       time: estado.timeVisitante,
       titulo: 'Time visitante',
       corPrimaria: estado.corVisitantePrimaria,
-      corSecundaria: estado.corVisitanteSecundaria
+      corSecundaria: estado.corVisitanteSecundaria,
     },
   ];
 
   return (
     <Painel>
       <PainelTitulo>⚽ Times e Placar</PainelTitulo>
-      {configuracoes.map(({ lado, time, titulo, corPrimaria, corSecundaria }) => (
-        <BlocoTime key={lado}>
-          <Rotulo>{titulo}</Rotulo>
-          <EntradaNome
-            value={time.nome}
-            placeholder="NOME DO TIME"
-            onChange={(e) => renomearTime(lado, e.target.value)}
-          />
-          <LinhaGols>
-            <Botao
-              className="redondo"
-              onClick={() => gol(lado, -1)}
-              disabled={time.gols === 0}
-            >
-              −
-            </Botao>
-            <Numero>{time.gols}</Numero>
-            <Botao className="redondo" onClick={() => gol(lado, +1)}>
-              +
-            </Botao>
-            <Botao className="gol" onClick={() => gol(lado, +1)}>
-              ⚽ GOL
-            </Botao>
-          </LinhaGols>
-          <Rotulo style={{ marginTop: 12 }}>Cores do time</Rotulo>
-          <LinhaCores>
-            <CorInput>
-              <input
-                type="color"
-                value={corPrimaria}
-                onChange={(e) => definirCorTime(lado, 'primaria', e.target.value)}
-              />
-              <span>Principal</span>
-            </CorInput>
-            <CorInput>
-              <input
-                type="color"
-                value={corSecundaria}
-                onChange={(e) => definirCorTime(lado, 'secundaria', e.target.value)}
-              />
-              <span>Secundária</span>
-            </CorInput>
-          </LinhaCores>
-        </BlocoTime>
-      ))}
+      {configuracoes.map(
+        ({ lado, time, titulo, corPrimaria, corSecundaria }) => (
+          <BlocoTime key={lado}>
+            <Rotulo>{titulo}</Rotulo>
+            <EntradaNome
+              value={time.nome}
+              placeholder="NOME DO TIME"
+              onChange={(e) => renomearTime(lado, e.target.value)}
+            />
+            <LinhaGols>
+              <Botao
+                className="redondo"
+                onClick={() => gol(lado, -1)}
+                disabled={time.gols === 0}
+              >
+                −
+              </Botao>
+              <Numero>{time.gols}</Numero>
+              <Botao className="redondo" onClick={() => gol(lado, +1)}>
+                +
+              </Botao>
+              <Botao className="gol" onClick={() => gol(lado, +1)}>
+                ⚽ GOL
+              </Botao>
+            </LinhaGols>
+            <Rotulo style={{ marginTop: 12 }}>Cores do time</Rotulo>
+            <LinhaCores>
+              <CorInput>
+                <input
+                  type="color"
+                  value={corPrimaria}
+                  onChange={(e) =>
+                    definirCorTime(lado, 'primaria', e.target.value)
+                  }
+                />
+                <span>Principal</span>
+              </CorInput>
+              <CorInput>
+                <input
+                  type="color"
+                  value={corSecundaria}
+                  onChange={(e) =>
+                    definirCorTime(lado, 'secundaria', e.target.value)
+                  }
+                />
+                <span>Secundária</span>
+              </CorInput>
+            </LinhaCores>
+          </BlocoTime>
+        ),
+      )}
     </Painel>
   );
 }

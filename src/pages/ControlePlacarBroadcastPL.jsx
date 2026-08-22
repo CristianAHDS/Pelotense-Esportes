@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../components/Header';
+import { PainelSubstituicao } from '../components/PainelSubstituicao';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import {
   getEstado,
@@ -36,7 +37,7 @@ const Container = styled.div`
 const Conteudo = styled.main`
   flex: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 40px 32px;
   display: grid;
@@ -399,7 +400,7 @@ function PreviewLive() {
       onClick={() =>
         window.open(
           `${window.location.origin}${window.location.pathname}#/placar-pl`,
-          '_blank'
+          '_blank',
         )
       }
     >
@@ -409,33 +410,45 @@ function PreviewLive() {
           <PreviewChipTempo>
             {tempo}
             {estado.acrescimo > 0 && (
-              <PreviewChipAcrescimo>+{estado.acrescimo}:00</PreviewChipAcrescimo>
+              <PreviewChipAcrescimo>
+                +{estado.acrescimo}:00
+              </PreviewChipAcrescimo>
             )}
           </PreviewChipTempo>
         </PreviewLinhaTempo>
-      <div
-        style={{
-          display: "flex",
-          height: 5,
-          width: "100%",
-          justifyContent: "center",
-        }}
-      >
         <div
-          style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}
+          style={{
+            display: 'flex',
+            height: 5,
+            width: '100%',
+            justifyContent: 'center',
+          }}
         >
-          {tc.map((c, i) => (
-            <PreviewTraco key={`pc-${c}-${i}`} $cor={c} />
-          ))}
+          <div
+            style={{
+              flex: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 1,
+            }}
+          >
+            {tc.map((c, i) => (
+              <PreviewTraco key={`pc-${c}-${i}`} $cor={c} />
+            ))}
+          </div>
+          <div
+            style={{
+              flex: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 1,
+            }}
+          >
+            {tv.map((c, i) => (
+              <PreviewTraco key={`pv-${c}-${i}`} $cor={c} />
+            ))}
+          </div>
         </div>
-        <div
-          style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}
-        >
-          {tv.map((c, i) => (
-            <PreviewTraco key={`pv-${c}-${i}`} $cor={c} />
-          ))}
-        </div>
-      </div>
         <PreviewCorpo>
           <PreviewBloco $cor={estado.timeCasa.cor}>
             <span>{estado.timeCasa.nome}</span>
@@ -838,6 +851,7 @@ export default function ControlePlacarBroadcast() {
         <div style={{ display: 'grid', gap: 24 }}>
           <PainelCronometro />
           <PainelPartida />
+          <PainelSubstituicao /><PainelPartida />
         </div>
       </Conteudo>
     </Container>

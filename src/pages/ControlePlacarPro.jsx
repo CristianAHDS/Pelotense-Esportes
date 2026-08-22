@@ -33,7 +33,7 @@ const Container = styled.div`
 const Conteudo = styled.main`
   flex: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 40px 32px;
   display: grid;

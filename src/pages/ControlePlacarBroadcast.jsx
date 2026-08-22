@@ -21,6 +21,7 @@ import {
   segundosAtuais,
   formatarTempo,
 } from '../store/placarBroadcastStore';
+import { PainelSubstituicao } from '../components/PainelSubstituicao';
 
 const PERIODOS = ['1T', '2T', 'PRORROGAÇÃO', 'PÊNALTIS'];
 const ACRESCIMOS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -34,7 +35,7 @@ const Container = styled.div`
 const Conteudo = styled.main`
   flex: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 40px 32px;
   display: grid;
@@ -357,7 +358,7 @@ function PreviewLive() {
       onClick={() =>
         window.open(
           `${window.location.origin}${window.location.pathname}#/placar-broadcast`,
-          '_blank'
+          '_blank',
         )
       }
     >
@@ -377,12 +378,26 @@ function PreviewLive() {
             justifyContent: 'center',
           }}
         >
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}>
+          <div
+            style={{
+              flex: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 1,
+            }}
+          >
             {tc.map((c, i) => (
               <PreviewTraco key={`pc-${c}-${i}`} $cor={c} />
             ))}
           </div>
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}>
+          <div
+            style={{
+              flex: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              gap: 1,
+            }}
+          >
             {tv.map((c, i) => (
               <PreviewTraco key={`pv-${c}-${i}`} $cor={c} />
             ))}
@@ -411,10 +426,46 @@ function PreviewLive() {
 }
 
 const AvisoReset = styled.p`
-  margin-top: 14px;
-  font-size: 0.75rem;
+  margin-top: 10px;
+  font-size: 0.72rem;
   color: ${({ theme }) => theme.cores.textoSuave};
-  line-height: 1.5;
+`;
+
+const EntradaNum = styled(EntradaNome)`
+  width: 84px;
+  text-align: center;
+  padding: 12px 6px;
+  -moz-appearance: textfield;
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+`;
+
+const CorInput = styled.input`
+  width: 46px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  border-radius: 10px;
+  background: transparent;
+  cursor: pointer;
+`;
+
+const LinhaSub = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 10px;
+
+  .cresce {
+    flex: 1;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
 `;
 
 const GradeCores = styled.div`
@@ -796,6 +847,9 @@ export default function ControlePlacarBroadcast() {
         <div style={{ display: 'grid', gap: 24 }}>
           <PainelCronometro />
           <PainelPartida />
+        </div>
+        <div style={{ display: 'grid', gap: 24 }}>
+          <PainelSubstituicao />
         </div>
       </Conteudo>
     </Container>
