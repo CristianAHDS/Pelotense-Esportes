@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import { Header } from '../components/Header'
-import { usePlacarPro } from '../hooks/usePlacarPro'
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { Header } from '../components/Header';
+import { usePlacarPro } from '../hooks/usePlacarPro';
 import {
   gol,
   renomearTime,
@@ -13,7 +13,7 @@ import {
   definirCorTime,
   segundosAtuais,
   formatarTempo,
-} from '../store/placarProStore'
+} from '../store/placarProStore';
 
 const PERIODOS = [
   '1º TEMPO',
@@ -21,14 +21,14 @@ const PERIODOS = [
   '2º TEMPO',
   'PRORROGAÇÃO',
   'PÊNALTIS',
-  'ENCERRADO'
-]
+  'ENCERRADO',
+];
 
 const Container = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Conteudo = styled.main`
   flex: 1;
@@ -40,14 +40,14 @@ const Conteudo = styled.main`
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
   align-content: start;
-`
+`;
 
 const Painel = styled.section`
   background: ${({ theme }) => theme.cores.superficie};
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 16px;
   padding: 24px;
-`
+`;
 
 const PainelTitulo = styled.h2`
   font-family: ${({ theme }) => theme.fontes.titulo};
@@ -67,7 +67,7 @@ const PainelTitulo = styled.h2`
     height: 1px;
     background: ${({ theme }) => theme.cores.borda};
   }
-`
+`;
 
 const BlocoTime = styled.div`
   background: ${({ theme }) => theme.cores.fundoClaro};
@@ -79,7 +79,7 @@ const BlocoTime = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
-`
+`;
 
 const Rotulo = styled.label`
   display: block;
@@ -89,7 +89,7 @@ const Rotulo = styled.label`
   text-transform: uppercase;
   color: ${({ theme }) => theme.cores.textoSuave};
   margin-bottom: 8px;
-`
+`;
 
 const EntradaNome = styled.input`
   width: 100%;
@@ -109,14 +109,14 @@ const EntradaNome = styled.input`
   &:focus {
     border-color: ${({ theme }) => theme.cores.primaria};
   }
-`
+`;
 
 const LinhaGols = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 14px;
-`
+`;
 
 const Numero = styled.div`
   flex: 1;
@@ -125,7 +125,7 @@ const Numero = styled.div`
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 1;
-`
+`;
 
 const Botao = styled.button`
   border: none;
@@ -135,45 +135,66 @@ const Botao = styled.button`
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  transition: filter 0.15s ease, background 0.15s ease, transform 0.05s ease;
+  transition:
+    filter 0.15s ease,
+    background 0.15s ease,
+    transform 0.05s ease;
 
-  &:active { transform: scale(0.97); }
-  &:disabled { opacity: 0.4; cursor: not-allowed; }
+  &:active {
+    transform: scale(0.97);
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 
   &.gol {
     background: ${({ theme }) => theme.cores.primaria};
     color: #052e13;
-    &:hover { filter: brightness(1.1); }
+    &:hover {
+      filter: brightness(1.1);
+    }
   }
 
   &.redondo {
-    width: 46px; height: 46px; padding: 0; font-size: 1.3rem;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    font-size: 1.3rem;
     background: ${({ theme }) => theme.cores.fundo};
     border: 1px solid ${({ theme }) => theme.cores.borda};
     color: ${({ theme }) => theme.cores.texto};
-    &:hover:not(:disabled) { background: ${({ theme }) => theme.cores.superficieHover}; }
+    &:hover:not(:disabled) {
+      background: ${({ theme }) => theme.cores.superficieHover};
+    }
   }
 
   &.primario {
     background: ${({ theme }) => theme.cores.primaria};
     color: #052e13;
-    &:hover { filter: brightness(1.1); }
+    &:hover {
+      filter: brightness(1.1);
+    }
   }
 
   &.perigo {
     background: transparent;
     border: 1px solid ${({ theme }) => theme.cores.perigo};
     color: ${({ theme }) => theme.cores.perigo};
-    &:hover:not(:disabled) { background: rgba(239, 68, 68, 0.12); }
+    &:hover:not(:disabled) {
+      background: rgba(239, 68, 68, 0.12);
+    }
   }
 
   &.neutro {
     background: ${({ theme }) => theme.cores.fundo};
     border: 1px solid ${({ theme }) => theme.cores.borda};
     color: ${({ theme }) => theme.cores.texto};
-    &:hover:not(:disabled) { background: ${({ theme }) => theme.cores.superficieHover}; }
+    &:hover:not(:disabled) {
+      background: ${({ theme }) => theme.cores.superficieHover};
+    }
   }
-`
+`;
 
 const DisplayTempo = styled.div`
   text-align: center;
@@ -182,29 +203,33 @@ const DisplayTempo = styled.div`
   font-size: 4rem;
   font-weight: 700;
   letter-spacing: 2px;
-  color: ${({ $rodando, theme }) => ($rodando ? theme.cores.primaria : theme.cores.textoSuave)};
+  color: ${({ $rodando, theme }) =>
+    $rodando ? theme.cores.primaria : theme.cores.textoSuave};
   background: ${({ theme }) => theme.cores.fundo};
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 12px;
   padding: 16px;
   margin-bottom: 16px;
-`
+`;
 
 const GradeBotoes = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-`
+`;
 
 const ListaPeriodos = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-`
+`;
 
 const ChipPeriodo = styled.button`
-  background: ${({ $ativo, theme }) => ($ativo ? theme.cores.primaria : theme.cores.fundo)};
-  border: 1px solid ${({ $ativo, theme }) => ($ativo ? theme.cores.primaria : theme.cores.borda)};
+  background: ${({ $ativo, theme }) =>
+    $ativo ? theme.cores.primaria : theme.cores.fundo};
+  border: 1px solid
+    ${({ $ativo, theme }) =>
+      $ativo ? theme.cores.primaria : theme.cores.borda};
   color: ${({ $ativo }) => ($ativo ? '#052e13' : '#94a3b8')};
   border-radius: 999px;
   padding: 9px 16px;
@@ -214,16 +239,18 @@ const ChipPeriodo = styled.button`
   transition: all 0.15s ease;
   &:hover:not(:disabled) {
     ${({ $ativo, theme }) =>
-      $ativo ? '' : `background: ${theme.cores.superficieHover}; color: ${theme.cores.texto};`}
+      $ativo
+        ? ''
+        : `background: ${theme.cores.superficieHover}; color: ${theme.cores.texto};`}
   }
-`
+`;
 
 const AvisoReset = styled.p`
   margin-top: 14px;
   font-size: 0.75rem;
   color: ${({ theme }) => theme.cores.textoSuave};
   line-height: 1.5;
-`
+`;
 
 const CorInput = styled.label`
   display: flex;
@@ -245,21 +272,40 @@ const CorInput = styled.label`
   }
 
   input {
-    width: 28px; height: 28px;
-    border: none; border-radius: 6px; padding: 0;
-    background: transparent; cursor: pointer;
-    &::-webkit-color-swatch-wrapper { padding: 0; }
-    &::-webkit-color-swatch { border: none; border-radius: 6px; }
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 6px;
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+    &::-webkit-color-swatch {
+      border: none;
+      border-radius: 6px;
+    }
   }
-`
+`;
 
 function PainelTimes() {
-  const estado = usePlacarPro()
+  const estado = usePlacarPro();
 
   const configuracoes = [
-    { lado: 'casa', time: estado.timeCasa, titulo: 'Time da casa', cor: estado.corCasa },
-    { lado: 'visitante', time: estado.timeVisitante, titulo: 'Time visitante', cor: estado.corVisitante },
-  ]
+    {
+      lado: 'casa',
+      time: estado.timeCasa,
+      titulo: 'Time da casa',
+      cor: estado.corCasa,
+    },
+    {
+      lado: 'visitante',
+      time: estado.timeVisitante,
+      titulo: 'Time visitante',
+      cor: estado.corVisitante,
+    },
+  ];
 
   return (
     <Painel>
@@ -273,10 +319,20 @@ function PainelTimes() {
             onChange={(e) => renomearTime(lado, e.target.value)}
           />
           <LinhaGols>
-            <Botao className="redondo" onClick={() => gol(lado, -1)} disabled={time.gols === 0}>−</Botao>
+            <Botao
+              className="redondo"
+              onClick={() => gol(lado, -1)}
+              disabled={time.gols === 0}
+            >
+              −
+            </Botao>
             <Numero>{time.gols}</Numero>
-            <Botao className="redondo" onClick={() => gol(lado, +1)}>+</Botao>
-            <Botao className="gol" onClick={() => gol(lado, +1)}>⚽ GOL</Botao>
+            <Botao className="redondo" onClick={() => gol(lado, +1)}>
+              +
+            </Botao>
+            <Botao className="gol" onClick={() => gol(lado, +1)}>
+              ⚽ GOL
+            </Botao>
           </LinhaGols>
           <CorInput>
             <input
@@ -289,18 +345,18 @@ function PainelTimes() {
         </BlocoTime>
       ))}
     </Painel>
-  )
+  );
 }
 
 function PainelCronometro() {
-  const estado = usePlacarPro()
-  const [, forcarTick] = useState(0)
-  const cron = estado.cronometro
+  const estado = usePlacarPro();
+  const [, forcarTick] = useState(0);
+  const cron = estado.cronometro;
 
   useEffect(() => {
-    const intervalo = setInterval(() => forcarTick((t) => t + 1), 500)
-    return () => clearInterval(intervalo)
-  }, [])
+    const intervalo = setInterval(() => forcarTick((t) => t + 1), 500);
+    return () => clearInterval(intervalo);
+  }, []);
 
   return (
     <Painel>
@@ -309,29 +365,42 @@ function PainelCronometro() {
         {formatarTempo(segundosAtuais(cron))}
       </DisplayTempo>
       <GradeBotoes>
-        <Botao className={cron.rodando ? 'perigo' : 'primario'} onClick={alternarCronometro}>
+        <Botao
+          className={cron.rodando ? 'perigo' : 'primario'}
+          onClick={alternarCronometro}
+        >
           {cron.rodando ? '⏸ Pausar' : '▶ Iniciar'}
         </Botao>
-        <Botao className="neutro" onClick={zerarCronometro} disabled={cron.rodando}>⟲ Zerar</Botao>
-        <Botao className="neutro" onClick={() => ajustarMinutos(-1)}>− 1 min</Botao>
-        <Botao className="neutro" onClick={() => ajustarMinutos(+1)}>+ 1 min</Botao>
+        <Botao
+          className="neutro"
+          onClick={zerarCronometro}
+          disabled={cron.rodando}
+        >
+          ⟲ Zerar
+        </Botao>
+        <Botao className="neutro" onClick={() => ajustarMinutos(-1)}>
+          − 1 min
+        </Botao>
+        <Botao className="neutro" onClick={() => ajustarMinutos(+1)}>
+          + 1 min
+        </Botao>
       </GradeBotoes>
     </Painel>
-  )
+  );
 }
 
 function PainelPartida() {
-  const estado = usePlacarPro()
-  const [confirmar, setConfirmar] = useState(false)
+  const estado = usePlacarPro();
+  const [confirmar, setConfirmar] = useState(false);
 
   function handleReset() {
     if (!confirmar) {
-      setConfirmar(true)
-      setTimeout(() => setConfirmar(false), 4000)
-      return
+      setConfirmar(true);
+      setTimeout(() => setConfirmar(false), 4000);
+      return;
     }
-    resetarPartida()
-    setConfirmar(false)
+    resetarPartida();
+    setConfirmar(false);
   }
 
   return (
@@ -350,15 +419,22 @@ function PainelPartida() {
         ))}
       </ListaPeriodos>
       <div style={{ marginTop: 20 }}>
-        <Botao className="perigo" style={{ width: '100%' }} onClick={handleReset}>
-          {confirmar ? '⚠ Clique novamente para confirmar' : '🗑 Resetar partida inteira'}
+        <Botao
+          className="perigo"
+          style={{ width: '100%' }}
+          onClick={handleReset}
+        >
+          {confirmar
+            ? '⚠ Clique novamente para confirmar'
+            : '🗑 Resetar partida inteira'}
         </Botao>
         <AvisoReset>
-          Zera gols, cronômetro e período. Os nomes dos times também voltam ao padrão.
+          Zera gols, cronômetro e período. Os nomes dos times também voltam ao
+          padrão.
         </AvisoReset>
       </div>
     </Painel>
-  )
+  );
 }
 
 export default function ControlePlacarPro() {
@@ -373,5 +449,5 @@ export default function ControlePlacarPro() {
         </div>
       </Conteudo>
     </Container>
-  )
+  );
 }

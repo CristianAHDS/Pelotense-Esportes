@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Header } from '../components/Header';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import {
+  getEstado,
+  inscrever,
   gol,
   renomearTime,
   alternarCronometro,
@@ -20,7 +22,7 @@ import {
   ESTADOS_PARTIDA,
   segundosAtuais,
   formatarTempo,
-} from '../store/placarBroadcastStore';
+} from '../store/placarBroadcastLLStore';
 
 const PERIODOS = ['1T', '2T', 'PRORROGAÇÃO', 'PÊNALTIS'];
 const ACRESCIMOS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -254,48 +256,100 @@ const PreviewBarra = styled.div`
   margin-bottom: 32px;
 `;
 
-const PreviewFaixaTempo = styled.div`
+const PreviewLinhaTempo = styled.div`
+  display: flex;
+  align-items: stretch;
+  gap: 5px;
+`;
+
+const PreviewChipPeriodo = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 5px 28px;
-  background: rgba(0, 0, 0, 0.7);
-  border-radius: 6px 6px 0 0;
+  padding: 5px 14px;
+  background: #0b1e3a;
+  border-radius: 9px 9px 0 0;
   font-family: 'Inter', 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-size: 0.72rem;
   font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  text-transform: uppercase;
+`;
+
+const PreviewChipTempo = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 18px;
+  background: #ff4b44;
+  border-radius: 9px 9px 0 0;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #ffffff;
+  font-variant-numeric: tabular-nums;
+`;
+
+const PreviewChipAcrescimo = styled.div`
+  position: absolute;
+  left: calc(100% + 5px);
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 12px;
+  background: #ffffff;
+  border-radius: 9px 9px 0 0;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 800;
   letter-spacing: 1px;
-  color: #fff;
-  .p {
-    color: rgba(255, 255, 255, 0.7);
-    font-size: 0.85rem;
-  }
-  .a {
-    color: #fbbf24;
-    font-variant-numeric: tabular-nums;
-  }
+  color: #ff4b44;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 `;
 
 const PreviewCorpo = styled.div`
   display: flex;
+  align-items: stretch;
   overflow: hidden;
-  border-radius: 0 0 4px 4px;
+  background: #ffffff;
+  border-radius: 0 0 12px 12px;
 `;
 
 const PreviewBloco = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 8px 22px;
-  background: ${({ $cor }) => $cor};
+  justify-content: space-between;
+  min-width: 150px;
+  gap: 12px;
+  padding: 8px 16px 12px;
+  background: #ffffff;
   font-family: 'Inter', 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  color: ${({ $cor }) => corContraste($cor)};
+  letter-spacing: 1px;
+  color: #0b1e3a;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 5px;
+    height: 4px;
+    border-radius: 2px;
+    background: ${({ $cor }) => $cor || 'transparent'};
+  }
+
   .g {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
+    font-weight: 800;
     font-variant-numeric: tabular-nums;
     line-height: 1;
   }
@@ -304,12 +358,11 @@ const PreviewBloco = styled.div`
 const PreviewSep = styled.div`
   display: flex;
   align-items: center;
-  padding: 8px 8px;
-  background: rgba(0, 0, 0, 0.85);
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.4);
-  position: relative;
+  padding: 8px 12px;
+  background: linear-gradient(135deg, #ff7a52 0%, #ff4b44 100%);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
 `;
 
 const PreviewTraco = styled.span`
@@ -334,7 +387,7 @@ const PreviewClicavel = styled.div`
 `;
 
 function PreviewLive() {
-  const estado = usePlacarBroadcast();
+  const estado = usePlacarBroadcast({ getEstado, inscrever });
   const [, tick] = useState(0);
   useEffect(() => {
     const i = setInterval(() => tick((t) => t + 1), 500);
@@ -356,51 +409,51 @@ function PreviewLive() {
       title="Abrir visualização em nova guia"
       onClick={() =>
         window.open(
-          `${window.location.origin}${window.location.pathname}#/placar-broadcast`,
+          `${window.location.origin}${window.location.pathname}#/placar-ll`,
           '_blank'
         )
       }
     >
       <PreviewBarra>
-        <PreviewFaixaTempo>
-          <span className="p">{estado.periodo}</span>
-          <span>{tempo}</span>
-          {estado.acrescimo > 0 && (
-            <span className="a">+{estado.acrescimo}:00</span>
-          )}
-        </PreviewFaixaTempo>
+        <PreviewLinhaTempo>
+          <PreviewChipPeriodo>{estado.periodo}</PreviewChipPeriodo>
+          <PreviewChipTempo>
+            {tempo}
+            {estado.acrescimo > 0 && (
+              <PreviewChipAcrescimo>+{estado.acrescimo}:00</PreviewChipAcrescimo>
+            )}
+          </PreviewChipTempo>
+        </PreviewLinhaTempo>
+      <div
+        style={{
+          display: "flex",
+          height: 5,
+          width: "100%",
+          justifyContent: "center",
+        }}
+      >
         <div
-          style={{
-            display: 'flex',
-            height: 5,
-            width: '100%',
-            justifyContent: 'center',
-          }}
+          style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}
         >
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}>
-            {tc.map((c, i) => (
-              <PreviewTraco key={`pc-${c}-${i}`} $cor={c} />
-            ))}
-          </div>
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}>
-            {tv.map((c, i) => (
-              <PreviewTraco key={`pv-${c}-${i}`} $cor={c} />
-            ))}
-          </div>
+          {tc.map((c, i) => (
+            <PreviewTraco key={`pc-${c}-${i}`} $cor={c} />
+          ))}
         </div>
+        <div
+          style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 1 }}
+        >
+          {tv.map((c, i) => (
+            <PreviewTraco key={`pv-${c}-${i}`} $cor={c} />
+          ))}
+        </div>
+      </div>
         <PreviewCorpo>
-          <PreviewBloco
-            $cor={estado.corCasa}
-            style={{ borderLeft: `4px solid ${estado.corCasaBorda}` }}
-          >
+          <PreviewBloco $cor={estado.timeCasa.cor}>
             <span>{estado.timeCasa.nome}</span>
             <span className="g">{estado.timeCasa.gols}</span>
           </PreviewBloco>
           <PreviewSep>×</PreviewSep>
-          <PreviewBloco
-            $cor={estado.corVisitante}
-            style={{ borderRight: `4px solid ${estado.corVisitanteBorda}` }}
-          >
+          <PreviewBloco $cor={estado.timeVisitante.cor}>
             <span className="g">{estado.timeVisitante.gols}</span>
             <span>{estado.timeVisitante.nome}</span>
           </PreviewBloco>
@@ -540,7 +593,7 @@ const ToggleCores = styled.button`
 `;
 
 function PainelTimes() {
-  const estado = usePlacarBroadcast();
+  const estado = usePlacarBroadcast({ getEstado, inscrever });
   const [coresAberto, setCoresAberto] = useState({});
 
   const toggle = (lado) => setCoresAberto((p) => ({ ...p, [lado]: !p[lado] }));
@@ -672,7 +725,7 @@ function PainelTimes() {
 }
 
 function PainelCronometro() {
-  const estado = usePlacarBroadcast();
+  const estado = usePlacarBroadcast({ getEstado, inscrever });
   const [, forcarTick] = useState(0);
   const cron = estado.cronometro;
   useEffect(() => {
@@ -717,7 +770,7 @@ function PainelCronometro() {
 }
 
 function PainelPartida() {
-  const estado = usePlacarBroadcast();
+  const estado = usePlacarBroadcast({ getEstado, inscrever });
   const [confirmar, setConfirmar] = useState(false);
   function handleReset() {
     if (!confirmar) {
@@ -789,7 +842,7 @@ function PainelPartida() {
 export default function ControlePlacarBroadcast() {
   return (
     <Container>
-      <Header subtitulo="Controle · Placar Broadcast" />
+      <Header subtitulo="Controle · Placar LaLiga" />
       <PreviewLive />
       <Conteudo>
         <PainelTimes />

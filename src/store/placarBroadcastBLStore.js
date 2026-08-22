@@ -1,6 +1,6 @@
-const STORAGE_KEY = 'pelotense:broadcast'
-const CHANNEL_NAME = 'broadcast:sync'
-const MSG_TIPO = 'estado:broadcast'
+const STORAGE_KEY = 'pelotense:broadcast-bl'
+const CHANNEL_NAME = 'broadcast:sync-bl'
+const MSG_TIPO = 'estado:broadcast-bl'
 
 function wsUrl() {
   try {
