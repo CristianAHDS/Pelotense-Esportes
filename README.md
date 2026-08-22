@@ -2,6 +2,8 @@
 
 Placar de futebol profissional estilo broadcast para transmissões ao vivo, streams e telões.
 
+**Site publicado:** [https://pelotense-esportes.netlify.app](https://pelotense-esportes.netlify.app)
+
 ## Funcionalidades
 
 - Placar compacto estilo TV com siglas dos times, gols, cronômetro e período
@@ -49,7 +51,7 @@ npm run build
 
 ## Deploy no Netlify
 
-O projeto já inclui `netlify.toml`. Para publicar:
+O projeto já inclui `netlify.toml` e está publicado em **https://pelotense-esportes.netlify.app**. Para publicar:
 
 1. Conecte o repositório no [Netlify](https://app.netlify.com)
 2. Build command: `npm run build` (já configurado no `netlify.toml`)
