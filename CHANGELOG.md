@@ -16,6 +16,7 @@
 - **Hub**: cards "Oitavas de Final" e "Fases Finais · Chaveamento" com prévia ao vivo (altura própria por card) e link de controle compartilhado.
 
 ### Correções
+- Chips flutuantes da demo ancorados à janela do mockup — o chip "GOL DO VERANÓPOLIS" não sobrepõe mais os pontos e links abaixo da demonstração.
 - Grade de ferramentas da landing removida em favor da demonstração animada (elimina a quebra de spans com 7 blocos).
 - Chaveamento não empilha mais na prévia do hub (breakpoint alinhado à largura do iframe).
 - Escudos ausentes resolvidos pelo fallback de sigla do componente `Escudo`.

@@ -1940,6 +1940,10 @@ const ChipFlutuante = styled.div`
   }
 `;
 
+const AreaJanela = styled.div`
+  position: relative;
+`;
+
 const JanelaDemo = styled.div`
   border-radius: 18px;
   overflow: hidden;
@@ -2302,20 +2306,21 @@ function DemoAoVivo() {
 
   return (
     <DemoMoldura>
-      <ChipFlutuante className="c1">
-        <i />
-        AO VIVO · GAUCHÃO A2
-      </ChipFlutuante>
-      <ChipFlutuante className="c2">
-        <i />
-        GOL DO VERANÓPOLIS
-      </ChipFlutuante>
-      <ChipFlutuante className="c3">
-        <i />
-        VER AVANÇA ÀS SEMIFINAIS
-      </ChipFlutuante>
+      <AreaJanela>
+        <ChipFlutuante className="c1">
+          <i />
+          AO VIVO · GAUCHÃO A2
+        </ChipFlutuante>
+        <ChipFlutuante className="c2">
+          <i />
+          GOL DO VERANÓPOLIS
+        </ChipFlutuante>
+        <ChipFlutuante className="c3">
+          <i />
+          VER AVANÇA ÀS SEMIFINAIS
+        </ChipFlutuante>
 
-      <JanelaDemo>
+        <JanelaDemo>
         <BarraJanela>
           <span className="dots">
             <span />
@@ -2413,7 +2418,8 @@ function DemoAoVivo() {
             </CaixaBracket>
           </PainelDemo>
         </PalcoDemos>
-      </JanelaDemo>
+        </JanelaDemo>
+      </AreaJanela>
 
       <PontosDemo>
         {DEMOS_AO_VIVO.map((d, i) => (
