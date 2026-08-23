@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useFundoTransparente } from '../components/useFundoTransparente'
+import { substituicaoLL } from '../store/substituicaoStore'
+import { SubstituicaoCartao } from '../components/SubstituicaoCartao'
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
 import {
   getEstado,
@@ -41,7 +43,7 @@ const BarraPlacar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+    gap: 0;
   filter: drop-shadow(0 6px 18px rgba(11, 30, 58, 0.35));
 `
 
@@ -132,7 +134,7 @@ const BlocoTime = styled.div`
 
   &::after {
     content: '';
-    position: absolute;
+  position: absolute;
     left: 14px;
     right: 14px;
     bottom: 6px;
@@ -238,7 +240,7 @@ const Voltar = styled(Link)`
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.4);
-  font-size: 1.2rem;
+    font-size: 1.2rem;
   text-decoration: none;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -294,26 +296,34 @@ const transicaoModo = keyframes`
 /* ---------- Traços de cartão ---------- */
 
 const TracoCartao = styled.span`
-  display: inline-block;
+    display: inline-block;
   width: 14px;
-  height: 4px;
-  border-radius: 2px;
+    height: 4px;
+    border-radius: 2px;
   background: ${({ $cor }) => ($cor === 'amarelo' ? '#eab308' : '#dc2626')};
   margin: 0 1px;
 `
 
 const Marca = styled.div`
   opacity: 0.25;
-  font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
-  font-size: 0.8rem;
+    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+    font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 4px;
-  text-transform: uppercase;
+    text-transform: uppercase;
   color: #ffffff;
 `
 
+
+const CartaoSubFixo = styled.div`
+  position: fixed;
+  left: 48px;
+  bottom: 48px;
+  z-index: 20;
+`
 export default function PlacarBroadcastLL() {
   const estado = usePlacarBroadcast(loja)
+  const sub = usePlacarBroadcast(substituicaoLL)
   useFundoTransparente()
   const [, forcarTick] = useState(0)
   const [golAtivo, setGolAtivo] = useState(null)
@@ -352,7 +362,9 @@ export default function PlacarBroadcastLL() {
 
   return (
     <Tela $compacto={compacto}>
-      {!compacto && <Voltar to="/" title="Voltar ao hub">←</Voltar>}
+      {!compacto && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+
+      {!compacto && <Marca>PELOTENSE ESPORTES</Marca>}
 
       <BarraPlacar>
         <LinhaTempo>
@@ -370,7 +382,7 @@ export default function PlacarBroadcastLL() {
           <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: 2 }}>
             {tracosVisitante.map((cor, i) => (<TracoCartao key={`vis-${cor}-${i}`} $cor={cor} />))}
           </div>
-        </div>
+          </div>
 
         <CorpoPlacar $penaltis={periodo === 'PÊNALTIS'}>
           {periodo === 'PÊNALTIS' ? (
@@ -413,20 +425,23 @@ export default function PlacarBroadcastLL() {
                 )}
               </BlocoTime>
             </>
-          )}
+                )}
         </CorpoPlacar>
       </BarraPlacar>
 
       {!compacto && (
-        <>
+            <>
           <StatusBar $ativo={cronometro.rodando}>
             {cronometro.rodando && <Ponto />}
             <span className="label">{estadoPartida}</span>
           </StatusBar>
-
-          <Marca>PELOTENSE ESPORTES</Marca>
-        </>
-      )}
+            </>
+                )}
+    {sub.visivel && (
+      <CartaoSubFixo>
+        <SubstituicaoCartao dados={sub} />
+      </CartaoSubFixo>
+                )}
     </Tela>
   )
-}
+  }

@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../components/Header';
 import { PainelSubstituicao } from '../components/PainelSubstituicao';
+import { substituicaoBL } from '../store/substituicaoStore';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import {
   getEstado,
@@ -66,7 +67,7 @@ const PainelTitulo = styled.h2`
   gap: 10px;
   &::after {
     content: '';
-    flex: 1;
+  flex: 1;
     height: 1px;
     background: ${({ theme }) => theme.cores.borda};
   }
@@ -150,29 +151,29 @@ const Botao = styled.button`
   }
   &.gol {
     background: ${({ theme }) => theme.cores.primaria};
-    color: #052e13;
+    color: #0a0f00;
     &:hover {
       filter: brightness(1.1);
-    }
+  }
   }
   &.redondo {
     width: 46px;
     height: 46px;
     padding: 0;
     font-size: 1.3rem;
-    background: ${({ theme }) => theme.cores.fundo};
-    border: 1px solid ${({ theme }) => theme.cores.borda};
-    color: ${({ theme }) => theme.cores.texto};
+  background: ${({ theme }) => theme.cores.fundo};
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  color: ${({ theme }) => theme.cores.texto};
     &:hover:not(:disabled) {
       background: ${({ theme }) => theme.cores.superficieHover};
-    }
+  }
   }
   &.primario {
     background: ${({ theme }) => theme.cores.primaria};
-    color: #052e13;
+    color: #0a0f00;
     &:hover {
       filter: brightness(1.1);
-    }
+  }
   }
   &.perigo {
     background: transparent;
@@ -180,15 +181,15 @@ const Botao = styled.button`
     color: ${({ theme }) => theme.cores.perigo};
     &:hover:not(:disabled) {
       background: rgba(239, 68, 68, 0.12);
-    }
+  }
   }
   &.neutro {
-    background: ${({ theme }) => theme.cores.fundo};
-    border: 1px solid ${({ theme }) => theme.cores.borda};
-    color: ${({ theme }) => theme.cores.texto};
+  background: ${({ theme }) => theme.cores.fundo};
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  color: ${({ theme }) => theme.cores.texto};
     &:hover:not(:disabled) {
       background: ${({ theme }) => theme.cores.superficieHover};
-    }
+  }
   }
 `;
 
@@ -226,14 +227,14 @@ const Chip = styled.button`
   border: 1px solid
     ${({ $ativo, theme }) =>
       $ativo ? theme.cores.primaria : theme.cores.borda};
-  color: ${({ $ativo }) => ($ativo ? '#052e13' : '#94a3b8')};
+  color: ${({ $ativo }) => ($ativo ? '#0a0f00' : '#94a3b8')};
   border-radius: 999px;
   padding: 9px 16px;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 1px;
   transition: all 0.15s ease;
-  &:hover:not(:disabled) {
+    &:hover:not(:disabled) {
     ${({ $ativo, theme }) =>
       $ativo
         ? ''
@@ -246,7 +247,7 @@ function corContraste(hex) {
   const g = parseInt(hex.slice(3, 5), 16) / 255;
   const b = parseInt(hex.slice(5, 7), 16) / 255;
   return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.5 ? '#000' : '#fff';
-}
+  }
 
 const PreviewBarra = styled.div`
   display: flex;
@@ -354,9 +355,9 @@ const PreviewBloco = styled.div`
 
   &::before {
     content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
     left: ${({ $lado }) => ($lado === 'casa' ? 0 : 'auto')};
     right: ${({ $lado }) => ($lado === 'casa' ? 'auto' : 0)};
     width: 6px;
@@ -369,9 +370,9 @@ const PreviewBloco = styled.div`
 
   .g {
     font-size: 1.35rem;
-    font-weight: 800;
-    font-variant-numeric: tabular-nums;
-    line-height: 1;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
   }
 `;
 
@@ -407,7 +408,7 @@ const PreviewClicavel = styled.div`
   border-radius: 10px;
   transition: transform 0.15s ease;
 
-  &:hover {
+    &:hover {
     transform: scale(1.02);
   }
 `;
@@ -435,10 +436,10 @@ function PreviewLive() {
       title="Abrir visualização em nova guia"
       onClick={() =>
         window.open(
-          `${window.location.origin}${window.location.pathname}#/placar-bl`,
+          `${window.location.origin}/placar-bl`,
           '_blank',
         )
-      }
+  }
     >
       <PreviewBarra>
         <PreviewLinhaTempo>
@@ -461,32 +462,32 @@ function PreviewLive() {
             width: '100%',
             justifyContent: 'center',
           }}
-        >
-          <div
-            style={{
+    >
+        <div
+          style={{
               flex: 1,
-              display: 'flex',
-              justifyContent: 'center',
+            display: 'flex',
+            justifyContent: 'center',
               gap: 1,
-            }}
-          >
+          }}
+    >
             {tc.map((c, i) => (
               <PreviewTraco key={`pc-${c}-${i}`} $cor={c} />
             ))}
           </div>
-          <div
-            style={{
+        <div
+          style={{
               flex: 1,
-              display: 'flex',
-              justifyContent: 'center',
+            display: 'flex',
+            justifyContent: 'center',
               gap: 1,
-            }}
-          >
+          }}
+    >
             {tv.map((c, i) => (
               <PreviewTraco key={`pv-${c}-${i}`} $cor={c} />
             ))}
           </div>
-        </div>
+          </div>
         <PreviewCorpo>
           <PreviewBloco $cor={estado.timeCasa.cor} $lado="casa">
             <span>{estado.timeCasa.nome}</span>
@@ -503,7 +504,7 @@ function PreviewLive() {
       </PreviewBarra>
     </PreviewClicavel>
   );
-}
+  }
 
 const AvisoReset = styled.p`
   margin-top: 14px;
@@ -524,14 +525,14 @@ const Swatch = styled.button`
   height: 24px;
   border: 2px solid ${({ $ativo }) => ($ativo ? '#fff' : 'transparent')};
   border-radius: 6px;
-  padding: 0;
+    padding: 0;
   cursor: pointer;
   background: ${({ $cor }) => $cor};
   transition:
     border-color 0.15s ease,
     transform 0.1s ease;
 
-  &:hover {
+    &:hover {
     border-color: rgba(255, 255, 255, 0.4);
   }
 
@@ -553,25 +554,25 @@ const CorInputBorda = styled.label`
   input {
     width: 22px;
     height: 22px;
-    border: 1px solid ${({ theme }) => theme.cores.borda};
+  border: 1px solid ${({ theme }) => theme.cores.borda};
     border-radius: 4px;
     padding: 0;
     background: transparent;
-    cursor: pointer;
+  cursor: pointer;
     &::-webkit-color-swatch-wrapper {
-      padding: 0;
-    }
+    padding: 0;
+  }
     &::-webkit-color-swatch {
-      border: none;
-      border-radius: 4px;
-    }
+  border: none;
+    border-radius: 4px;
+  }
   }
   span {
     font-size: 0.6rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.cores.textoSuave};
   }
 `;
 
@@ -594,7 +595,7 @@ const ContagemCartao = styled.span`
 const BotaoCartao = styled(Botao)`
   width: 36px;
   height: 36px;
-  padding: 0;
+    padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -615,7 +616,7 @@ const BotaoCartao = styled(Botao)`
 `;
 
 const ToggleCores = styled.button`
-  background: transparent;
+    background: transparent;
   border: none;
   color: ${({ theme }) => theme.cores.textoSuave};
   font-size: 0.65rem;
@@ -627,10 +628,10 @@ const ToggleCores = styled.button`
   display: flex;
   align-items: center;
   gap: 4px;
-  padding: 0;
+    padding: 0;
 
-  &:hover {
-    color: ${({ theme }) => theme.cores.texto};
+    &:hover {
+  color: ${({ theme }) => theme.cores.texto};
   }
 `;
 
@@ -676,7 +677,7 @@ function PainelTimes() {
               className="redondo"
               onClick={() => gol(lado, -1)}
               disabled={time.gols === 0}
-            >
+    >
               −
             </Botao>
             <Numero>{time.gols}</Numero>
@@ -691,19 +692,19 @@ function PainelTimes() {
               className="redondo"
               onClick={() => removerCartao(lado, 'amarelo')}
               disabled={cartoes.amarelo === 0}
-            >
+    >
               −
             </Botao>
             <BotaoCartao
               className="amarelo"
               onClick={() => darCartao(lado, 'amarelo')}
-            >
-              █
+    >
+              −
             </BotaoCartao>
             <Botao
               className="redondo"
               onClick={() => darCartao(lado, 'amarelo')}
-            >
+    >
               +
             </Botao>
             <ContagemCartao>{cartoes.amarelo}</ContagemCartao>
@@ -711,19 +712,19 @@ function PainelTimes() {
               className="redondo"
               onClick={() => removerCartao(lado, 'vermelho')}
               disabled={cartoes.vermelho === 0}
-            >
+    >
               −
             </Botao>
             <BotaoCartao
               className="vermelho"
               onClick={() => darCartao(lado, 'vermelho')}
-            >
-              █
+    >
+              −
             </BotaoCartao>
             <Botao
               className="redondo"
               onClick={() => darCartao(lado, 'vermelho')}
-            >
+    >
               +
             </Botao>
             <ContagemCartao>{cartoes.vermelho}</ContagemCartao>
@@ -743,8 +744,8 @@ function PainelTimes() {
                     $ativo={cor === p.fundo}
                     onClick={() => definirCorTime(lado, p.fundo)}
                     title={p.nome}
-                  />
-                ))}
+          />
+            ))}
               </GradeCores>
               <Rotulo style={{ marginTop: 8 }}>Borda</Rotulo>
               <GradeCores>
@@ -755,16 +756,16 @@ function PainelTimes() {
                     $ativo={corBorda === p.borda}
                     onClick={() => definirCorTime(lado, p.borda, 'borda')}
                     title={p.nome}
-                  />
-                ))}
+          />
+            ))}
               </GradeCores>
             </>
-          )}
+            )}
         </BlocoTime>
-      ))}
+            ))}
     </Painel>
   );
-}
+  }
 
 function PainelCronometro() {
   const estado = usePlacarBroadcast({ getEstado, inscrever });
@@ -781,35 +782,35 @@ function PainelCronometro() {
         {formatarTempo(segundosAtuais(cron))}
       </DisplayTempo>
       <GradeBotoes>
-        <Botao
+            <Botao
           className={cron.rodando ? 'perigo' : 'primario'}
           onClick={alternarCronometro}
-        >
+    >
           {cron.rodando ? '⏸ Pausar' : '▶ Iniciar'}
-        </Botao>
-        <Botao
+            </Botao>
+            <Botao
           className="neutro"
           onClick={zerarCronometro}
           disabled={cron.rodando}
-        >
+    >
           ⟲ Zerar
-        </Botao>
+            </Botao>
         <Botao className="neutro" onClick={() => ajustarSegundos(-30)}>
           − 30s
-        </Botao>
+            </Botao>
         <Botao className="neutro" onClick={() => ajustarSegundos(+30)}>
           + 30s
-        </Botao>
+            </Botao>
         <Botao className="neutro" onClick={() => ajustarSegundos(-60)}>
           − 1 min
-        </Botao>
+            </Botao>
         <Botao className="neutro" onClick={() => ajustarSegundos(+60)}>
           + 1 min
-        </Botao>
+            </Botao>
       </GradeBotoes>
     </Painel>
   );
-}
+  }
 
 function PainelPartida() {
   const estado = usePlacarBroadcast({ getEstado, inscrever });
@@ -819,7 +820,7 @@ function PainelPartida() {
       setConfirmar(true);
       setTimeout(() => setConfirmar(false), 4000);
       return;
-    }
+  }
     resetarPartida();
     setConfirmar(false);
   }
@@ -833,10 +834,10 @@ function PainelPartida() {
             key={p}
             $ativo={estado.periodo === p}
             onClick={() => definirPeriodo(p)}
-          >
+    >
             {p}
           </Chip>
-        ))}
+            ))}
       </ListaChips>
       <Rotulo>Acréscimo</Rotulo>
       <ListaChips style={{ marginBottom: 16 }}>
@@ -845,10 +846,10 @@ function PainelPartida() {
             key={m}
             $ativo={(estado.acrescimo || 0) === m}
             onClick={() => definirAcrescimo(m)}
-          >
+    >
             {m === 0 ? 'Sem' : `+${m}:00`}
           </Chip>
-        ))}
+            ))}
       </ListaChips>
       <Rotulo>Estado da partida</Rotulo>
       <ListaChips>
@@ -857,29 +858,29 @@ function PainelPartida() {
             key={e}
             $ativo={estado.estadoPartida === e}
             onClick={() => definirEstadoPartida(e)}
-          >
+    >
             {e}
           </Chip>
-        ))}
+            ))}
       </ListaChips>
       <div style={{ marginTop: 20 }}>
-        <Botao
+            <Botao
           className="perigo"
           style={{ width: '100%' }}
           onClick={handleReset}
-        >
+    >
           {confirmar
             ? '⚠ Clique novamente para confirmar'
             : '🗑 Resetar partida inteira'}
-        </Botao>
+            </Botao>
         <AvisoReset>
           Zera gols, cronômetro e período. Os nomes dos times também voltam ao
           padrão.
         </AvisoReset>
-      </div>
+          </div>
     </Painel>
   );
-}
+  }
 
 export default function ControlePlacarBroadcast() {
   return (
@@ -891,9 +892,9 @@ export default function ControlePlacarBroadcast() {
         <div style={{ display: 'grid', gap: 24 }}>
           <PainelCronometro />
           <PainelPartida />
-          <PainelSubstituicao /><PainelPartida />
-        </div>
+          <PainelSubstituicao loja={substituicaoBL} />
+          </div>
       </Conteudo>
     </Container>
   );
-}
+  }

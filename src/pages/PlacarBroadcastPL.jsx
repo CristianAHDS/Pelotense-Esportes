@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useFundoTransparente } from '../components/useFundoTransparente'
+import { substituicaoPL } from '../store/substituicaoStore'
+import { SubstituicaoCartao } from '../components/SubstituicaoCartao'
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
 import {
   getEstado,
@@ -14,7 +16,7 @@ const loja = { getEstado, inscrever }
 
 /* Identidade Premier League */
 const PL_ROXO = '#38003C'
-const PL_MINT = '#00FF87'
+const PL_MINT = '#A5EF1C'
 
 const compacto = new URLSearchParams(window.location.search).has('compacto')
 
@@ -40,7 +42,7 @@ const BarraPlacar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
+    gap: 0;
   filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.55));
 `
 
@@ -228,7 +230,7 @@ const Voltar = styled(Link)`
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.4);
-  font-size: 1.2rem;
+    font-size: 1.2rem;
   text-decoration: none;
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -268,7 +270,7 @@ const FaixaGol = styled.span`
     letter-spacing: 3px;
     text-transform: uppercase;
     color: ${PL_MINT};
-    filter: drop-shadow(0 0 6px rgba(0, 255, 135, 0.5));
+    filter: drop-shadow(0 0 6px rgba(165, 239, 28, 0.5));
     animation: ${rolagemGol} 2s linear infinite;
   }
 `
@@ -284,7 +286,7 @@ const transicaoModo = keyframes`
 /* ---------- Traços de cartão ---------- */
 
 const TracoCartao = styled.span`
-  display: inline-block;
+    display: inline-block;
   width: 14px;
   height: 4px;
   border-radius: 1px;
@@ -294,16 +296,24 @@ const TracoCartao = styled.span`
 
 const Marca = styled.div`
   opacity: 0.25;
-  font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
-  font-size: 0.8rem;
+    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+    font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 4px;
-  text-transform: uppercase;
-  color: #ffffff;
+    text-transform: uppercase;
+    color: #ffffff;
 `
 
+
+const CartaoSubFixo = styled.div`
+  position: fixed;
+  left: 48px;
+  bottom: 48px;
+  z-index: 20;
+`
 export default function PlacarBroadcastPL() {
   const estado = usePlacarBroadcast(loja)
+  const sub = usePlacarBroadcast(substituicaoPL)
   useFundoTransparente()
   const [, forcarTick] = useState(0)
   const [golAtivo, setGolAtivo] = useState(null)
@@ -342,7 +352,9 @@ export default function PlacarBroadcastPL() {
 
   return (
     <Tela $compacto={compacto}>
-      {!compacto && <Voltar to="/" title="Voltar ao hub">←</Voltar>}
+      {!compacto && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+
+      {!compacto && <Marca>PELOTENSE ESPORTES</Marca>}
 
       <BarraPlacar>
         <LinhaTempo>
@@ -360,7 +372,7 @@ export default function PlacarBroadcastPL() {
           <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'flex-end', gap: 2 }}>
             {tracosVisitante.map((cor, i) => (<TracoCartao key={`vis-${cor}-${i}`} $cor={cor} />))}
           </div>
-        </div>
+          </div>
 
         <CorpoPlacar $penaltis={periodo === 'PÊNALTIS'}>
           {periodo === 'PÊNALTIS' ? (
@@ -403,20 +415,23 @@ export default function PlacarBroadcastPL() {
                 )}
               </BlocoTime>
             </>
-          )}
+                )}
         </CorpoPlacar>
       </BarraPlacar>
 
       {!compacto && (
-        <>
+            <>
           <StatusBar $ativo={cronometro.rodando}>
             {cronometro.rodando && <Ponto />}
             <span className="label">{estadoPartida}</span>
           </StatusBar>
-
-          <Marca>PELOTENSE ESPORTES</Marca>
-        </>
-      )}
+            </>
+                )}
+    {sub.visivel && (
+      <CartaoSubFixo>
+        <SubstituicaoCartao dados={sub} />
+      </CartaoSubFixo>
+                )}
     </Tela>
   )
-}
+  }

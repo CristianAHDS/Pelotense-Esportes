@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+﻿import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { LOGO_URL } from '../theme'
 
@@ -43,14 +43,48 @@ const Subtitulo = styled.span`
   }
 `
 
-export function Header({ subtitulo }) {
+const VoltarHome = styled(Link)`
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  background: ${({ theme }) => theme.cores.superficie};
+  color: ${({ theme }) => theme.cores.textoSuave};
+  font-family: ${({ theme }) => theme.fontes.titulo};
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.cores.primaria};
+    border-color: rgba(165, 239, 28, 0.45);
+    background: rgba(165, 239, 28, 0.08);
+  }
+
+  @media (max-width: 640px) {
+    padding: 7px 13px;
+  }
+`
+
+export function Header({ subtitulo, voltar }) {
   return (
     <Barra>
       <Logo src={LOGO_URL} alt="Pelotense Esportes" />
-      <Titulo to="/">
+      <Titulo to="/hub">
         PELOTENSE <span>ESPORTES</span>
       </Titulo>
       {subtitulo && <Subtitulo>{subtitulo}</Subtitulo>}
+      {voltar && <VoltarHome to="/hub">← Voltar ao hub</VoltarHome>}
     </Barra>
   )
-}
+  }

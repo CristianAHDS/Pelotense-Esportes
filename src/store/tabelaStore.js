@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'pelotense:tabela:v3'
+﻿const STORAGE_KEY = 'pelotense:tabela:v3'
 const CHANNEL_NAME = 'broadcast:sync-tabela-v3'
 const MSG_TIPO = 'estado:tabela:v3'
 
@@ -9,11 +9,11 @@ function wsUrl() {
   } catch {
     return 'ws://localhost:5173/pelotense-sync'
   }
-}
+  }
 
 function criarTime(nome, sigla, cor, dados = {}) {
   return { nome, sigla, cor, escudo: null, p: 0, j: 0, v: 0, e: 0, d: 0, gp: 0, gc: 0, ...dados }
-}
+  }
 
 /* Campeonato Gaúcho Série A2 (Divisão de Acesso) 2026 */
 const E = '/escudos'
@@ -23,13 +23,13 @@ const TIMES_PADRAO = [
   criarTime('Esportivo-RS', 'ESP', '#7c3aed', { escudo: `${E}/ESP.png`, p: 12, j: 6, v: 3, e: 3, d: 0, gp: 6, gc: 2 }),
   criarTime('Aimoré', 'AIM', '#111827', { escudo: `${E}/AIM.png`, p: 11, j: 6, v: 3, e: 2, d: 1, gp: 5, gc: 5 }),
   criarTime('Santa Cruz-RS', 'SCR', '#eab308', { escudo: `${E}/SCR.png`, p: 9, j: 6, v: 2, e: 3, d: 1, gp: 4, gc: 4 }),
-  criarTime('APAFUT', 'APA', '#0d9488', { p: 8, j: 6, v: 2, e: 2, d: 2, gp: 7, gc: 5 }),
+  criarTime('APAFUT', 'APA', '#0d9488', { escudo: `${E}/APA.png`, p: 8, j: 6, v: 2, e: 2, d: 2, gp: 7, gc: 5 }),
   criarTime('União Frederiquense', 'UFR', '#2563eb', { escudo: `${E}/UFR.png`, p: 8, j: 6, v: 2, e: 2, d: 2, gp: 6, gc: 4 }),
   criarTime('Gaúcho', 'GAU', '#171717', { escudo: `${E}/GAU.png`, p: 7, j: 6, v: 2, e: 1, d: 3, gp: 6, gc: 5 }),
   criarTime('Pelotas', 'PEL', '#1565c0', { escudo: `${E}/PEL.png`, p: 7, j: 5, v: 2, e: 1, d: 2, gp: 3, gc: 5 }),
   criarTime('Brasil de Pelotas', 'BRA', '#b91c1c', { escudo: `${E}/BRA.png`, p: 6, j: 5, v: 1, e: 3, d: 1, gp: 5, gc: 4 }),
   criarTime('Brasil de Farroupilha', 'BFR', '#ea580c', { escudo: `${E}/BFR.png`, p: 6, j: 5, v: 1, e: 3, d: 1, gp: 4, gc: 3 }),
-  criarTime('Gramadense', 'GRA', '#15803d', { p: 5, j: 6, v: 1, e: 2, d: 3, gp: 4, gc: 7 }),
+  criarTime('Gramadense', 'GRA', '#15803d', { escudo: `${E}/GRA.png`, p: 5, j: 6, v: 1, e: 2, d: 3, gp: 4, gc: 7 }),
   criarTime('Guarani-RS', 'GVA', '#166534', { escudo: `${E}/GVA.png`, p: 5, j: 5, v: 1, e: 2, d: 2, gp: 3, gc: 6 }),
   criarTime('Bagé', 'BAG', '#334155', { escudo: `${E}/BAG.png`, p: 4, j: 5, v: 1, e: 1, d: 3, gp: 4, gc: 9 }),
   criarTime('Glória', 'GLO', '#991b1b', { escudo: `${E}/GLO.png`, p: 2, j: 5, v: 0, e: 2, d: 3, gp: 2, gc: 5 }),
@@ -40,7 +40,18 @@ const estadoPadrao = {
   competicao: 'CAMPEONATO GAÚCHO SÉRIE A2',
   rodada: 7,
   times: structuredClone(TIMES_PADRAO),
-}
+  }
+
+/* Garante que times conhecidos tenham escudo, mesmo quando o estado
+   chega de outra aba/dispositivo que foi salvo antes dos escudos */
+function completarVisuais(times) {
+  if (!Array.isArray(times)) return times
+  return times.map((t) => {
+    if (!t?.sigla || t.escudo) return t
+    const padrao = TIMES_PADRAO.find((p) => p.sigla === t.sigla && p.escudo)
+    return padrao ? { ...t, escudo: padrao.escudo, cor: t.cor || padrao.cor } : t
+})
+  }
 
 function carregar() {
   try {
@@ -48,13 +59,14 @@ function carregar() {
     if (bruto) {
       const salvo = JSON.parse(bruto)
       if (!Array.isArray(salvo.times)) salvo.times = structuredClone(estadoPadrao.times)
+      else salvo.times = completarVisuais(salvo.times)
       return { ...structuredClone(estadoPadrao), ...salvo }
-    }
+  }
   } catch (e) {
     console.warn('Tabela: falha ao carregar estado.', e)
   }
   return structuredClone(estadoPadrao)
-}
+  }
 
 let estado = carregar()
 const ouvintes = new Set()
@@ -65,7 +77,7 @@ const canal =
 
 function notificar() {
   ouvintes.forEach((ouvinte) => ouvinte(estado))
-}
+  }
 
 function persistir() {
   try {
@@ -73,11 +85,20 @@ function persistir() {
   } catch (e) {
     console.warn('Tabela: falha ao persistir estado.', e)
   }
-}
+  }
 
 export function getEstado() {
   return estado
-}
+  }
+
+/* Relê o estado salvo no localStorage e notifica os ouvintes */
+export function recarregar() {
+  const novo = carregar()
+  if (JSON.stringify(novo) === JSON.stringify(estado)) return
+  estado = novo
+  persistir()
+  notificar()
+  }
 
 export function ordenarClassificacao(times) {
   return times
@@ -90,11 +111,11 @@ export function ordenarClassificacao(times) {
         b.gp - a.gp ||
         a._i - b._i
     )
-}
+  }
 
 function pacoteSincronizacao() {
   return structuredClone(estado)
-}
+  }
 
 export function setEstado(atualizador, { remoto = false } = {}) {
   if (remoto) {
@@ -103,6 +124,7 @@ export function setEstado(atualizador, { remoto = false } = {}) {
 
   estado =
     typeof atualizador === 'function' ? atualizador(structuredClone(estado)) : atualizador
+  estado.times = completarVisuais(estado.times)
   persistir()
   notificar()
 
@@ -113,7 +135,7 @@ export function setEstado(atualizador, { remoto = false } = {}) {
   }
 
   processandoRemoto = false
-}
+  }
 
 let ultimoSync = ''
 
@@ -125,7 +147,7 @@ function aplicarEstadoRemoto(novoEstado) {
   if (!processandoRemoto) {
     setEstado(novoEstado, { remoto: true })
   }
-}
+  }
 
 /* ---------- WebSocket ---------- */
 
@@ -147,14 +169,14 @@ function conectarWS() {
   }
 
   ws.onmessage = (evento) => {
-    try {
+  try {
       const msg = JSON.parse(evento.data)
       if (msg.tipo === MSG_TIPO) {
         aplicarEstadoRemoto(msg.estado)
-      }
-    } catch (e) {
+  }
+  } catch (e) {
       console.warn('Tabela: mensagem WS inválida', e)
-    }
+  }
   }
 
   ws.onclose = () => {
@@ -165,7 +187,7 @@ function conectarWS() {
   ws.onerror = () => {
     ws?.close()
   }
-}
+  }
 
 function tentarReconectarWS() {
   if (wsReconectarTimer) return
@@ -173,15 +195,15 @@ function tentarReconectarWS() {
     wsReconectarTimer = null
     conectarWS()
   }, 3000)
-}
+  }
 
 function enviarEstadoWS(pacote) {
   if (ws && ws.readyState === WebSocket.OPEN) {
     ws.send(JSON.stringify({ tipo: MSG_TIPO, estado: pacote || estado }))
   }
-}
+  }
 
-conectarWS()
+    conectarWS()
 
 /* ---------- BroadcastChannel ---------- */
 
@@ -189,19 +211,19 @@ if (canal) {
   canal.onmessage = (evento) => {
     if (evento.data?.tipo === MSG_TIPO) {
       aplicarEstadoRemoto(evento.data.estado)
-    }
   }
-}
+  }
+  }
 
 /* ---------- localStorage ---------- */
 
 window.addEventListener('storage', (evento) => {
   if (evento.key === STORAGE_KEY && evento.newValue) {
-    try {
+  try {
       aplicarEstadoRemoto(JSON.parse(evento.newValue))
-    } catch (e) {
+  } catch (e) {
       console.warn('Tabela: falha ao sincronizar via storage.', e)
-    }
+  }
   }
 })
 
@@ -210,40 +232,40 @@ window.addEventListener('storage', (evento) => {
 export function inscrever(ouvinte) {
   ouvintes.add(ouvinte)
   return () => ouvintes.delete(ouvinte)
-}
+  }
 
 /* ---------- Ações ---------- */
 
 export function definirCompeticao(texto) {
   setEstado((estado) => {
     estado.competicao = String(texto).slice(0, 60).toUpperCase()
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function definirRodada(valor) {
   setEstado((estado) => {
     estado.rodada = Math.max(0, Math.floor(Number(valor) || 0))
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function adicionarTime() {
   setEstado((estado) => {
     if (estado.times.length >= 24) return estado
     const n = estado.times.length + 1
     estado.times.push(criarTime(`TIME ${n}`, `T${n}`, '#4b5563'))
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function removerTime(indice) {
   setEstado((estado) => {
     if (estado.times.length <= 2) return estado
     estado.times.splice(indice, 1)
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function atualizarTime(indice, campo, valor) {
   setEstado((estado) => {
@@ -257,18 +279,52 @@ export function atualizarTime(indice, campo, valor) {
       t.cor = valor
     } else {
       t[campo] = Math.max(0, Math.floor(Number(valor) || 0))
-    }
-    return estado
-  })
-}
+  }
+  return estado
+})
+  }
 
 export function zerarEstatisticas() {
   setEstado((estado) => {
     estado.times = estado.times.map((t) => ({ ...t, p: 0, j: 0, v: 0, e: 0, d: 0, gp: 0, gc: 0 }))
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function restaurarPadrao() {
   setEstado(() => structuredClone(estadoPadrao))
-}
+  }
+
+/* Aplica estatísticas externas (ex.: FGF) em [{ indice, stats }].
+   Só altera (e notifica) os campos que de fato mudaram. */
+export function aplicarEstatisticas(pares) {
+  if (!Array.isArray(pares)) return 0
+
+  const campos = ['p', 'j', 'v', 'e', 'd', 'gp', 'gc']
+  const mudancas = []
+
+  for (const { indice, stats } of pares) {
+    const t = Number.isInteger(indice) ? estado.times[indice] : null
+    if (!t || !stats || typeof stats !== 'object') continue
+
+    const valores = {}
+    for (const campo of campos) {
+      const valor = Number(stats[campo])
+      if (!Number.isFinite(valor)) continue
+      const normalizado = Math.max(0, Math.floor(valor))
+      if (t[campo] !== normalizado) valores[campo] = normalizado
+  }
+    if (Object.keys(valores).length) mudancas.push({ indice, valores })
+  }
+
+  if (!mudancas.length) return 0
+
+  setEstado((atual) => {
+    for (const { indice, valores } of mudancas) {
+      Object.assign(atual.times[indice], valores)
+  }
+    return atual
+})
+
+  return mudancas.length
+  }

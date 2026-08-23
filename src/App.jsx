@@ -1,8 +1,9 @@
-import { HashRouter, Routes, Route } from 'react-router-dom'
+﻿import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { theme } from './theme'
 import { GlobalStyle } from './styles/GlobalStyle'
 import Hub from './pages/Hub'
+import LandingPage from './pages/LandingPage'
 import PlacarBroadcast from './pages/PlacarBroadcast'
 import ControlePlacarBroadcast from './pages/ControlePlacarBroadcast'
 import PlacarBroadcastPL from './pages/PlacarBroadcastPL'
@@ -15,6 +16,7 @@ import Tabela from './pages/Tabela'
 import ControleTabela from './pages/ControleTabela'
 import MataMata from './pages/MataMata'
 import ControleMataMata from './pages/ControleMataMata'
+import FasesFinais from './pages/FasesFinais'
 import Substituicao from './pages/Substituicao'
 import ControleSubstituicao from './pages/ControleSubstituicao'
 import Penaltis from './pages/Penaltis'
@@ -23,9 +25,10 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Hub />} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/hub" element={<Hub />} />
           <Route path="/placar-broadcast" element={<PlacarBroadcast />} />
           <Route path="/placar-broadcast/controle" element={<ControlePlacarBroadcast />} />
           <Route path="/placar-pl" element={<PlacarBroadcastPL />} />
@@ -38,12 +41,13 @@ export default function App() {
           <Route path="/tabela/controle" element={<ControleTabela />} />
           <Route path="/mata-mata" element={<MataMata />} />
           <Route path="/mata-mata/controle" element={<ControleMataMata />} />
+          <Route path="/fases-finais" element={<FasesFinais />} />
           <Route path="/substituicao" element={<Substituicao />} />
           <Route path="/substituicao/controle" element={<ControleSubstituicao />} />
           <Route path="/penaltis" element={<Penaltis />} />
           <Route path="/penaltis/controle" element={<ControlePenaltis />} />
         </Routes>
-      </HashRouter>
+      </BrowserRouter>
     </ThemeProvider>
   )
 }

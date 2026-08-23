@@ -1,16 +1,16 @@
-export const LOGO_URL = 'https://i.imgur.com/zmQCbYc.png'
+﻿export const LOGO_URL = 'https://i.imgur.com/zmQCbYc.png'
 
 export const theme = {
   cores: {
-    fundo: '#0a0e17',
-    fundoClaro: '#111827',
-    superficie: '#151d2e',
-    superficieHover: '#1c2740',
-    borda: '#243049',
-    texto: '#f1f5f9',
-    textoSuave: '#94a3b8',
-    primaria: '#22c55e',
-    primariaEscura: '#16a34a',
+    fundo: '#060606',
+    fundoClaro: '#0d0d0d',
+    superficie: '#101010',
+    superficieHover: '#171717',
+    borda: '#262626',
+    texto: '#fcfcfb',
+    textoSuave: '#9a9996',
+    primaria: '#a5ef1c',
+    primariaEscura: '#63a70d',
     perigo: '#ef4444',
     alerta: '#f59e0b',
     azul: '#3b82f6'
@@ -19,4 +19,4 @@ export const theme = {
     titulo: "'Rajdhani', sans-serif",
     corpo: "'Inter', sans-serif"
   }
-}
+  }

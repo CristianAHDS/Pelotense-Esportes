@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+﻿import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { getEstado, inscrever, placarDe, slotsVisiveis } from '../store/penaltisStore';
 import { Escudo } from '../components/Escudo';
 
-const ACENTO = '#22c55e';
-const VERDE = '#22c55e';
+const ACENTO = '#a5ef1c';
+const VERDE = '#a5ef1c';
 const VERMELHO = '#ef4444';
 
 function urlEscudo(lado) {
@@ -35,7 +35,7 @@ const Voltar = styled(Link)`
   color: ${({ theme }) => theme.cores.textoSuave};
   &:hover {
     color: ${({ theme }) => theme.cores.texto};
-  }
+}
 `;
 
 const Painel = styled.section`
@@ -60,7 +60,7 @@ const Cabecalho = styled.header`
   gap: 18px;
   padding: 18px 26px;
   border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
-  background: linear-gradient(90deg, rgba(34, 197, 94, 0.12), transparent 55%);
+  background: linear-gradient(90deg, rgba(165, 239, 28, 0.12), transparent 55%);
 
   &::before {
     content: '';
@@ -70,7 +70,7 @@ const Cabecalho = styled.header`
     bottom: 0;
     width: 4px;
     background: ${ACENTO};
-  }
+}
 
   h1 {
     font-family: ${({ theme }) => theme.fontes.titulo};
@@ -79,17 +79,17 @@ const Cabecalho = styled.header`
     letter-spacing: 3px;
     text-transform: uppercase;
     line-height: 1.15;
-  }
+}
 `;
 
 const Badge = styled.div`
   flex-shrink: 0;
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.68rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 2px;
-  color: #052e13;
-  background: ${ACENTO};
+  color: #0a0f00;
+    background: ${ACENTO};
   padding: 6px 14px;
   border-radius: 999px;
   white-space: nowrap;
@@ -109,24 +109,24 @@ const LadoBox = styled.div`
 
   &:first-child {
     border-right: 1px solid ${({ theme }) => theme.cores.borda};
-  }
+}
 
   .ident {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
     max-width: 100%;
-  }
+}
 
   .nome {
     font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 1.5px;
-    white-space: nowrap;
-    overflow: hidden;
+  white-space: nowrap;
+  overflow: hidden;
     text-overflow: ellipsis;
-  }
+}
 
   .placar {
     font-family: ${({ theme }) => theme.fontes.titulo};
@@ -135,8 +135,8 @@ const LadoBox = styled.div`
     line-height: 1;
     font-variant-numeric: tabular-nums;
     color: #fff;
-    text-shadow: 0 4px 30px rgba(34, 197, 94, 0.22);
-  }
+    text-shadow: 0 4px 30px rgba(165, 239, 28, 0.22);
+}
 `;
 
 const Cobrancas = styled.div`
@@ -164,43 +164,43 @@ const Slot = styled.span`
     background 0.2s ease;
 
   &.gol {
-    background: rgba(34, 197, 94, 0.16);
+    background: rgba(165, 239, 28, 0.16);
     border-color: ${VERDE};
     color: ${VERDE};
-  }
+}
 
   &.perdeu {
     background: rgba(239, 68, 68, 0.14);
     border-color: ${VERMELHO};
     color: ${VERMELHO};
-  }
+}
 
   &.atual {
     border-color: ${ACENTO};
     animation: pulsoPen 1.2s ease-in-out infinite;
-  }
+}
 
   &.morte {
     &.gol,
-    &.perdeu {
+  &.perdeu {
       box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.35);
-    }
+}
 
     &:not(.gol):not(.perdeu) {
       border-style: dashed;
       border-color: rgba(245, 158, 11, 0.5);
-    }
-  }
+}
+}
 
   @keyframes pulsoPen {
     0%,
     100% {
-      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45);
-    }
+      box-shadow: 0 0 0 0 rgba(165, 239, 28, 0.45);
+}
     50% {
-      box-shadow: 0 0 0 5px rgba(34, 197, 94, 0.08);
-    }
-  }
+      box-shadow: 0 0 0 5px rgba(165, 239, 28, 0.08);
+}
+}
 `;
 
 const RodapePainel = styled.footer`
@@ -213,22 +213,22 @@ const RodapePainel = styled.footer`
   background: rgba(255, 255, 255, 0.02);
 
   .legenda {
-    display: inline-flex;
-    align-items: center;
+  display: inline-flex;
+  align-items: center;
     gap: 7px;
     font-size: 0.66rem;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  color: ${({ theme }) => theme.cores.textoSuave};
 
     i {
       width: 10px;
       height: 10px;
-      border-radius: 50%;
+  border-radius: 50%;
       background: ${VERDE};
-    }
-  }
+}
+}
 `;
 
 const SeloAoVivo = styled.span`
@@ -236,24 +236,24 @@ const SeloAoVivo = styled.span`
   align-items: center;
   gap: 8px;
   font-size: 0.62rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 2px;
-  text-transform: uppercase;
+    text-transform: uppercase;
   color: ${({ theme }) => theme.cores.textoSuave};
 
   &::before {
     content: '';
     width: 7px;
     height: 7px;
-    border-radius: 50%;
+  border-radius: 50%;
     background: ${({ theme }) => theme.cores.perigo};
     animation: pulsoPenVivo 1.2s ease-in-out infinite;
-  }
+}
 
   @keyframes pulsoPenVivo {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.25; }
-  }
+}
 `;
 
 function ColunaLado({ lado, total }) {
@@ -277,11 +277,11 @@ function ColunaLado({ lado, total }) {
           ]
             .filter(Boolean)
             .join(' ');
-          return (
+  return (
             <Slot key={i} className={classes} title={`Cobrança ${i + 1}`}>
               {c === 'gol' ? '✓' : c === 'perdeu' ? '✕' : ''}
             </Slot>
-          );
+  );
         })}
       </Cobrancas>
     </LadoBox>
@@ -295,7 +295,7 @@ export default function Penaltis() {
 
   return (
     <Tela $previa={emPrevia}>
-      {!emPrevia && <Voltar to="/" title="Voltar ao hub">←</Voltar>}
+      {!emPrevia && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
 
       <Painel>
         <Cabecalho>

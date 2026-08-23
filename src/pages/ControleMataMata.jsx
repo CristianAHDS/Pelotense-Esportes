@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+﻿import styled from 'styled-components';
+import { useState } from 'react';
 import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
@@ -9,8 +10,39 @@ import {
   atualizarLado,
   preencherConfrontos,
   limparPlacares,
+  limparFase,
 } from '../store/mataMataStore';
 import { getEstado as getTabela, ordenarClassificacao } from '../store/tabelaStore';
+
+const ABAS_FASES = [
+  { chave: 'confrontos', rotulo: 'OITAVAS' },
+  { chave: 'quartas', rotulo: 'QUARTAS' },
+  { chave: 'semi', rotulo: 'SEMIFINAL' },
+  { chave: 'final', rotulo: 'FINAL' },
+];
+
+const BarraAbas = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
+const Aba = styled.button`
+  font-family: ${({ theme }) => theme.fontes.titulo};
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: ${({ $ativa, theme }) => ($ativa ? '#0a0f00' : theme.cores.textoSuave)};
+  background: ${({ $ativa }) => ($ativa ? '#a5ef1c' : 'transparent')};
+  border: 1px solid ${({ $ativa }) => ($ativa ? 'transparent' : 'rgba(165, 239, 28, 0.3)')};
+
+  &:hover {
+    border-color: rgba(165, 239, 28, 0.6);
+  }
+`;
 
 const FASES = [
   'OITAVAS DE FINAL',
@@ -138,28 +170,28 @@ const CartaoConfronto = styled.div`
   background: ${({ theme }) => theme.cores.fundo};
 
   .jogo {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
     justify-content: space-between;
     padding: 9px 14px;
     border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
     background: rgba(255, 255, 255, 0.03);
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.66rem;
-    font-weight: 700;
+  font-weight: 700;
     letter-spacing: 2.5px;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  color: ${({ theme }) => theme.cores.textoSuave};
   }
 
   .ladoRotulo {
     width: 58px;
     flex-shrink: 0;
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    color: ${({ theme }) => theme.cores.textoSuave};
-    text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: ${({ theme }) => theme.cores.textoSuave};
+  text-transform: uppercase;
   }
 `;
 
@@ -177,7 +209,7 @@ const LinhaLado = styled.div`
 const InputCor = styled.input`
   width: 30px;
   height: 32px;
-  flex-shrink: 0;
+    flex-shrink: 0;
   padding: 0;
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 6px;
@@ -186,7 +218,7 @@ const InputCor = styled.input`
 `;
 
 const InputNome = styled.input`
-  flex: 1;
+    flex: 1;
   min-width: 90px;
   background: ${({ theme }) => theme.cores.superficie};
   border: 1px solid ${({ theme }) => theme.cores.borda};
@@ -203,7 +235,7 @@ const InputNome = styled.input`
 
 const InputNum = styled.input`
   width: 52px;
-  flex-shrink: 0;
+    flex-shrink: 0;
   background: ${({ theme }) => theme.cores.superficie};
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 6px;
@@ -222,7 +254,7 @@ const InputNum = styled.input`
 
   &::placeholder {
     font-size: 0.62rem;
-    letter-spacing: 1px;
+  letter-spacing: 1px;
   }
 
   &:focus {
@@ -249,39 +281,39 @@ const MiniJogo = styled.div`
   padding: 7px 12px;
   border-left: 3px solid #f59e0b;
   margin-bottom: 4px;
-  background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.03);
 
   .time {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
     min-width: 0;
 
-    &:last-child {
+  &:last-child {
       justify-content: flex-end;
-    }
+  }
   }
 
   .sigla {
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    overflow: hidden;
+  font-weight: 700;
+  letter-spacing: 1px;
+  overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .gol {
     font-variant-numeric: tabular-nums;
-    font-weight: 700;
-    font-size: 0.78rem;
+  font-weight: 700;
+  font-size: 0.78rem;
     color: #f59e0b;
   }
 
   .vs {
     font-size: 0.6rem;
-    font-weight: 700;
+  font-weight: 700;
     opacity: 0.5;
   }
 `;
@@ -292,10 +324,10 @@ function PreviewMataMata({ estado }) {
       title="Abrir visualização em nova guia"
       onClick={() =>
         window.open(
-          `${window.location.origin}${window.location.pathname}#/mata-mata`,
+          `${window.location.origin}/mata-mata`,
           '_blank'
         )
-      }
+  }
     >
       <Cartao style={{ marginBottom: 0 }}>
         <Rotulo>Prévia · clique para abrir em nova guia</Rotulo>
@@ -317,12 +349,14 @@ function PreviewMataMata({ estado }) {
       </Cartao>
     </PreviaClicavel>
   );
-}
+  }
 
 /* ---------- Página ---------- */
 
 export default function ControleMataMata() {
   const estado = usePlacarBroadcast({ getEstado, inscrever });
+  const [faseAtiva, definirFaseAtiva] = useState('confrontos');
+  const listaFase = estado[faseAtiva] || estado.confrontos;
 
   function gerarParesDaClassificacao() {
     const times = ordenarClassificacao(getTabela().times);
@@ -331,14 +365,14 @@ export default function ControleMataMata() {
         casa: times[i],
         visitante: times[15 - i],
       }));
-    }
+  }
     const g8 = times.slice(0, 8);
     return [
       { casa: g8[0], visitante: g8[7] },
       { casa: g8[1], visitante: g8[6] },
       { casa: g8[2], visitante: g8[5] },
       { casa: g8[3], visitante: g8[4] },
-    ];
+];
   }
 
   return (
@@ -357,84 +391,112 @@ export default function ControleMataMata() {
             onChange={(e) => definirCompeticao(e.target.value)}
           />
           <div style={{ width: 260 }}>
-            <CampoTexto
+          <CampoTexto
               list="lista-fases"
               value={estado.fase}
               maxLength={40}
               title="Fase (escolha ou digite)"
               onChange={(e) => definirFase(e.target.value)}
-            />
+          />
             <datalist id="lista-fases">
               {FASES.map((f) => (
                 <option key={f} value={f} />
-              ))}
+        ))}
             </datalist>
           </div>
         </LinhaConfig>
       </Cartao>
 
       <Cartao>
-        <Rotulo>Confrontos ({estado.confrontos.length})</Rotulo>
+        <BarraAbas>
+          {ABAS_FASES.map((f) => (
+            <Aba
+              key={f.chave}
+              $ativa={faseAtiva === f.chave}
+              onClick={() => definirFaseAtiva(f.chave)}
+              title={
+                f.chave === 'quartas' || f.chave === 'semi'
+                  ? 'Lados preenchidos automaticamente com os vencedores da fase anterior'
+                  : undefined
+              }
+            >
+              {f.rotulo}
+            </Aba>
+          ))}
+        </BarraAbas>
+
+        <Rotulo style={{ marginTop: 14 }}>
+          Confrontos · {ABAS_FASES.find((f) => f.chave === faseAtiva)?.rotulo} ({listaFase.length})
+        </Rotulo>
         <GradeConfrontos>
-          {estado.confrontos.map((c, ci) => (
+          {listaFase.map((c, ci) => (
             <CartaoConfronto key={ci}>
               <div className="jogo">
                 JOGO {ci + 1}
                 <span>{`GOLS · PÊN`}</span>
-              </div>
+          </div>
               {['casa', 'visitante'].map((ladoNome) => {
                 const lado = c[ladoNome];
-                return (
+  return (
                   <LinhaLado key={ladoNome}>
                     <span className="ladoRotulo">{ladoNome}</span>
                     <InputCor
                       type="color"
                       value={lado.cor}
                       title="Cor do time"
-                      onChange={(e) => atualizarLado(ci, ladoNome, 'cor', e.target.value)}
-                    />
+                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'cor', e.target.value)}
+          />
                     <InputNome
                       value={lado.nome}
                       placeholder="NOME DO TIME"
                       maxLength={24}
-                      onChange={(e) => atualizarLado(ci, ladoNome, 'nome', e.target.value)}
-                    />
+                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'nome', e.target.value)}
+          />
                     <InputNum
                       value={lado.sigla}
                       maxLength={4}
                       title="Sigla"
-                      onChange={(e) => atualizarLado(ci, ladoNome, 'sigla', e.target.value)}
-                    />
+                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'sigla', e.target.value)}
+          />
                     <InputNum
                       type="number"
                       min={0}
                       placeholder="GOL"
                       value={lado.gols ?? ''}
                       title="Gols"
-                      onChange={(e) => atualizarLado(ci, ladoNome, 'gols', e.target.value)}
-                    />
+                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'gols', e.target.value)}
+          />
                     <InputNum
                       type="number"
                       min={0}
                       placeholder="PÊN"
                       value={lado.pen ?? ''}
                       title="Pênaltis (opcional)"
-                      onChange={(e) => atualizarLado(ci, ladoNome, 'pen', e.target.value)}
-                    />
+                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'pen', e.target.value)}
+          />
                   </LinhaLado>
-                );
+  );
               })}
             </CartaoConfronto>
-          ))}
+        ))}
         </GradeConfrontos>
 
         <Acoes>
           <Botao
             $variante="primario"
-            onClick={() => preencherConfrontos(gerarParesDaClassificacao())}
-            title="Preenche os confrontos com os times da tabela de classificação"
+            onClick={() => {
+              preencherConfrontos(gerarParesDaClassificacao());
+              definirFaseAtiva('confrontos');
+            }}
+            title="Preenche as oitavas com os times da tabela de classificação"
           >
             Preencher classificados
+          </Botao>
+          <Botao
+            onClick={() => limparFase(faseAtiva)}
+            title="Zera os nomes e placares desta fase"
+          >
+            Limpar fase
           </Botao>
           <Botao onClick={() => limparPlacares()}>Limpar placares</Botao>
         </Acoes>
@@ -443,4 +505,4 @@ export default function ControleMataMata() {
       <PreviewMataMata estado={estado} />
     </Tela>
   );
-}
+  }

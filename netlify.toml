@@ -2,6 +2,14 @@
   command = "npm run build"
   publish = "dist"
 
+# Proxy para o site da FGF (evita CORS na busca da classificação)
+[[redirects]]
+  from = "/fgf/*"
+  to = "https://fgf.com.br/:splat"
+  status = 200
+  force = true
+
+# SPA fallback
 [[redirects]]
   from = "/*"
   to = "/index.html"

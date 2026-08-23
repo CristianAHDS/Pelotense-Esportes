@@ -1,4 +1,4 @@
-const STORAGE_KEY = 'pelotense:placar-pro'
+﻿const STORAGE_KEY = 'pelotense:placar-pro'
 const CHANNEL_NAME = 'placar-pro:sync'
 const MSG_TIPO = 'estado:placar-pro'
 
@@ -9,7 +9,7 @@ function wsUrl() {
   } catch {
     return 'ws://localhost:5173/pelotense-sync'
   }
-}
+  }
 
 const estadoPadrao = {
   timeCasa: { nome: 'TIME CASA', gols: 0 },
@@ -17,21 +17,21 @@ const estadoPadrao = {
   cronometro: { base: 0, rodando: false, iniciadoEm: null },
   periodo: '1º TEMPO',
   eventoGol: null,
-  corCasa: '#22c55e',
+  corCasa: '#a5ef1c',
   corVisitante: '#3b82f6'
-}
+  }
 
 function carregar() {
   try {
     const bruto = localStorage.getItem(STORAGE_KEY)
     if (bruto) {
       return { ...estadoPadrao, ...JSON.parse(bruto) }
-    }
+  }
   } catch (e) {
     console.warn('PlacarPro: falha ao carregar estado.', e)
   }
   return structuredClone(estadoPadrao)
-}
+  }
 
 let estado = carregar()
 const ouvintes = new Set()
@@ -42,7 +42,7 @@ const canal =
 
 function notificar() {
   ouvintes.forEach((ouvinte) => ouvinte(estado))
-}
+  }
 
 function persistir() {
   try {
@@ -50,11 +50,11 @@ function persistir() {
   } catch (e) {
     console.warn('PlacarPro: falha ao persistir estado.', e)
   }
-}
+  }
 
 export function getEstado() {
   return estado
-}
+  }
 
 export function segundosAtuais(cron) {
   if (!cron) return 0
@@ -63,7 +63,7 @@ export function segundosAtuais(cron) {
     return Math.max(0, base + Math.floor((Date.now() - iniciadoEm) / 1000))
   }
   return Math.max(0, base)
-}
+  }
 
 function pacoteSincronizacao() {
   const pacote = structuredClone(estado)
@@ -71,7 +71,7 @@ function pacoteSincronizacao() {
     pacote.cronometro.segundos = segundosAtuais(pacote.cronometro)
   }
   return pacote
-}
+  }
 
 export function setEstado(atualizador, { remoto = false } = {}) {
   if (remoto) {
@@ -90,7 +90,7 @@ export function setEstado(atualizador, { remoto = false } = {}) {
   }
 
   processandoRemoto = false
-}
+  }
 
 function aplicarEstadoRemoto(novoEstado) {
   if (!processandoRemoto) {
@@ -100,10 +100,10 @@ function aplicarEstadoRemoto(novoEstado) {
       delete novoEstado.cronometro.segundos
     } else if (novoEstado.cronometro?.rodando && novoEstado.cronometro?.iniciadoEm) {
       novoEstado.cronometro.iniciadoEm = Date.now()
-    }
+  }
     setEstado(novoEstado, { remoto: true })
   }
-}
+  }
 
 /* ---------- Tick de sincronização ---------- */
 
@@ -117,16 +117,16 @@ function iniciarTickSync() {
     canal?.postMessage({ tipo: MSG_TIPO, estado: pacote })
     if (ws && ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify({ tipo: MSG_TIPO, estado: pacote }))
-    }
+  }
   }, 2000)
-}
+  }
 
 function pararTickSync() {
   if (tickSync) {
     clearInterval(tickSync)
     tickSync = null
   }
-}
+  }
 
 /* ---------- WebSocket ---------- */
 
@@ -148,14 +148,14 @@ function conectarWS() {
   }
 
   ws.onmessage = (evento) => {
-    try {
+  try {
       const msg = JSON.parse(evento.data)
       if (msg.tipo === MSG_TIPO) {
         aplicarEstadoRemoto(msg.estado)
-      }
-    } catch (e) {
+  }
+  } catch (e) {
       console.warn('PlacarPro: mensagem WS inválida', e)
-    }
+  }
   }
 
   ws.onclose = () => {
@@ -166,7 +166,7 @@ function conectarWS() {
   ws.onerror = () => {
     ws?.close()
   }
-}
+  }
 
 function tentarReconectarWS() {
   if (wsReconectarTimer) return
@@ -174,15 +174,15 @@ function tentarReconectarWS() {
     wsReconectarTimer = null
     conectarWS()
   }, 3000)
-}
+  }
 
 function enviarEstadoWS(pacote) {
-  if (ws && ws.readyState === WebSocket.OPEN) {
+    if (ws && ws.readyState === WebSocket.OPEN) {
     ws.send(JSON.stringify({ tipo: MSG_TIPO, estado: pacote || estado }))
   }
-}
+  }
 
-conectarWS()
+    conectarWS()
 
 /* ---------- BroadcastChannel ---------- */
 
@@ -190,19 +190,19 @@ if (canal) {
   canal.onmessage = (evento) => {
     if (evento.data?.tipo === MSG_TIPO) {
       aplicarEstadoRemoto(evento.data.estado)
-    }
   }
-}
+  }
+  }
 
 /* ---------- localStorage ---------- */
 
 window.addEventListener('storage', (evento) => {
   if (evento.key === STORAGE_KEY && evento.newValue) {
-    try {
+  try {
       aplicarEstadoRemoto(JSON.parse(evento.newValue))
-    } catch (e) {
+  } catch (e) {
       console.warn('PlacarPro: falha ao sincronizar via storage.', e)
-    }
+  }
   }
 })
 
@@ -211,7 +211,7 @@ window.addEventListener('storage', (evento) => {
 export function inscrever(ouvinte) {
   ouvintes.add(ouvinte)
   return () => ouvintes.delete(ouvinte)
-}
+  }
 
 /* ---------- Ações ---------- */
 
@@ -221,26 +221,26 @@ export function gol(lado, delta) {
     estado[chave].gols = Math.max(0, estado[chave].gols + delta)
     if (delta > 0) {
       estado.eventoGol = { lado, em: Date.now() }
-    }
-    return estado
-  })
-}
+  }
+  return estado
+})
+  }
 
 export function definirGols(lado, valor) {
   setEstado((estado) => {
     const chave = lado === 'casa' ? 'timeCasa' : 'timeVisitante'
     estado[chave].gols = Math.max(0, Number(valor) || 0)
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function renomearTime(lado, nome) {
   setEstado((estado) => {
     const chave = lado === 'casa' ? 'timeCasa' : 'timeVisitante'
     estado[chave].nome = nome.slice(0, 20).toUpperCase()
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function alternarCronometro() {
   setEstado((estado) => {
@@ -254,18 +254,18 @@ export function alternarCronometro() {
       cron.rodando = true
       cron.iniciadoEm = Date.now()
       iniciarTickSync()
-    }
-    return estado
-  })
-}
+  }
+  return estado
+})
+  }
 
 export function zerarCronometro() {
-  pararTickSync()
+      pararTickSync()
   setEstado((estado) => {
     estado.cronometro = { base: 0, rodando: false, iniciadoEm: null }
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function ajustarMinutos(delta) {
   setEstado((estado) => {
@@ -274,31 +274,31 @@ export function ajustarMinutos(delta) {
     if (cron.rodando) {
       base += Math.floor((Date.now() - cron.iniciadoEm) / 1000)
       cron.iniciadoEm = Date.now()
-    }
+  }
     cron.base = Math.max(0, base + delta * 60)
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function definirPeriodo(periodo) {
   setEstado((estado) => {
     estado.periodo = periodo
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function definirCorTime(lado, cor) {
   setEstado((estado) => {
     const chave = lado === 'casa' ? 'corCasa' : 'corVisitante'
     estado[chave] = cor
-    return estado
-  })
-}
+  return estado
+})
+  }
 
 export function resetarPartida() {
-  pararTickSync()
+      pararTickSync()
   setEstado(() => structuredClone(estadoPadrao))
-}
+  }
 
 export function formatarTempo(totalSegundos) {
   const horas = Math.floor(totalSegundos / 3600)
@@ -307,4 +307,4 @@ export function formatarTempo(totalSegundos) {
   const mm = String(minutos).padStart(2, '0')
   const ss = String(segundos).padStart(2, '0')
   return horas > 0 ? `${horas}:${mm}:${ss}` : `${mm}:${ss}`
-}
+  }

@@ -1,14 +1,8 @@
-import styled from 'styled-components';
+﻿import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
-import {
-  getEstado,
-  inscrever,
-  atualizarCampo,
-  mostrar,
-  ocultar,
-} from '../store/substituicaoStore';
+import { substituicaoPro } from '../store/substituicaoStore';
 
-const VERDE = '#22c55e';
+const VERDE = '#a5ef1c';
 
 const Painel = styled.section`
   background: ${({ theme }) => theme.cores.superficie};
@@ -109,7 +103,7 @@ const Acoes = styled.div`
 `;
 
 const Botao = styled.button`
-  flex: 1;
+    flex: 1;
   border: none;
   border-radius: 10px;
   padding: 12px 18px;
@@ -127,29 +121,30 @@ const Botao = styled.button`
 
   &.primario {
     background: ${VERDE};
-    color: #052e13;
+    color: #0a0f00;
     &:hover {
       filter: brightness(1.1);
-    }
+  }
   }
 
   &.perigo {
-    background: transparent;
+  background: transparent;
     border: 1px solid #ef4444;
     color: #ef4444;
     &:hover {
       background: rgba(239, 68, 68, 0.12);
-    }
+  }
   }
 `;
 
-export function PainelSubstituicao() {
-  const sub = usePlacarBroadcast({ getEstado, inscrever });
+export function PainelSubstituicao({ loja = substituicaoPro }) {
+  const sub = usePlacarBroadcast(loja);
+  const { atualizarCampo, mostrar, ocultar } = loja;
 
   return (
     <Painel>
       <Titulo>
-        🔄 <span>Substituição</span>
+        🔄 <span>Substituição</span> · {loja.rotulo.toUpperCase()}
       </Titulo>
 
       <Linha>
@@ -199,7 +194,7 @@ export function PainelSubstituicao() {
           value={sub.saiNum}
           title="Número"
           onChange={(e) => atualizarCampo('saiNum', e.target.value)}
-        />
+          />
         <Campo className="cresce">
           <Rotulo>Jogador que sai ↓</Rotulo>
           <Entrada
@@ -218,7 +213,7 @@ export function PainelSubstituicao() {
           value={sub.entraNum}
           title="Número"
           onChange={(e) => atualizarCampo('entraNum', e.target.value)}
-        />
+          />
         <Campo className="cresce">
           <Rotulo>Jogador que entra ↑</Rotulo>
           <Entrada
@@ -242,4 +237,4 @@ export function PainelSubstituicao() {
       </Acoes>
     </Painel>
   );
-}
+  }

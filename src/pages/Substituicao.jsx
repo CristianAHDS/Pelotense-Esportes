@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+﻿import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
-import { getEstado, inscrever } from '../store/substituicaoStore';
+import { substituicaoPro } from '../store/substituicaoStore';
 import { SubstituicaoCartao } from '../components/SubstituicaoCartao';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 
@@ -12,7 +12,7 @@ const Palco = styled.div`
 `;
 
 export default function Substituicao() {
-  const estado = usePlacarBroadcast({ getEstado, inscrever });
+  const estado = usePlacarBroadcast(substituicaoPro);
   useFundoTransparente();
 
   if (!estado.visivel) return <Palco />;

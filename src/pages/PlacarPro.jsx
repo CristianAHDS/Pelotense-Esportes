@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { usePlacarPro } from '../hooks/usePlacarPro'
@@ -12,7 +12,7 @@ const Tela = styled.div`
   justify-content: center;
   gap: clamp(20px, 4vw, 40px);
   background:
-    radial-gradient(ellipse at 50% 40%, rgba(34, 197, 94, 0.04), transparent 60%),
+    radial-gradient(ellipse at 50% 40%, rgba(165, 239, 28, 0.04), transparent 60%),
     radial-gradient(ellipse at 80% 20%, rgba(59, 130, 246, 0.04), transparent 50%),
     #060b14;
   padding: 32px;
@@ -52,9 +52,9 @@ const LadoTime = styled.div`
   padding: 0 clamp(8px, 2vw, 16px);
 
   .nome {
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: clamp(1rem, 2.5vw, 1.6rem);
-    font-weight: 700;
+  font-weight: 700;
     letter-spacing: 2px;
     text-align: center;
     text-transform: uppercase;
@@ -73,16 +73,16 @@ const LadoTime = styled.div`
       border-radius: 2px;
       background: ${({ $cor }) => $cor};
     }
-  }
+    }
 
   .gols {
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: clamp(3.5rem, 12vw, 7.5rem);
-    font-weight: 700;
+  font-weight: 700;
     line-height: 1;
     color: #ffffff;
     text-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
-  }
+    }
 `
 
 const pulsarPonto = keyframes`
@@ -98,28 +98,28 @@ const Centro = styled.div`
   padding: 0 clamp(12px, 3vw, 28px);
 
   .tempo {
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
     font-variant-numeric: tabular-nums;
     font-size: clamp(2rem, 6vw, 3.8rem);
-    font-weight: 700;
+  font-weight: 700;
     letter-spacing: 2px;
     color: ${({ theme }) => theme.cores.primaria};
-    text-shadow: 0 0 20px rgba(34, 197, 94, 0.35);
+    text-shadow: 0 0 20px rgba(165, 239, 28, 0.35);
     min-width: 4em;
     text-align: center;
-  }
+    }
 
   .status {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
     gap: 8px;
     font-size: clamp(0.6rem, 1.2vw, 0.75rem);
-    font-weight: 700;
+  font-weight: 700;
     letter-spacing: 3px;
-    color: ${({ $rodando }) => ($rodando ? '#22c55e' : 'rgba(255,255,255,0.25)')};
+    color: ${({ $rodando }) => ($rodando ? '#a5ef1c' : 'rgba(255,255,255,0.25)')};
     text-transform: uppercase;
     transition: color 0.3s ease;
-  }
+    }
 `
 
 const Ponto = styled.span`
@@ -128,7 +128,7 @@ const Ponto = styled.span`
   border-radius: 50%;
   background: ${({ $ativo, theme }) => ($ativo ? theme.cores.primaria : 'rgba(255,255,255,0.2)')};
   box-shadow: ${({ $ativo }) =>
-    $ativo ? '0 0 10px rgba(34, 197, 94, 0.5)' : 'none'};
+    $ativo ? '0 0 10px rgba(165, 239, 28, 0.5)' : 'none'};
   animation: ${({ $ativo }) => ($ativo ? pulsarPonto : 'none')} 1.2s ease-in-out infinite;
 `
 
@@ -139,11 +139,11 @@ const Marca = styled.div`
   opacity: 0.25;
 
   span {
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 4px;
-  }
+    }
 `
 
 const Voltar = styled(Link)`
@@ -165,7 +165,7 @@ const Voltar = styled(Link)`
 
   ${Tela}:hover & {
     opacity: 1;
-  }
+    }
 `
 
 /* ---------- Animação de gol ---------- */
@@ -269,7 +269,11 @@ export default function PlacarPro() {
 
   return (
     <Tela>
-      <Voltar to="/" title="Voltar ao hub">←</Voltar>
+      <Voltar to="/hub" title="Voltar ao hub">←</Voltar>
+
+      <Marca>
+        <span>PELOTENSE ESPORTES</span>
+      </Marca>
 
       <Periodo>{estado.periodo}</Periodo>
 
@@ -293,10 +297,6 @@ export default function PlacarPro() {
         </LadoTime>
       </Painel>
 
-      <Marca>
-        <span>PELOTENSE ESPORTES</span>
-      </Marca>
-
       {golAtivo && (
         <SobreposicaoGol key={golAtivo.em} $cor={corGol}>
           <BolaGol>⚽</BolaGol>
@@ -306,4 +306,4 @@ export default function PlacarPro() {
       )}
     </Tela>
   )
-}
+    }

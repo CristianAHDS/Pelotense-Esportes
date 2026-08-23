@@ -13,8 +13,8 @@ const SCOREBOARDS = [
     titulo: 'Placar Broadcast',
     descricao:
       'Design flat profissional com siglas e cores personalizáveis. Ideal para transmissões ao vivo e overlays.',
-    accent: '#22c55e',
-    glow: 'rgba(34, 197, 94, 0.2)',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.2)',
   },
   {
     rota: '/placar-pl',
@@ -22,8 +22,8 @@ const SCOREBOARDS = [
     titulo: 'Placar Premier League',
     descricao:
       'Identidade da Premier League em roxo e verde menta, com cronômetro em destaque.',
-    accent: '#00ff87',
-    glow: 'rgba(0, 255, 135, 0.16)',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
     rota: '/placar-bl',
@@ -52,19 +52,31 @@ const GAUCHAO_A2 = [
     descricao:
       'Tabela do Gauchão Série A2 com zonas de quartas de final e rebaixamento em tempo real.',
     rota: '/tabela',
-    accent: '#22c55e',
-    glow: 'rgba(34, 197, 94, 0.16)',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
     preview: 'tabela',
   },
   {
-    titulo: 'Oitavas · Mata-Mata',
+    titulo: 'Oitavas de Final',
     tag: 'MATA-MATA',
     descricao:
-      'Chaveamento das fases finais com placares, pênaltis e vencedores destacados em tempo real.',
+      'Confrontos das oitavas em formato de tabela, com placares, pênaltis e vencedores destacados em tempo real.',
     rota: '/mata-mata',
-    accent: '#f59e0b',
-    glow: 'rgba(245, 158, 11, 0.16)',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
     preview: 'mata',
+  },
+  {
+    titulo: 'Fases Finais · Chaveamento',
+    tag: 'QUARTAS → FINAL',
+    descricao:
+      'Chaveamento visual das quartas à final: vencedores avançam automaticamente e campeão ganha selo especial.',
+    rota: '/fases-finais',
+    controle: '/mata-mata/controle',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
+    preview: 'fases',
+    altura: 700,
   },
 ];
 
@@ -75,8 +87,8 @@ const EXTRAS = [
     titulo: 'Card de Substituição',
     descricao:
       'Tarja animada com escudo e cor do time, jogador que sai (↓) e que entra (↑), com minuto da troca. Também integrada ao Placar Broadcast.',
-    accent: '#22c55e',
-    glow: 'rgba(34, 197, 94, 0.16)',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
     rota: '/penaltis',
@@ -84,8 +96,8 @@ const EXTRAS = [
     titulo: 'Disputa de Pênaltis',
     descricao:
       'Quadro detalhado de cobranças ✓/✕ por lado, placar em tempo real e indicação de morte súbita.',
-    accent: '#22c55e',
-    glow: 'rgba(34, 197, 94, 0.16)',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
   },
 ];
 
@@ -99,6 +111,18 @@ const ESPORTES = [
     descricao: 'Placar de vôlei com sets, pontos por set e saques.',
   },
 ];
+
+const RODAPE_LINKS = [
+  { id: 'scoreboards', label: 'Scoreboards' },
+  { id: 'gauchao', label: 'Gauchão A2' },
+  { id: 'extras', label: 'Extras' },
+];
+
+function rolarPara(id) {
+  document
+    .getElementById(id)
+    ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
 /* ---------- Estilos ---------- */
 
@@ -116,7 +140,7 @@ const Container = styled.div`
     background:
       radial-gradient(
         ellipse 70% 40% at 50% -5%,
-        rgba(34, 197, 94, 0.08),
+        rgba(165, 239, 28, 0.08),
         transparent
       ),
       repeating-linear-gradient(
@@ -142,6 +166,8 @@ const Conteudo = styled.main`
 `;
 
 const Hero = styled.section`
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
   gap: 26px;
@@ -149,18 +175,57 @@ const Hero = styled.section`
   margin-bottom: 12px;
   background: linear-gradient(
     135deg,
-    rgba(34, 197, 94, 0.09),
+    rgba(165, 239, 28, 0.09),
     ${({ theme }) => theme.cores.fundoClaro} 55%
-  );
+      );
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-left: 4px solid ${({ theme }) => theme.cores.primaria};
   border-radius: 16px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -45%;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        ellipse 42% 58% at 22% 32%,
+        rgba(165, 239, 28, 0.14),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 38% 52% at 82% 68%,
+        rgba(59, 130, 246, 0.1),
+        transparent 70%
+      );
+    animation: derivaHero 16s ease-in-out infinite alternate;
+  }
+
+  > * {
+  position: relative;
+    z-index: 1;
+  }
+
+  @keyframes derivaHero {
+    from {
+      transform: translate3d(-2.5%, -2%, 0) rotate(-1.2deg);
+  }
+    to {
+      transform: translate3d(2.5%, 2%, 0) rotate(1.2deg);
+  }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+  &::before {
+      animation: none;
+  }
+  }
 
   img {
     width: 84px;
     height: 84px;
     object-fit: contain;
-    filter: drop-shadow(0 0 22px rgba(34, 197, 94, 0.4));
+    filter: drop-shadow(0 0 22px rgba(165, 239, 28, 0.4));
   }
 
   h1 {
@@ -185,12 +250,12 @@ const HeroBadge = styled.span`
   align-items: center;
   gap: 8px;
   font-size: 0.62rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 2.5px;
-  text-transform: uppercase;
+    text-transform: uppercase;
   color: ${({ theme }) => theme.cores.primaria};
-  border: 1px solid rgba(34, 197, 94, 0.35);
-  background: rgba(34, 197, 94, 0.07);
+  border: 1px solid rgba(165, 239, 28, 0.35);
+  background: rgba(165, 239, 28, 0.07);
   padding: 4px 12px;
   border-radius: 999px;
   margin-bottom: 10px;
@@ -200,7 +265,8 @@ const HeroBadge = styled.span`
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: ${({ theme }) => theme.cores.primaria};
+    background: #ef4444;
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.6);
     animation: pulsoHero 1.2s ease-in-out infinite;
   }
 
@@ -208,10 +274,51 @@ const HeroBadge = styled.span`
     0%,
     100% {
       opacity: 1;
-    }
+  }
     50% {
       opacity: 0.25;
-    }
+  }
+  }
+`;
+
+const HeroAcoes = styled.div`
+  display: flex;
+  gap: 12px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+`;
+
+const HeroBotao = styled.button`
+  padding: 11px 24px;
+  border-radius: 9px;
+    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-size: 0.85rem;
+    font-weight: 700;
+  letter-spacing: 1.5px;
+    text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    filter 0.15s ease,
+    background 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &.primario {
+    border: none;
+    background: ${({ theme }) => theme.cores.primaria};
+    color: #0a0f00;
+  &:hover {
+      filter: brightness(1.12);
+      box-shadow: 0 0 22px rgba(165, 239, 28, 0.35);
+  }
+  }
+
+  &.secundario {
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+    background: transparent;
+    color: ${({ theme }) => theme.cores.texto};
+  &:hover {
+      background: ${({ theme }) => theme.cores.superficieHover};
+  }
   }
 `;
 
@@ -238,13 +345,13 @@ const Segmento = styled.div`
   &::after {
     content: '';
     order: 3;
-    flex: 1;
+  flex: 1;
     height: 1px;
-    background: linear-gradient(
-      90deg,
+  background: linear-gradient(
+        90deg,
       ${({ theme }) => theme.cores.borda},
-      transparent
-    );
+        transparent
+      );
   }
 `;
 
@@ -261,11 +368,11 @@ const SegmentoIcone = styled.span`
 
 const Contador = styled.span`
   order: 4;
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.72rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 1px;
-  color: ${({ theme }) => theme.cores.textoSuave};
+    color: ${({ theme }) => theme.cores.textoSuave};
   background: ${({ theme }) => theme.cores.fundoClaro};
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 999px;
@@ -280,11 +387,12 @@ const Grade = styled.div`
 
 const Card = styled.div`
   position: relative;
+  height: 100%;
   background: linear-gradient(
     165deg,
     ${({ theme }) => theme.cores.superficie},
     ${({ theme }) => theme.cores.fundoClaro}
-  );
+      );
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 14px;
   padding: 24px;
@@ -317,23 +425,23 @@ const Card = styled.div`
 
   &.breve {
     opacity: 0.45;
-    &::before {
+  &::before {
       opacity: 0.35;
-    }
-    &:hover {
+  }
+  &:hover {
       transform: none;
       border-color: ${({ theme }) => theme.cores.borda};
       box-shadow: none;
-    }
+  }
   }
 `;
 
 const CardTag = styled.span`
   align-self: flex-start;
   font-size: 0.58rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 2px;
-  text-transform: uppercase;
+    text-transform: uppercase;
   color: ${({ $accent, theme }) => $accent || theme.cores.textoSuave};
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid ${({ theme }) => theme.cores.borda};
@@ -342,16 +450,16 @@ const CardTag = styled.span`
 `;
 
 const CardTitulo = styled.h3`
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 1.25rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 1px;
-  text-transform: uppercase;
+    text-transform: uppercase;
   line-height: 1.15;
 `;
 
 const CardDescricao = styled.p`
-  color: ${({ theme }) => theme.cores.textoSuave};
+    color: ${({ theme }) => theme.cores.textoSuave};
   font-size: 0.85rem;
   line-height: 1.55;
   flex: 1;
@@ -364,9 +472,13 @@ const MolduraPreview = styled.div`
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid ${({ theme }) => theme.cores.borda};
-  background:
-    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.03), transparent 60%),
-    #060a08;
+    background:
+      radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.03),
+      transparent 60%
+      ),
+    #060606;
 
   iframe {
     position: absolute;
@@ -376,9 +488,49 @@ const MolduraPreview = styled.div`
     transform-origin: top left;
     pointer-events: none;
   }
+
+  ${({ $clicavel }) =>
+    $clicavel &&
+    `
+  cursor: pointer;
+
+    &:hover iframe {
+      filter: brightness(1.07);
+  }
+  `}
 `;
 
-function PreviewAoVivo({ rota, largura = 1280, altura = 720 }) {
+const DicaAmpliar = styled.span`
+    position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.62rem;
+    font-weight: 700;
+  letter-spacing: 1.5px;
+    text-transform: uppercase;
+    pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+
+  ${MolduraPreview}:hover & {
+      opacity: 1;
+      transform: none;
+  }
+`;
+
+function PreviewAoVivo({ rota, largura = 1280, altura = 720, aoAmpliar }) {
   const ref = useRef(null);
   const [escala, setEscala] = useState(0);
 
@@ -393,10 +545,17 @@ function PreviewAoVivo({ rota, largura = 1280, altura = 720 }) {
   }, [largura]);
 
   return (
-    <MolduraPreview ref={ref} $largura={largura} $altura={altura}>
+    <MolduraPreview
+      ref={ref}
+      $largura={largura}
+      $altura={altura}
+      $clicavel={!!aoAmpliar}
+      onClick={aoAmpliar}
+      title={aoAmpliar ? 'Ampliar prévia' : undefined}
+    >
       <iframe
         title={`Prévia ${rota}`}
-        src={`${window.location.origin}${window.location.pathname}?previa=1#${rota}`}
+        src={`${window.location.origin}${rota}?previa=1`}
         scrolling="no"
         loading="lazy"
         tabIndex={-1}
@@ -407,16 +566,17 @@ function PreviewAoVivo({ rota, largura = 1280, altura = 720 }) {
           opacity: escala ? 1 : 0,
         }}
       />
+      {aoAmpliar && <DicaAmpliar>? Ampliar</DicaAmpliar>}
     </MolduraPreview>
-  );
-}
+      );
+  }
 
 const PreviaRotulo = styled.span`
   font-size: 0.58rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.cores.textoSuave};
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.cores.textoSuave};
   display: flex;
   align-items: center;
   gap: 6px;
@@ -434,24 +594,74 @@ const PreviaRotulo = styled.span`
     0%,
     100% {
       opacity: 1;
-    }
+  }
     50% {
       opacity: 0.3;
-    }
+  }
   }
 `;
 
 const EmBreveChip = styled.span`
   align-self: flex-start;
   font-size: 0.6rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 2px;
-  text-transform: uppercase;
+    text-transform: uppercase;
   color: ${({ theme }) => theme.cores.alerta};
   border: 1px dashed rgba(245, 158, 11, 0.4);
   padding: 5px 12px;
   border-radius: 999px;
 `;
+
+const Revelador = styled.div`
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+  transition-delay: ${({ $atraso }) => $atraso}ms;
+
+  &.visivel {
+      opacity: 1;
+      transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+      opacity: 1;
+      transform: none;
+    transition: none;
+  }
+`;
+
+function RevelarAoRolar({ atraso = 0, children }) {
+  const ref = useRef(null);
+  const [visivel, setVisivel] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setVisivel(true);
+      return undefined;
+  }
+    const obs = new IntersectionObserver(
+      ([entrada]) => {
+        if (entrada.isIntersecting) {
+          setVisivel(true);
+          obs.disconnect();
+  }
+  },
+      { threshold: 0.08, rootMargin: '0px 0px -30px 0px' },
+      );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  return (
+    <Revelador ref={ref} $atraso={atraso} className={visivel ? 'visivel' : ''}>
+      {children}
+    </Revelador>
+      );
+  }
 
 const CardAcoes = styled.div`
   display: flex;
@@ -467,11 +677,11 @@ const Botao = styled(Link)`
   text-align: center;
   padding: 11px 14px;
   border-radius: 9px;
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.82rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 1.5px;
-  text-transform: uppercase;
+    text-transform: uppercase;
   text-decoration: none;
   transition:
     filter 0.15s ease,
@@ -479,19 +689,19 @@ const Botao = styled(Link)`
 
   &.primario {
     background: ${({ theme }) => theme.cores.primaria};
-    color: #052e13;
-    &:hover {
+    color: #0a0f00;
+  &:hover {
       filter: brightness(1.12);
-    }
+  }
   }
 
   &.secundario {
     background: transparent;
-    border: 1px solid ${({ theme }) => theme.cores.borda};
+  border: 1px solid ${({ theme }) => theme.cores.borda};
     color: ${({ theme }) => theme.cores.texto};
-    &:hover {
+  &:hover {
       background: ${({ theme }) => theme.cores.superficieHover};
-    }
+  }
   }
 `;
 
@@ -502,8 +712,8 @@ const BotaoCopiar = styled.button`
   justify-content: center;
   border-radius: 9px;
   border: 1px solid ${({ theme }) => theme.cores.borda};
-  background: transparent;
-  color: ${({ theme }) => theme.cores.textoSuave};
+    background: transparent;
+    color: ${({ theme }) => theme.cores.textoSuave};
   font-size: 1rem;
   cursor: pointer;
   transition:
@@ -512,13 +722,14 @@ const BotaoCopiar = styled.button`
     border-color 0.15s ease;
 
   &:hover {
-    color: ${({ $copiado, theme }) => ($copiado ? '#22c55e' : theme.cores.texto)};
-    background: ${({ theme }) => theme.cores.superficieHover};
+    color: ${({ $copiado, theme }) =>
+      $copiado ? '#a5ef1c' : theme.cores.texto};
+      background: ${({ theme }) => theme.cores.superficieHover};
   }
 
   &.ok {
-    color: #22c55e;
-    border-color: rgba(34, 197, 94, 0.5);
+    color: #a5ef1c;
+    border-color: rgba(165, 239, 28, 0.5);
   }
 `;
 
@@ -526,7 +737,7 @@ function CopiarLink({ rota }) {
   const [copiado, setCopiado] = useState(false);
 
   async function copiar() {
-    const url = `${window.location.origin}${window.location.pathname}#${rota}`;
+    const url = `${window.location.origin}${rota}`;
     try {
       await navigator.clipboard.writeText(url);
     } catch {
@@ -536,29 +747,247 @@ function CopiarLink({ rota }) {
       area.select();
       document.execCommand('copy');
       area.remove();
-    }
+  }
     setCopiado(true);
     setTimeout(() => setCopiado(false), 1800);
   }
 
   return (
-    <BotaoCopiar onClick={copiar} title="Copiar link" className={copiado ? 'ok' : ''}>
+    <BotaoCopiar
+      onClick={copiar}
+      title="Copiar link"
+      className={copiado ? 'ok' : ''}
+    >
       {copiado ? '✓' : '⧉'}
     </BotaoCopiar>
-  );
-}
+      );
+  }
+
+const SobreposicaoTV = styled.div`
+    position: fixed;
+    inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 48px);
+  background: rgba(4, 7, 12, 0.88);
+  backdrop-filter: blur(6px);
+  animation: entrarTv 0.22s ease;
+
+  @keyframes entrarTv {
+    from {
+      opacity: 0;
+  }
+    to {
+      opacity: 1;
+  }
+  }
+`;
+
+const JanelaTV = styled.div`
+  width: min(1280px, 100%);
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: subirTv 0.25s ease;
+
+  @keyframes subirTv {
+    from {
+      opacity: 0;
+      transform: translateY(18px) scale(0.985);
+  }
+    to {
+      opacity: 1;
+      transform: none;
+  }
+  }
+
+  ${MolduraPreview} {
+  flex: 1;
+    min-height: 0;
+  }
+`;
+
+const BarraTV = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+
+  .ident {
+  display: flex;
+    align-items: baseline;
+  gap: 12px;
+    min-width: 0;
+  }
+
+  .tag {
+  font-size: 0.62rem;
+    font-weight: 700;
+  letter-spacing: 2.5px;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-family: ${({ theme }) => theme.fontes.titulo};
+    font-size: 1.3rem;
+    font-weight: 700;
+  letter-spacing: 1.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`;
+
+const AcoesTV = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  ${Botao} {
+    flex: 0 0 auto;
+  }
+`;
+
+const FecharTV = styled.button`
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 9px;
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+    background: transparent;
+    color: ${({ theme }) => theme.cores.textoSuave};
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: #fff;
+    background: rgba(239, 68, 68, 0.14);
+    border-color: rgba(239, 68, 68, 0.45);
+  }
+`;
 
 const Rodape = styled.footer`
+  border-top: 1px solid ${({ theme }) => theme.cores.borda};
+  background: ${({ theme }) => theme.cores.fundoClaro};
+  padding: 30px 32px;
+`;
+
+const RodapeTopo = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 28px;
+  flex-wrap: wrap;
+
+  @media (max-width: 640px) {
+  flex-direction: column;
+  }
+`;
+
+const RodapeMarca = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+  }
+
+  b {
+    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-size: 1rem;
+    font-weight: 700;
+  letter-spacing: 2.5px;
+  }
+
+  b em {
+    font-style: normal;
+  color: ${({ theme }) => theme.cores.primaria};
+  }
+`;
+
+const RodapeNav = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+
+  button {
+    padding: 7px 13px;
+    border: none;
+  border-radius: 999px;
+    background: transparent;
+    color: ${({ theme }) => theme.cores.textoSuave};
+    font-family: ${({ theme }) => theme.fontes.corpo};
+    font-size: 0.78rem;
+    font-weight: 600;
+  letter-spacing: 1px;
+    text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.cores.texto};
+      background: ${({ theme }) => theme.cores.superficieHover};
+  }
+  }
+`;
+
+const RodapeDivisor = styled.div`
+  max-width: 1200px;
+  margin: 22px auto;
+    height: 1px;
+  background: linear-gradient(
+        90deg,
+    transparent,
+      ${({ theme }) => theme.cores.borda},
+        transparent
+      );
+`;
+
+const RodapeCopy = styled.p`
+  max-width: 1200px;
+  margin: 0 auto;
   text-align: center;
-  padding: 26px;
-  color: ${({ theme }) => theme.cores.textoSuave};
-  font-size: 0.75rem;
+    color: ${({ theme }) => theme.cores.textoSuave};
+  font-size: 0.72rem;
   letter-spacing: 2px;
 `;
 
 /* ---------- Página ---------- */
 
 export default function Hub() {
+  const [tv, setTv] = useState(null);
+
+  useEffect(() => {
+    if (!tv) return undefined;
+    const aoTeclar = (e) => {
+      if (e.key === 'Escape') setTv(null);
+    };
+    window.addEventListener('keydown', aoTeclar);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', aoTeclar);
+      document.body.style.overflow = '';
+    };
+  }, [tv]);
+
   return (
     <Container>
       <Header />
@@ -572,24 +1001,61 @@ export default function Hub() {
               Central de overlays e placares profissionais para transmissões.
               Escolha um módulo para abrir a visualização ou o controle remoto.
             </p>
+            <HeroAcoes>
+              <HeroBotao
+                type="button"
+                className="primario"
+                onClick={() => rolarPara('scoreboards')}
+              >
+                Ver placares
+              </HeroBotao>
+              <HeroBotao
+                type="button"
+                className="secundario"
+                onClick={() => rolarPara('gauchao')}
+              >
+                Gauchão A2
+              </HeroBotao>
+            </HeroAcoes>
           </div>
         </Hero>
 
-        <Segmento>
+        <Segmento id="scoreboards">
           <SegmentoIcone>📺</SegmentoIcone>
           <h2>Scoreboards</h2>
           <Contador>{SCOREBOARDS.length} ativos</Contador>
         </Segmento>
         <Grade>
-          {SCOREBOARDS.map((m) => (
-            <Card key={m.rota} $accent={m.accent} $glow={m.glow}>
+          {SCOREBOARDS.map((m, i) => (
+            <RevelarAoRolar key={m.rota} atraso={(i % 4) * 60}>
+              <Card $accent={m.accent} $glow={m.glow}>
               <CardTag $accent={m.accent}>{m.tag}</CardTag>
               <CardTitulo>{m.titulo}</CardTitulo>
               <CardDescricao>{m.descricao}</CardDescricao>
               <PreviaRotulo>Prévia ao vivo</PreviaRotulo>
-              <PreviewAoVivo rota={m.rota} largura={720} altura={405} />
+                <PreviewAoVivo
+                  rota={m.rota}
+                  largura={720}
+                  altura={405}
+                  aoAmpliar={() =>
+                    setTv({
+                      rota: m.rota,
+                      tag: m.tag,
+                      titulo: m.titulo,
+                      accent: m.accent,
+                      largura: 720,
+                      altura: 405,
+                    })
+  }
+      />
               <CardAcoes>
-                <Botao as="a" href={`#${m.rota}`} target="_blank" rel="noreferrer" className="primario">
+                  <Botao
+                    as="a"
+                    href={m.rota}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="primario"
+                  >
                   Abrir
                 </Botao>
                 <Botao to={`${m.rota}/controle`} className="secundario">
@@ -598,48 +1064,92 @@ export default function Hub() {
                 <CopiarLink rota={m.rota} />
               </CardAcoes>
             </Card>
+            </RevelarAoRolar>
           ))}
         </Grade>
 
-        <Segmento>
+        <Segmento id="gauchao">
           <SegmentoIcone>🏆</SegmentoIcone>
           <h2>Gauchão A2</h2>
           <Contador>{GAUCHAO_A2.length} ativos</Contador>
         </Segmento>
         <Grade>
-          {GAUCHAO_A2.map((t) => (
-            <Card key={t.titulo} $accent={t.accent} $glow={t.glow}>
+          {GAUCHAO_A2.map((t, i) => (
+            <RevelarAoRolar key={t.titulo} atraso={(i % 4) * 60}>
+              <Card $accent={t.accent} $glow={t.glow}>
               <CardTag $accent={t.accent}>{t.tag}</CardTag>
               <CardTitulo>{t.titulo}</CardTitulo>
               <CardDescricao>{t.descricao}</CardDescricao>
-                <PreviewAoVivo rota={t.rota} largura={760} altura={620} />
+                <PreviewAoVivo
+                  rota={t.rota}
+                  largura={760}
+                  altura={t.altura || 620}
+                  aoAmpliar={() =>
+                    setTv({
+                      rota: t.rota,
+                      tag: t.tag,
+                      titulo: t.titulo,
+                      accent: t.accent,
+                      largura: 760,
+                      altura: t.altura || 620,
+                    })
+  }
+      />
               <CardAcoes>
-                <Botao as="a" href={`#${t.rota}`} target="_blank" rel="noreferrer" className="primario">
+                  <Botao
+                    as="a"
+                    href={t.rota}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="primario"
+                  >
                   Abrir
                 </Botao>
-                <Botao to={`${t.rota}/controle`} className="secundario">
+                <Botao to={t.controle || `${t.rota}/controle`} className="secundario">
                   Controlar
                 </Botao>
                 <CopiarLink rota={t.rota} />
               </CardAcoes>
             </Card>
+            </RevelarAoRolar>
           ))}
         </Grade>
 
-        <Segmento>
+        <Segmento id="extras">
           <SegmentoIcone>⚡</SegmentoIcone>
           <h2>Extras da Transmissão</h2>
           <Contador>{EXTRAS.length} ativos</Contador>
         </Segmento>
         <Grade>
-          {EXTRAS.map((x) => (
-            <Card key={x.rota} $accent={x.accent} $glow={x.glow}>
+          {EXTRAS.map((x, i) => (
+            <RevelarAoRolar key={x.rota} atraso={(i % 4) * 60}>
+              <Card $accent={x.accent} $glow={x.glow}>
               <CardTag $accent={x.accent}>{x.tag}</CardTag>
               <CardTitulo>{x.titulo}</CardTitulo>
               <CardDescricao>{x.descricao}</CardDescricao>
-              <PreviewAoVivo rota={x.rota} largura={720} altura={405} />
+                <PreviewAoVivo
+                  rota={x.rota}
+                  largura={720}
+                  altura={405}
+                  aoAmpliar={() =>
+                    setTv({
+                      rota: x.rota,
+                      tag: x.tag,
+                      titulo: x.titulo,
+                      accent: x.accent,
+                      largura: 720,
+                      altura: 405,
+                    })
+  }
+      />
               <CardAcoes>
-                <Botao as="a" href={`#${x.rota}`} target="_blank" rel="noreferrer" className="primario">
+                  <Botao
+                    as="a"
+                    href={x.rota}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="primario"
+                  >
                   Abrir
                 </Botao>
                 <Botao to={`${x.rota}/controle`} className="secundario">
@@ -648,28 +1158,94 @@ export default function Hub() {
                 <CopiarLink rota={x.rota} />
               </CardAcoes>
             </Card>
+            </RevelarAoRolar>
           ))}
         </Grade>
 
-        <Segmento>
+        <Segmento id="outros">
           <SegmentoIcone>🏟️</SegmentoIcone>
           <h2>Outros Esportes</h2>
           <Contador>em breve</Contador>
         </Segmento>
         <Grade>
-          {ESPORTES.map((e) => (
-            <Card key={e.titulo} className="breve" $accent="#3b82f6">
+          {ESPORTES.map((e, i) => (
+            <RevelarAoRolar key={e.titulo} atraso={(i % 4) * 60}>
+              <Card className="breve" $accent="#3b82f6">
               <CardTitulo>{e.titulo}</CardTitulo>
               <CardDescricao>{e.descricao}</CardDescricao>
               <EmBreveChip>Em breve</EmBreveChip>
             </Card>
+            </RevelarAoRolar>
           ))}
         </Grade>
       </Conteudo>
       <Rodape>
-        PELOTENSE ESPORTES © {new Date().getFullYear()} — SISTEMA DE PLACARES AO
-        VIVO
+        <RodapeTopo>
+          <RodapeMarca>
+            <img src={LOGO_URL} alt="Pelotense Esportes" />
+            <b>
+              PELOTENSE <em>ESPORTES</em>
+            </b>
+          </RodapeMarca>
+          <RodapeNav>
+            {RODAPE_LINKS.map((l) => (
+              <button key={l.id} type="button" onClick={() => rolarPara(l.id)}>
+                {l.label}
+              </button>
+          ))}
+          </RodapeNav>
+        </RodapeTopo>
+        <RodapeDivisor />
+        <RodapeCopy>
+          PELOTENSE ESPORTES ? {new Date().getFullYear()} ? SISTEMA DE PLACARES
+          AO VIVO
+        </RodapeCopy>
       </Rodape>
+
+      {tv && (
+        <SobreposicaoTV
+          onClick={() => setTv(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <JanelaTV onClick={(e) => e.stopPropagation()}>
+            <BarraTV>
+              <div className="ident">
+                <span className="tag" style={{ color: tv.accent }}>
+                  {tv.tag}
+                </span>
+                <h3>{tv.titulo}</h3>
+          </div>
+              <AcoesTV>
+                <Botao
+                  as="a"
+                  href={tv.rota}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="primario"
+                >
+                  Abrir
+                </Botao>
+                <Botao to={`${tv.rota}/controle`} className="secundario">
+                  Controlar
+                </Botao>
+                <FecharTV
+                  onClick={() => setTv(null)}
+                  title="Fechar (Esc)"
+                  autoFocus
+                >
+                  ?
+                </FecharTV>
+              </AcoesTV>
+            </BarraTV>
+            <PreviewAoVivo
+              rota={tv.rota}
+              largura={tv.largura}
+              altura={tv.altura}
+      />
+          </JanelaTV>
+        </SobreposicaoTV>
+      )}
     </Container>
-  );
-}
+      );
+  }

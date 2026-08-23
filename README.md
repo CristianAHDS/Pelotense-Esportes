@@ -1,26 +1,31 @@
 # Pelotense Esportes
 
-Placar de futebol profissional estilo broadcast para transmissões ao vivo, streams e telões.
+Plataforma de graficação ao vivo para transmissões de futebol: placares broadcast, classificação sincronizada com a FGF e chaveamento de mata-mata — tudo em tempo real, pronto para OBS, streams e telões.
 
 **Site publicado:** [https://pelotense-esportes.netlify.app](https://pelotense-esportes.netlify.app)
 
-## Funcionalidades
+## Módulos
 
-- Placar compacto estilo TV com siglas dos times, gols, cronômetro e período
-- Design flat profissional com alto contraste
-- Cores presetadas com fundo e borda para cada time
-- Animação de gol
-- Sincronização em tempo real entre dispositivos via WebSocket
-- Preview ao vivo no painel de controle
-- Fundo transparente na visualização (ideal para OBS)
+| Rota | Descrição |
+| --- | --- |
+| `/` | Landing institucional do projeto |
+| `/hub` | Catálogo do sistema, com prévias ao vivo de cada overlay |
+| `/placar-broadcast` · `/controle` | Placar completo com cronômetro e período (layouts padrão, PL, BL e LL) |
+| `/tabela` · `/controle` | Classificação do Gauchão A2 sincronizada com o site da FGF |
+| `/mata-mata` | Confrontos das oitavas de final em formato tabela |
+| `/fases-finais` | Chaveamento quartas → final, com avanço automático dos vencedores e selo de campeão |
+| `/substituicao` · `/controle` | Cartão animado de substituições |
+| `/penaltis` · `/controle` | Disputa de pênaltis cobrança a cobrança |
+
+Cada overlay tem sua página de controle na rota `/controle` correspondente.
 
 ## Tecnologias
 
 - React 18 + Vite
 - Styled Components
-- React Router (Hash)
-- WebSocket + BroadcastChannel + localStorage (sync)
-- Node.js (servidor de relay integrado ao Vite)
+- React Router (`BrowserRouter`, URLs limpas sem hash)
+- WebSocket + BroadcastChannel + localStorage (sincronização entre abas e dispositivos)
+- Node.js (relay WebSocket integrado ao Vite)
 
 ## Como usar
 
@@ -28,20 +33,21 @@ Placar de futebol profissional estilo broadcast para transmissões ao vivo, stre
 # Instalar dependências
 npm install
 
-# Iniciar servidor de desenvolvimento (app + WebSocket relay)
+# Iniciar servidor de desenvolvimento (app + relay WebSocket)
 npm run dev
 ```
 
 Abra no navegador:
-- **Hub:** `http://localhost:5173`
-- **Placar (display):** `http://localhost:5173/#/placar-broadcast`
-- **Controle:** `http://localhost:5173/#/placar-broadcast/controle`
+- **Landing:** `http://localhost:5173`
+- **Hub:** `http://localhost:5173/hub`
+- **Placar:** `http://localhost:5173/placar-broadcast`
+- **Controle do placar:** `http://localhost:5173/placar-broadcast/controle`
 
 ### Em múltiplos dispositivos
 
 1. Inicie `npm run dev` na máquina principal
 2. Nos outros dispositivos da mesma rede, acesse `http://<IP-DA-MÁQUINA>:5173`
-3. Abra o placar em um e o controle em outro — tudo sincroniza automaticamente
+3. Abra o overlay em um dispositivo e o controle em outro — tudo sincroniza automaticamente
 
 ## Build
 
@@ -57,4 +63,8 @@ O projeto já inclui `netlify.toml` e está publicado em **https://pelotense-esp
 2. Build command: `npm run build` (já configurado no `netlify.toml`)
 3. Publish directory: `dist` (já configurado)
 
-> **Nota:** O WebSocket relay para sincronização entre dispositivos roda apenas no servidor de desenvolvimento (`npm run dev`). No Netlify o placar funciona normalmente, mas a sincronização fica limitada ao BroadcastChannel (mesmo dispositivo).
+> **Nota:** O relay WebSocket para sincronização entre dispositivos roda apenas no servidor de desenvolvimento (`npm run dev`). No Netlify os overlays funcionam normalmente, mas a sincronização fica limitada ao BroadcastChannel (mesmo dispositivo).
+
+## Histórico de mudanças
+
+Veja [CHANGELOG.md](./CHANGELOG.md) para o registro detalhado de tarefas e correções.

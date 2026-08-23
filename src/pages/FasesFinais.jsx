@@ -1,9 +1,9 @@
-﻿import styled from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { getEstado, inscrever } from '../store/mataMataStore';
-import { PainelOitavas } from '../components/PainelOitavas';
+import { PainelChaveamento } from '../components/PainelChaveamento';
 
 const ACC = '#a5ef1c';
 
@@ -95,7 +95,7 @@ const BadgeFase = styled.div`
   white-space: nowrap;
 `;
 
-export default function MataMata() {
+export default function FasesFinais() {
   useFundoTransparente();
   const estado = usePlacarBroadcast({ getEstado, inscrever });
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
@@ -107,12 +107,12 @@ export default function MataMata() {
       <CartaoCabecalho>
         <div>
           <h1>{estado.competicao}</h1>
-          <span className="sub">Fase final · Mata-mata</span>
+          <span className="sub">Quartas · Semifinal · Final</span>
         </div>
         <BadgeFase>{estado.fase}</BadgeFase>
       </CartaoCabecalho>
 
-      <PainelOitavas estado={estado} />
+      <PainelChaveamento estado={estado} />
     </Tela>
   );
 }

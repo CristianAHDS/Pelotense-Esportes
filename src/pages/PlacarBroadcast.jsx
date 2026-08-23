@@ -1,12 +1,9 @@
-import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
 import { segundosAtuais, formatarTempo } from '../store/placarBroadcastStore'
-import {
-  getEstado as getSubstituicao,
-  inscrever as inscreverSubstituicao,
-} from '../store/substituicaoStore'
+import { substituicaoPro } from '../store/substituicaoStore'
 import { SubstituicaoCartao } from '../components/SubstituicaoCartao'
 import { useFundoTransparente } from '../components/useFundoTransparente'
 
@@ -56,7 +53,7 @@ const FaixaTempo = styled.div`
     font-weight: 700;
     letter-spacing: 2px;
     color: #ffffff;
-  }
+}
 
   .periodo {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
@@ -65,13 +62,13 @@ const FaixaTempo = styled.div`
     letter-spacing: 1px;
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
-  }
+}
 
   .grupo {
-    position: relative;
+  position: relative;
     display: inline-flex;
-    align-items: center;
-  }
+  align-items: center;
+}
 
   .acrescimo {
     position: absolute;
@@ -85,7 +82,7 @@ const FaixaTempo = styled.div`
     letter-spacing: 1px;
     color: #fbbf24;
     white-space: nowrap;
-  }
+}
 `
 
 const CorpoPlacar = styled.div`
@@ -117,7 +114,7 @@ const BlocoTime = styled.div`
     letter-spacing: 1px;
     color: ${({ $cor }) => corContraste($cor)};
     text-transform: uppercase;
-  }
+}
 
   .gols {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
@@ -128,7 +125,7 @@ const BlocoTime = styled.div`
     line-height: 1;
     min-width: 1.2em;
     text-align: center;
-  }
+}
 `
 
 const Separador = styled.div`
@@ -145,7 +142,7 @@ const Separador = styled.div`
     font-size: 1.6rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.5);
-  }
+}
 `
 
 const StatusBar = styled.div`
@@ -163,8 +160,8 @@ const StatusBar = styled.div`
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: ${({ $ativo }) => ($ativo ? '#22c55e' : '#ffffff')};
-  }
+    color: ${({ $ativo }) => ($ativo ? '#a5ef1c' : '#ffffff')};
+}
 `
 
 const pulso = keyframes`
@@ -176,7 +173,7 @@ const Ponto = styled.span`
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #22c55e;
+  background: #a5ef1c;
   animation: ${pulso} 1s ease-in-out infinite;
 `
 
@@ -192,14 +189,14 @@ const Voltar = styled(Link)`
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.4);
-  font-size: 1.2rem;
+    font-size: 1.2rem;
   text-decoration: none;
   opacity: 0;
   transition: opacity 0.2s ease;
 
   ${Tela}:hover & {
     opacity: 1;
-  }
+}
 `
 
 /* ---------- Faixa de gol estilo breaking news ---------- */
@@ -212,13 +209,13 @@ const rolagemGol = keyframes`
 const TEXTO_GOL = Array(6).fill('GOLL \u2022 ').join('')
 
 const FaixaGol = styled.span`
-  position: absolute;
+    position: absolute;
   inset: 0;
   z-index: 5;
   display: flex;
   align-items: center;
   overflow: hidden;
-  white-space: nowrap;
+    white-space: nowrap;
   background: rgba(0, 0, 0, 0.45);
 
   span {
@@ -233,7 +230,7 @@ const FaixaGol = styled.span`
     color: #ffd700;
     filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.7));
     animation: ${rolagemGol} 2s linear infinite;
-  }
+}
 `
 
 /* ---------- Transição modo pênaltis ---------- */
@@ -247,7 +244,7 @@ const transicaoModo = keyframes`
 /* ---------- Traços de cartão ---------- */
 
 const TracoCartao = styled.span`
-  display: inline-block;
+    display: inline-block;
   width: 14px;
   height: 4px;
   border-radius: 1px;
@@ -259,9 +256,9 @@ const Marca = styled.div`
   opacity: 0.2;
   font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.8rem;
-  font-weight: 600;
+    font-weight: 600;
   letter-spacing: 4px;
-  text-transform: uppercase;
+    text-transform: uppercase;
 `
 
 const CartaoSubFixo = styled.div`
@@ -273,10 +270,7 @@ const CartaoSubFixo = styled.div`
 
 export default function PlacarBroadcast() {
   const estado = usePlacarBroadcast()
-  const substituicao = usePlacarBroadcast({
-    getEstado: getSubstituicao,
-    inscrever: inscreverSubstituicao,
-  })
+  const substituicao = usePlacarBroadcast(substituicaoPro)
   const [, forcarTick] = useState(0)
   const [golAtivo, setGolAtivo] = useState(null)
   const ultimoEventoGol = useRef(null)
@@ -316,7 +310,9 @@ export default function PlacarBroadcast() {
 
   return (
     <Tela $compacto={compacto}>
-      {!compacto && <Voltar to="/" title="Voltar ao hub">←</Voltar>}
+      {!compacto && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+
+      {!compacto && <Marca>PELOTENSE ESPORTES</Marca>}
 
       <BarraPlacar>
         <FaixaTempo>
@@ -334,7 +330,7 @@ export default function PlacarBroadcast() {
           <div style={{ flex: 1, display: 'flex', justifyContent: 'center', gap: 2 }}>
             {tracosVisitante.map((cor, i) => (<TracoCartao key={`vis-${cor}-${i}`} $cor={cor} />))}
           </div>
-        </div>
+          </div>
         <CorpoPlacar $penaltis={periodo === 'PÊNALTIS'}>
           {periodo === 'PÊNALTIS' ? (
             <>
@@ -376,26 +372,24 @@ export default function PlacarBroadcast() {
                 )}
               </BlocoTime>
             </>
-          )}
+                )}
         </CorpoPlacar>
       </BarraPlacar>
 
       {!compacto && (
-        <>
+            <>
           <StatusBar $ativo={cronometro.rodando}>
             {cronometro.rodando && <Ponto />}
             <span className="label">{estadoPartida}</span>
           </StatusBar>
-
-          <Marca>PELOTENSE ESPORTES</Marca>
-        </>
-      )}
+            </>
+                )}
 
       {substituicao.visivel && (
         <CartaoSubFixo>
           <SubstituicaoCartao dados={substituicao} />
         </CartaoSubFixo>
-      )}
+                )}
     </Tela>
   )
 }

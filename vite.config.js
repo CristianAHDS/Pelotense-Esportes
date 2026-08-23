@@ -51,10 +51,23 @@ function syncPlugin() {
   }
 }
 
+const proxyFGF = {
+  '/fgf': {
+    target: 'https://fgf.com.br',
+    changeOrigin: true,
+    secure: true,
+    rewrite: (path) => path.replace(/^\/fgf/, '')
+  }
+}
+
 export default defineConfig({
   plugins: [react(), syncPlugin()],
   server: {
     port: 5173,
-    open: false
+    open: false,
+    proxy: proxyFGF
+  },
+  preview: {
+    proxy: proxyFGF
   }
 })

@@ -1,11 +1,14 @@
+﻿import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
+import { importarClassificacaoFGF } from '../services/fgfService';
 import {
   getEstado,
   inscrever,
   ordenarClassificacao,
+  recarregar,
   definirCompeticao,
   definirRodada,
   adicionarTime,
@@ -109,7 +112,7 @@ const Botao = styled.button`
         : theme.cores.superficieHover};
   color: ${({ $variante, theme }) =>
     $variante === 'primario'
-      ? '#052e13'
+      ? '#0a0f00'
       : $variante === 'perigo'
         ? '#f87171'
         : theme.cores.texto};
@@ -149,7 +152,7 @@ const CabecalhoGrid = styled.div`
   color: ${({ theme }) => theme.cores.textoSuave};
 
   .num {
-    text-align: center;
+  text-align: center;
   }
 `;
 
@@ -166,10 +169,10 @@ const LinhaTime = styled.div`
   }
 
   .pos {
-    text-align: center;
-    font-family: ${({ theme }) => theme.fontes.titulo};
-    font-weight: 700;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  text-align: center;
+  font-family: ${({ theme }) => theme.fontes.titulo};
+  font-weight: 700;
+  color: ${({ theme }) => theme.cores.textoSuave};
     border-left: 3px solid transparent;
     padding-left: 4px;
   }
@@ -232,7 +235,7 @@ const CelulaEscudo = styled.label`
     position: absolute;
     inset: -4px;
     opacity: 0;
-    cursor: pointer;
+  cursor: pointer;
   }
 `;
 
@@ -256,6 +259,24 @@ const Acoes = styled.div`
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 14px;
+
+  button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+`;
+
+const StatusFgf = styled.span`
+  align-self: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: ${({ $tipo, theme }) =>
+    $tipo === 'erro'
+        ? '#f87171'
+      : $tipo === 'ok'
+      ? theme.cores.primaria
+        : theme.cores.textoSuave};
 `;
 
 /* ---------- Prévia clicável ---------- */
@@ -278,43 +299,43 @@ const MiniLinha = styled.div`
   border-left: 3px solid ${({ $zona }) => $zona || 'transparent'};
 
   .pos {
-    font-family: ${({ theme }) => theme.fontes.titulo};
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  font-family: ${({ theme }) => theme.fontes.titulo};
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: ${({ theme }) => theme.cores.textoSuave};
   }
 
   .time {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
     gap: 9px;
     min-width: 0;
   }
 
   .sigla {
-    font-family: ${({ theme }) => theme.fontes.titulo};
-    font-weight: 700;
-    letter-spacing: 1px;
+  font-family: ${({ theme }) => theme.fontes.titulo};
+  font-weight: 700;
+  letter-spacing: 1px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .p {
-    text-align: center;
+  text-align: center;
     font-variant-numeric: tabular-nums;
-    font-weight: 700;
+  font-weight: 700;
     color: ${({ theme }) => theme.cores.primaria};
   }
 `;
 
-const CORES_ZONA = { class: '#22c55e', reb: '#ef4444' };
+const CORES_ZONA = { class: '#a5ef1c', reb: '#ef4444' };
 
 function zonaDa(pos, total) {
   if (pos <= Math.min(8, total)) return 'class';
   if (pos >= total - 1) return 'reb';
   return null;
-}
+  }
 
 function PreviewTabela({ estado }) {
   const times = ordenarClassificacao(estado.times);
@@ -324,10 +345,10 @@ function PreviewTabela({ estado }) {
       title="Abrir visualização em nova guia"
       onClick={() =>
         window.open(
-          `${window.location.origin}${window.location.pathname}#/tabela`,
+          `${window.location.origin}/tabela`,
           '_blank'
         )
-      }
+  }
     >
       <Cartao style={{ marginBottom: 0 }}>
         <Rotulo>Prévia · clique para abrir em nova guia</Rotulo>
@@ -338,7 +359,7 @@ function PreviewTabela({ estado }) {
             paddingBottom: 6,
             marginBottom: 4,
           }}
-        >
+    >
           <span className="pos">#</span>
           <span className="time" style={{ fontSize: '.62rem', letterSpacing: '2px', color: '#94a3b8' }}>
             CLASSIFICAÇÃO
@@ -351,17 +372,60 @@ function PreviewTabela({ estado }) {
             <span className="time">
               <Escudo cor={t.cor} sigla={t.sigla} url={t.escudo} tamanho={15} />
               <span className="sigla">{t.sigla}</span>
-            </span>
+          </span>
             <span className="p">{t.p}</span>
-          </MiniLinha>
+        </MiniLinha>
         ))}
       </Cartao>
     </PreviaClicavel>
   );
-}
+  }
+
+function mensagemFgf(resultado) {
+  const hora = new Date(resultado.quando || Date.now()).toLocaleTimeString(
+    'pt-BR',
+    { hour: '2-digit', minute: '2-digit' }
+  );
+  if (resultado.mudou) {
+    return `Classificação da FGF atualizada às ${hora}`;
+  }
+  return resultado.origem === 'cache'
+    ? `Em dia com a FGF (cache de ${hora})`
+    : `Em dia com a FGF · verificado às ${hora}`;
+  }
 
 export default function ControleTabela() {
+  const [statusFgf, setStatusFgf] = useState(null);
+
+  useEffect(() => {
+    recarregar();
+    importarClassificacaoFGF()
+      .then((resultado) =>
+        setStatusFgf({ tipo: 'ok', texto: mensagemFgf(resultado) })
+        )
+      .catch((e) => {
+        console.warn('Tabela: falha ao atualizar da FGF.', e);
+        setStatusFgf({
+          tipo: 'erro',
+          texto: 'Não foi possível buscar os dados da FGF agora.',
+        });
+      });
+  }, []);
   const estado = usePlacarBroadcast({ getEstado, inscrever });
+
+  async function atualizarDaFgf() {
+    setStatusFgf({ tipo: 'carregando', texto: 'Buscando dados da FGF...' });
+    try {
+      const resultado = await importarClassificacaoFGF({ forcar: true });
+      setStatusFgf({ tipo: 'ok', texto: mensagemFgf(resultado) });
+    } catch (e) {
+      console.warn('Tabela: falha ao atualizar da FGF.', e);
+      setStatusFgf({
+        tipo: 'erro',
+        texto: 'Não foi possível buscar os dados da FGF. Verifique a conexão ou o servidor dev.',
+      });
+  }
+  }
 
   return (
     <Tela>
@@ -414,37 +478,50 @@ export default function ControleTabela() {
                   type="color"
                   value={t.cor}
                   onChange={(e) => atualizarTime(t._i, 'cor', e.target.value)}
-                />
+          />
               </CelulaEscudo>
               <InputNome
                 value={t.nome}
                 maxLength={24}
                 onChange={(e) => atualizarTime(t._i, 'nome', e.target.value)}
-              />
+          />
               <InputNum
                 value={t.sigla}
                 maxLength={4}
                 style={{ textAlign: 'center' }}
                 onChange={(e) => atualizarTime(t._i, 'sigla', e.target.value)}
-              />
+          />
               {['p', 'j', 'v', 'e', 'd', 'gp', 'gc'].map((campo) => (
-                <InputNum
+              <InputNum
                   key={campo}
-                  type="number"
-                  min={0}
+            type="number"
+            min={0}
                   value={t[campo]}
                   onChange={(e) => atualizarTime(t._i, campo, e.target.value)}
-                />
-              ))}
+          />
+        ))}
               <BotaoRemover
                 title="Remover time"
                 onClick={() => removerTime(t._i)}
-              >
+    >
                 ×
               </BotaoRemover>
             </LinhaTime>
-          ))}
+        ))}
         </GradeTimes>
+        <Acoes>
+          <Botao
+            $variante="primario"
+            disabled={statusFgf?.tipo === 'carregando'}
+            title="Busca a classificação atual no site da FGF"
+            onClick={atualizarDaFgf}
+    >
+            ⟳ Atualizar da FGF
+          </Botao>
+          {statusFgf && (
+            <StatusFgf $tipo={statusFgf.tipo}>{statusFgf.texto}</StatusFgf>
+          )}
+        </Acoes>
         <Acoes>
           <Botao $variante="primario" onClick={adicionarTime}>
             + Adicionar time
@@ -455,9 +532,9 @@ export default function ControleTabela() {
             onClick={() => {
               if (window.confirm('Restaurar tabela padrão? Todos os dados atuais serão perdidos.')) {
                 restaurarPadrao();
-              }
-            }}
-          >
+  }
+          }}
+    >
             Restaurar padrão
           </Botao>
         </Acoes>
@@ -466,4 +543,4 @@ export default function ControleTabela() {
       <PreviewTabela estado={estado} />
     </Tela>
   );
-}
+  }

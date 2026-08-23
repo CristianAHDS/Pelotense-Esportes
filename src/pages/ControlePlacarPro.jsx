@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../components/Header';
 import { usePlacarPro } from '../hooks/usePlacarPro';
@@ -63,7 +63,7 @@ const PainelTitulo = styled.h2`
 
   &::after {
     content: '';
-    flex: 1;
+  flex: 1;
     height: 1px;
     background: ${({ theme }) => theme.cores.borda};
   }
@@ -150,10 +150,10 @@ const Botao = styled.button`
 
   &.gol {
     background: ${({ theme }) => theme.cores.primaria};
-    color: #052e13;
+    color: #0a0f00;
     &:hover {
       filter: brightness(1.1);
-    }
+  }
   }
 
   &.redondo {
@@ -161,20 +161,20 @@ const Botao = styled.button`
     height: 46px;
     padding: 0;
     font-size: 1.3rem;
-    background: ${({ theme }) => theme.cores.fundo};
-    border: 1px solid ${({ theme }) => theme.cores.borda};
-    color: ${({ theme }) => theme.cores.texto};
+  background: ${({ theme }) => theme.cores.fundo};
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  color: ${({ theme }) => theme.cores.texto};
     &:hover:not(:disabled) {
       background: ${({ theme }) => theme.cores.superficieHover};
-    }
+  }
   }
 
   &.primario {
     background: ${({ theme }) => theme.cores.primaria};
-    color: #052e13;
+    color: #0a0f00;
     &:hover {
       filter: brightness(1.1);
-    }
+  }
   }
 
   &.perigo {
@@ -183,16 +183,16 @@ const Botao = styled.button`
     color: ${({ theme }) => theme.cores.perigo};
     &:hover:not(:disabled) {
       background: rgba(239, 68, 68, 0.12);
-    }
+  }
   }
 
   &.neutro {
-    background: ${({ theme }) => theme.cores.fundo};
-    border: 1px solid ${({ theme }) => theme.cores.borda};
-    color: ${({ theme }) => theme.cores.texto};
+  background: ${({ theme }) => theme.cores.fundo};
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  color: ${({ theme }) => theme.cores.texto};
     &:hover:not(:disabled) {
       background: ${({ theme }) => theme.cores.superficieHover};
-    }
+  }
   }
 `;
 
@@ -230,14 +230,14 @@ const ChipPeriodo = styled.button`
   border: 1px solid
     ${({ $ativo, theme }) =>
       $ativo ? theme.cores.primaria : theme.cores.borda};
-  color: ${({ $ativo }) => ($ativo ? '#052e13' : '#94a3b8')};
+  color: ${({ $ativo }) => ($ativo ? '#0a0f00' : '#94a3b8')};
   border-radius: 999px;
   padding: 9px 16px;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 1px;
   transition: all 0.15s ease;
-  &:hover:not(:disabled) {
+    &:hover:not(:disabled) {
     ${({ $ativo, theme }) =>
       $ativo
         ? ''
@@ -265,27 +265,27 @@ const CorInput = styled.label`
 
   span {
     font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.cores.textoSuave};
   }
 
   input {
     width: 28px;
     height: 28px;
-    border: none;
+  border: none;
     border-radius: 6px;
     padding: 0;
     background: transparent;
-    cursor: pointer;
+  cursor: pointer;
     &::-webkit-color-swatch-wrapper {
-      padding: 0;
-    }
+    padding: 0;
+  }
     &::-webkit-color-swatch {
-      border: none;
-      border-radius: 6px;
-    }
+  border: none;
+    border-radius: 6px;
+  }
   }
 `;
 
@@ -305,7 +305,7 @@ function PainelTimes() {
       titulo: 'Time visitante',
       cor: estado.corVisitante,
     },
-  ];
+];
 
   return (
     <Painel>
@@ -339,14 +339,14 @@ function PainelTimes() {
               type="color"
               value={cor}
               onChange={(e) => definirCorTime(lado, e.target.value)}
-            />
+          />
             <span>Cor do time</span>
           </CorInput>
         </BlocoTime>
       ))}
     </Painel>
   );
-}
+  }
 
 function PainelCronometro() {
   const estado = usePlacarPro();
@@ -365,29 +365,29 @@ function PainelCronometro() {
         {formatarTempo(segundosAtuais(cron))}
       </DisplayTempo>
       <GradeBotoes>
-        <Botao
+            <Botao
           className={cron.rodando ? 'perigo' : 'primario'}
           onClick={alternarCronometro}
-        >
+            >
           {cron.rodando ? '⏸ Pausar' : '▶ Iniciar'}
-        </Botao>
-        <Botao
+            </Botao>
+            <Botao
           className="neutro"
           onClick={zerarCronometro}
           disabled={cron.rodando}
-        >
+            >
           ⟲ Zerar
-        </Botao>
+            </Botao>
         <Botao className="neutro" onClick={() => ajustarMinutos(-1)}>
           − 1 min
-        </Botao>
+            </Botao>
         <Botao className="neutro" onClick={() => ajustarMinutos(+1)}>
           + 1 min
-        </Botao>
+            </Botao>
       </GradeBotoes>
     </Painel>
   );
-}
+  }
 
 function PainelPartida() {
   const estado = usePlacarPro();
@@ -398,7 +398,7 @@ function PainelPartida() {
       setConfirmar(true);
       setTimeout(() => setConfirmar(false), 4000);
       return;
-    }
+  }
     resetarPartida();
     setConfirmar(false);
   }
@@ -413,21 +413,21 @@ function PainelPartida() {
             key={periodo}
             $ativo={estado.periodo === periodo}
             onClick={() => definirPeriodo(periodo)}
-          >
+            >
             {periodo}
           </ChipPeriodo>
-        ))}
+      ))}
       </ListaPeriodos>
       <div style={{ marginTop: 20 }}>
-        <Botao
+            <Botao
           className="perigo"
           style={{ width: '100%' }}
           onClick={handleReset}
-        >
+            >
           {confirmar
             ? '⚠ Clique novamente para confirmar'
             : '🗑 Resetar partida inteira'}
-        </Botao>
+            </Botao>
         <AvisoReset>
           Zera gols, cronômetro e período. Os nomes dos times também voltam ao
           padrão.
@@ -435,7 +435,7 @@ function PainelPartida() {
       </div>
     </Painel>
   );
-}
+  }
 
 export default function ControlePlacarPro() {
   return (
@@ -446,8 +446,8 @@ export default function ControlePlacarPro() {
         <div style={{ display: 'grid', gap: 24 }}>
           <PainelCronometro />
           <PainelPartida />
-        </div>
+      </div>
       </Conteudo>
     </Container>
   );
-}
+  }

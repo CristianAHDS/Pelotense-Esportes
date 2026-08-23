@@ -1,3 +1,4 @@
+﻿import { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useFundoTransparente } from '../components/useFundoTransparente';
@@ -6,13 +7,15 @@ import {
   getEstado,
   inscrever,
   ordenarClassificacao,
+  recarregar,
 } from '../store/tabelaStore';
+import { importarClassificacaoFGF } from '../services/fgfService';
 import { Escudo } from '../components/Escudo';
 
 /* Regulamento Gauchão Série A2: 1º ao 8º avançam às quartas de final,
    os dois últimos são rebaixados. */
 const CORES_ZONA = {
-  class: '#22c55e',
+  class: '#a5ef1c',
   reb: '#ef4444',
 };
 
@@ -52,7 +55,7 @@ const Voltar = styled(Link)`
   color: ${({ theme }) => theme.cores.textoSuave};
   &:hover {
     color: ${({ theme }) => theme.cores.texto};
-  }
+}
 `;
 
 const Painel = styled.section`
@@ -77,7 +80,7 @@ const Cabecalho = styled.header`
   gap: 18px;
   padding: 20px 26px;
   border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
-  background: linear-gradient(90deg, rgba(34, 197, 94, 0.1), transparent 55%);
+  background: linear-gradient(90deg, rgba(165, 239, 28, 0.1), transparent 55%);
 
   &::before {
     content: '';
@@ -87,7 +90,7 @@ const Cabecalho = styled.header`
     bottom: 0;
     width: 4px;
     background: ${({ theme }) => theme.cores.primaria};
-  }
+}
 
   h1 {
     font-family: ${({ theme }) => theme.fontes.titulo};
@@ -96,7 +99,7 @@ const Cabecalho = styled.header`
     letter-spacing: 3px;
     text-transform: uppercase;
     line-height: 1.1;
-  }
+}
 
   span.sub {
     display: block;
@@ -106,18 +109,18 @@ const Cabecalho = styled.header`
     font-weight: 700;
     letter-spacing: 2.5px;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.cores.textoSuave};
-  }
+  color: ${({ theme }) => theme.cores.textoSuave};
+}
 `;
 
 const BadgeRodada = styled.div`
   flex-shrink: 0;
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.78rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 2px;
-  color: #052e13;
-  background: ${({ theme }) => theme.cores.primaria};
+  color: #0a0f00;
+    background: ${({ theme }) => theme.cores.primaria};
   padding: 7px 16px;
   border-radius: 999px;
   white-space: nowrap;
@@ -138,19 +141,19 @@ const LinhaCabecalho = styled.div`
   padding: 10px 18px;
   border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
   background: rgba(255, 255, 255, 0.03);
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.66rem;
-  font-weight: 700;
+    font-weight: 700;
   letter-spacing: 1.5px;
   color: ${({ theme }) => theme.cores.textoSuave};
 
   .num {
     text-align: center;
-  }
+}
 
   .destaque {
     color: ${({ theme }) => theme.cores.primaria};
-  }
+}
 `;
 
 const LinhaTime = styled.div`
@@ -164,79 +167,79 @@ const LinhaTime = styled.div`
 
   &:last-child {
     border-bottom: none;
-  }
+}
 
   &:hover {
-    background: rgba(34, 197, 94, 0.05);
-  }
+    background: rgba(165, 239, 28, 0.05);
+}
 
   .pos {
-    position: relative;
+  position: relative;
     text-align: center;
     font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.95rem;
     font-weight: 700;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  color: ${({ theme }) => theme.cores.textoSuave};
     border-left: 4px solid transparent;
     padding-left: 6px;
 
-    &::before {
-      content: '';
-      position: absolute;
-      left: 0;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
       top: -11px;
       bottom: -11px;
-      width: 4px;
+    width: 4px;
       background: ${({ $zona }) => CORES_ZONA[$zona] || 'transparent'};
-    }
-  }
+}
+}
 
   .time {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
     gap: 10px;
     min-width: 0;
-  }
+}
 
   .sigla {
     font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 1px;
-  }
+}
 
   .nome {
     font-size: 0.74rem;
     letter-spacing: 0.5px;
-    color: ${({ theme }) => theme.cores.textoSuave};
-    overflow: hidden;
+  color: ${({ theme }) => theme.cores.textoSuave};
+  overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  white-space: nowrap;
+}
 
   .num {
     text-align: center;
     font-variant-numeric: tabular-nums;
     font-size: 0.88rem;
-    color: ${({ theme }) => theme.cores.textoSuave};
-  }
+  color: ${({ theme }) => theme.cores.textoSuave};
+}
 
   .pontos {
     font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 1rem;
     font-weight: 700;
     color: ${({ theme }) => theme.cores.texto};
-  }
+}
 
   .saldoPos {
-    color: #22c55e;
+    color: #a5ef1c;
     font-weight: 600;
-  }
+}
 
   .saldoNeg {
     color: #ef4444;
     font-weight: 600;
-  }
+}
 `;
 
 const RodapePainel = styled.footer`
@@ -257,30 +260,30 @@ const Legenda = styled.div`
 
   span {
     display: inline-flex;
-    align-items: center;
+  align-items: center;
     gap: 7px;
     font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.cores.textoSuave};
-  }
+  color: ${({ theme }) => theme.cores.textoSuave};
+}
 
   i {
     width: 10px;
     height: 10px;
     border-radius: 3px;
-  }
+}
 `;
 
 const SeloAoVivo = styled.span`
-  display: inline-flex;
+    display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.62rem;
-  font-weight: 700;
+    font-size: 0.62rem;
+    font-weight: 700;
   letter-spacing: 2px;
-  text-transform: uppercase;
+    text-transform: uppercase;
   color: ${({ theme }) => theme.cores.textoSuave};
 
   &::before {
@@ -290,21 +293,27 @@ const SeloAoVivo = styled.span`
     border-radius: 50%;
     background: ${({ theme }) => theme.cores.perigo};
     animation: pulsoTabela 1.2s ease-in-out infinite;
-  }
+}
 
   @keyframes pulsoTabela {
     0%,
     100% {
       opacity: 1;
-    }
+}
     50% {
       opacity: 0.25;
-    }
-  }
+}
+}
 `;
 
 export default function Tabela() {
   useFundoTransparente();
+  useEffect(() => {
+    recarregar();
+    importarClassificacaoFGF().catch((e) =>
+      console.warn('Tabela: falha ao atualizar da FGF.', e)
+  );
+  }, []);
   const estado = usePlacarBroadcast({ getEstado, inscrever });
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
   const times = ordenarClassificacao(estado.times);
@@ -318,7 +327,7 @@ export default function Tabela() {
   return (
     <Tela $previa={emPrevia}>
       {!emPrevia && (
-        <Voltar to="/" title="Voltar ao hub">
+        <Voltar to="/hub" title="Voltar ao hub">
           ←
         </Voltar>
       )}
@@ -333,7 +342,7 @@ export default function Tabela() {
           </div>
           {estado.rodada > 0 && (
             <BadgeRodada>RODADA {estado.rodada}</BadgeRodada>
-          )}
+      )}
         </Cabecalho>
 
         <Rolagem>
@@ -356,7 +365,7 @@ export default function Tabela() {
               const pos = i + 1;
               const zona = zonaDa(pos, total);
               const s = t.gp - t.gc;
-              return (
+  return (
                 <LinhaTime key={`${t.sigla}-${i}`} $zona={zona}>
                   <span className="pos">{pos}</span>
                   <div className="time">
@@ -368,7 +377,7 @@ export default function Tabela() {
                     />
                     <span className="sigla">{t.sigla}</span>
                     <span className="nome">{t.nome}</span>
-                  </div>
+          </div>
                   <span className="num pontos">{t.p}</span>
                   <span className="num">{t.j}</span>
                   <span className="num">{t.v}</span>
@@ -380,10 +389,10 @@ export default function Tabela() {
                     className={`num ${s > 0 ? 'saldoPos' : s < 0 ? 'saldoNeg' : ''}`}
                   >
                     {saldo(t.gp, t.gc)}
-                  </span>
+            </span>
                   <span className="num">{aproveitamento(t.p, t.j)}</span>
                 </LinhaTime>
-              );
+  );
             })}
           </Grade>
         </Rolagem>
@@ -394,7 +403,7 @@ export default function Tabela() {
               <span key={z.chave}>
                 <i style={{ background: z.cor }} />
                 {z.rotulo}
-              </span>
+            </span>
             ))}
           </Legenda>
           <SeloAoVivo>Sincronizado em tempo real</SeloAoVivo>
