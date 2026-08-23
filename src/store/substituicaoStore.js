@@ -1,11 +1,4 @@
-﻿function wsUrl() {
-  try {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-    return `${protocol}//${window.location.host}/pelotense-sync`
-  } catch {
-    return 'ws://localhost:5173/pelotense-sync'
-  }
-  }
+﻿import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
 
 const estadoPadrao = {
   visivel: true,
@@ -25,6 +18,7 @@ export function criarSubstituicaoStore(rotulo) {
   const STORAGE_KEY = `pelotense:substituicao:${rotulo}:v1`
   const CHANNEL_NAME = `broadcast:sync-substituicao-${rotulo}-v1`
   const MSG_TIPO = `estado:substituicao:${rotulo}:v1`
+  const CANAL_NUVEM = `substituicao-${rotulo}`
 
 function carregar() {
   try {
@@ -75,7 +69,7 @@ function persistir() {
   if (!remoto) {
     const pacote = structuredClone(estado)
     canal?.postMessage({ tipo: MSG_TIPO, estado: pacote })
-    enviarEstadoWS(pacote)
+    publicarNuvem(CANAL_NUVEM, pacote)
   }
 
   processandoRemoto = false
@@ -93,57 +87,9 @@ function aplicarEstadoRemoto(novoEstado) {
   }
   }
 
-/* ---------- WebSocket ---------- */
+/* ---------- Sincronização na nuvem ---------- */
 
-let ws = null
-let wsReconectarTimer = null
-
-function conectarWS() {
-  if (typeof WebSocket === 'undefined') return
-
-  try {
-    ws = new WebSocket(wsUrl())
-  } catch {
-    tentarReconectarWS()
-    return
-  }
-
-  ws.onmessage = (evento) => {
-  try {
-      const msg = JSON.parse(evento.data)
-      if (msg.tipo === MSG_TIPO) {
-        aplicarEstadoRemoto(msg.estado)
-  }
-  } catch (e) {
-        console.warn(`Substituição ${rotulo}: mensagem WS inválida`, e)
-  }
-  }
-
-  ws.onclose = () => {
-    ws = null
-    tentarReconectarWS()
-  }
-
-  ws.onerror = () => {
-    ws?.close()
-  }
-  }
-
-function tentarReconectarWS() {
-  if (wsReconectarTimer) return
-  wsReconectarTimer = setTimeout(() => {
-    wsReconectarTimer = null
-    conectarWS()
-  }, 3000)
-  }
-
-function enviarEstadoWS(pacote) {
-  if (ws && ws.readyState === WebSocket.OPEN) {
-    ws.send(JSON.stringify({ tipo: MSG_TIPO, estado: pacote || estado }))
-  }
-  }
-
-    conectarWS()
+inscreverNuvem(CANAL_NUVEM, aplicarEstadoRemoto)
 
 /* ---------- BroadcastChannel ---------- */
 

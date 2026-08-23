@@ -1,14 +1,8 @@
-﻿const STORAGE_KEY = 'pelotense:placar'
-const CHANNEL_NAME = 'pelotense:sync'
+﻿import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
 
-function wsUrl() {
-  try {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
-    return `${protocol}//${window.location.host}/pelotense-sync`
-  } catch {
-    return 'ws://localhost:5173/pelotense-sync'
-  }
-  }
+const STORAGE_KEY = 'pelotense:placar'
+const CHANNEL_NAME = 'pelotense:sync'
+const CANAL_NUVEM = 'placar'
 
 export const PERIODOS = [
   '1º TEMPO',
@@ -87,7 +81,7 @@ export function setEstado(atualizador, { remoto = false } = {}) {
   if (!remoto) {
     const pacote = pacoteSincronizacao()
     canal?.postMessage({ tipo: 'estado', estado: pacote })
-    enviarEstadoWS(pacote)
+    publicarNuvem(CANAL_NUVEM, pacote)
   }
 
   processandoRemoto = false
@@ -116,9 +110,7 @@ function iniciarTickSync() {
     if (!estado.cronometro?.rodando) return
     const pacote = pacoteSincronizacao()
     canal?.postMessage({ tipo: 'estado', estado: pacote })
-    if (ws && ws.readyState === WebSocket.OPEN) {
-      ws.send(JSON.stringify({ tipo: 'estado', estado: pacote }))
-  }
+    publicarNuvem(CANAL_NUVEM, pacote)
   }, 2000)
   }
 
@@ -129,61 +121,9 @@ function pararTickSync() {
   }
   }
 
-/* ---------- WebSocket ---------- */
+/* ---------- Sincronização na nuvem ---------- */
 
-let ws = null
-let wsReconectarTimer = null
-
-function conectarWS() {
-  if (typeof WebSocket === 'undefined') return
-
-  try {
-    ws = new WebSocket(wsUrl())
-  } catch {
-    tentarReconectarWS()
-    return
-  }
-
-  ws.onopen = () => {
-    console.log('[Pelotense] WebSocket conectado')
-  }
-
-  ws.onmessage = (evento) => {
-  try {
-      const msg = JSON.parse(evento.data)
-      if (msg.tipo === 'estado') {
-        aplicarEstadoRemoto(msg.estado)
-  }
-  } catch (e) {
-      console.warn('Pelotense: mensagem WS inválida', e)
-  }
-  }
-
-  ws.onclose = () => {
-    ws = null
-    tentarReconectarWS()
-  }
-
-  ws.onerror = () => {
-    ws?.close()
-  }
-  }
-
-function tentarReconectarWS() {
-  if (wsReconectarTimer) return
-  wsReconectarTimer = setTimeout(() => {
-    wsReconectarTimer = null
-    conectarWS()
-  }, 3000)
-  }
-
-function enviarEstadoWS(pacote) {
-    if (ws && ws.readyState === WebSocket.OPEN) {
-    ws.send(JSON.stringify({ tipo: 'estado', estado: pacote || estado }))
-  }
-  }
-
-    conectarWS()
+inscreverNuvem(CANAL_NUVEM, aplicarEstadoRemoto)
 
 /* ---------- BroadcastChannel ---------- */
 

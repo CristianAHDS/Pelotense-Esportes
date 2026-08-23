@@ -1,8 +1,9 @@
 ﻿import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Header } from '../components/Header';
-import { LOGO_URL } from '../theme';
+import { Header } from '../components/Header'
+import { LOGO_URL } from '../theme'
+import { salaAtual } from '../lib/sincronizacaoNuvem'
 
 /* ---------- Dados dos segmentos ---------- */
 
@@ -533,6 +534,8 @@ const DicaAmpliar = styled.span`
 function PreviewAoVivo({ rota, largura = 1280, altura = 720, aoAmpliar }) {
   const ref = useRef(null);
   const [escala, setEscala] = useState(0);
+  const sala = salaAtual();
+  const sufixoSala = sala !== 'padrao' ? `&sala=${encodeURIComponent(sala)}` : '';
 
   useEffect(() => {
     const el = ref.current;
@@ -555,7 +558,7 @@ function PreviewAoVivo({ rota, largura = 1280, altura = 720, aoAmpliar }) {
     >
       <iframe
         title={`Prévia ${rota}`}
-        src={`${window.location.origin}${rota}?previa=1`}
+        src={`${window.location.origin}${rota}?previa=1${sufixoSala}`}
         scrolling="no"
         loading="lazy"
         tabIndex={-1}

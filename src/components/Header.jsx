@@ -1,6 +1,7 @@
 ﻿import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { LOGO_URL } from '../theme'
+import { CampoSala } from './CampoSala'
 
 const Barra = styled.header`
   display: flex;
@@ -83,6 +84,7 @@ export function Header({ subtitulo, voltar }) {
       <Titulo to="/hub">
         PELOTENSE <span>ESPORTES</span>
       </Titulo>
+      <CampoSala />
       {subtitulo && <Subtitulo>{subtitulo}</Subtitulo>}
       {voltar && <VoltarHome to="/hub">← Voltar ao hub</VoltarHome>}
     </Barra>
