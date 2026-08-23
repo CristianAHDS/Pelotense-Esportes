@@ -24,7 +24,6 @@ import {
 import { PainelSubstituicao } from '../components/PainelSubstituicao';
 
 const PERIODOS = ['1T', '2T', 'PRORROGAÇÃO', 'PÊNALTIS'];
-const ACRESCIMOS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const Container = styled.div`
   min-height: 100vh;
@@ -443,6 +442,34 @@ const EntradaNum = styled(EntradaNome)`
   }
 `;
 
+const GrupoAcrescimo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+`;
+
+const BotaoPasso = styled.button`
+  width: 42px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  background: ${({ theme }) => theme.cores.superficie};
+  color: ${({ theme }) => theme.cores.texto};
+  font-family: ${({ theme }) => theme.fontes.titulo};
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    color: ${({ theme }) => theme.cores.primaria};
+    border-color: rgba(165, 239, 28, 0.45);
+  }
+`;
+
 const CorInput = styled.input`
     width: 46px;
   height: 44px;
@@ -795,17 +822,21 @@ function PainelPartida() {
             ))}
       </ListaChips>
       <Rotulo>Acréscimo</Rotulo>
-      <ListaChips style={{ marginBottom: 16 }}>
-        {ACRESCIMOS.map((m) => (
-          <Chip
-            key={m}
-            $ativo={(estado.acrescimo || 0) === m}
-            onClick={() => definirAcrescimo(m)}
-    >
-            {m === 0 ? 'Sem' : `+${m}:00`}
-          </Chip>
-            ))}
-      </ListaChips>
+      <GrupoAcrescimo>
+        <BotaoPasso type="button" onClick={() => definirAcrescimo((estado.acrescimo || 0) - 1)}>−</BotaoPasso>
+        <EntradaNum
+          type="number"
+          min="0"
+          max="99"
+          placeholder="Sem"
+          value={estado.acrescimo ?? ''}
+          onChange={(e) => definirAcrescimo(e.target.value)}
+        />
+        <BotaoPasso type="button" onClick={() => definirAcrescimo((estado.acrescimo || 0) + 1)}>+</BotaoPasso>
+        <Chip $ativo={(estado.acrescimo || 0) === 0} onClick={() => definirAcrescimo(0)}>
+          Sem
+        </Chip>
+      </GrupoAcrescimo>
       <Rotulo>Estado da partida</Rotulo>
       <ListaChips>
         {ESTADOS_PARTIDA.map((e) => (

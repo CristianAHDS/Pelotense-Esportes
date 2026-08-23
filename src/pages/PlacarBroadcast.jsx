@@ -42,6 +42,7 @@ const FaixaTempo = styled.div`
   justify-content: center;
   gap: 10px;
   padding: 6px 28px;
+  position: relative;
   background: rgba(0, 0, 0, 0.7);
   border-radius: 6px 6px 0 0;
   backdrop-filter: blur(4px);
@@ -72,9 +73,9 @@ const FaixaTempo = styled.div`
 
   .acrescimo {
     position: absolute;
-    left: calc(100% + 40px);
-    top: -6px;
-    bottom: -6px;
+    left: calc(100% + 2px);
+    top: 0;
+    bottom: 0;
     display: flex;
     align-items: center;
     padding: 0 16px;
@@ -334,8 +335,8 @@ export default function PlacarBroadcast() {
           <span className="periodo">{periodo}</span>
           <div className="grupo">
             <span className="tempo">{tempo}</span>
-            <span className={`acrescimo${acrescimo > 0 ? ' visivel' : ''}`}>+{Math.max(0, acrescimo || 0)}:00</span>
           </div>
+          <span className={`acrescimo${acrescimo > 0 ? ' visivel' : ''}`}>+{Math.max(0, acrescimo || 0)}:00</span>
         </FaixaTempo>
 
         <div style={{ display: 'flex', height: 5, width: '100%' }}>
