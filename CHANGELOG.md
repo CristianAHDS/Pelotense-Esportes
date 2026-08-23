@@ -3,6 +3,9 @@
 ## 23/08/2026
 
 ### Sincronização na nuvem (multi-dispositivo)
+- **Exclusividade de controle por sala**: só um dispositivo publica por vez (`salas/{sala}/controle` com claim transacional, heartbeat de 8s e liberação automática via `onDisconnect`); demais controles viram espectadores com indicador no header e botão "Assumir". Publicações feitas antes de assumir ficam em buffer e são enviadas ao assumir — elimina o conflito/flicker quando dois aparelhos controlam juntos.
+- **Acréscimo corrigido nos 4 placares broadcast**: chip sempre montado alternando opacidade (fade suave) em vez de montar/desmontar — elimina o resquício de sombra/box fantasma ao clicar em "Sem" (artefato de camada GPU/OBS com `filter: drop-shadow`).
+- **Placar padrão**: acréscimo ganhou caixa própria (mesmo estilo das ligas PL/BL/LL) e offset de 40px para não sobrepor a faixa do cronômetro (transparência empilhada formava área mais escura).
 - **Firebase Realtime Database** substitui o WebSocket local como camada de sincronização entre overlay e controle — agora funciona entre dispositivos diferentes no link do Netlify, não só no mesmo navegador.
 - Todos os 10 stores migrados (`placar`, `placar-pro`, `placar-broadcast` PL/BL/LL/padrão, `tabela`, `mata-mata`, `penaltis`, `substituicao`): publicam o estado na nuvem em cada mudança e recebem atualizações remotas, mantendo BroadcastChannel + localStorage como caminho local rápido.
 - **Salas (`?sala=nome`)**: dispositivos na mesma URL de sala compartilham estado; salas diferentes ficam isoladas (permite partidas simultâneas). Sem parâmetro, usa a sala `padrao`.
@@ -11,6 +14,7 @@
 - Estado publicado como JSON serializado no Realtime Database (`salas/{sala}/{canal}`), evitando perda de `null`/arrays; eco das próprias publicações é filtrado.
 - Configuração via variáveis `VITE_FIREBASE_*` (ver `.env.example`) — sem chaves configuradas, o site continua funcionando só com sincronização local.
 - Plugin WebSocket do Vite removido (`vite.config.js`), dependência `ws` desinstalada.
+- **README** e **AGENTS.md** atualizados com a nova arquitetura de sincronização (Firebase RTDB, salas, `CampoSala`, variáveis de ambiente e armadilhas relacionadas).
 
 ### Novidades
 - **Landing** em `/` com seções Sync, Classificação ao vivo, OBS, Fluxo, CTA e Rodapé; sistema passa para `/hub`.

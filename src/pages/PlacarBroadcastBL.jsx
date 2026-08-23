@@ -104,6 +104,11 @@ const ChipAcrescimo = styled.div`
   background: rgba(0, 0, 0, 0.78);
   border-bottom: 3px solid #fbbf24;
   white-space: nowrap;
+  opacity: ${({ $visivel }) => ($visivel ? 1 : 0)};
+  visibility: ${({ $visivel }) => ($visivel ? 'visible' : 'hidden')};
+  transition:
+    opacity 0.25s ease,
+    visibility 0.25s ease;
 
   span {
     transform: skewX(10deg);
@@ -390,7 +395,7 @@ export default function PlacarBroadcastBL() {
           <ChipPeriodo><span>{periodo}</span></ChipPeriodo>
           <ChipTempo>
             <span className="tempo">{tempo}</span>
-            {acrescimo > 0 && <ChipAcrescimo><span>+{acrescimo}:00</span></ChipAcrescimo>}
+            <ChipAcrescimo $visivel={acrescimo > 0}><span>+{Math.max(0, acrescimo || 0)}:00</span></ChipAcrescimo>
           </ChipTempo>
         </LinhaTempo>
 

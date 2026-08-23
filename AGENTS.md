@@ -25,14 +25,17 @@ npm run preview    # servir o build localmente
 
 ### Stores sincronizados (`src/store/`)
 Padrão compartilhado por todos os módulos:
-- Estado único + `localStorage` + **BroadcastChannel** para sync entre abas (overlay ↔ controle)
+- Estado único + `localStorage` + **BroadcastChannel** para sync local entre abas (overlay ↔ controle)
+- **Sync na nuvem**: cada store publica o estado com `publicarNuvem(CANAL_NUVEM, pacote)` e escuta remotos com `inscreverNuvem(CANAL_NUVEM, ...)` de `src/lib/sincronizacaoNuvem.js` (Firebase RTDB); eco das próprias publicações é filtrado pela lib
+- **Salas**: caminho no banco é `salas/{sala}/{canal}`; a sala vem da URL (`?sala=nome`, padrão `padrao`) e é lida no carregamento dos módulos — trocar de sala recarrega a página
+- **Controle exclusivo**: só o dono da sala publica (`publicarNuvem` filtra via `ehControlador`); claim em `salas/{sala}/controle` com heartbeat/onDisconnect, gerenciado pelo hook `useControleRemoto` + indicador no `Header` (auto-assume na 1ª interação fora do hub)
 - API: `getEstado()`, `inscrever(fn)`, ações que chamam `setEstado()` internamente
 - O hook `src/hooks/usePlacarBroadcast.js` consome `{ getEstado, inscrever }` nas páginas
 
 ### Componentes (`src/components/`)
 - `Escudo` — recebe `{ cor, sigla, url, tamanho }`; tenta `/escudos/SIGLA.png` como fallback
 - `PainelOitavas`, `PainelChaveamento`, `Chaveamento`, `ListaOitavas` — mata-mata
-- `Header` — usado nos controles; overlays usam botão "←" voltar para `/hub`
+- `Header` — usado nos controles e no hub; inclui `CampoSala` (campo de sala + "Copiar link" para levar a URL ao OBS/outro computador); overlays usam botão "←" voltar para `/hub`
 
 ## Convenções
 - **Paleta**: fundo escuro (#060606/#0d0d0d), acento neon **#a5ef1c**. Cores de times da A2 (ex.: `#008F3D`) são preservadas — não trocar pelo neon.
@@ -51,3 +54,6 @@ Padrão compartilhado por todos os módulos:
 - Iframes de prévia do hub têm 720–760px de largura: breakpoints de media query precisam ficar **abaixo** disso.
 - Grades com `nth-child` fixo quebram ao adicionar/remover cards — revisar spans.
 - Ao mudar assinatura de ação de um store, atualizar todos os controles que a usam.
+- O estado publicado na nuvem vai como JSON serializado (string) em `salas/{sala}/{canal}` — não gravar objeto cru no RTDB, senão `null`/arrays perdem fidelidade.
+- Variáveis `VITE_*` são embutidas no build: cadastrar/alterar no Netlify exige novo deploy.
+- Sem `VITE_FIREBASE_DATABASE_URL` configurada, `inscreverNuvem`/`publicarNuvem` viram no-op — testar multi-dispositivo só funciona com as chaves presentes.
