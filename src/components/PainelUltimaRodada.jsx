@@ -105,7 +105,9 @@ const BotaoLinha = styled.button`
   font-size: 0.72rem;
   line-height: 1;
   cursor: pointer;
-  transition: border-color 120ms ease, color 120ms ease;
+  transition:
+    border-color 120ms ease,
+    color 120ms ease;
 
   &:hover {
     border-color: #ef4444;
@@ -126,7 +128,9 @@ const BotaoAdicionar = styled.button`
   letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: border-color 120ms ease, color 120ms ease;
+  transition:
+    border-color 120ms ease,
+    color 120ms ease;
 
   &:hover {
     border-color: #a5ef1c;
@@ -192,7 +196,9 @@ const Botao = styled.button`
   text-transform: uppercase;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: filter 120ms ease, border-color 120ms ease;
+  transition:
+    filter 120ms ease,
+    border-color 120ms ease;
 
   ${({ $primario }) =>
     $primario
@@ -233,7 +239,7 @@ export function PainelUltimaRodada() {
       } else {
         ultimaRodada.preencherDaFGF(dados);
         setAviso(
-          `Dados da ${dados.titulo || 'última rodada'} carregados (${dados.jogos.length} jogos, ${dados.classificacao.length} times).`
+          `Dados da ${dados.titulo || 'última rodada'} carregados (${dados.jogos.length} jogos, ${dados.classificacao.length} times).`,
         );
       }
     } catch (e) {
@@ -245,7 +251,7 @@ export function PainelUltimaRodada() {
   }
 
   return (
-    <Cartao>
+    <Cartao style={{ marginTop: 40 }}>
       <Titulo>
         <span>●</span> Última Rodada
       </Titulo>
@@ -256,7 +262,9 @@ export function PainelUltimaRodada() {
           value={estado.titulo}
           placeholder="ÚLTIMA RODADA"
           maxLength={32}
-          onChange={(e) => ultimaRodada.atualizarCampo('titulo', e.target.value)}
+          onChange={(e) =>
+            ultimaRodada.atualizarCampo('titulo', e.target.value)
+          }
         />
       </CampoTitulo>
 
@@ -269,14 +277,18 @@ export function PainelUltimaRodada() {
                 value={jogo.casaSigla}
                 placeholder="SIGLA"
                 maxLength={4}
-                onChange={(e) => ultimaRodada.atualizarJogo(i, 'casaSigla', e.target.value)}
+                onChange={(e) =>
+                  ultimaRodada.atualizarJogo(i, 'casaSigla', e.target.value)
+                }
               />
               <EntradaNum
                 type="number"
                 min={0}
                 max={99}
                 value={jogo.casaGols}
-                onChange={(e) => ultimaRodada.atualizarJogo(i, 'casaGols', e.target.value)}
+                onChange={(e) =>
+                  ultimaRodada.atualizarJogo(i, 'casaGols', e.target.value)
+                }
               />
               <Separador>×</Separador>
               <EntradaNum
@@ -284,15 +296,22 @@ export function PainelUltimaRodada() {
                 min={0}
                 max={99}
                 value={jogo.foraGols}
-                onChange={(e) => ultimaRodada.atualizarJogo(i, 'foraGols', e.target.value)}
+                onChange={(e) =>
+                  ultimaRodada.atualizarJogo(i, 'foraGols', e.target.value)
+                }
               />
               <Entrada
                 value={jogo.foraSigla}
                 placeholder="SIGLA"
                 maxLength={4}
-                onChange={(e) => ultimaRodada.atualizarJogo(i, 'foraSigla', e.target.value)}
+                onChange={(e) =>
+                  ultimaRodada.atualizarJogo(i, 'foraSigla', e.target.value)
+                }
               />
-              <BotaoLinha onClick={() => ultimaRodada.removerJogo(i)} title="Remover jogo">
+              <BotaoLinha
+                onClick={() => ultimaRodada.removerJogo(i)}
+                title="Remover jogo"
+              >
                 ✕
               </BotaoLinha>
             </LinhaJogo>
@@ -310,7 +329,9 @@ export function PainelUltimaRodada() {
                 value={p.sigla}
                 placeholder="SIGLA"
                 maxLength={4}
-                onChange={(e) => ultimaRodada.atualizarPosicao(i, 'sigla', e.target.value)}
+                onChange={(e) =>
+                  ultimaRodada.atualizarPosicao(i, 'sigla', e.target.value)
+                }
               />
               <EntradaNum
                 type="number"
@@ -318,9 +339,14 @@ export function PainelUltimaRodada() {
                 max={20}
                 placeholder="POS"
                 value={p.pos}
-                onChange={(e) => ultimaRodada.atualizarPosicao(i, 'pos', e.target.value)}
+                onChange={(e) =>
+                  ultimaRodada.atualizarPosicao(i, 'pos', e.target.value)
+                }
               />
-              <BotaoLinha onClick={() => ultimaRodada.removerPosicao(i)} title="Remover posição">
+              <BotaoLinha
+                onClick={() => ultimaRodada.removerPosicao(i)}
+                title="Remover posição"
+              >
                 ✕
               </BotaoLinha>
             </LinhaPosicao>
@@ -338,14 +364,10 @@ export function PainelUltimaRodada() {
         <Botao $primario onClick={() => ultimaRodada.mostrar()}>
           Mostrar overlay
         </Botao>
-        <Botao onClick={() => ultimaRodada.ocultar()}>
-          Ocultar overlay
-        </Botao>
+        <Botao onClick={() => ultimaRodada.ocultar()}>Ocultar overlay</Botao>
       </Acoes>
 
-      {(erro || aviso) && (
-        <Aviso>{erro || aviso}</Aviso>
-      )}
+      {(erro || aviso) && <Aviso>{erro || aviso}</Aviso>}
     </Cartao>
   );
 }

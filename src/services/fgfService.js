@@ -273,7 +273,7 @@ export async function importarClassificacaoFGF({ forcar = false } = {}) {
 
 /* ---------- Última rodada (jogos realizados + posições) ---------- */
 
-const CHAVE_CACHE_UR = 'pelotense:ultima-rodada:fgf:v1'
+const CHAVE_CACHE_UR = 'pelotense:ultima-rodada:fgf:v2'
 
 function mapaNomeParaSigla(dados) {
   const mapa = new Map()
@@ -286,24 +286,20 @@ function mapaNomeParaSigla(dados) {
   return mapa
 }
 
-/* A página traz um carrossel Bootstrap com uma rodada por item:
-   .carousel-titulo h4 = "RODADA N" e cada jogo em .carousel-conteudo
-   com .mandante img[title], .visitante img[title] e placar "1 X 0"
-   no primeiro div de .contra. Jogos sem placar numérico ainda não
-   aconteceram e são descartados. */
+/* Uma rodada só vale como "última disputada" se tiver placares numéricos.
+   Blocos especiais ("JOGOS ADIADOS", "Classificação Geral") são ignorados. */
 function extrairUltimaRodada(html, nomeParaSigla) {
   const doc = new DOMParser().parseFromString(html, 'text/html')
   const itens = [...doc.querySelectorAll('.carousel-item')]
 
-  for (let i = itens.length - 1; i >= 0; i--) {
-    const item = itens[i]
+  const lerItem = (item) => {
     const titulo = (
       item.querySelector('.carousel-titulo h4')?.textContent || ''
     )
       .replace(/\s+/g, ' ')
       .trim()
       .toUpperCase()
-    if (!titulo) continue
+    if (!titulo || /ADIADAS|ADIADOS|GERAL/.test(titulo)) return null
 
     const jogos = []
     for (const bloco of item.querySelectorAll('.carousel-conteudo')) {
@@ -330,10 +326,22 @@ function extrairUltimaRodada(html, nomeParaSigla) {
       })
     }
 
-    if (jogos.length) return { titulo, jogos }
+    return { titulo, jogos }
   }
 
-  return null
+  /* Da mais recente para a mais antiga: primeira rodada com ao menos
+     metade dos jogos realizados; se nenhuma, aceita qualquer jogo feito. */
+  let reserva = null
+  for (let i = itens.length - 1; i >= 0; i--) {
+    const lido = lerItem(itens[i])
+    if (!lido || !lido.jogos.length) continue
+    if (!reserva) reserva = lido
+    const totalBlocos = itens[i].querySelectorAll('.carousel-conteudo').length
+    if (lido.jogos.length >= Math.max(4, Math.ceil(totalBlocos / 2))) {
+      return lido
+    }
+  }
+  return reserva
 }
 
 function lerCacheUR() {

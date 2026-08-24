@@ -1,5 +1,12 @@
 # Changelog
 
+## 24/08/2026 (4)
+
+### Última Rodada: parser da FGF blindado
+- A escolha da rodada agora exige que ao menos metade dos jogos (mínimo 4) tenham placar numérico — evita pegar rodadas futuras ou parciais.
+- Blocos especiais do carrossel ("JOGOS ADIADOS", "Classificação Geral") são explicitamente ignorados.
+- Cache local reversionado (v2) para descartar qualquer pacote antigo salvo no navegador.
+
 ## 24/08/2026 (3)
 
 ### Última Rodada com todos os times
