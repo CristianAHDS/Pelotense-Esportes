@@ -21,6 +21,8 @@ import Substituicao from './pages/Substituicao'
 import ControleSubstituicao from './pages/ControleSubstituicao'
 import Penaltis from './pages/Penaltis'
 import ControlePenaltis from './pages/ControlePenaltis'
+import Escalacao from './pages/Escalacao'
+import ControleEscalacao from './pages/ControleEscalacao'
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
