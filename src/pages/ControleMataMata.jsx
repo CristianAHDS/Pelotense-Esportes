@@ -1,5 +1,4 @@
 ﻿import styled from 'styled-components';
-import { CoresFixas } from '../components/CoresFixas';
 import { PreviaOverlay } from '../components/PreviaOverlay';
 import { useState } from 'react';
 import { Header } from '../components/Header';
@@ -443,10 +442,7 @@ export default function ControleMataMata() {
   return (
                   <LinhaLado key={ladoNome}>
                     <span className="ladoRotulo">{ladoNome}</span>
-                    <CoresFixas
-                      valor={lado.cor}
-                      onChange={(v) => atualizarLado(faseAtiva, ci, ladoNome, 'cor', v)}
-                    /><InputNome
+                    <InputNome
                       value={lado.nome}
                       placeholder="NOME DO TIME"
                       maxLength={24}

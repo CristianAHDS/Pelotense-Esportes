@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Header } from '../components/Header';
 import { PainelSubstituicao } from '../components/PainelSubstituicao';
+import { PreviaOverlay } from '../components/PreviaOverlay';
 
 const Container = styled.main`
   min-height: 100vh;

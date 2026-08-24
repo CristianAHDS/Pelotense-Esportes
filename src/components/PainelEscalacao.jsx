@@ -14,7 +14,8 @@ const LADOS = [
     campoCor: 'corCasa',
     campoNome: 'nomeCasa',
     campoSigla: 'siglaCasa',
-    campoFormacao: 'formacaoCasa'
+    campoFormacao: 'formacaoCasa',
+    campoTecnico: 'tecnicoCasa'
   },
   {
     lado: 'fora',
@@ -22,7 +23,8 @@ const LADOS = [
     campoCor: 'corFora',
     campoNome: 'nomeFora',
     campoSigla: 'siglaFora',
-    campoFormacao: 'formacaoFora'
+    campoFormacao: 'formacaoFora',
+    campoTecnico: 'tecnicoFora'
   }
 ];
 
@@ -242,6 +244,17 @@ function ColunaTime({ estado, config, atualizarCampo, atualizarJogador }) {
               </option>
             ))}
           </Selecao>
+        </Campo>
+      </Linha>
+      <Linha>
+        <Campo className="cresce">
+          <Rotulo>Técnico</Rotulo>
+          <Entrada
+            value={estado[config.campoTecnico]}
+            maxLength={28}
+            placeholder="Nome do técnico"
+            onChange={(e) => atualizarCampo(config.campoTecnico, e.target.value)}
+          />
         </Campo>
       </Linha>
       {(estado.jogadores?.[config.lado] || []).map((jogador, i) => (

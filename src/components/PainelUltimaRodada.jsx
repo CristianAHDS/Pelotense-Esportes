@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { ultimaRodada } from '../store/ultimaRodadaStore';
+import { importarUltimaRodadaFGF } from '../services/fgfService';
 
 const Cartao = styled.section`
   background: #0d0d0d;
@@ -84,7 +86,7 @@ const LinhaJogo = styled.div`
 
 const LinhaPosicao = styled.div`
   display: grid;
-  grid-template-columns: 30px minmax(0, 1fr) 64px;
+  grid-template-columns: minmax(0, 1fr) 64px;
   gap: 8px;
   align-items: center;
 
@@ -168,8 +170,40 @@ const Botao = styled.button`
   `}
 `;
 
+const Aviso = styled.p`
+  margin: 12px 0 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.5px;
+  color: #f59e0b;
+`;
+
 export function PainelUltimaRodada() {
   const estado = usePlacarBroadcast(ultimaRodada);
+  const [carregando, setCarregando] = useState(false);
+  const [erro, setErro] = useState('');
+  const [aviso, setAviso] = useState('');
+
+  async function puxarFGF() {
+    setCarregando(true);
+    setErro('');
+    setAviso('');
+    try {
+      const dados = await importarUltimaRodadaFGF();
+      if (!dados.jogos?.length) {
+        setAviso('Nenhum jogo realizado encontrado na FGF.');
+      } else {
+        ultimaRodada.preencherDaFGF(dados);
+        setAviso(
+          `Dados da ${dados.titulo || 'última rodada'} carregados (${dados.jogos.length} jogos, ${Math.min(dados.classificacao.length, 6)} posições).`
+        );
+      }
+    } catch (e) {
+      console.warn('Última rodada: falha ao buscar FGF.', e);
+      setErro('Não foi possível acessar a FGF agora. Tente novamente.');
+    } finally {
+      setCarregando(false);
+    }
+  }
 
   return (
     <Cartao>
@@ -227,7 +261,6 @@ export function PainelUltimaRodada() {
           <SecaoTitulo>Classificação após a rodada</SecaoTitulo>
           {(estado.posicoes || []).map((p, i) => (
             <LinhaPosicao key={`pos-${i}`}>
-              <Indice>{i + 1}º</Indice>
               <Entrada
                 value={p.sigla}
                 placeholder="SIGLA"
@@ -236,11 +269,11 @@ export function PainelUltimaRodada() {
               />
               <EntradaNum
                 type="number"
-                min={0}
-                max={999}
-                placeholder="PTS"
-                value={p.pontos}
-                onChange={(e) => ultimaRodada.atualizarPosicao(i, 'pontos', e.target.value)}
+                min={1}
+                max={20}
+                placeholder="POS"
+                value={p.pos}
+                onChange={(e) => ultimaRodada.atualizarPosicao(i, 'pos', e.target.value)}
               />
             </LinhaPosicao>
           ))}
@@ -248,6 +281,9 @@ export function PainelUltimaRodada() {
       </Grade>
 
       <Acoes>
+        <Botao $primario onClick={puxarFGF} disabled={carregando}>
+          {carregando ? 'Buscando…' : 'Puxar dados da FGF'}
+        </Botao>
         <Botao $primario onClick={() => ultimaRodada.mostrar()}>
           Mostrar overlay
         </Botao>
@@ -255,6 +291,10 @@ export function PainelUltimaRodada() {
           Ocultar overlay
         </Botao>
       </Acoes>
+
+      {(erro || aviso) && (
+        <Aviso>{erro || aviso}</Aviso>
+      )}
     </Cartao>
   );
 }

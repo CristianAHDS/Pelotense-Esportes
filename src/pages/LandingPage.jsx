@@ -1855,6 +1855,8 @@ const DEMOS_AO_VIVO = [
   { id: 'placar', rotulo: 'Placar Broadcast', rota: '/placar-broadcast' },
   { id: 'tabela', rotulo: 'Classificação', rota: '/tabela' },
   { id: 'fases', rotulo: 'Fases finais', rota: '/fases-finais' },
+  { id: 'escalacao', rotulo: 'Escalação', rota: '/escalacao' },
+  { id: 'rodada', rotulo: 'Última Rodada', rota: '/ultima-rodada' },
 ];
 
 const ROTAS_EXTRAS = [
@@ -2283,6 +2285,203 @@ const LinksRapidos = styled.div`
   }
 `;
 
+const CaixaEscalacao = styled.div`
+  width: min(560px, 100%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+
+  .cartao {
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(160deg, #151515, #090909);
+    border-left: 4px solid ${({ $c1 }) => $c1};
+    border-top: 1px solid rgba(252, 252, 251, 0.09);
+    border-right: 1px solid rgba(252, 252, 251, 0.09);
+    border-bottom: 1px solid rgba(252, 252, 251, 0.09);
+
+    &:last-child {
+      border-left-color: ${({ $c2 }) => $c2};
+    }
+  }
+
+  .topo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    font-family: ${F.dados};
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: ${C.txt};
+
+    .form {
+      margin-left: auto;
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: ${C.acc};
+      color: #0a0f00;
+      font-size: 0.66rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  .jog {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 12px;
+    font-family: ${F.dados};
+    font-size: 0.74rem;
+    color: ${C.txt};
+    opacity: 0.18;
+    transform: translateX(-10px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+
+    b {
+      min-width: 18px;
+      text-align: center;
+      color: ${C.acc};
+    }
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .tec {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 12px;
+    border-top: 1px solid rgba(165, 239, 28, 0.25);
+    font-family: ${F.dados};
+    font-size: 0.62rem;
+    letter-spacing: 1.5px;
+    color: ${C.neu};
+
+    i {
+      font-style: normal;
+      color: ${C.acc};
+      font-weight: 700;
+    }
+  }
+
+  [data-on='true'] .jog {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i) * 110ms);
+  }
+`;
+
+const CaixaRodada = styled.div`
+  width: min(560px, 100%);
+  border-radius: 14px;
+  overflow: hidden;
+  border-top: 3px solid ${C.acc};
+  background: linear-gradient(160deg, #151515, #090909);
+  border-left: 1px solid rgba(252, 252, 251, 0.09);
+  border-right: 1px solid rgba(252, 252, 251, 0.09);
+  border-bottom: 1px solid rgba(252, 252, 251, 0.09);
+
+  .topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 16px;
+    background: rgba(255, 255, 255, 0.03);
+    font-family: ${F.dados};
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: ${C.txt};
+
+    span {
+      padding: 2px 10px;
+      border-radius: 999px;
+      background: ${C.acc};
+      color: #0a0f00;
+      font-size: 0.56rem;
+      letter-spacing: 1.5px;
+    }
+  }
+
+  .jogo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 16px;
+    font-family: ${F.dados};
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: ${C.txt};
+    opacity: 0.18;
+    transform: translateY(-8px);
+    transition:
+      opacity 0.4s ease,
+      transform 0.4s ease;
+
+    & + & {
+      border-top: 1px solid rgba(252, 252, 251, 0.05);
+    }
+
+    .lado {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 64px;
+
+      &.fim {
+        justify-content: flex-end;
+      }
+    }
+
+    .placar {
+      color: ${C.acc};
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  .faixa-pos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 16px 13px;
+    border-top: 1px solid rgba(252, 252, 251, 0.07);
+  }
+
+  .chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+
+    em {
+      font-style: normal;
+      font-family: ${F.dados};
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: ${C.acc};
+    }
+  }
+
+  [data-on='true'] .jogo {
+    opacity: 1;
+    transform: none;
+    transition-delay: calc(var(--i) * 130ms);
+  }
+`;
+
 function DemoAoVivo() {
   const [ativa, definirAtiva] = useState(0);
   const [segundos, definirSegundos] = useState(2232);
@@ -2416,6 +2615,68 @@ function DemoAoVivo() {
                 <div className="faixa">CAMPEÃO</div>
               </div>
             </CaixaBracket>
+          </PainelDemo>
+
+          <PainelDemo data-on={ativa === 3}>
+            <CaixaEscalacao $c1="#047857" $c2="#c1121f">
+              {[
+                { esc: 'VER', cor: '#047857', jog: ['CAIO', 'LÉO', 'MARCOS', 'DUDU'], tec: 'PROF. SILVA' },
+                { esc: 'PAS', cor: '#c1121f', jog: ['TIAGO', 'RENAN', 'IVO', 'NETO'], tec: 'PROF. LUIZ' },
+              ].map((time, ti) => (
+                <div key={ti} className="cartao">
+                  <div className="topo">
+                    <Escudo url={`/escudos/${time.esc}.png`} sigla={time.esc} cor={time.cor} tamanho={20} />
+                    {time.esc}
+                    <span className="form">4-3-3</span>
+                  </div>
+                  {time.jog.map((nome, ji) => (
+                    <div key={ji} className="jog" style={{ '--i': ji }}>
+                      <b>{ji + 1}</b>
+                      <span>{nome}</span>
+                    </div>
+                  ))}
+                  <div className="tec">
+                    <i>TÉC</i> {time.tec}
+                  </div>
+                </div>
+              ))}
+            </CaixaEscalacao>
+          </PainelDemo>
+
+          <PainelDemo data-on={ativa === 4}>
+            <CaixaRodada>
+              <div className="topo">
+                RODADA 7
+                <span>RESULTADOS</span>
+              </div>
+              {[
+                ['VER', 'AIM', '2', '1'],
+                ['PAS', 'ESP', '3', '0'],
+                ['SCR', 'GRA', '1', '1'],
+              ].map(([casa, fora, gc, gf], i) => (
+                <div key={i} className="jogo" style={{ '--i': i }}>
+                  <span className="lado">
+                    <Escudo url={`/escudos/${casa}.png`} sigla={casa} cor="#1f1f1f" tamanho={22} />
+                    {casa}
+                  </span>
+                  <span className="placar">
+                    {gc} × {gf}
+                  </span>
+                  <span className="lado fim">
+                    {fora}
+                    <Escudo url={`/escudos/${fora}.png`} sigla={fora} cor="#1f1f1f" tamanho={22} />
+                  </span>
+                </div>
+              ))}
+              <div className="faixa-pos">
+                {[['VER', 1], ['PAS', 2], ['ESP', 3], ['AIM', 4], ['SCR', 5]].map(([sig, pos]) => (
+                  <span key={sig} className="chip">
+                    <Escudo url={`/escudos/${sig}.png`} sigla={sig} cor="#1f1f1f" tamanho={30} />
+                    <em>{pos}º</em>
+                  </span>
+                ))}
+              </div>
+            </CaixaRodada>
           </PainelDemo>
         </PalcoDemos>
         </JanelaDemo>

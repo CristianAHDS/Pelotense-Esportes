@@ -116,6 +116,36 @@ const LinhaJogador = styled.div`
   }
 `;
 
+const LinhaTecnico = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px;
+  background: #000;
+  border-top: 1px solid ${VERDE}33;
+
+  .rotulo {
+    font-family: 'Rajdhani', 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: ${VERDE};
+  }
+
+  .nome {
+    flex: 1;
+    min-width: 0;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgba(255, 255, 255, 0.85);
+  }
+`;
+
 function corContraste(hex) {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
   const g = parseInt(hex.slice(3, 5), 16) / 255;
@@ -130,6 +160,7 @@ export function EscalacaoCartao({ dados, lado }) {
   const sigla = casa ? dados.siglaCasa : dados.siglaFora;
   const nomeTime = casa ? dados.nomeCasa : dados.nomeFora;
   const formacao = casa ? dados.formacaoCasa : dados.formacaoFora;
+  const tecnico = casa ? dados.tecnicoCasa : dados.tecnicoFora;
   const jogadores = (dados.jogadores?.[lado] || []).slice(0, 11);
 
   return (
@@ -148,6 +179,12 @@ export function EscalacaoCartao({ dados, lado }) {
           </span>
         </LinhaJogador>
       ))}
+      {tecnico && (
+        <LinhaTecnico>
+          <span className="rotulo">TÉC</span>
+          <span className="nome">{tecnico}</span>
+        </LinhaTecnico>
+      )}
     </Cartao>
   );
 }

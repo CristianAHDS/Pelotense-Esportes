@@ -123,6 +123,10 @@ function extrairClassificacao(html) {
         tokensSigla[tokensSigla.length - 1] || ''
       ).toUpperCase()
 
+      /* Posição vem junto na célula ("5º BRA") */
+      const posTexto = String(tokensSigla[0] || '').replace(/\D/g, '')
+      const pos = posTexto ? numeroDe(posTexto) : 0
+
       if (!nome && !sigla) continue
 
       const nums = [...tr.querySelectorAll('td.dados')].map((td) =>
@@ -130,6 +134,7 @@ function extrairClassificacao(html) {
       )
 
       const time = {
+        pos,
         nome,
         sigla,
         p: numeroDe(tdPontos.textContent),
@@ -252,7 +257,7 @@ export async function importarClassificacaoFGF({ forcar = false } = {}) {
       origem: 'rede',
       mudou: !cache || cache.hash !== hashDe(dados),
     }
-  } catch (erro) {
+    } catch (erro) {
     if (cache) {
       return {
         total: cache.dados.length,
@@ -261,6 +266,142 @@ export async function importarClassificacaoFGF({ forcar = false } = {}) {
         origem: 'cache',
         mudou: false,
       }
+    }
+    throw erro
+  }
+}
+
+/* ---------- Última rodada (jogos realizados + posições) ---------- */
+
+const CHAVE_CACHE_UR = 'pelotense:ultima-rodada:fgf:v1'
+
+function mapaNomeParaSigla(dados) {
+  const mapa = new Map()
+  for (const t of dados) {
+    const chave = normalizar(t.nome)
+    if (!chave) continue
+    const padrao = SIGLAS_FGF_PARA_PADRAO[t.sigla]
+    mapa.set(chave, padrao || String(t.sigla || '').slice(0, 4))
+  }
+  return mapa
+}
+
+/* A página traz um carrossel Bootstrap com uma rodada por item:
+   .carousel-titulo h4 = "RODADA N" e cada jogo em .carousel-conteudo
+   com .mandante img[title], .visitante img[title] e placar "1 X 0"
+   no primeiro div de .contra. Jogos sem placar numérico ainda não
+   aconteceram e são descartados. */
+function extrairUltimaRodada(html, nomeParaSigla) {
+  const doc = new DOMParser().parseFromString(html, 'text/html')
+  const itens = [...doc.querySelectorAll('.carousel-item')]
+
+  for (let i = itens.length - 1; i >= 0; i--) {
+    const item = itens[i]
+    const titulo = (
+      item.querySelector('.carousel-titulo h4')?.textContent || ''
+    )
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toUpperCase()
+    if (!titulo) continue
+
+    const jogos = []
+    for (const bloco of item.querySelectorAll('.carousel-conteudo')) {
+      const placarTexto = (
+        bloco.querySelector('.contra div')?.textContent || ''
+      ).trim()
+      const m = placarTexto.match(/^(\d+)\s*[Xx×]\s*(\d+)$/)
+      if (!m) continue
+
+      const nomeCasa =
+        bloco.querySelector('.mandante img')?.getAttribute('title') || ''
+      const nomeFora =
+        bloco.querySelector('.visitante img')?.getAttribute('title') || ''
+
+      jogos.push({
+        casaSigla:
+          nomeParaSigla.get(normalizar(nomeCasa)) ||
+          nomeCasa.slice(0, 4).toUpperCase(),
+        foraSigla:
+          nomeParaSigla.get(normalizar(nomeFora)) ||
+          nomeFora.slice(0, 4).toUpperCase(),
+        casaGols: m[1],
+        foraGols: m[2],
+      })
+    }
+
+    if (jogos.length) return { titulo, jogos }
+  }
+
+  return null
+}
+
+function lerCacheUR() {
+  try {
+    const bruto = localStorage.getItem(CHAVE_CACHE_UR)
+    if (!bruto) return null
+    const cache = JSON.parse(bruto)
+    if (!cache?.pacote) return null
+    return cache
+  } catch (e) {
+    return null
+  }
+}
+
+function gravarCacheUR(pacote) {
+  try {
+    localStorage.setItem(
+      CHAVE_CACHE_UR,
+      JSON.stringify({ quando: Date.now(), pacote })
+    )
+  } catch (e) {
+    console.warn('FGF: falha ao salvar cache da última rodada.', e)
+  }
+}
+
+export async function importarUltimaRodadaFGF({ forcar = false } = {}) {
+  const aplicarPacote = (pacote) => ({
+    titulo: pacote.titulo,
+    jogos: pacote.jogos,
+    classificacao: pacote.classificacao,
+    quando: pacote.quando,
+  })
+
+  const cache = lerCacheUR()
+  const idade = cache ? Date.now() - (cache.quando || 0) : Infinity
+  if (!forcar && cache && idade < TTL_CACHE_MS) {
+    return { ...aplicarPacote(cache.pacote), origem: 'cache' }
+  }
+
+  try {
+    const html = await obterHtml()
+    const dadosClass = extrairClassificacao(html)
+    if (!dadosClass.length) {
+      throw new Error('Classificação não encontrada na página da FGF')
+    }
+
+    const nomeParaSigla = mapaNomeParaSigla(dadosClass)
+    const rodada = extrairUltimaRodada(html, nomeParaSigla)
+
+    const classificacao = dadosClass
+      .filter((t) => t.pos > 0)
+      .sort((a, b) => a.pos - b.pos)
+      .map((t) => ({
+        sigla: SIGLAS_FGF_PARA_PADRAO[t.sigla] || t.sigla,
+        pos: t.pos,
+      }))
+
+    const pacote = {
+      titulo: rodada?.titulo || '',
+      jogos: rodada?.jogos || [],
+      classificacao,
+      quando: Date.now(),
+    }
+    gravarCacheUR(pacote)
+    return { ...aplicarPacote(pacote), origem: 'rede' }
+  } catch (erro) {
+    if (cache) {
+      return { ...aplicarPacote(cache.pacote), origem: 'cache' }
     }
     throw erro
   }

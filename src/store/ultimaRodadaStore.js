@@ -33,6 +33,11 @@ function carregar() {
       const estado = { ...structuredClone(estadoPadrao), ...salvo }
       estado.jogos = Array.isArray(salvo.jogos) ? salvo.jogos : jogosPadrao()
       estado.posicoes = Array.isArray(salvo.posicoes) ? salvo.posicoes : posicoesPadrao()
+      /* Migração do formato antigo (pontos) para posição na tabela */
+      estado.posicoes = estado.posicoes.map((p, i) => ({
+        sigla: p.sigla || '',
+        pos: p.pos ?? p.pontos ?? String(i + 1)
+      }))
       return estado
     }
   } catch (e) {
@@ -168,11 +173,36 @@ function atualizarPosicao(indice, campo, valor) {
   setEstado((estadoAtual) => {
     const posicao = estadoAtual.posicoes[indice]
     if (!posicao) return estadoAtual
-    if (campo === 'pontos') {
-      posicao.pontos = String(valor).replace(/[^0-9]/g, '').slice(0, 3)
+    if (campo === 'pos') {
+      posicao.pos = String(valor).replace(/[^0-9]/g, '').slice(0, 2)
     } else {
       posicao.sigla = String(valor).slice(0, 4).toUpperCase()
     }
+    return estadoAtual
+  })
+}
+
+/* Preenche tudo de uma vez com os dados da FGF */
+function preencherDaFGF({ titulo, jogos, classificacao }) {
+  setEstado((estadoAtual) => {
+    if (titulo) estadoAtual.titulo = String(titulo).slice(0, 32).toUpperCase()
+
+    if (Array.isArray(jogos) && jogos.length) {
+      estadoAtual.jogos = jogos.slice(0, 6).map((j) => ({
+        casaSigla: String(j.casaSigla || '').slice(0, 4).toUpperCase(),
+        casaGols: String(j.casaGols ?? ''),
+        foraGols: String(j.foraGols ?? ''),
+        foraSigla: String(j.foraSigla || '').slice(0, 4).toUpperCase()
+      }))
+    }
+
+    if (Array.isArray(classificacao) && classificacao.length) {
+      estadoAtual.posicoes = classificacao.slice(0, 6).map((c, i) => ({
+        sigla: String(c.sigla || '').slice(0, 4).toUpperCase(),
+        pos: String(c.pos ?? i + 1)
+      }))
+    }
+
     return estadoAtual
   })
 }
@@ -197,6 +227,7 @@ export const ultimaRodada = {
   atualizarCampo,
   atualizarJogo,
   atualizarPosicao,
+  preencherDaFGF,
   mostrar,
   ocultar
 }

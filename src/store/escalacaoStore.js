@@ -15,10 +15,12 @@ const estadoPadrao = {
   nomeCasa: 'PELOTENSE',
   siglaCasa: 'PEL',
   formacaoCasa: '4-3-3',
+  tecnicoCasa: '',
   corFora: '#1d4ed8',
   nomeFora: 'VISITANTE',
   siglaFora: 'VIS',
   formacaoFora: '4-3-3',
+  tecnicoFora: '',
   jogadores: {
     casa: timePadrao(),
     fora: timePadrao()
@@ -155,6 +157,9 @@ function atualizarCampo(campo, valor) {
       case 'formacaoCasa':
         estadoAtual.formacaoCasa = valor
         break
+      case 'tecnicoCasa':
+        estadoAtual.tecnicoCasa = String(valor).slice(0, 28).toUpperCase()
+        break
       case 'nomeFora':
         estadoAtual.nomeFora = String(valor).slice(0, 24).toUpperCase()
         break
@@ -166,6 +171,9 @@ function atualizarCampo(campo, valor) {
         break
       case 'formacaoFora':
         estadoAtual.formacaoFora = valor
+        break
+      case 'tecnicoFora':
+        estadoAtual.tecnicoFora = String(valor).slice(0, 28).toUpperCase()
         break
       default:
         estadoAtual[campo] = valor

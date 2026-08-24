@@ -1,5 +1,4 @@
 ﻿import styled from 'styled-components';
-import { CoresFixas } from '../components/CoresFixas';
 import { PreviaOverlay } from '../components/PreviaOverlay';
 import { Link } from 'react-router-dom';
 import { Header } from '../components/Header';
@@ -274,7 +273,7 @@ function BlocoLado({ ladoNome, lado, total }) {
     <BlocoCobrancas>
       <div className="topo">
         <LinhaLado>
-          <Campo>
+          <Campo style={{ minWidth: 220 }}>
             <span>Time</span>
             <InputTexto
               value={lado.nome}
@@ -291,10 +290,6 @@ function BlocoLado({ ladoNome, lado, total }) {
               onChange={(e) => atualizarLado(ladoNome, 'sigla', e.target.value)}
             />
           </Campo>
-          <CoresFixas
-            valor={lado.cor}
-            onChange={(v) => atualizarLado(ladoNome, 'cor', v)}
-            />
         </LinhaLado>
         <span className="placar">
           {placarDe(lado)}

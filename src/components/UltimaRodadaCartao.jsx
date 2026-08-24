@@ -138,41 +138,24 @@ const LegendaPosicoes = styled.span`
   color: rgba(255, 255, 255, 0.45);
 `;
 
-const LinhaPosicao = styled.div`
+const FaixaPosicoes = styled.div`
   display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 7px 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 4px 16px 14px;
+`;
 
-  & + & {
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-  }
+const ChipTime = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 44px;
 
   .pos {
-    min-width: 26px;
-    font-family: 'Rajdhani', 'Inter', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: ${({ $destaque }) => ($destaque ? VERDE : 'rgba(255, 255, 255, 0.65)')};
-  }
-
-  .sigla {
-    flex: 1;
-    min-width: 0;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #fff;
-  }
-
-  .pontos {
     font-family: 'Rajdhani', 'Inter', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
-    letter-spacing: 1px;
     font-variant-numeric: tabular-nums;
     color: ${VERDE};
   }
@@ -211,14 +194,14 @@ export function UltimaRodadaCartao({ dados }) {
 
         <ColunaPosicoes>
           <LegendaPosicoes>CLASSIFICAÇÃO</LegendaPosicoes>
-          {(dados.posicoes || []).map((p, i) => (
-            <LinhaPosicao key={`pos-${i}`} $destaque={i === 0}>
-              <span className="pos">{i + 1}º</span>
-              <Escudo cor="#1f1f1f" sigla={p.sigla} url={urlEscudo(p.sigla)} tamanho={20} />
-              <span className="sigla">{p.sigla || '—'}</span>
-              <span className="pontos">{p.pontos === '' ? '–' : `${p.pontos} PTS`}</span>
-            </LinhaPosicao>
-          ))}
+          <FaixaPosicoes>
+            {(dados.posicoes || []).map((p, i) => (
+              <ChipTime key={`pos-${i}`}>
+                <Escudo cor="#1f1f1f" sigla={p.sigla} url={urlEscudo(p.sigla)} tamanho={34} />
+                <span className="pos">{p.pos === '' ? '–' : `${p.pos}º`}</span>
+              </ChipTime>
+            ))}
+          </FaixaPosicoes>
         </ColunaPosicoes>
       </Corpo>
     </Quadro>

@@ -1,6 +1,5 @@
 ﻿import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { CoresFixas } from '../components/CoresFixas';
 import { PreviaOverlay } from '../components/PreviaOverlay';
 import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
@@ -478,10 +477,6 @@ export default function ControleTabela() {
               <span className="pos">{t._i + 1}</span>
               <CelulaEscudo title="Cor do escudo">
                 <Escudo cor={t.cor} sigla={t.sigla} url={t.escudo} tamanho={24} />
-                <CoresFixas
-                  valor={t.cor}
-                  onChange={(v) => atualizarTime(t._i, 'cor', v)}
-                />
               </CelulaEscudo>
               <InputNome
                 value={t.nome}

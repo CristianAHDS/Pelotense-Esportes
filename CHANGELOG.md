@@ -1,5 +1,17 @@
 # Changelog
 
+## 24/08/2026 (2)
+
+### Correções
+- **Tela branca no controle de Substituição**: a prévia ao vivo foi montada sem o import do componente (`PreviaOverlay is not defined`) — import adicionado e auditoria automática de uso/import rodada em todas as páginas e componentes.
+- **Seleção de cor removida onde não faz sentido**: Tabela, Pênaltis, Mata-Mata (inclui oitavas/quartas/semi/final) não têm mais escolha de cor — as cores dos escudos continuam vindo do cadastro de times da tabela.
+- **Campo de nome ampliado no controle de Pênaltis** (largura mínima de 220px por lado).
+
+### Novidades
+- **Escalação ganhou campo de Técnico** por time (casa/visitante): editável no controle, exibido como linha "TÉC · NOME" no rodapé do cartão do overlay.
+- **Última Rodada integrada à FGF**: botão "Puxar dados da FGF" no controle busca automaticamente os jogos realizados da última rodada disputada (placares + escudos via mapeamento nome→sigla) e a classificação atual — mesma página do site da FGF usada pela tabela, com cache local de 3 minutos. A classificação do overlay agora mostra cada escudo com o **número da posição embaixo**, e o painel passou a editar posição (nº) em vez de pontos.
+- **Home atualizada**: carrossel de demonstração ganhou dois slides novos — Escalação (dois cartões com jogadores entrando em cascata) e Última Rodada (resultados com escudos + faixa de posições) — totalizando 5 demonstrações rotativas.
+
 ## 24/08/2026
 
 ### Correções
