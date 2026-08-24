@@ -12,6 +12,7 @@
 ### Nomes e escudos
 - **"Brasil - SAF" → "Brasil"** em todo o sistema: nome canônico em `nomesClubes.js`, time padrão da Tabela (sigla BRA mantida) e prévia de oitavas da landing.
 - **Escudo do Esportivo (ESP)** trocado para `https://i.imgur.com/u5q7j4R.png` na Tabela e na landing; `completarVisuais` agora aplica sempre o escudo/cor padrão por sigla (garante a troca também em estados já salvos).
+- Substituído também o arquivo local `public/escudos/ESP.png` pela nova imagem — cobre a Última Rodada e todos os overlays que usam o fallback por sigla (`/escudos/SIGLA.png`).
 
 ## 24/08/2026 (7)
 
