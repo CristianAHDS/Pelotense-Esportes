@@ -1,4 +1,5 @@
 import { getEstado, aplicarEstatisticas } from '../store/tabelaStore'
+import { nomeCanonico, variantesNome } from '../lib/nomesClubes.js'
 
 /* Página da classificação do Gauchão Série A2 no site da FGF.
    Atualize aqui se a FGF mudar o endereço da competição. */
@@ -26,13 +27,6 @@ const SIGLAS_FGF_PARA_PADRAO = {
   BAG: 'BAG',
   GLO: 'GLO',
   LAJ: 'LAJ',
-}
-
-/* Nomes usados pela FGF -> nomes padrão da nossa tabela
-   (chaves já normalizadas, sem acento/espaço) */
-const APELIDOS_NOMES_FGF = {
-  brassaf: 'brasildepelotas',
-  guaraniva: 'guaranirs',
 }
 
 let buscaEmVoo = null
@@ -135,7 +129,7 @@ function extrairClassificacao(html) {
 
       const time = {
         pos,
-        nome,
+        nome: nomeCanonico(nome),
         sigla,
         p: numeroDe(tdPontos.textContent),
         j: nums[0],
@@ -154,16 +148,15 @@ function extrairClassificacao(html) {
 }
 
 function casarPorNome(timeLocal, nomeFgf) {
-  const nl = normalizar(timeLocal.nome)
-  let nf = normalizar(nomeFgf)
-  nf = APELIDOS_NOMES_FGF[nf] || nf
+  const nl = normalizar(nomeCanonico(timeLocal.nome))
+  const nf = normalizar(nomeCanonico(nomeFgf))
   if (!nl || !nf) return false
   return nl === nf
 }
 
 function casarParcial(timeLocal, nomeFgf) {
-  const nl = normalizar(timeLocal.nome)
-  const nf = normalizar(nomeFgf)
+  const nl = normalizar(nomeCanonico(timeLocal.nome))
+  const nf = normalizar(nomeCanonico(nomeFgf))
   if (!nl || !nf || nl.length <= 3 || nf.length <= 3) return false
   return nl.includes(nf) || nf.includes(nl)
 }
@@ -276,10 +269,15 @@ export async function importarClassificacaoFGF({ forcar = false } = {}) {
 const CHAVE_CACHE_UR = 'pelotense:ultima-rodada:fgf:v3'
 
 function mapaNomeParaSigla(dados) {
-  return dados.map((t) => ({
-    chave: normalizar(t.nome),
-    sigla: SIGLAS_FGF_PARA_PADRAO[t.sigla] || String(t.sigla || '').slice(0, 4),
-  }))
+  const entradas = []
+  for (const t of dados) {
+    const sigla =
+      SIGLAS_FGF_PARA_PADRAO[t.sigla] || String(t.sigla || '').slice(0, 4)
+    for (const chave of variantesNome(t.nome)) {
+      entradas.push({ chave, sigla })
+    }
+  }
+  return entradas
 }
 
 /* Casa um texto (slug do jogo ou nome completo do clube) com os nomes

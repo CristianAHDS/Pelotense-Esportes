@@ -1,4 +1,5 @@
 ﻿import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
+import { aplicarNomesCanonicos } from '../lib/nomesClubes.js'
 
 const STORAGE_KEY = 'pelotense:tabela:v3'
 const CHANNEL_NAME = 'broadcast:sync-tabela-v3'
@@ -14,17 +15,17 @@ const E = '/escudos'
 const TIMES_PADRAO = [
   criarTime('Veranópolis', 'VER', '#047857', { escudo: `${E}/VER.png`, p: 14, j: 6, v: 4, e: 2, d: 0, gp: 8, gc: 1 }),
   criarTime('Passo Fundo', 'PAS', '#c1121f', { escudo: `${E}/PAS.png`, p: 14, j: 6, v: 4, e: 2, d: 0, gp: 7, gc: 0 }),
-  criarTime('Esportivo-RS', 'ESP', '#7c3aed', { escudo: `${E}/ESP.png`, p: 12, j: 6, v: 3, e: 3, d: 0, gp: 6, gc: 2 }),
+  criarTime('Esportivo', 'ESP', '#7c3aed', { escudo: `${E}/ESP.png`, p: 12, j: 6, v: 3, e: 3, d: 0, gp: 6, gc: 2 }),
   criarTime('Aimoré', 'AIM', '#111827', { escudo: `${E}/AIM.png`, p: 11, j: 6, v: 3, e: 2, d: 1, gp: 5, gc: 5 }),
-  criarTime('Santa Cruz-RS', 'SCR', '#eab308', { escudo: `${E}/SCR.png`, p: 9, j: 6, v: 2, e: 3, d: 1, gp: 4, gc: 4 }),
+  criarTime('Santa Cruz', 'SCR', '#eab308', { escudo: `${E}/SCR.png`, p: 9, j: 6, v: 2, e: 3, d: 1, gp: 4, gc: 4 }),
   criarTime('APAFUT', 'APA', '#0d9488', { escudo: `${E}/APA.png`, p: 8, j: 6, v: 2, e: 2, d: 2, gp: 7, gc: 5 }),
   criarTime('União Frederiquense', 'UFR', '#2563eb', { escudo: `${E}/UFR.png`, p: 8, j: 6, v: 2, e: 2, d: 2, gp: 6, gc: 4 }),
   criarTime('Gaúcho', 'GAU', '#171717', { escudo: `${E}/GAU.png`, p: 7, j: 6, v: 2, e: 1, d: 3, gp: 6, gc: 5 }),
   criarTime('Pelotas', 'PEL', '#1565c0', { escudo: `${E}/PEL.png`, p: 7, j: 5, v: 2, e: 1, d: 2, gp: 3, gc: 5 }),
-  criarTime('Brasil de Pelotas', 'BRA', '#b91c1c', { escudo: `${E}/BRA.png`, p: 6, j: 5, v: 1, e: 3, d: 1, gp: 5, gc: 4 }),
+  criarTime('Brasil - SAF', 'BRA', '#b91c1c', { escudo: `${E}/BRA.png`, p: 6, j: 5, v: 1, e: 3, d: 1, gp: 5, gc: 4 }),
   criarTime('Brasil de Farroupilha', 'BFR', '#ea580c', { escudo: `${E}/BFR.png`, p: 6, j: 5, v: 1, e: 3, d: 1, gp: 4, gc: 3 }),
   criarTime('Gramadense', 'GRA', '#15803d', { escudo: `${E}/GRA.png`, p: 5, j: 6, v: 1, e: 2, d: 3, gp: 4, gc: 7 }),
-  criarTime('Guarani-RS', 'GVA', '#166534', { escudo: `${E}/GVA.png`, p: 5, j: 5, v: 1, e: 2, d: 2, gp: 3, gc: 6 }),
+  criarTime('Guarani - VA', 'GVA', '#166534', { escudo: `${E}/GVA.png`, p: 5, j: 5, v: 1, e: 2, d: 2, gp: 3, gc: 6 }),
   criarTime('Bagé', 'BAG', '#334155', { escudo: `${E}/BAG.png`, p: 4, j: 5, v: 1, e: 1, d: 3, gp: 4, gc: 9 }),
   criarTime('Glória', 'GLO', '#991b1b', { escudo: `${E}/GLO.png`, p: 2, j: 5, v: 0, e: 2, d: 3, gp: 2, gc: 5 }),
   criarTime('Lajeadense', 'LAJ', '#1d4ed8', { escudo: `${E}/LAJ.png`, p: 1, j: 6, v: 0, e: 1, d: 5, gp: 2, gc: 11 }),
@@ -53,7 +54,7 @@ function carregar() {
     if (bruto) {
       const salvo = JSON.parse(bruto)
       if (!Array.isArray(salvo.times)) salvo.times = structuredClone(estadoPadrao.times)
-      else salvo.times = completarVisuais(salvo.times)
+      else salvo.times = aplicarNomesCanonicos(completarVisuais(salvo.times))
       return { ...structuredClone(estadoPadrao), ...salvo }
   }
   } catch (e) {
@@ -118,7 +119,7 @@ export function setEstado(atualizador, { remoto = false } = {}) {
 
   estado =
     typeof atualizador === 'function' ? atualizador(structuredClone(estado)) : atualizador
-  estado.times = completarVisuais(estado.times)
+  estado.times = aplicarNomesCanonicos(completarVisuais(estado.times))
   persistir()
   notificar()
 

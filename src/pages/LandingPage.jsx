@@ -1631,7 +1631,7 @@ function PalcoDeFerramenta({ tipo }) {
     const linhas = [
       ['1', 'VER · Veranópolis', 14, 'class'],
       ['2', 'PAS · Passo Fundo', 14, 'class'],
-      ['3', 'ESP · Esportivo-RS', 13, 'class'],
+      ['3', 'ESP · Esportivo', 13, 'class'],
       ['4', 'AIM · Aimoré', 11, null],
       ['15', 'GLO · Glória', 2, null],
       ['16', 'LAJ · Lajeadense', 1, 'reb'],
@@ -1673,9 +1673,9 @@ function PalcoDeFerramenta({ tipo }) {
   if (tipo === 'oitavas') {
     const jogos = [
       ['01', 'VER · Veranópolis', 1, 'PAS · Passo Fundo', 2, 'vis'],
-      ['02', 'ESP · Esportivo-RS', 3, 'AIM · Aimoré', 1, 'casa'],
+      ['02', 'ESP · Esportivo', 3, 'AIM · Aimoré', 1, 'casa'],
       ['03', 'PEL · Pelotas', 2, 'GLO · Glória', 0, 'casa'],
-      ['04', 'BRA · Brasil-PE', 0, 'LAJ · Lajeadense', 4, 'vis'],
+      ['04', 'BRA · Brasil-SAF', 0, 'LAJ · Lajeadense', 4, 'vis'],
     ];
     return (
       <MiniOitavas>
@@ -1874,7 +1874,7 @@ const ROTAS_EXTRAS = [
 const LINHAS_DEMO = [
   ['1', 'VER', 'Veranópolis', '37'],
   ['2', 'PAS', 'Passo Fundo', '35'],
-  ['3', 'ESP', 'Esportivo-RS', '33'],
+  ['3', 'ESP', 'Esportivo', '33'],
   ['4', 'AIM', 'Aimoré', '29'],
 ];
 
@@ -3437,8 +3437,8 @@ export default function LandingPage() {
           <img src={LOGO_URL} alt="Pelotense Esportes" />
         </Marca>
         <NavLinks>
-          <button onClick={() => rolarPara('ferramentas')}>Ferramentas</button>
           <button onClick={() => rolarPara('sync')}>Tempo real</button>
+          <button onClick={() => rolarPara('ferramentas')}>Ferramentas</button>
           <button onClick={() => rolarPara('classificacao')}>
             Classificação
           </button>

@@ -1,5 +1,12 @@
 # Changelog
 
+## 24/08/2026 (7)
+
+### Nomes de clubes atualizados
+- **Brasil de Pelotas → Brasil - SAF** e **Guarani-RS → Guarani - VA** em todo o sistema: cadastro de times da Tabela (siglas BRA/GVA mantidas) e prévia de oitavas da landing ("BRA · Brasil-PE" → "BRA · Brasil-SAF").
+- Sufixo "-RS" removido de **Esportivo** e **Santa Cruz**: nomes atualizados na Tabela e nas prévias/classificação da landing.
+- **Normalização automática de nomes** (`src/lib/nomesClubes.js`): qualquer variação conhecida desses clubes (ex.: "Brasil de Pelotas", "Guarani", "Esportivo-RS") é convertida para o nome canônico em todas as entradas de estado — estado salvo antigo no localStorage, sync por aba/nuvem, digitação no controle e dados importados da FGF (classificação e casamento de slugs/nomes da última rodada).
+
 ## 24/08/2026 (6)
 
 ### Home: marca só com o logotipo
