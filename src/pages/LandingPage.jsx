@@ -45,7 +45,7 @@ const CLUBES_EXEMPLO = {
   },
   ESP: {
     nome: 'ESPORTIVO',
-    escudo: '/escudos/ESP.png',
+    escudo: 'https://i.imgur.com/u5q7j4R.png',
     cor: '#0e7490',
     estadio: 'MONTE CRISTO',
     cidade: 'BENTO GONÇALVES/RS',
@@ -1675,7 +1675,7 @@ function PalcoDeFerramenta({ tipo }) {
       ['01', 'VER · Veranópolis', 1, 'PAS · Passo Fundo', 2, 'vis'],
       ['02', 'ESP · Esportivo', 3, 'AIM · Aimoré', 1, 'casa'],
       ['03', 'PEL · Pelotas', 2, 'GLO · Glória', 0, 'casa'],
-      ['04', 'BRA · Brasil-SAF', 0, 'LAJ · Lajeadense', 4, 'vis'],
+      ['04', 'BRA · Brasil', 0, 'LAJ · Lajeadense', 4, 'vis'],
     ];
     return (
       <MiniOitavas>

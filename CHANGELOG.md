@@ -9,6 +9,10 @@
 - Correção da captura da Última Rodada: `UltimaRodadaCartao` agora aceita `ref` (forwardRef) e a imagem é tirada do cartão em si, incluindo a borda verde superior e sem sobra transparente à direita.
 - Captura agora desativa animações/transições no clone do DOM (`onclone`), evitando que a animação de entrada do cartão saia deslocada/transparente na foto.
 
+### Nomes e escudos
+- **"Brasil - SAF" → "Brasil"** em todo o sistema: nome canônico em `nomesClubes.js`, time padrão da Tabela (sigla BRA mantida) e prévia de oitavas da landing.
+- **Escudo do Esportivo (ESP)** trocado para `https://i.imgur.com/u5q7j4R.png` na Tabela e na landing; `completarVisuais` agora aplica sempre o escudo/cor padrão por sigla (garante a troca também em estados já salvos).
+
 ## 24/08/2026 (7)
 
 ### Nomes de clubes atualizados

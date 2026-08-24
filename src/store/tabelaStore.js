@@ -15,14 +15,14 @@ const E = '/escudos'
 const TIMES_PADRAO = [
   criarTime('Veranópolis', 'VER', '#047857', { escudo: `${E}/VER.png`, p: 14, j: 6, v: 4, e: 2, d: 0, gp: 8, gc: 1 }),
   criarTime('Passo Fundo', 'PAS', '#c1121f', { escudo: `${E}/PAS.png`, p: 14, j: 6, v: 4, e: 2, d: 0, gp: 7, gc: 0 }),
-  criarTime('Esportivo', 'ESP', '#7c3aed', { escudo: `${E}/ESP.png`, p: 12, j: 6, v: 3, e: 3, d: 0, gp: 6, gc: 2 }),
+  criarTime('Esportivo', 'ESP', '#7c3aed', { escudo: 'https://i.imgur.com/u5q7j4R.png', p: 12, j: 6, v: 3, e: 3, d: 0, gp: 6, gc: 2 }),
   criarTime('Aimoré', 'AIM', '#111827', { escudo: `${E}/AIM.png`, p: 11, j: 6, v: 3, e: 2, d: 1, gp: 5, gc: 5 }),
   criarTime('Santa Cruz', 'SCR', '#eab308', { escudo: `${E}/SCR.png`, p: 9, j: 6, v: 2, e: 3, d: 1, gp: 4, gc: 4 }),
   criarTime('APAFUT', 'APA', '#0d9488', { escudo: `${E}/APA.png`, p: 8, j: 6, v: 2, e: 2, d: 2, gp: 7, gc: 5 }),
   criarTime('União Frederiquense', 'UFR', '#2563eb', { escudo: `${E}/UFR.png`, p: 8, j: 6, v: 2, e: 2, d: 2, gp: 6, gc: 4 }),
   criarTime('Gaúcho', 'GAU', '#171717', { escudo: `${E}/GAU.png`, p: 7, j: 6, v: 2, e: 1, d: 3, gp: 6, gc: 5 }),
   criarTime('Pelotas', 'PEL', '#1565c0', { escudo: `${E}/PEL.png`, p: 7, j: 5, v: 2, e: 1, d: 2, gp: 3, gc: 5 }),
-  criarTime('Brasil - SAF', 'BRA', '#b91c1c', { escudo: `${E}/BRA.png`, p: 6, j: 5, v: 1, e: 3, d: 1, gp: 5, gc: 4 }),
+  criarTime('Brasil', 'BRA', '#b91c1c', { escudo: `${E}/BRA.png`, p: 6, j: 5, v: 1, e: 3, d: 1, gp: 5, gc: 4 }),
   criarTime('Brasil de Farroupilha', 'BFR', '#ea580c', { escudo: `${E}/BFR.png`, p: 6, j: 5, v: 1, e: 3, d: 1, gp: 4, gc: 3 }),
   criarTime('Gramadense', 'GRA', '#15803d', { escudo: `${E}/GRA.png`, p: 5, j: 6, v: 1, e: 2, d: 3, gp: 4, gc: 7 }),
   criarTime('Guarani - VA', 'GVA', '#166534', { escudo: `${E}/GVA.png`, p: 5, j: 5, v: 1, e: 2, d: 2, gp: 3, gc: 6 }),
@@ -37,12 +37,12 @@ const estadoPadrao = {
   times: structuredClone(TIMES_PADRAO),
   }
 
-/* Garante que times conhecidos tenham escudo, mesmo quando o estado
-   chega de outra aba/dispositivo que foi salvo antes dos escudos */
+/* Garante que times conhecidos usem o escudo/cor padrão, mesmo quando o
+   estado chega de outra aba/dispositivo com escudos antigos ou sem eles */
 function completarVisuais(times) {
   if (!Array.isArray(times)) return times
   return times.map((t) => {
-    if (!t?.sigla || t.escudo) return t
+    if (!t?.sigla) return t
     const padrao = TIMES_PADRAO.find((p) => p.sigla === t.sigla && p.escudo)
     return padrao ? { ...t, escudo: padrao.escudo, cor: t.cor || padrao.cor } : t
 })
