@@ -4,7 +4,7 @@
 
 const CLUBES_CANONICOS = [
   {
-    nome: 'Brasil - SAF',
+    nome: 'Brasil',
     variantes: [
       'Brasil - SAF',
       'Brasil SAF',
