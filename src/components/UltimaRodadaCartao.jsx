@@ -69,7 +69,11 @@ const Corpo = styled.div`
 const ColunaJogos = styled.div`
   display: flex;
   flex-direction: column;
-  background: #000;
+  background: linear-gradient(
+    165deg,
+    ${({ theme }) => theme.cores.superficie},
+    ${({ theme }) => theme.cores.fundoClaro}
+  );
 `;
 
 const LinhaJogo = styled.div`
@@ -126,7 +130,11 @@ const LegendaPosicoes = styled.span`
 `;
 
 const FaixaClassificacao = styled.div`
-  background: #050505;
+  background: linear-gradient(
+    165deg,
+    ${({ theme }) => theme.cores.superficie},
+    ${({ theme }) => theme.cores.fundoClaro}
+  );
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 `;
 
