@@ -5,6 +5,24 @@ const CHANNEL_NAME = 'broadcast:sync-ultima-rodada-v1'
 const MSG_TIPO = 'estado:ultima-rodada:v1'
 const CANAL_NUVEM = 'ultima-rodada'
 
+const RENOME_SIGLAS = { GVA: 'GUA' }
+
+function normalizarSigla(sigla) {
+  const s = String(sigla || '').toUpperCase()
+  return RENOME_SIGLAS[s] || s
+}
+
+function normalizarEstado(estadoAtual) {
+  for (const jogo of estadoAtual.jogos || []) {
+    jogo.casaSigla = normalizarSigla(jogo.casaSigla)
+    jogo.foraSigla = normalizarSigla(jogo.foraSigla)
+  }
+  for (const posicao of estadoAtual.posicoes || []) {
+    posicao.sigla = normalizarSigla(posicao.sigla)
+  }
+  return estadoAtual
+}
+
 function jogosPadrao() {
   return Array.from({ length: 6 }, () => ({
     casaSigla: '',
@@ -39,7 +57,7 @@ function carregar() {
         sigla: p.sigla || '',
         pos: p.pos ?? p.pontos ?? String(i + 1)
       }))
-      return estado
+      return normalizarEstado(estado)
     }
   } catch (e) {
     console.warn('Última rodada: falha ao carregar estado.', e)
@@ -77,6 +95,7 @@ function setEstado(atualizador, { remoto = false } = {}) {
 
   estado =
     typeof atualizador === 'function' ? atualizador(structuredClone(estado)) : atualizador
+  normalizarEstado(estado)
   persistir()
   notificar()
 

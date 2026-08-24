@@ -17,6 +17,7 @@
 ### Nomes e siglas
 - **"Brasil de Farroupilha" → "Brasil - Far"** e **"APAFUT" → "Apafut"** em todo o sistema (nome canônico em `nomesClubes.js`, time padrão da Tabela e normalização de estados salvos/FGF).
 - **Sigla do Guarani "GVA" → "GUA"** em todo o sistema: `tabelaStore`, mapeamento da FGF, landing e arquivo de escudo `public/escudos/GUA.png`; `completarVisuais` migra automaticamente a sigla antiga nos estados já salvos.
+- Migração `GVA→GUA` também no store da **Última Rodada** (`normalizarEstado`): estados antigos salvos em localStorage e sincronizados passam a exibir a sigla correta.
 
 ### Nomes de clubes atualizados
 - **Brasil de Pelotas → Brasil - SAF** e **Guarani-RS → Guarani - VA** em todo o sistema: cadastro de times da Tabela (siglas BRA/GVA mantidas) e prévia de oitavas da landing ("BRA · Brasil-PE" → "BRA · Brasil-SAF").
