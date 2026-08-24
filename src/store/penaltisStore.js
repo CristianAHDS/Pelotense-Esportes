@@ -1,4 +1,4 @@
-import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
+﻿import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
 
 const STORAGE_KEY = 'pelotense:penaltis:v1'
 const CHANNEL_NAME = 'broadcast:sync-penaltis-v1'
@@ -10,8 +10,8 @@ function criarLado() {
 }
 
 const estadoPadrao = {
-  competicao: 'CAMPEONATO GAÚCHO SÉRIE A2',
-  fase: 'DISPUTA DE PÊNALTIS',
+  competicao: 'CAMPEONATO GAÃšCHO SÃ‰RIE A2',
+  fase: 'DISPUTA DE PÃŠNALTIS',
   casa: criarLado(),
   visitante: criarLado(),
 }
@@ -27,7 +27,7 @@ function carregar() {
       return { ...structuredClone(estadoPadrao), ...salvo }
     }
   } catch (e) {
-    console.warn('Pênaltis: falha ao carregar estado.', e)
+    console.warn('PÃªnaltis: falha ao carregar estado.', e)
   }
   return structuredClone(estadoPadrao)
 }
@@ -47,7 +47,7 @@ function persistir() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(estado))
   } catch (e) {
-    console.warn('Pênaltis: falha ao persistir estado.', e)
+    console.warn('PÃªnaltis: falha ao persistir estado.', e)
   }
 }
 
@@ -60,7 +60,7 @@ export function placarDe(lado) {
   return (lado?.cobrancas || []).filter((c) => c === 'gol').length
 }
 
-/* Quantas cobranças cada lado precisa exibir (mínimo 5, acompanha o maior) */
+/* Quantas cobranÃ§as cada lado precisa exibir (mÃ­nimo 5, acompanha o maior) */
 export function slotsVisiveis(est = estado) {
   const max = Math.max(
     est.casa?.cobrancas.length || 0,
@@ -94,24 +94,32 @@ export function setEstado(atualizador, { remoto = false } = {}) {
     const pacote = structuredClone(estado)
     canal?.postMessage({ tipo: MSG_TIPO, estado: pacote })
     publicarNuvem(CANAL_NUVEM, pacote)
+    registrarSync(pacote)
   }
 
   processandoRemoto = false
 }
 
-let ultimoSync = ''
+const ultimosSync = []
+const LIMITE_SYNC = 16
+
+function registrarSync(valor) {
+  const texto = JSON.stringify(valor)
+  ultimosSync.push(texto)
+  while (ultimosSync.length > LIMITE_SYNC) ultimosSync.shift()
+}
 
 function aplicarEstadoRemoto(novoEstado) {
   const serializado = JSON.stringify(novoEstado)
-  if (serializado === ultimoSync || serializado === JSON.stringify(estado)) return
-  ultimoSync = serializado
+  if (ultimosSync.includes(serializado) || serializado === JSON.stringify(estado)) return
+  registrarSync(novoEstado)
 
   if (!processandoRemoto) {
     setEstado(novoEstado, { remoto: true })
   }
 }
 
-/* ---------- Sincronização na nuvem ---------- */
+/* ---------- SincronizaÃ§Ã£o na nuvem ---------- */
 
 inscreverNuvem(CANAL_NUVEM, aplicarEstadoRemoto)
 
@@ -132,7 +140,7 @@ window.addEventListener('storage', (evento) => {
     try {
       aplicarEstadoRemoto(JSON.parse(evento.newValue))
     } catch (e) {
-      console.warn('Pênaltis: falha ao sincronizar via storage.', e)
+      console.warn('PÃªnaltis: falha ao sincronizar via storage.', e)
     }
   }
 })
@@ -144,7 +152,7 @@ export function inscrever(ouvinte) {
   return () => ouvintes.delete(ouvinte)
 }
 
-/* ---------- Ações ---------- */
+/* ---------- AÃ§Ãµes ---------- */
 
 export function definirTexto(campo, valor) {
   setEstado((estado) => {
@@ -166,7 +174,7 @@ export function atualizarLado(ladoNome, campo, valor) {
   })
 }
 
-/* Marca a próxima cobrança do lado ('gol' | 'perdeu'); se já marcada, desfaz */
+/* Marca a prÃ³xima cobranÃ§a do lado ('gol' | 'perdeu'); se jÃ¡ marcada, desfaz */
 export function marcarCobranca(ladoNome, resultado) {
   setEstado((estado) => {
     const lado = estado[ladoNome]
@@ -178,7 +186,7 @@ export function marcarCobranca(ladoNome, resultado) {
   })
 }
 
-/* Define diretamente uma posição específica (usada pelo controle) */
+/* Define diretamente uma posiÃ§Ã£o especÃ­fica (usada pelo controle) */
 export function definirCobranca(ladoNome, indice, resultado) {
   setEstado((estado) => {
     const lado = estado[ladoNome]

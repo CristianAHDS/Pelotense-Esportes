@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Header } from '../components/Header';
 import { PainelEscalacao } from '../components/PainelEscalacao';
+import { PreviaOverlay } from '../components/PreviaOverlay';
 
 const Container = styled.main`
   min-height: 100vh;
@@ -10,6 +11,7 @@ const Container = styled.main`
 const Conteudo = styled.div`
   max-width: 1100px;
   margin: 0 auto;
+  margin-top: 40px;
 `;
 
 export default function ControleEscalacao() {
@@ -18,6 +20,7 @@ export default function ControleEscalacao() {
       <Header subtitulo="Controle · Escalação" />
       <Conteudo>
         <PainelEscalacao />
+        <PreviaOverlay rota="/escalacao" altura={520} />
       </Conteudo>
     </Container>
   );

@@ -1,5 +1,16 @@
 # Changelog
 
+## 24/08/2026
+
+### Correções
+- **Campos que voltavam sozinhos ao valor anterior (revert) eliminados na raiz**: toda edição local abre uma janela de proteção de 1,2s na camada de nuvem — entregas defasadas do Realtime Database recebidas nesse intervalo são descartadas. Com isso, digitar nome/sigla/cor não é mais desfeito por ecos atrasados nem por disputa de posse entre abas (complementa as blindagens anteriores: dedupe em anel de 16 estados nos stores e tolerâncias ampliadas no claim de controle).
+- **Título do controle da Tabela corrigido**: dizia "Controle · Pênaltis" desde a criação (copiado do painel de pênaltis); agora exibe "Controle · Tabela".
+
+### Novidades
+- **Novo módulo Última Rodada** (`/ultima-rodada` + `/ultima-rodada/controle`): cartão com os resultados dos últimos jogos (escudos, siglas e placar de cada confronto) e a classificação dos times após a rodada (posição, escudo, sigla e pontos). Controle com título editável, 6 jogos e 6 posições, botões mostrar/ocultar, prévia ao vivo e card no hub.
+- **Cores fixas em todos os controles**: o seletor nativo de cor (`type="color"`, propenso ao bug de voltar à cor anterior) foi substituído pela paleta fixa de 12 cores já usada nos placares broadcast — Escalação, Substituição, Pênaltis, Mata-Mata, Tabela, Placar de Futebol e Placar Profissional. Componente `CampoCor` removido.
+- **Prévia ao vivo nos controles** que não tinham (`PreviaOverlay`): Escalação, Substituição, Pênaltis, Tabela e Mata-Mata ganham iframe com o overlay real da sala atual (além dos mini-previews já existentes nos 4 placares broadcast).
+
 ## 23/08/2026
 
 ### Sincronização na nuvem (multi-dispositivo)

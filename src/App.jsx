@@ -23,6 +23,8 @@ import Penaltis from './pages/Penaltis'
 import ControlePenaltis from './pages/ControlePenaltis'
 import Escalacao from './pages/Escalacao'
 import ControleEscalacao from './pages/ControleEscalacao'
+import UltimaRodada from './pages/UltimaRodada'
+import ControleUltimaRodada from './pages/ControleUltimaRodada'
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -50,6 +52,8 @@ export default function App() {
           <Route path="/penaltis/controle" element={<ControlePenaltis />} />
           <Route path="/escalacao" element={<Escalacao />} />
           <Route path="/escalacao/controle" element={<ControleEscalacao />} />
+          <Route path="/ultima-rodada" element={<UltimaRodada />} />
+          <Route path="/ultima-rodada/controle" element={<ControleUltimaRodada />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

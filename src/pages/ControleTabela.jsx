@@ -1,5 +1,7 @@
 ﻿import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { CoresFixas } from '../components/CoresFixas';
+import { PreviaOverlay } from '../components/PreviaOverlay';
 import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
@@ -433,6 +435,8 @@ export default function ControleTabela() {
       <Titulo>
         Controle · <span>Tabela</span>
       </Titulo>
+      <PreviaOverlay rota="/tabela" altura={420} />
+
 
       <Cartao>
         <Rotulo>Competição</Rotulo>
@@ -474,11 +478,10 @@ export default function ControleTabela() {
               <span className="pos">{t._i + 1}</span>
               <CelulaEscudo title="Cor do escudo">
                 <Escudo cor={t.cor} sigla={t.sigla} url={t.escudo} tamanho={24} />
-                <InputCor
-                  type="color"
-                  value={t.cor}
-                  onChange={(e) => atualizarTime(t._i, 'cor', e.target.value)}
-          />
+                <CoresFixas
+                  valor={t.cor}
+                  onChange={(v) => atualizarTime(t._i, 'cor', v)}
+                />
               </CelulaEscudo>
               <InputNome
                 value={t.nome}

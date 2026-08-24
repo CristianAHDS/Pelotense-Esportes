@@ -1,4 +1,6 @@
 ﻿import styled from 'styled-components';
+import { CoresFixas } from '../components/CoresFixas';
+import { PreviaOverlay } from '../components/PreviaOverlay';
 import { useState } from 'react';
 import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
@@ -381,6 +383,7 @@ export default function ControleMataMata() {
       <Titulo>
         Controle · <span>Mata-Mata</span>
       </Titulo>
+      <PreviaOverlay rota="/mata-mata" altura={420} />
 
       <Cartao>
         <Rotulo>Competição e fase</Rotulo>
@@ -440,13 +443,10 @@ export default function ControleMataMata() {
   return (
                   <LinhaLado key={ladoNome}>
                     <span className="ladoRotulo">{ladoNome}</span>
-                    <InputCor
-                      type="color"
-                      value={lado.cor}
-                      title="Cor do time"
-                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'cor', e.target.value)}
-          />
-                    <InputNome
+                    <CoresFixas
+                      valor={lado.cor}
+                      onChange={(v) => atualizarLado(faseAtiva, ci, ladoNome, 'cor', v)}
+                    /><InputNome
                       value={lado.nome}
                       placeholder="NOME DO TIME"
                       maxLength={24}

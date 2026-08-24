@@ -1,28 +1,28 @@
-﻿import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
+import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
 
-const STORAGE_KEY = 'pelotense:escalacao:v1'
-const CHANNEL_NAME = 'broadcast:sync-escalacao-v1'
-const MSG_TIPO = 'estado:escalacao:v1'
-const CANAL_NUVEM = 'escalacao'
+const STORAGE_KEY = 'pelotense:ultima-rodada:v1'
+const CHANNEL_NAME = 'broadcast:sync-ultima-rodada-v1'
+const MSG_TIPO = 'estado:ultima-rodada:v1'
+const CANAL_NUVEM = 'ultima-rodada'
 
-function timePadrao() {
-  return Array.from({ length: 11 }, (_, i) => ({ num: String(i + 1), nome: '' }))
+function jogosPadrao() {
+  return Array.from({ length: 6 }, () => ({
+    casaSigla: '',
+    casaGols: '',
+    foraGols: '',
+    foraSigla: ''
+  }))
+}
+
+function posicoesPadrao() {
+  return Array.from({ length: 6 }, () => ({ sigla: '', pontos: '' }))
 }
 
 const estadoPadrao = {
   visivel: true,
-  corCasa: '#008F3D',
-  nomeCasa: 'PELOTENSE',
-  siglaCasa: 'PEL',
-  formacaoCasa: '4-3-3',
-  corFora: '#1d4ed8',
-  nomeFora: 'VISITANTE',
-  siglaFora: 'VIS',
-  formacaoFora: '4-3-3',
-  jogadores: {
-    casa: timePadrao(),
-    fora: timePadrao()
-  }
+  titulo: 'ÚLTIMA RODADA',
+  jogos: jogosPadrao(),
+  posicoes: posicoesPadrao()
 }
 
 function carregar() {
@@ -31,14 +31,12 @@ function carregar() {
     if (bruto) {
       const salvo = JSON.parse(bruto)
       const estado = { ...structuredClone(estadoPadrao), ...salvo }
-      estado.jogadores = {
-        casa: Array.isArray(salvo.jogadores?.casa) ? salvo.jogadores.casa : structuredClone(estadoPadrao.jogadores.casa),
-        fora: Array.isArray(salvo.jogadores?.fora) ? salvo.jogadores.fora : structuredClone(estadoPadrao.jogadores.fora)
-      }
+      estado.jogos = Array.isArray(salvo.jogos) ? salvo.jogos : jogosPadrao()
+      estado.posicoes = Array.isArray(salvo.posicoes) ? salvo.posicoes : posicoesPadrao()
       return estado
     }
   } catch (e) {
-    console.warn('EscalaÃ§Ã£o: falha ao carregar estado.', e)
+    console.warn('Última rodada: falha ao carregar estado.', e)
   }
   return structuredClone(estadoPadrao)
 }
@@ -58,7 +56,7 @@ function persistir() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(estado))
   } catch (e) {
-    console.warn('EscalaÃ§Ã£o: falha ao persistir estado.', e)
+    console.warn('Última rodada: falha ao persistir estado.', e)
   }
 }
 
@@ -105,7 +103,7 @@ function aplicarEstadoRemoto(novoEstado) {
   }
 }
 
-/* ---------- SincronizaÃ§Ã£o na nuvem ---------- */
+/* ---------- Sincronização na nuvem ---------- */
 
 inscreverNuvem(CANAL_NUVEM, aplicarEstadoRemoto)
 
@@ -126,7 +124,7 @@ window.addEventListener('storage', (evento) => {
     try {
       aplicarEstadoRemoto(JSON.parse(evento.newValue))
     } catch (e) {
-      console.warn('EscalaÃ§Ã£o: falha ao sincronizar via storage.', e)
+      console.warn('Última rodada: falha ao sincronizar via storage.', e)
     }
   }
 })
@@ -138,34 +136,13 @@ function inscrever(ouvinte) {
   return () => ouvintes.delete(ouvinte)
 }
 
-/* ---------- AÃ§Ãµes ---------- */
+/* ---------- Ações ---------- */
 
 function atualizarCampo(campo, valor) {
   setEstado((estadoAtual) => {
     switch (campo) {
-      case 'nomeCasa':
-        estadoAtual.nomeCasa = String(valor).slice(0, 24).toUpperCase()
-        break
-      case 'siglaCasa':
-        estadoAtual.siglaCasa = String(valor).slice(0, 4).toUpperCase() || '---'
-        break
-      case 'corCasa':
-        estadoAtual.corCasa = valor
-        break
-      case 'formacaoCasa':
-        estadoAtual.formacaoCasa = valor
-        break
-      case 'nomeFora':
-        estadoAtual.nomeFora = String(valor).slice(0, 24).toUpperCase()
-        break
-      case 'siglaFora':
-        estadoAtual.siglaFora = String(valor).slice(0, 4).toUpperCase() || '---'
-        break
-      case 'corFora':
-        estadoAtual.corFora = valor
-        break
-      case 'formacaoFora':
-        estadoAtual.formacaoFora = valor
+      case 'titulo':
+        estadoAtual.titulo = String(valor).slice(0, 32).toUpperCase()
         break
       default:
         estadoAtual[campo] = valor
@@ -174,12 +151,28 @@ function atualizarCampo(campo, valor) {
   })
 }
 
-function atualizarJogador(lado, indice, campo, valor) {
+function atualizarJogo(indice, campo, valor) {
   setEstado((estadoAtual) => {
-    const lista = estadoAtual.jogadores[lado]
-    if (!lista || !lista[indice]) return estadoAtual
-    if (campo === 'num') lista[indice].num = String(valor).slice(0, 2)
-    else lista[indice].nome = String(valor).slice(0, 22).toUpperCase()
+    const jogo = estadoAtual.jogos[indice]
+    if (!jogo) return estadoAtual
+    if (campo === 'casaGols' || campo === 'foraGols') {
+      jogo[campo] = String(valor).replace(/[^0-9]/g, '').slice(0, 2)
+    } else {
+      jogo[campo] = String(valor).slice(0, 4).toUpperCase()
+    }
+    return estadoAtual
+  })
+}
+
+function atualizarPosicao(indice, campo, valor) {
+  setEstado((estadoAtual) => {
+    const posicao = estadoAtual.posicoes[indice]
+    if (!posicao) return estadoAtual
+    if (campo === 'pontos') {
+      posicao.pontos = String(valor).replace(/[^0-9]/g, '').slice(0, 3)
+    } else {
+      posicao.sigla = String(valor).slice(0, 4).toUpperCase()
+    }
     return estadoAtual
   })
 }
@@ -198,11 +191,12 @@ function ocultar() {
   })
 }
 
-export const escalacao = {
+export const ultimaRodada = {
   getEstado,
   inscrever,
   atualizarCampo,
-  atualizarJogador,
+  atualizarJogo,
+  atualizarPosicao,
   mostrar,
   ocultar
 }

@@ -1,4 +1,6 @@
 ﻿import styled from 'styled-components';
+import { CoresFixas } from '../components/CoresFixas';
+import { PreviaOverlay } from '../components/PreviaOverlay';
 import { Link } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
@@ -289,11 +291,9 @@ function BlocoLado({ ladoNome, lado, total }) {
               onChange={(e) => atualizarLado(ladoNome, 'sigla', e.target.value)}
             />
           </Campo>
-          <InputCor
-            type="color"
-            value={lado.cor}
-            title="Cor do time"
-            onChange={(e) => atualizarLado(ladoNome, 'cor', e.target.value)}
+          <CoresFixas
+            valor={lado.cor}
+            onChange={(v) => atualizarLado(ladoNome, 'cor', v)}
             />
         </LinhaLado>
         <span className="placar">
@@ -339,6 +339,7 @@ export default function ControlePenaltis() {
       <Titulo>
         Controle · <span>Pênaltis</span>
       </Titulo>
+      <PreviaOverlay rota="/penaltis" altura={320} />
 
       <Cartao>
         <Rotulo>Competição</Rotulo>

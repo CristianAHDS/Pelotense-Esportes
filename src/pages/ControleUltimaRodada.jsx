@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Header } from '../components/Header';
-import { PainelSubstituicao } from '../components/PainelSubstituicao';
+import { PainelUltimaRodada } from '../components/PainelUltimaRodada';
+import { PreviaOverlay } from '../components/PreviaOverlay';
 
 const Container = styled.main`
   min-height: 100vh;
@@ -12,13 +13,13 @@ const Conteudo = styled.div`
   margin: 0 auto;
 `;
 
-export default function ControleSubstituicao() {
+export default function ControleUltimaRodada() {
   return (
     <Container>
-      <Header subtitulo="Controle · Substituição" />
+      <Header subtitulo="Controle · Última Rodada" />
       <Conteudo>
-        <PainelSubstituicao />
-        <PreviaOverlay rota="/substituicao" altura={260} />
+        <PainelUltimaRodada />
+        <PreviaOverlay rota="/ultima-rodada" altura={420} />
       </Conteudo>
     </Container>
   );

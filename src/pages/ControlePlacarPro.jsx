@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { CoresFixas } from '../components/CoresFixas';
 import { Header } from '../components/Header';
 import { usePlacarPro } from '../hooks/usePlacarPro';
 import {
@@ -335,11 +336,10 @@ function PainelTimes() {
             </Botao>
           </LinhaGols>
           <CorInput>
-            <input
-              type="color"
-              value={cor}
-              onChange={(e) => definirCorTime(lado, e.target.value)}
-          />
+            <CoresFixas
+              valor={cor}
+              onChange={(v) => definirCorTime(lado, v)}
+            />
             <span>Cor do time</span>
           </CorInput>
         </BlocoTime>

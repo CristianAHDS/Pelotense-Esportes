@@ -81,12 +81,25 @@ export function setEstado(atualizador, { remoto = false } = {}) {
     const pacote = pacoteSincronizacao()
     canal?.postMessage({ tipo: MSG_TIPO, estado: pacote })
     publicarNuvem(CANAL_NUVEM, pacote)
+    registrarSync(pacote)
   }
 
   processandoRemoto = false
   }
 
+const ultimosSync = []
+const LIMITE_SYNC = 16
+
+function registrarSync(valor) {
+  const texto = JSON.stringify(valor)
+  ultimosSync.push(texto)
+  while (ultimosSync.length > LIMITE_SYNC) ultimosSync.shift()
+}
 function aplicarEstadoRemoto(novoEstado) {
+  const serializado = JSON.stringify(novoEstado)
+  if (ultimosSync.includes(serializado) || serializado === JSON.stringify(estado)) return
+  registrarSync(novoEstado)
+
   if (!processandoRemoto) {
     if (novoEstado.cronometro?.rodando && typeof novoEstado.cronometro.segundos === 'number') {
       novoEstado.cronometro.base = novoEstado.cronometro.segundos

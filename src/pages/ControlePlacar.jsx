@@ -1,5 +1,6 @@
 ﻿import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { CoresFixas } from '../components/CoresFixas';
 import { Header } from '../components/Header';
 import { usePlacar } from '../hooks/usePlacar';
 import {
@@ -344,23 +345,17 @@ function PainelTimes() {
             <Rotulo style={{ marginTop: 12 }}>Cores do time</Rotulo>
             <LinhaCores>
               <CorInput>
-                <input
-                  type="color"
-                  value={corPrimaria}
-                  onChange={(e) =>
-                    definirCorTime(lado, 'primaria', e.target.value)
-  }
-            />
+                <CoresFixas
+                  valor={corPrimaria}
+                  onChange={(v) => definirCorTime(lado, 'primaria', v)}
+                />
                 <span>Principal</span>
               </CorInput>
               <CorInput>
-                <input
-                  type="color"
-                  value={corSecundaria}
-                  onChange={(e) =>
-                    definirCorTime(lado, 'secundaria', e.target.value)
-  }
-            />
+                <CoresFixas
+                  valor={corSecundaria}
+                  onChange={(v) => definirCorTime(lado, 'secundaria', v)}
+                />
                 <span>Secundária</span>
               </CorInput>
             </LinhaCores>

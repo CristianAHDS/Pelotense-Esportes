@@ -43,6 +43,10 @@ export function nuvemAtiva() {
 const LIMITE_ECO = 16
 const publicacoesRecentes = new Map()
 
+/* Janela em que edições locais protegem o estado contra entregas defasadas */
+const JANELA_EDICAO_LOCAL_MS = 1200
+const ultimaEdicaoLocal = new Map()
+
 function marcarPublicacao(canal, texto) {
   const lista = publicacoesRecentes.get(canal) || []
   lista.push(texto)
@@ -68,7 +72,7 @@ const ID_CLIENTE = (() => {
   }
 })()
 
-const EXPIRA_DONO_MS = 15000
+const EXPIRA_DONO_MS = 30000
 
 let statusControle = 'verificando'
 const ouvintesStatus = new Set()
@@ -106,9 +110,14 @@ export function inscreverStatusControle(ouvinte) {
       if (!atual || typeof atual !== 'object' || !atual.dono) statusControle = 'livre'
       else if (atual.dono === ID_CLIENTE) statusControle = 'ativo'
       else statusControle = donoBloqueante(atual) ? 'bloqueado' : 'livre'
+      if (statusControle === 'ativo') {
+        /* Claim próprio envelhecido indica que esta aba voltou de suspensão:
+           regrava o batimento imediatamente para não perder a posse. */
+        const idade = Date.now() - (Number(atual?.ts) || 0)
+        iniciarBatimento(idade > EXPIRA_DONO_MS / 2)
+      }
       if (statusControle !== anterior) {
-        if (statusControle === 'ativo') iniciarBatimento()
-        else pararBatimento()
+        if (statusControle !== 'ativo') pararBatimento()
         if (statusControle === 'ativo') esvaziarPendentes()
         ouvintesStatus.forEach((fn) => fn(statusControle))
       }
@@ -122,18 +131,22 @@ export function inscreverStatusControle(ouvinte) {
   }
 }
 
-function iniciarBatimento() {
+function iniciarBatimento(forcar = false) {
   const db = obterBanco()
-  if (!db || timerBatimento) return
-  const referencia = ref(db, caminhoControle())
-  try {
-    onDisconnect(referencia).remove()
-  } catch {}
-  const bater = () => {
-    set(referencia, { dono: ID_CLIENTE, ts: Date.now() }).catch(() => {})
+  if (!db) return
+  if (!timerBatimento) {
+    const referencia = ref(db, caminhoControle())
+    try {
+      onDisconnect(referencia).remove()
+    } catch {}
+    const bater = () => {
+      set(referencia, { dono: ID_CLIENTE, ts: Date.now() }).catch(() => {})
+    }
+    bater()
+    timerBatimento = setInterval(bater, 8000)
+  } else if (forcar) {
+    set(ref(db, caminhoControle()), { dono: ID_CLIENTE, ts: Date.now() }).catch(() => {})
   }
-  bater()
-  timerBatimento = setInterval(bater, 8000)
 }
 
 function pararBatimento() {
@@ -181,6 +194,9 @@ export function publicarNuvem(canal, estado) {
   } catch {
     return
   }
+  /* Toda edição local abre uma janela curta em que entregas da nuvem são
+     ignoradas — evita que estados defasados revertam o que o operador digita. */
+  ultimaEdicaoLocal.set(canal, Date.now())
   if (!ehControlador()) {
     if (statusControle !== 'bloqueado') pendentes.set(canal, texto)
     return
@@ -205,6 +221,8 @@ export function inscreverNuvem(canal, callback) {
       const texto = snapshot.val()
       if (typeof texto !== 'string') return
       if (ehEcoProprio(canal, texto)) return
+      const ultima = ultimaEdicaoLocal.get(canal) || 0
+      if (Date.now() - ultima < JANELA_EDICAO_LOCAL_MS) return
       try {
         callback(JSON.parse(texto))
       } catch {

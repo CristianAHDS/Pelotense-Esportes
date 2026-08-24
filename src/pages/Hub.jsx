@@ -1,9 +1,9 @@
 ﻿import { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Header } from '../components/Header'
-import { LOGO_URL } from '../theme'
-import { salaAtual } from '../lib/sincronizacaoNuvem'
+import { Header } from '../components/Header';
+import { LOGO_URL } from '../theme';
+import { salaAtual } from '../lib/sincronizacaoNuvem';
 
 /* ---------- Dados dos segmentos ---------- */
 
@@ -83,6 +83,15 @@ const GAUCHAO_A2 = [
 
 const EXTRAS = [
   {
+    rota: '/ultima-rodada',
+    tag: 'ÚLTIMA RODADA',
+    titulo: 'Última Rodada',
+    descricao:
+      'Resultados dos últimos jogos com escudos e placares, mais a classificação dos times após a rodada.',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
+  },
+  {
     rota: '/escalacao',
     tag: 'ESCALAÇÃO',
     titulo: 'Escalação',
@@ -132,7 +141,7 @@ function rolarPara(id) {
   document
     .getElementById(id)
     ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+}
 
 /* ---------- Estilos ---------- */
 
@@ -187,7 +196,7 @@ const Hero = styled.section`
     135deg,
     rgba(165, 239, 28, 0.09),
     ${({ theme }) => theme.cores.fundoClaro} 55%
-      );
+  );
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-left: 4px solid ${({ theme }) => theme.cores.primaria};
   border-radius: 16px;
@@ -212,23 +221,23 @@ const Hero = styled.section`
   }
 
   > * {
-  position: relative;
+    position: relative;
     z-index: 1;
   }
 
   @keyframes derivaHero {
     from {
       transform: translate3d(-2.5%, -2%, 0) rotate(-1.2deg);
-  }
+    }
     to {
       transform: translate3d(2.5%, 2%, 0) rotate(1.2deg);
-  }
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-  &::before {
+    &::before {
       animation: none;
-  }
+    }
   }
 
   img {
@@ -260,9 +269,9 @@ const HeroBadge = styled.span`
   align-items: center;
   gap: 8px;
   font-size: 0.62rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 2.5px;
-    text-transform: uppercase;
+  text-transform: uppercase;
   color: ${({ theme }) => theme.cores.primaria};
   border: 1px solid rgba(165, 239, 28, 0.35);
   background: rgba(165, 239, 28, 0.07);
@@ -284,10 +293,10 @@ const HeroBadge = styled.span`
     0%,
     100% {
       opacity: 1;
-  }
+    }
     50% {
       opacity: 0.25;
-  }
+    }
   }
 `;
 
@@ -301,11 +310,11 @@ const HeroAcoes = styled.div`
 const HeroBotao = styled.button`
   padding: 11px 24px;
   border-radius: 9px;
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.85rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 1.5px;
-    text-transform: uppercase;
+  text-transform: uppercase;
   cursor: pointer;
   transition:
     filter 0.15s ease,
@@ -316,19 +325,19 @@ const HeroBotao = styled.button`
     border: none;
     background: ${({ theme }) => theme.cores.primaria};
     color: #0a0f00;
-  &:hover {
+    &:hover {
       filter: brightness(1.12);
       box-shadow: 0 0 22px rgba(165, 239, 28, 0.35);
-  }
+    }
   }
 
   &.secundario {
-  border: 1px solid ${({ theme }) => theme.cores.borda};
+    border: 1px solid ${({ theme }) => theme.cores.borda};
     background: transparent;
     color: ${({ theme }) => theme.cores.texto};
-  &:hover {
+    &:hover {
       background: ${({ theme }) => theme.cores.superficieHover};
-  }
+    }
   }
 `;
 
@@ -355,13 +364,13 @@ const Segmento = styled.div`
   &::after {
     content: '';
     order: 3;
-  flex: 1;
+    flex: 1;
     height: 1px;
-  background: linear-gradient(
-        90deg,
+    background: linear-gradient(
+      90deg,
       ${({ theme }) => theme.cores.borda},
-        transparent
-      );
+      transparent
+    );
   }
 `;
 
@@ -378,11 +387,11 @@ const SegmentoIcone = styled.span`
 
 const Contador = styled.span`
   order: 4;
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.72rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 1px;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  color: ${({ theme }) => theme.cores.textoSuave};
   background: ${({ theme }) => theme.cores.fundoClaro};
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 999px;
@@ -402,7 +411,7 @@ const Card = styled.div`
     165deg,
     ${({ theme }) => theme.cores.superficie},
     ${({ theme }) => theme.cores.fundoClaro}
-      );
+  );
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 14px;
   padding: 24px;
@@ -435,23 +444,23 @@ const Card = styled.div`
 
   &.breve {
     opacity: 0.45;
-  &::before {
+    &::before {
       opacity: 0.35;
-  }
-  &:hover {
+    }
+    &:hover {
       transform: none;
       border-color: ${({ theme }) => theme.cores.borda};
       box-shadow: none;
-  }
+    }
   }
 `;
 
 const CardTag = styled.span`
   align-self: flex-start;
   font-size: 0.58rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 2px;
-    text-transform: uppercase;
+  text-transform: uppercase;
   color: ${({ $accent, theme }) => $accent || theme.cores.textoSuave};
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid ${({ theme }) => theme.cores.borda};
@@ -460,16 +469,16 @@ const CardTag = styled.span`
 `;
 
 const CardTitulo = styled.h3`
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 1.25rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 1px;
-    text-transform: uppercase;
+  text-transform: uppercase;
   line-height: 1.15;
 `;
 
 const CardDescricao = styled.p`
-    color: ${({ theme }) => theme.cores.textoSuave};
+  color: ${({ theme }) => theme.cores.textoSuave};
   font-size: 0.85rem;
   line-height: 1.55;
   flex: 1;
@@ -482,12 +491,12 @@ const MolduraPreview = styled.div`
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid ${({ theme }) => theme.cores.borda};
-    background:
-      radial-gradient(
+  background:
+    radial-gradient(
       circle at 30% 20%,
       rgba(255, 255, 255, 0.03),
       transparent 60%
-      ),
+    ),
     #060606;
 
   iframe {
@@ -511,7 +520,7 @@ const MolduraPreview = styled.div`
 `;
 
 const DicaAmpliar = styled.span`
-    position: absolute;
+  position: absolute;
   right: 10px;
   bottom: 10px;
   z-index: 3;
@@ -524,10 +533,10 @@ const DicaAmpliar = styled.span`
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: rgba(255, 255, 255, 0.85);
   font-size: 0.62rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 1.5px;
-    text-transform: uppercase;
-    pointer-events: none;
+  text-transform: uppercase;
+  pointer-events: none;
   opacity: 0;
   transform: translateY(4px);
   transition:
@@ -535,8 +544,8 @@ const DicaAmpliar = styled.span`
     transform 0.18s ease;
 
   ${MolduraPreview}:hover & {
-      opacity: 1;
-      transform: none;
+    opacity: 1;
+    transform: none;
   }
 `;
 
@@ -544,7 +553,8 @@ function PreviewAoVivo({ rota, largura = 1280, altura = 720, aoAmpliar }) {
   const ref = useRef(null);
   const [escala, setEscala] = useState(0);
   const sala = salaAtual();
-  const sufixoSala = sala !== 'padrao' ? `&sala=${encodeURIComponent(sala)}` : '';
+  const sufixoSala =
+    sala !== 'padrao' ? `&sala=${encodeURIComponent(sala)}` : '';
 
   useEffect(() => {
     const el = ref.current;
@@ -580,15 +590,15 @@ function PreviewAoVivo({ rota, largura = 1280, altura = 720, aoAmpliar }) {
       />
       {aoAmpliar && <DicaAmpliar>? Ampliar</DicaAmpliar>}
     </MolduraPreview>
-      );
-  }
+  );
+}
 
 const PreviaRotulo = styled.span`
   font-size: 0.58rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.cores.textoSuave};
   display: flex;
   align-items: center;
   gap: 6px;
@@ -606,19 +616,19 @@ const PreviaRotulo = styled.span`
     0%,
     100% {
       opacity: 1;
-  }
+    }
     50% {
       opacity: 0.3;
-  }
+    }
   }
 `;
 
 const EmBreveChip = styled.span`
   align-self: flex-start;
   font-size: 0.6rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 2px;
-    text-transform: uppercase;
+  text-transform: uppercase;
   color: ${({ theme }) => theme.cores.alerta};
   border: 1px dashed rgba(245, 158, 11, 0.4);
   padding: 5px 12px;
@@ -634,13 +644,13 @@ const Revelador = styled.div`
   transition-delay: ${({ $atraso }) => $atraso}ms;
 
   &.visivel {
-      opacity: 1;
-      transform: none;
+    opacity: 1;
+    transform: none;
   }
 
   @media (prefers-reduced-motion: reduce) {
-      opacity: 1;
-      transform: none;
+    opacity: 1;
+    transform: none;
     transition: none;
   }
 `;
@@ -654,16 +664,16 @@ function RevelarAoRolar({ atraso = 0, children }) {
     if (!el || typeof IntersectionObserver === 'undefined') {
       setVisivel(true);
       return undefined;
-  }
+    }
     const obs = new IntersectionObserver(
       ([entrada]) => {
         if (entrada.isIntersecting) {
           setVisivel(true);
           obs.disconnect();
-  }
-  },
+        }
+      },
       { threshold: 0.08, rootMargin: '0px 0px -30px 0px' },
-      );
+    );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
@@ -672,8 +682,8 @@ function RevelarAoRolar({ atraso = 0, children }) {
     <Revelador ref={ref} $atraso={atraso} className={visivel ? 'visivel' : ''}>
       {children}
     </Revelador>
-      );
-  }
+  );
+}
 
 const CardAcoes = styled.div`
   display: flex;
@@ -689,11 +699,11 @@ const Botao = styled(Link)`
   text-align: center;
   padding: 11px 14px;
   border-radius: 9px;
-    font-family: ${({ theme }) => theme.fontes.titulo};
+  font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.82rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 1.5px;
-    text-transform: uppercase;
+  text-transform: uppercase;
   text-decoration: none;
   transition:
     filter 0.15s ease,
@@ -702,18 +712,18 @@ const Botao = styled(Link)`
   &.primario {
     background: ${({ theme }) => theme.cores.primaria};
     color: #0a0f00;
-  &:hover {
+    &:hover {
       filter: brightness(1.12);
-  }
+    }
   }
 
   &.secundario {
     background: transparent;
-  border: 1px solid ${({ theme }) => theme.cores.borda};
+    border: 1px solid ${({ theme }) => theme.cores.borda};
     color: ${({ theme }) => theme.cores.texto};
-  &:hover {
+    &:hover {
       background: ${({ theme }) => theme.cores.superficieHover};
-  }
+    }
   }
 `;
 
@@ -724,8 +734,8 @@ const BotaoCopiar = styled.button`
   justify-content: center;
   border-radius: 9px;
   border: 1px solid ${({ theme }) => theme.cores.borda};
-    background: transparent;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  background: transparent;
+  color: ${({ theme }) => theme.cores.textoSuave};
   font-size: 1rem;
   cursor: pointer;
   transition:
@@ -736,7 +746,7 @@ const BotaoCopiar = styled.button`
   &:hover {
     color: ${({ $copiado, theme }) =>
       $copiado ? '#a5ef1c' : theme.cores.texto};
-      background: ${({ theme }) => theme.cores.superficieHover};
+    background: ${({ theme }) => theme.cores.superficieHover};
   }
 
   &.ok {
@@ -759,7 +769,7 @@ function CopiarLink({ rota }) {
       area.select();
       document.execCommand('copy');
       area.remove();
-  }
+    }
     setCopiado(true);
     setTimeout(() => setCopiado(false), 1800);
   }
@@ -772,12 +782,12 @@ function CopiarLink({ rota }) {
     >
       {copiado ? '✓' : '⧉'}
     </BotaoCopiar>
-      );
-  }
+  );
+}
 
 const SobreposicaoTV = styled.div`
-    position: fixed;
-    inset: 0;
+  position: fixed;
+  inset: 0;
   z-index: 50;
   display: grid;
   place-items: center;
@@ -789,10 +799,10 @@ const SobreposicaoTV = styled.div`
   @keyframes entrarTv {
     from {
       opacity: 0;
-  }
+    }
     to {
       opacity: 1;
-  }
+    }
   }
 `;
 
@@ -808,15 +818,15 @@ const JanelaTV = styled.div`
     from {
       opacity: 0;
       transform: translateY(18px) scale(0.985);
-  }
+    }
     to {
       opacity: 1;
       transform: none;
-  }
+    }
   }
 
   ${MolduraPreview} {
-  flex: 1;
+    flex: 1;
     min-height: 0;
   }
 `;
@@ -829,16 +839,16 @@ const BarraTV = styled.div`
   flex-wrap: wrap;
 
   .ident {
-  display: flex;
+    display: flex;
     align-items: baseline;
-  gap: 12px;
+    gap: 12px;
     min-width: 0;
   }
 
   .tag {
-  font-size: 0.62rem;
+    font-size: 0.62rem;
     font-weight: 700;
-  letter-spacing: 2.5px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
   }
 
@@ -846,10 +856,10 @@ const BarraTV = styled.div`
     font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 1.3rem;
     font-weight: 700;
-  letter-spacing: 1.5px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     white-space: nowrap;
-  overflow: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
   }
 `;
@@ -872,8 +882,8 @@ const FecharTV = styled.button`
   place-items: center;
   border-radius: 9px;
   border: 1px solid ${({ theme }) => theme.cores.borda};
-    background: transparent;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  background: transparent;
+  color: ${({ theme }) => theme.cores.textoSuave};
   font-size: 1rem;
   cursor: pointer;
   transition:
@@ -904,7 +914,7 @@ const RodapeTopo = styled.div`
   flex-wrap: wrap;
 
   @media (max-width: 640px) {
-  flex-direction: column;
+    flex-direction: column;
   }
 `;
 
@@ -921,14 +931,14 @@ const RodapeMarca = styled.div`
 
   b {
     font-family: ${({ theme }) => theme.fontes.titulo};
-  font-size: 1rem;
+    font-size: 1rem;
     font-weight: 700;
-  letter-spacing: 2.5px;
+    letter-spacing: 2.5px;
   }
 
   b em {
     font-style: normal;
-  color: ${({ theme }) => theme.cores.primaria};
+    color: ${({ theme }) => theme.cores.primaria};
   }
 `;
 
@@ -941,43 +951,43 @@ const RodapeNav = styled.nav`
   button {
     padding: 7px 13px;
     border: none;
-  border-radius: 999px;
+    border-radius: 999px;
     background: transparent;
     color: ${({ theme }) => theme.cores.textoSuave};
     font-family: ${({ theme }) => theme.fontes.corpo};
     font-size: 0.78rem;
     font-weight: 600;
-  letter-spacing: 1px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-  cursor: pointer;
-  transition:
-    color 0.15s ease,
-    background 0.15s ease;
+    cursor: pointer;
+    transition:
+      color 0.15s ease,
+      background 0.15s ease;
 
-  &:hover {
-    color: ${({ theme }) => theme.cores.texto};
+    &:hover {
+      color: ${({ theme }) => theme.cores.texto};
       background: ${({ theme }) => theme.cores.superficieHover};
-  }
+    }
   }
 `;
 
 const RodapeDivisor = styled.div`
   max-width: 1200px;
   margin: 22px auto;
-    height: 1px;
+  height: 1px;
   background: linear-gradient(
-        90deg,
+    90deg,
     transparent,
-      ${({ theme }) => theme.cores.borda},
-        transparent
-      );
+    ${({ theme }) => theme.cores.borda},
+    transparent
+  );
 `;
 
 const RodapeCopy = styled.p`
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
-    color: ${({ theme }) => theme.cores.textoSuave};
+  color: ${({ theme }) => theme.cores.textoSuave};
   font-size: 0.72rem;
   letter-spacing: 2px;
 `;
@@ -1007,7 +1017,7 @@ export default function Hub() {
         <Hero>
           <img src={LOGO_URL} alt="Logo Pelotense Esportes" />
           <div>
-            <HeroBadge>Sistema de placares ao vivo</HeroBadge>
+            <HeroBadge>Sistema de overlays ao vivo</HeroBadge>
             <h1>Pelotense Esportes</h1>
             <p>
               Central de overlays e placares profissionais para transmissões.
@@ -1041,10 +1051,10 @@ export default function Hub() {
           {SCOREBOARDS.map((m, i) => (
             <RevelarAoRolar key={m.rota} atraso={(i % 4) * 60}>
               <Card $accent={m.accent} $glow={m.glow}>
-              <CardTag $accent={m.accent}>{m.tag}</CardTag>
-              <CardTitulo>{m.titulo}</CardTitulo>
-              <CardDescricao>{m.descricao}</CardDescricao>
-              <PreviaRotulo>Prévia ao vivo</PreviaRotulo>
+                <CardTag $accent={m.accent}>{m.tag}</CardTag>
+                <CardTitulo>{m.titulo}</CardTitulo>
+                <CardDescricao>{m.descricao}</CardDescricao>
+                <PreviaRotulo>Prévia ao vivo</PreviaRotulo>
                 <PreviewAoVivo
                   rota={m.rota}
                   largura={720}
@@ -1058,9 +1068,9 @@ export default function Hub() {
                       largura: 720,
                       altura: 405,
                     })
-  }
-      />
-              <CardAcoes>
+                  }
+                />
+                <CardAcoes>
                   <Botao
                     as="a"
                     href={m.rota}
@@ -1068,14 +1078,14 @@ export default function Hub() {
                     rel="noreferrer"
                     className="primario"
                   >
-                  Abrir
-                </Botao>
-                <Botao to={`${m.rota}/controle`} className="secundario">
-                  Controlar
-                </Botao>
-                <CopiarLink rota={m.rota} />
-              </CardAcoes>
-            </Card>
+                    Abrir
+                  </Botao>
+                  <Botao to={`${m.rota}/controle`} className="secundario">
+                    Controlar
+                  </Botao>
+                  <CopiarLink rota={m.rota} />
+                </CardAcoes>
+              </Card>
             </RevelarAoRolar>
           ))}
         </Grade>
@@ -1089,9 +1099,9 @@ export default function Hub() {
           {GAUCHAO_A2.map((t, i) => (
             <RevelarAoRolar key={t.titulo} atraso={(i % 4) * 60}>
               <Card $accent={t.accent} $glow={t.glow}>
-              <CardTag $accent={t.accent}>{t.tag}</CardTag>
-              <CardTitulo>{t.titulo}</CardTitulo>
-              <CardDescricao>{t.descricao}</CardDescricao>
+                <CardTag $accent={t.accent}>{t.tag}</CardTag>
+                <CardTitulo>{t.titulo}</CardTitulo>
+                <CardDescricao>{t.descricao}</CardDescricao>
                 <PreviewAoVivo
                   rota={t.rota}
                   largura={760}
@@ -1105,9 +1115,9 @@ export default function Hub() {
                       largura: 760,
                       altura: t.altura || 620,
                     })
-  }
-      />
-              <CardAcoes>
+                  }
+                />
+                <CardAcoes>
                   <Botao
                     as="a"
                     href={t.rota}
@@ -1115,14 +1125,17 @@ export default function Hub() {
                     rel="noreferrer"
                     className="primario"
                   >
-                  Abrir
-                </Botao>
-                <Botao to={t.controle || `${t.rota}/controle`} className="secundario">
-                  Controlar
-                </Botao>
-                <CopiarLink rota={t.rota} />
-              </CardAcoes>
-            </Card>
+                    Abrir
+                  </Botao>
+                  <Botao
+                    to={t.controle || `${t.rota}/controle`}
+                    className="secundario"
+                  >
+                    Controlar
+                  </Botao>
+                  <CopiarLink rota={t.rota} />
+                </CardAcoes>
+              </Card>
             </RevelarAoRolar>
           ))}
         </Grade>
@@ -1136,9 +1149,9 @@ export default function Hub() {
           {EXTRAS.map((x, i) => (
             <RevelarAoRolar key={x.rota} atraso={(i % 4) * 60}>
               <Card $accent={x.accent} $glow={x.glow}>
-              <CardTag $accent={x.accent}>{x.tag}</CardTag>
-              <CardTitulo>{x.titulo}</CardTitulo>
-              <CardDescricao>{x.descricao}</CardDescricao>
+                <CardTag $accent={x.accent}>{x.tag}</CardTag>
+                <CardTitulo>{x.titulo}</CardTitulo>
+                <CardDescricao>{x.descricao}</CardDescricao>
                 <PreviewAoVivo
                   rota={x.rota}
                   largura={720}
@@ -1152,9 +1165,9 @@ export default function Hub() {
                       largura: 720,
                       altura: 405,
                     })
-  }
-      />
-              <CardAcoes>
+                  }
+                />
+                <CardAcoes>
                   <Botao
                     as="a"
                     href={x.rota}
@@ -1162,14 +1175,14 @@ export default function Hub() {
                     rel="noreferrer"
                     className="primario"
                   >
-                  Abrir
-                </Botao>
-                <Botao to={`${x.rota}/controle`} className="secundario">
-                  Controlar
-                </Botao>
-                <CopiarLink rota={x.rota} />
-              </CardAcoes>
-            </Card>
+                    Abrir
+                  </Botao>
+                  <Botao to={`${x.rota}/controle`} className="secundario">
+                    Controlar
+                  </Botao>
+                  <CopiarLink rota={x.rota} />
+                </CardAcoes>
+              </Card>
             </RevelarAoRolar>
           ))}
         </Grade>
@@ -1183,10 +1196,10 @@ export default function Hub() {
           {ESPORTES.map((e, i) => (
             <RevelarAoRolar key={e.titulo} atraso={(i % 4) * 60}>
               <Card className="breve" $accent="#3b82f6">
-              <CardTitulo>{e.titulo}</CardTitulo>
-              <CardDescricao>{e.descricao}</CardDescricao>
-              <EmBreveChip>Em breve</EmBreveChip>
-            </Card>
+                <CardTitulo>{e.titulo}</CardTitulo>
+                <CardDescricao>{e.descricao}</CardDescricao>
+                <EmBreveChip>Em breve</EmBreveChip>
+              </Card>
             </RevelarAoRolar>
           ))}
         </Grade>
@@ -1204,7 +1217,7 @@ export default function Hub() {
               <button key={l.id} type="button" onClick={() => rolarPara(l.id)}>
                 {l.label}
               </button>
-          ))}
+            ))}
           </RodapeNav>
         </RodapeTopo>
         <RodapeDivisor />
@@ -1227,7 +1240,7 @@ export default function Hub() {
                   {tv.tag}
                 </span>
                 <h3>{tv.titulo}</h3>
-          </div>
+              </div>
               <AcoesTV>
                 <Botao
                   as="a"
@@ -1254,10 +1267,10 @@ export default function Hub() {
               rota={tv.rota}
               largura={tv.largura}
               altura={tv.altura}
-      />
+            />
           </JanelaTV>
         </SobreposicaoTV>
       )}
     </Container>
-      );
-  }
+  );
+}

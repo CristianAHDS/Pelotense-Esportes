@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { escalacao } from '../store/escalacaoStore';
+import { CoresFixas } from './CoresFixas';
 
 const VERDE = '#a5ef1c';
 
@@ -155,16 +156,6 @@ const EntradaNum = styled(Entrada)`
   }
 `;
 
-const CorInput = styled.input`
-  width: 46px;
-  height: 42px;
-  padding: 0;
-  border: 1px solid ${({ theme }) => theme.cores.borda};
-  border-radius: 10px;
-  background: transparent;
-  cursor: pointer;
-`;
-
 const Acoes = styled.div`
   display: flex;
   gap: 10px;
@@ -213,21 +204,11 @@ function ColunaTime({ estado, config, atualizarCampo, atualizarJogador }) {
     <SecaoTime $cor={cor}>
       <RotuloTime>{config.rotulo}</RotuloTime>
       <Linha>
-        <Campo>
-          <Rotulo>Cor</Rotulo>
-          <CorInput
-            type="color"
-            value={cor}
-            title="Cor do time"
-            onChange={(e) => atualizarCampo(config.campoCor, e.target.value)}
-          />
-        </Campo>
         <Campo className="cresce">
-          <Rotulo>Nome</Rotulo>
-          <Entrada
-            value={estado[config.campoNome]}
-            maxLength={24}
-            onChange={(e) => atualizarCampo(config.campoNome, e.target.value)}
+          <Rotulo>Cor</Rotulo>
+          <CoresFixas
+            valor={cor}
+            onChange={(v) => atualizarCampo(config.campoCor, v)}
           />
         </Campo>
         <Campo>
@@ -241,6 +222,14 @@ function ColunaTime({ estado, config, atualizarCampo, atualizarJogador }) {
         </Campo>
       </Linha>
       <Linha>
+        <Campo className="cresce">
+          <Rotulo>Nome</Rotulo>
+          <Entrada
+            value={estado[config.campoNome]}
+            maxLength={24}
+            onChange={(e) => atualizarCampo(config.campoNome, e.target.value)}
+          />
+        </Campo>
         <Campo>
           <Rotulo>Formação</Rotulo>
           <Selecao

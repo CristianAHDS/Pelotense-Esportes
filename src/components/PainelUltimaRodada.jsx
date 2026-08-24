@@ -1,0 +1,260 @@
+import styled from 'styled-components';
+import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
+import { ultimaRodada } from '../store/ultimaRodadaStore';
+
+const Cartao = styled.section`
+  background: #0d0d0d;
+  border: 1px solid #1f1f1f;
+  border-radius: 12px;
+  padding: 24px;
+`;
+
+const Titulo = styled.h2`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 18px;
+
+  span {
+    color: #a5ef1c;
+  }
+`;
+
+const CampoTitulo = styled.div`
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 22px;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const Rotulo = styled.span`
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+`;
+
+const Grade = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 22px;
+`;
+
+const SecaoTitulo = styled.h3`
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 12px;
+`;
+
+const LinhaJogo = styled.div`
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 52px auto 52px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+
+  & + & {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: minmax(0, 1fr) 44px auto 44px minmax(0, 1fr);
+  }
+`;
+
+const LinhaPosicao = styled.div`
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) 64px;
+  gap: 8px;
+  align-items: center;
+
+  & + & {
+    margin-top: 8px;
+  }
+`;
+
+const Indice = styled.span`
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #a5ef1c;
+  text-align: center;
+`;
+
+const Entrada = styled.input`
+  width: 100%;
+  min-width: 0;
+  background: #000;
+  border: 1px solid #262626;
+  border-radius: 8px;
+  padding: 9px 10px;
+  color: #fff;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: border-color 120ms ease;
+
+  &:focus {
+    outline: none;
+    border-color: #a5ef1c;
+  }
+`;
+
+const EntradaNum = styled(Entrada)`
+  width: 100%;
+  padding: 9px 4px;
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+`;
+
+const Separador = styled.span`
+  color: rgba(255, 255, 255, 0.35);
+  font-weight: 700;
+`;
+
+const Acoes = styled.div`
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+`;
+
+const Botao = styled.button`
+  flex: 1;
+  min-width: 140px;
+  padding: 11px 14px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: filter 120ms ease, border-color 120ms ease;
+
+  ${({ $primario }) =>
+    $primario
+      ? `
+    background: #a5ef1c;
+    color: #0a0f00;
+    &:hover { filter: brightness(1.08); }
+  `
+      : `
+    background: transparent;
+    border-color: #333;
+    color: #ddd;
+    &:hover { border-color: #a5ef1c; color: #a5ef1c; }
+  `}
+`;
+
+export function PainelUltimaRodada() {
+  const estado = usePlacarBroadcast(ultimaRodada);
+
+  return (
+    <Cartao>
+      <Titulo>
+        <span>●</span> Última Rodada
+      </Titulo>
+
+      <CampoTitulo>
+        <Rotulo>Título</Rotulo>
+        <Entrada
+          value={estado.titulo}
+          placeholder="ÚLTIMA RODADA"
+          maxLength={32}
+          onChange={(e) => ultimaRodada.atualizarCampo('titulo', e.target.value)}
+        />
+      </CampoTitulo>
+
+      <Grade>
+        <div>
+          <SecaoTitulo>Resultados</SecaoTitulo>
+          {(estado.jogos || []).map((jogo, i) => (
+            <LinhaJogo key={`jogo-${i}`}>
+              <Entrada
+                value={jogo.casaSigla}
+                placeholder="SIGLA"
+                maxLength={4}
+                onChange={(e) => ultimaRodada.atualizarJogo(i, 'casaSigla', e.target.value)}
+              />
+              <EntradaNum
+                type="number"
+                min={0}
+                max={99}
+                value={jogo.casaGols}
+                onChange={(e) => ultimaRodada.atualizarJogo(i, 'casaGols', e.target.value)}
+              />
+              <Separador>×</Separador>
+              <EntradaNum
+                type="number"
+                min={0}
+                max={99}
+                value={jogo.foraGols}
+                onChange={(e) => ultimaRodada.atualizarJogo(i, 'foraGols', e.target.value)}
+              />
+              <Entrada
+                value={jogo.foraSigla}
+                placeholder="SIGLA"
+                maxLength={4}
+                onChange={(e) => ultimaRodada.atualizarJogo(i, 'foraSigla', e.target.value)}
+              />
+            </LinhaJogo>
+          ))}
+        </div>
+
+        <div>
+          <SecaoTitulo>Classificação após a rodada</SecaoTitulo>
+          {(estado.posicoes || []).map((p, i) => (
+            <LinhaPosicao key={`pos-${i}`}>
+              <Indice>{i + 1}º</Indice>
+              <Entrada
+                value={p.sigla}
+                placeholder="SIGLA"
+                maxLength={4}
+                onChange={(e) => ultimaRodada.atualizarPosicao(i, 'sigla', e.target.value)}
+              />
+              <EntradaNum
+                type="number"
+                min={0}
+                max={999}
+                placeholder="PTS"
+                value={p.pontos}
+                onChange={(e) => ultimaRodada.atualizarPosicao(i, 'pontos', e.target.value)}
+              />
+            </LinhaPosicao>
+          ))}
+        </div>
+      </Grade>
+
+      <Acoes>
+        <Botao $primario onClick={() => ultimaRodada.mostrar()}>
+          Mostrar overlay
+        </Botao>
+        <Botao onClick={() => ultimaRodada.ocultar()}>
+          Ocultar overlay
+        </Botao>
+      </Acoes>
+    </Cartao>
+  );
+}

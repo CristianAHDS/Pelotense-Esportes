@@ -1,6 +1,7 @@
 ﻿import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { substituicaoPro } from '../store/substituicaoStore';
+import { CoresFixas } from './CoresFixas';
 
 const VERDE = '#a5ef1c';
 
@@ -150,11 +151,9 @@ export function PainelSubstituicao({ loja = substituicaoPro }) {
       <Linha>
         <Campo>
           <Rotulo>Cor</Rotulo>
-          <CorInput
-            type="color"
-            value={sub.corTime}
-            title="Cor do time"
-            onChange={(e) => atualizarCampo('corTime', e.target.value)}
+          <CoresFixas
+            valor={sub.corTime}
+            onChange={(v) => atualizarCampo('corTime', v)}
           />
         </Campo>
         <Campo className="cresce">
