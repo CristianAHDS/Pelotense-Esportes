@@ -58,6 +58,15 @@ const GAUCHAO_A2 = [
     preview: 'tabela',
   },
   {
+    rota: '/ultima-rodada',
+    tag: 'ÚLTIMA RODADA',
+    titulo: 'Última Rodada',
+    descricao:
+      'Resultados dos últimos jogos com escudos e placares, mais a classificação dos times após a rodada.',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
+  },
+  {
     titulo: 'Oitavas de Final',
     tag: 'MATA-MATA',
     descricao:
@@ -82,15 +91,6 @@ const GAUCHAO_A2 = [
 ];
 
 const EXTRAS = [
-  {
-    rota: '/ultima-rodada',
-    tag: 'ÚLTIMA RODADA',
-    titulo: 'Última Rodada',
-    descricao:
-      'Resultados dos últimos jogos com escudos e placares, mais a classificação dos times após a rodada.',
-    accent: '#a5ef1c',
-    glow: 'rgba(165, 239, 28, 0.16)',
-  },
   {
     rota: '/escalacao',
     tag: 'ESCALAÇÃO',
