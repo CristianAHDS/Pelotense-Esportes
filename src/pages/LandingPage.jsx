@@ -1682,11 +1682,15 @@ function PalcoDeFerramenta({ tipo }) {
         {jogos.map(([num, casa, g1, fora, g2, venc]) => (
           <div key={num} className="linha">
             <span className="num">{num}</span>
-            <span className={`time ${venc === 'casa' ? 'ganhou' : ''}`}>{casa}</span>
+            <span className={`time ${venc === 'casa' ? 'ganhou' : ''}`}>
+              {casa}
+            </span>
             <b className={venc === 'casa' ? 'ganhou' : ''}>{g1}</b>
             <span className="x">×</span>
             <b className={venc === 'vis' ? 'ganhou' : ''}>{g2}</b>
-            <span className={`time dir ${venc === 'vis' ? 'ganhou' : ''}`}>{fora}</span>
+            <span className={`time dir ${venc === 'vis' ? 'ganhou' : ''}`}>
+              {fora}
+            </span>
           </div>
         ))}
       </MiniOitavas>
@@ -1848,7 +1852,6 @@ const FERRAMENTAS = [
   },
 ];
 
-
 /* ---------- Seção: demonstração animada ao vivo ---------- */
 
 const DEMOS_AO_VIVO = [
@@ -1933,9 +1936,20 @@ const ChipFlutuante = styled.div`
     background: ${C.acc};
   }
 
-  &.c1 { top: -16px; left: 5%; }
-  &.c2 { right: 4%; bottom: 30px; animation-delay: 1.4s; }
-  &.c3 { left: -2%; top: 40%; animation-delay: 2.8s; }
+  &.c1 {
+    top: -16px;
+    left: 5%;
+  }
+  &.c2 {
+    right: 4%;
+    bottom: 30px;
+    animation-delay: 1.4s;
+  }
+  &.c3 {
+    left: -2%;
+    top: 40%;
+    animation-delay: 2.8s;
+  }
 
   @media (max-width: 900px) {
     display: none;
@@ -2214,7 +2228,12 @@ const CaixaBracket = styled.div`
     text-align: center;
     padding: 6px;
     border-radius: 8px;
-    background: linear-gradient(90deg, ${C.acc}, rgba(165, 239, 28, 0.55), ${C.acc});
+    background: linear-gradient(
+      90deg,
+      ${C.acc},
+      rgba(165, 239, 28, 0.55),
+      ${C.acc}
+    );
     background-size: 200% 100%;
     animation: ${brilhoFaixa} 3s linear infinite;
     color: #0a0f00;
@@ -2489,7 +2508,7 @@ function DemoAoVivo() {
   useEffect(() => {
     const giro = setInterval(
       () => definirAtiva((a) => (a + 1) % DEMOS_AO_VIVO.length),
-      5600
+      5600,
     );
     const relogio = setInterval(() => definirSegundos((s) => s + 1), 1000);
     return () => {
@@ -2499,7 +2518,7 @@ function DemoAoVivo() {
   }, []);
 
   const mmss = `${String(Math.floor(segundos / 60)).padStart(2, '0')}:${String(
-    segundos % 60
+    segundos % 60,
   ).padStart(2, '0')}`;
   const demo = DEMOS_AO_VIVO[ativa];
 
@@ -2520,165 +2539,215 @@ function DemoAoVivo() {
         </ChipFlutuante>
 
         <JanelaDemo>
-        <BarraJanela>
-          <span className="dots">
-            <span />
-            <span />
-            <span />
-          </span>
-          <span className="url">
-            pelotense-esportes.netlify.app<b>{demo.rota}</b>
-          </span>
-        </BarraJanela>
+          <BarraJanela>
+            <span className="dots">
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className="url">
+              pelotense-esportes.netlify.app<b>{demo.rota}</b>
+            </span>
+          </BarraJanela>
 
-        <PalcoDemos>
-          <PainelDemo data-on={ativa === 0}>
-            <CaixaPlacar>
-              <div className="time">
-                <Escudo url="/escudos/VER.png" sigla="VER" cor="#047857" tamanho={26} />
-                <span>
-                  VER<small>VERANÓPOLIS</small>
-                </span>
-              </div>
-              <div className="gols">
-                1<em>×</em>0
-              </div>
-              <div className="time vis">
-                <span>
-                  PAS<small>PASSO FUNDO</small>
-                </span>
-                <Escudo url="/escudos/PAS.png" sigla="PAS" cor="#c1121f" tamanho={26} />
-              </div>
-              <div className="relogio">
-                <span className="vivo" />2º TEMPO · {mmss}
-              </div>
-            </CaixaPlacar>
-          </PainelDemo>
-
-          <PainelDemo data-on={ativa === 1}>
-            <CaixaTabela>
-              <div className="cab">
-                <span>#</span>
-                <span>CLASSIFICAÇÃO</span>
-                <span style={{ textAlign: 'right' }}>PTS</span>
-              </div>
-              {LINHAS_DEMO.map(([pos, sig, nome, pts], i) => (
-                <div key={sig} className={`lin${pos === '1' ? ' zona' : ''}`} style={{ '--i': i }}>
-                  <span>{pos}</span>
+          <PalcoDemos>
+            <PainelDemo data-on={ativa === 0}>
+              <CaixaPlacar>
+                <div className="time">
+                  <Escudo
+                    url="/escudos/VER.png"
+                    sigla="VER"
+                    cor="#047857"
+                    tamanho={26}
+                  />
                   <span>
-                    {sig}
-                    <small>{nome}</small>
+                    VER<small>VERANÓPOLIS</small>
                   </span>
-                  <span className="p">{pts}</span>
                 </div>
-              ))}
-            </CaixaTabela>
-          </PainelDemo>
+                <div className="gols">
+                  1<em>×</em>0
+                </div>
+                <div className="time vis">
+                  <span>
+                    PAS<small>PASSO FUNDO</small>
+                  </span>
+                  <Escudo
+                    url="/escudos/PAS.png"
+                    sigla="PAS"
+                    cor="#c1121f"
+                    tamanho={26}
+                  />
+                </div>
+                <div className="relogio">
+                  <span className="vivo" />
+                  2º TEMPO · {mmss}
+                </div>
+              </CaixaPlacar>
+            </PainelDemo>
 
-          <PainelDemo data-on={ativa === 2}>
-            <CaixaBracket>
-              <div className="col">
-                <div className="rotulo">QUARTAS</div>
-                <div className="jogo quente">
-                  <div>
-                    <span>VER</span>
-                    <b>2</b>
-                  </div>
-                  <div>
-                    <span>AIM</span>
-                    <span>1</span>
-                  </div>
+            <PainelDemo data-on={ativa === 1}>
+              <CaixaTabela>
+                <div className="cab">
+                  <span>#</span>
+                  <span>CLASSIFICAÇÃO</span>
+                  <span style={{ textAlign: 'right' }}>PTS</span>
                 </div>
-                <div className="jogo">
-                  <div>
-                    <span>PAS</span>
-                    <b>3</b>
+                {LINHAS_DEMO.map(([pos, sig, nome, pts], i) => (
+                  <div
+                    key={sig}
+                    className={`lin${pos === '1' ? ' zona' : ''}`}
+                    style={{ '--i': i }}
+                  >
+                    <span>{pos}</span>
+                    <span>
+                      {sig}
+                      <small>{nome}</small>
+                    </span>
+                    <span className="p">{pts}</span>
                   </div>
-                  <div>
-                    <span>ESP</span>
-                    <span>0</span>
-                  </div>
-                </div>
-              </div>
-              <div className="col">
-                <div className="rotulo">FINAL</div>
-                <div className="jogo">
-                  <div>
-                    <span>VER</span>
-                    <b>1</b>
-                  </div>
-                  <div>
-                    <span>PAS</span>
-                    <span>—</span>
-                  </div>
-                </div>
-                <div className="faixa">CAMPEÃO</div>
-              </div>
-            </CaixaBracket>
-          </PainelDemo>
-
-          <PainelDemo data-on={ativa === 3}>
-            <CaixaEscalacao $c1="#047857" $c2="#c1121f">
-              {[
-                { esc: 'VER', cor: '#047857', jog: ['CAIO', 'LÉO', 'MARCOS', 'DUDU'], tec: 'PROF. SILVA' },
-                { esc: 'PAS', cor: '#c1121f', jog: ['TIAGO', 'RENAN', 'IVO', 'NETO'], tec: 'PROF. LUIZ' },
-              ].map((time, ti) => (
-                <div key={ti} className="cartao">
-                  <div className="topo">
-                    <Escudo url={`/escudos/${time.esc}.png`} sigla={time.esc} cor={time.cor} tamanho={20} />
-                    {time.esc}
-                    <span className="form">4-3-3</span>
-                  </div>
-                  {time.jog.map((nome, ji) => (
-                    <div key={ji} className="jog" style={{ '--i': ji }}>
-                      <b>{ji + 1}</b>
-                      <span>{nome}</span>
-                    </div>
-                  ))}
-                  <div className="tec">
-                    <i>TÉC</i> {time.tec}
-                  </div>
-                </div>
-              ))}
-            </CaixaEscalacao>
-          </PainelDemo>
-
-          <PainelDemo data-on={ativa === 4}>
-            <CaixaRodada>
-              <div className="topo">
-                RODADA 7
-                <span>RESULTADOS</span>
-              </div>
-              {[
-                ['VER', 'AIM', '2', '1'],
-                ['PAS', 'ESP', '3', '0'],
-                ['SCR', 'GRA', '1', '1'],
-              ].map(([casa, fora, gc, gf], i) => (
-                <div key={i} className="jogo" style={{ '--i': i }}>
-                  <span className="lado">
-                    <Escudo url={`/escudos/${casa}.png`} sigla={casa} cor="#1f1f1f" tamanho={22} />
-                    {casa}
-                  </span>
-                  <span className="placar">
-                    {gc} × {gf}
-                  </span>
-                  <span className="lado fim">
-                    {fora}
-                    <Escudo url={`/escudos/${fora}.png`} sigla={fora} cor="#1f1f1f" tamanho={22} />
-                  </span>
-                </div>
-              ))}
-              <div className="faixa-pos">
-                {[['VER', 1], ['PAS', 2], ['ESP', 3], ['AIM', 4], ['SCR', 5]].map(([sig, pos]) => (
-                  <span key={sig} className="chip">
-                    <Escudo url={`/escudos/${sig}.png`} sigla={sig} cor="#1f1f1f" tamanho={30} />
-                    <em>{pos}º</em>
-                  </span>
                 ))}
-              </div>
-            </CaixaRodada>
-          </PainelDemo>
-        </PalcoDemos>
+              </CaixaTabela>
+            </PainelDemo>
+
+            <PainelDemo data-on={ativa === 2}>
+              <CaixaBracket>
+                <div className="col">
+                  <div className="rotulo">QUARTAS</div>
+                  <div className="jogo quente">
+                    <div>
+                      <span>VER</span>
+                      <b>2</b>
+                    </div>
+                    <div>
+                      <span>AIM</span>
+                      <span>1</span>
+                    </div>
+                  </div>
+                  <div className="jogo">
+                    <div>
+                      <span>PAS</span>
+                      <b>3</b>
+                    </div>
+                    <div>
+                      <span>ESP</span>
+                      <span>0</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="rotulo">FINAL</div>
+                  <div className="jogo">
+                    <div>
+                      <span>VER</span>
+                      <b>1</b>
+                    </div>
+                    <div>
+                      <span>PAS</span>
+                      <span>—</span>
+                    </div>
+                  </div>
+                  <div className="faixa">CAMPEÃO</div>
+                </div>
+              </CaixaBracket>
+            </PainelDemo>
+
+            <PainelDemo data-on={ativa === 3}>
+              <CaixaEscalacao $c1="#047857" $c2="#c1121f">
+                {[
+                  {
+                    esc: 'VER',
+                    cor: '#047857',
+                    jog: ['CAIO', 'LÉO', 'MARCOS', 'DUDU'],
+                    tec: 'PROF. SILVA',
+                  },
+                  {
+                    esc: 'PAS',
+                    cor: '#c1121f',
+                    jog: ['TIAGO', 'RENAN', 'IVO', 'NETO'],
+                    tec: 'PROF. LUIZ',
+                  },
+                ].map((time, ti) => (
+                  <div key={ti} className="cartao">
+                    <div className="topo">
+                      <Escudo
+                        url={`/escudos/${time.esc}.png`}
+                        sigla={time.esc}
+                        cor={time.cor}
+                        tamanho={20}
+                      />
+                      {time.esc}
+                      <span className="form">4-3-3</span>
+                    </div>
+                    {time.jog.map((nome, ji) => (
+                      <div key={ji} className="jog" style={{ '--i': ji }}>
+                        <b>{ji + 1}</b>
+                        <span>{nome}</span>
+                      </div>
+                    ))}
+                    <div className="tec">
+                      <i>TÉC</i> {time.tec}
+                    </div>
+                  </div>
+                ))}
+              </CaixaEscalacao>
+            </PainelDemo>
+
+            <PainelDemo data-on={ativa === 4}>
+              <CaixaRodada>
+                <div className="topo">
+                  RODADA 7<span>RESULTADOS</span>
+                </div>
+                {[
+                  ['VER', 'AIM', '2', '1'],
+                  ['PAS', 'ESP', '3', '0'],
+                  ['SCR', 'GRA', '1', '1'],
+                ].map(([casa, fora, gc, gf], i) => (
+                  <div key={i} className="jogo" style={{ '--i': i }}>
+                    <span className="lado">
+                      <Escudo
+                        url={`/escudos/${casa}.png`}
+                        sigla={casa}
+                        cor="#1f1f1f"
+                        tamanho={22}
+                      />
+                      {casa}
+                    </span>
+                    <span className="placar">
+                      {gc} × {gf}
+                    </span>
+                    <span className="lado fim">
+                      {fora}
+                      <Escudo
+                        url={`/escudos/${fora}.png`}
+                        sigla={fora}
+                        cor="#1f1f1f"
+                        tamanho={22}
+                      />
+                    </span>
+                  </div>
+                ))}
+                <div className="faixa-pos">
+                  {[
+                    ['VER', 1],
+                    ['PAS', 2],
+                    ['ESP', 3],
+                    ['AIM', 4],
+                    ['SCR', 5],
+                  ].map(([sig, pos]) => (
+                    <span key={sig} className="chip">
+                      <Escudo
+                        url={`/escudos/${sig}.png`}
+                        sigla={sig}
+                        cor="#1f1f1f"
+                        tamanho={30}
+                      />
+                      <em>{pos}º</em>
+                    </span>
+                  ))}
+                </div>
+              </CaixaRodada>
+            </PainelDemo>
+          </PalcoDemos>
         </JanelaDemo>
       </AreaJanela>
 
@@ -2696,7 +2765,11 @@ function DemoAoVivo() {
 
       <LinksRapidos>
         {DEMOS_AO_VIVO.map((d) => (
-          <Link key={d.id} to={d.rota} className={d.id === demo.id ? 'ativo' : ''}>
+          <Link
+            key={d.id}
+            to={d.rota}
+            className={d.id === demo.id ? 'ativo' : ''}
+          >
             {d.rotulo}
           </Link>
         ))}
@@ -2725,7 +2798,9 @@ function SecaoFerramentasBloco() {
         </Revelar>
         <Revelar atraso={140}>
           <p>
-            Placar, classificação e chaveamento alternando ao vivo, como na transmissão real — passe o mouse, clique nos pontos ou abra o gráfico que quiser.
+            Placar, classificação e chaveamento alternando ao vivo, como na
+            transmissão real — passe o mouse, clique nos pontos ou abra o
+            gráfico que quiser.
           </p>
         </Revelar>
       </div>
@@ -3360,7 +3435,6 @@ export default function LandingPage() {
       <Nav>
         <Marca to="/">
           <img src={LOGO_URL} alt="Pelotense Esportes" />
-          <span>PELOTENSE ESPORTES</span>
         </Marca>
         <NavLinks>
           <button onClick={() => rolarPara('ferramentas')}>Ferramentas</button>

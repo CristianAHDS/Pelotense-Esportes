@@ -1,5 +1,10 @@
 # Changelog
 
+## 24/08/2026 (6)
+
+### Home: marca só com o logotipo
+- O cabeçalho da landing agora exibe apenas o logotipo, sem o texto "PELOTENSE ESPORTES" ao lado; arquivo reformatado (prettier) sem mudanças de comportamento.
+
 ## 24/08/2026 (5)
 
 ### Última Rodada: rodada corrente + ocultar classificação
