@@ -59,12 +59,8 @@ const Topo = styled.header`
 `;
 
 const Corpo = styled.div`
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  flex-direction: column;
 `;
 
 const ColunaJogos = styled.div`
@@ -118,31 +114,24 @@ const Vazio = styled.span`
   color: rgba(255, 255, 255, 0.35);
 `;
 
-const ColunaPosicoes = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: #050505;
-  border-left: 1px solid rgba(255, 255, 255, 0.08);
-
-  @media (max-width: 640px) {
-    border-left: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-`;
-
 const LegendaPosicoes = styled.span`
-  padding: 8px 16px 6px;
+  padding: 10px 16px 0;
   font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 2.5px;
   color: rgba(255, 255, 255, 0.45);
 `;
 
+const FaixaClassificacao = styled.div`
+  background: #050505;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+`;
+
 const FaixaPosicoes = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 4px 16px 14px;
+  gap: 12px;
+  padding: 8px 16px 14px;
 `;
 
 const ChipTime = styled.div`
@@ -191,19 +180,21 @@ export function UltimaRodadaCartao({ dados }) {
             <Vazio>Sem jogos cadastrados</Vazio>
           )}
         </ColunaJogos>
+      </Corpo>
 
-        <ColunaPosicoes>
+      {(dados.posicoes || []).some((p) => p.sigla) && (
+        <FaixaClassificacao>
           <LegendaPosicoes>CLASSIFICAÇÃO</LegendaPosicoes>
           <FaixaPosicoes>
             {(dados.posicoes || []).map((p, i) => (
               <ChipTime key={`pos-${i}`}>
-                <Escudo cor="#1f1f1f" sigla={p.sigla} url={urlEscudo(p.sigla)} tamanho={34} />
+                <Escudo cor="#1f1f1f" sigla={p.sigla} url={urlEscudo(p.sigla)} tamanho={30} />
                 <span className="pos">{p.pos === '' ? '–' : `${p.pos}º`}</span>
               </ChipTime>
             ))}
           </FaixaPosicoes>
-        </ColunaPosicoes>
-      </Corpo>
+        </FaixaClassificacao>
+      )}
     </Quadro>
   );
 }

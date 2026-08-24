@@ -1,5 +1,12 @@
 # Changelog
 
+## 24/08/2026 (3)
+
+### Última Rodada com todos os times
+- A classificação agora recebe **todos os times da tabela** ao puxar da FGF (não só os 6 primeiros) e virou uma faixa full-width abaixo dos jogos, com escudos quebrando em linhas conforme a quantidade.
+- Jogos também sem limite fixo: todos os confrontos realizados da rodada são preenchidos.
+- Controle ganhou botões "+ Adicionar jogo", "+ Adicionar time" e ✕ para remover linha individual.
+
 ## 24/08/2026 (2)
 
 ### Correções

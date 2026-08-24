@@ -188,7 +188,7 @@ function preencherDaFGF({ titulo, jogos, classificacao }) {
     if (titulo) estadoAtual.titulo = String(titulo).slice(0, 32).toUpperCase()
 
     if (Array.isArray(jogos) && jogos.length) {
-      estadoAtual.jogos = jogos.slice(0, 6).map((j) => ({
+      estadoAtual.jogos = jogos.map((j) => ({
         casaSigla: String(j.casaSigla || '').slice(0, 4).toUpperCase(),
         casaGols: String(j.casaGols ?? ''),
         foraGols: String(j.foraGols ?? ''),
@@ -197,12 +197,48 @@ function preencherDaFGF({ titulo, jogos, classificacao }) {
     }
 
     if (Array.isArray(classificacao) && classificacao.length) {
-      estadoAtual.posicoes = classificacao.slice(0, 6).map((c, i) => ({
+      estadoAtual.posicoes = classificacao.map((c, i) => ({
         sigla: String(c.sigla || '').slice(0, 4).toUpperCase(),
         pos: String(c.pos ?? i + 1)
       }))
     }
 
+    return estadoAtual
+  })
+}
+
+function linhaJogoVazia() {
+  return { casaSigla: '', casaGols: '', foraGols: '', foraSigla: '' }
+}
+
+function adicionarJogo() {
+  setEstado((estadoAtual) => {
+    estadoAtual.jogos.push(linhaJogoVazia())
+    return estadoAtual
+  })
+}
+
+function removerJogo(indice) {
+  setEstado((estadoAtual) => {
+    if (estadoAtual.jogos.length <= 1) return estadoAtual
+    estadoAtual.jogos.splice(indice, 1)
+    return estadoAtual
+  })
+}
+
+function adicionarPosicao() {
+  setEstado((estadoAtual) => {
+    const proxima =
+      estadoAtual.posicoes.reduce((maior, p) => Math.max(maior, Number(p.pos) || 0), 0) + 1
+    estadoAtual.posicoes.push({ sigla: '', pos: String(proxima) })
+    return estadoAtual
+  })
+}
+
+function removerPosicao(indice) {
+  setEstado((estadoAtual) => {
+    if (estadoAtual.posicoes.length <= 1) return estadoAtual
+    estadoAtual.posicoes.splice(indice, 1)
     return estadoAtual
   })
 }
@@ -228,6 +264,10 @@ export const ultimaRodada = {
   atualizarJogo,
   atualizarPosicao,
   preencherDaFGF,
+  adicionarJogo,
+  removerJogo,
+  adicionarPosicao,
+  removerPosicao,
   mostrar,
   ocultar
 }

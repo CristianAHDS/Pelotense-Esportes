@@ -71,7 +71,7 @@ const SecaoTitulo = styled.h3`
 
 const LinhaJogo = styled.div`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 52px auto 52px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) 52px auto 52px minmax(0, 1fr) 26px;
   gap: 8px;
   align-items: center;
 
@@ -80,18 +80,57 @@ const LinhaJogo = styled.div`
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: minmax(0, 1fr) 44px auto 44px minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 44px auto 44px minmax(0, 1fr) 26px;
   }
 `;
 
 const LinhaPosicao = styled.div`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 64px;
+  grid-template-columns: minmax(0, 1fr) 64px 26px;
   gap: 8px;
   align-items: center;
 
   & + & {
     margin-top: 8px;
+  }
+`;
+
+const BotaoLinha = styled.button`
+  width: 26px;
+  height: 34px;
+  border-radius: 7px;
+  border: 1px solid #333;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.72rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease;
+
+  &:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+  }
+`;
+
+const BotaoAdicionar = styled.button`
+  margin-top: 10px;
+  padding: 8px 12px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px dashed #3a3a3a;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 120ms ease, color 120ms ease;
+
+  &:hover {
+    border-color: #a5ef1c;
+    color: #a5ef1c;
   }
 `;
 
@@ -194,7 +233,7 @@ export function PainelUltimaRodada() {
       } else {
         ultimaRodada.preencherDaFGF(dados);
         setAviso(
-          `Dados da ${dados.titulo || 'última rodada'} carregados (${dados.jogos.length} jogos, ${Math.min(dados.classificacao.length, 6)} posições).`
+          `Dados da ${dados.titulo || 'última rodada'} carregados (${dados.jogos.length} jogos, ${dados.classificacao.length} times).`
         );
       }
     } catch (e) {
@@ -253,8 +292,14 @@ export function PainelUltimaRodada() {
                 maxLength={4}
                 onChange={(e) => ultimaRodada.atualizarJogo(i, 'foraSigla', e.target.value)}
               />
+              <BotaoLinha onClick={() => ultimaRodada.removerJogo(i)} title="Remover jogo">
+                ✕
+              </BotaoLinha>
             </LinhaJogo>
           ))}
+          <BotaoAdicionar onClick={() => ultimaRodada.adicionarJogo()}>
+            + Adicionar jogo
+          </BotaoAdicionar>
         </div>
 
         <div>
@@ -275,8 +320,14 @@ export function PainelUltimaRodada() {
                 value={p.pos}
                 onChange={(e) => ultimaRodada.atualizarPosicao(i, 'pos', e.target.value)}
               />
+              <BotaoLinha onClick={() => ultimaRodada.removerPosicao(i)} title="Remover posição">
+                ✕
+              </BotaoLinha>
             </LinhaPosicao>
           ))}
+          <BotaoAdicionar onClick={() => ultimaRodada.adicionarPosicao()}>
+            + Adicionar time
+          </BotaoAdicionar>
         </div>
       </Grade>
 
