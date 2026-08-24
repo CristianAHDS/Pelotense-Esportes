@@ -78,9 +78,9 @@ const CLUBES_EXEMPLO = {
     estadio: 'DOS PLÁTANOS',
     cidade: 'SANTA CRUZ DO SUL/RS',
   },
-  GVA: {
+  GUA: {
     nome: 'GUARANI-VA',
-    escudo: '/escudos/GVA.png',
+    escudo: '/escudos/GUA.png',
     cor: '#166534',
     estadio: 'DOS EUCALIPTOS',
     cidade: 'VENÂNCIO AIRES/RS',

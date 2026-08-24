@@ -14,7 +14,9 @@
 - **Escudo do Esportivo (ESP)** trocado para `https://i.imgur.com/u5q7j4R.png` na Tabela e na landing; `completarVisuais` agora aplica sempre o escudo/cor padrão por sigla (garante a troca também em estados já salvos).
 - Substituído também o arquivo local `public/escudos/ESP.png` pela nova imagem — cobre a Última Rodada e todos os overlays que usam o fallback por sigla (`/escudos/SIGLA.png`).
 
-## 24/08/2026 (7)
+### Nomes e siglas
+- **"Brasil de Farroupilha" → "Brasil - Far"** e **"APAFUT" → "Apafut"** em todo o sistema (nome canônico em `nomesClubes.js`, time padrão da Tabela e normalização de estados salvos/FGF).
+- **Sigla do Guarani "GVA" → "GUA"** em todo o sistema: `tabelaStore`, mapeamento da FGF, landing e arquivo de escudo `public/escudos/GUA.png`; `completarVisuais` migra automaticamente a sigla antiga nos estados já salvos.
 
 ### Nomes de clubes atualizados
 - **Brasil de Pelotas → Brasil - SAF** e **Guarani-RS → Guarani - VA** em todo o sistema: cadastro de times da Tabela (siglas BRA/GVA mantidas) e prévia de oitavas da landing ("BRA · Brasil-PE" → "BRA · Brasil-SAF").

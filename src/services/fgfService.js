@@ -23,7 +23,7 @@ const SIGLAS_FGF_PARA_PADRAO = {
   PEL: 'PEL',
   BFA: 'BFR',
   GRA: 'GRA',
-  GUA: 'GVA',
+  GUA: 'GUA',
   BAG: 'BAG',
   GLO: 'GLO',
   LAJ: 'LAJ',
