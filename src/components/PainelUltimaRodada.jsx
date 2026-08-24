@@ -361,6 +361,15 @@ export function PainelUltimaRodada() {
         <Botao $primario onClick={puxarFGF} disabled={carregando}>
           {carregando ? 'Buscando…' : 'Puxar dados da FGF'}
         </Botao>
+        {estado.classificacaoVisivel === false ? (
+          <Botao onClick={() => ultimaRodada.mostrarClassificacao()}>
+            Mostrar classificação
+          </Botao>
+        ) : (
+          <Botao onClick={() => ultimaRodada.ocultarClassificacao()}>
+            Ocultar classificação
+          </Botao>
+        )}
         <Botao $primario onClick={() => ultimaRodada.mostrar()}>
           Mostrar overlay
         </Botao>

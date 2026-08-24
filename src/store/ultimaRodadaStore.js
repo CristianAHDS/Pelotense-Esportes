@@ -22,7 +22,8 @@ const estadoPadrao = {
   visivel: true,
   titulo: 'ÚLTIMA RODADA',
   jogos: jogosPadrao(),
-  posicoes: posicoesPadrao()
+  posicoes: posicoesPadrao(),
+  classificacaoVisivel: true
 }
 
 function carregar() {
@@ -257,6 +258,20 @@ function ocultar() {
   })
 }
 
+function mostrarClassificacao() {
+  setEstado((estadoAtual) => {
+    estadoAtual.classificacaoVisivel = true
+    return estadoAtual
+  })
+}
+
+function ocultarClassificacao() {
+  setEstado((estadoAtual) => {
+    estadoAtual.classificacaoVisivel = false
+    return estadoAtual
+  })
+}
+
 export const ultimaRodada = {
   getEstado,
   inscrever,
@@ -269,5 +284,7 @@ export const ultimaRodada = {
   adicionarPosicao,
   removerPosicao,
   mostrar,
-  ocultar
+  ocultar,
+  mostrarClassificacao,
+  ocultarClassificacao
 }

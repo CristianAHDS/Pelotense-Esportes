@@ -273,22 +273,42 @@ export async function importarClassificacaoFGF({ forcar = false } = {}) {
 
 /* ---------- Última rodada (jogos realizados + posições) ---------- */
 
-const CHAVE_CACHE_UR = 'pelotense:ultima-rodada:fgf:v2'
+const CHAVE_CACHE_UR = 'pelotense:ultima-rodada:fgf:v3'
 
 function mapaNomeParaSigla(dados) {
-  const mapa = new Map()
-  for (const t of dados) {
-    const chave = normalizar(t.nome)
-    if (!chave) continue
-    const padrao = SIGLAS_FGF_PARA_PADRAO[t.sigla]
-    mapa.set(chave, padrao || String(t.sigla || '').slice(0, 4))
-  }
-  return mapa
+  return dados.map((t) => ({
+    chave: normalizar(t.nome),
+    sigla: SIGLAS_FGF_PARA_PADRAO[t.sigla] || String(t.sigla || '').slice(0, 4),
+  }))
 }
 
-/* Uma rodada só vale como "última disputada" se tiver placares numéricos.
-   Blocos especiais ("JOGOS ADIADOS", "Classificação Geral") são ignorados. */
-function extrairUltimaRodada(html, nomeParaSigla) {
+/* Casa um texto (slug do jogo ou nome completo do clube) com os nomes
+   da classificação. Prioridade: igualdade > sufixo ("…brasilsaf" termina
+   com "brasilsaf") > contenção, sempre preferindo a chave mais longa —
+   evita que "gremioesportivobrasilsaf" case com "esportivo". */
+function casarSigla(entradas, texto) {
+  const alvo = normalizar(texto)
+  if (!alvo) return null
+  let melhor = null
+  for (const e of entradas) {
+    if (!e.chave || e.chave.length < 4) continue
+    let p = -1
+    if (e.chave === alvo) p = 100
+    else if (alvo.endsWith(e.chave)) p = 60 + e.chave.length
+    else if (alvo.includes(e.chave) || e.chave.includes(alvo))
+      p = 30 + e.chave.length
+    if (p >= 0 && (!melhor || p > melhor.p)) melhor = { ...e, p }
+  }
+  return melhor?.sigla || null
+}
+
+/* Extrai a rodada corrente do carrossel da página de classificação.
+   Blocos especiais ("JOGOS ADIADOS", "Classificação Geral") são ignorados.
+   O time é resolvido pelo slug do link do jogo (/jogo/casaXvisitante-…),
+   que usa o nome canônico do clube — o atributo title das imagens traz
+   nomes longos ("Grêmio Esportivo Bagé") que não batem com a classificação
+   ("Bagé"). Jogos sem placar numérico entram como agendados (gols vazios). */
+function extrairUltimaRodada(html, entradas) {
   const doc = new DOMParser().parseFromString(html, 'text/html')
   const itens = [...doc.querySelectorAll('.carousel-item')]
 
@@ -302,46 +322,60 @@ function extrairUltimaRodada(html, nomeParaSigla) {
     if (!titulo || /ADIADAS|ADIADOS|GERAL/.test(titulo)) return null
 
     const jogos = []
+    let realizados = 0
     for (const bloco of item.querySelectorAll('.carousel-conteudo')) {
-      const placarTexto = (
-        bloco.querySelector('.contra div')?.textContent || ''
-      ).trim()
-      const m = placarTexto.match(/^(\d+)\s*[Xx×]\s*(\d+)$/)
-      if (!m) continue
-
       const nomeCasa =
         bloco.querySelector('.mandante img')?.getAttribute('title') || ''
       const nomeFora =
         bloco.querySelector('.visitante img')?.getAttribute('title') || ''
+      if (!nomeCasa && !nomeFora) continue
+
+      const mSlug = (bloco.querySelector('.contra a')?.getAttribute('href') || '')
+        .match(/\/jogo\/([a-z0-9]+)x([a-z0-9]+)/i)
+
+      const placarTexto = (
+        bloco.querySelector('.contra div')?.textContent || ''
+      ).trim()
+      const m = placarTexto.match(/^(\d+)\s*[Xx×]\s*(\d+)$/)
+      if (m) realizados++
 
       jogos.push({
         casaSigla:
-          nomeParaSigla.get(normalizar(nomeCasa)) ||
+          (mSlug && casarSigla(entradas, mSlug[1])) ||
+          casarSigla(entradas, nomeCasa) ||
           nomeCasa.slice(0, 4).toUpperCase(),
         foraSigla:
-          nomeParaSigla.get(normalizar(nomeFora)) ||
+          (mSlug && casarSigla(entradas, mSlug[2])) ||
+          casarSigla(entradas, nomeFora) ||
           nomeFora.slice(0, 4).toUpperCase(),
-        casaGols: m[1],
-        foraGols: m[2],
+        casaGols: m ? m[1] : '',
+        foraGols: m ? m[2] : '',
       })
     }
 
-    return { titulo, jogos }
+    return { titulo, jogos, realizados }
   }
 
-  /* Da mais recente para a mais antiga: primeira rodada com ao menos
-     metade dos jogos realizados; se nenhuma, aceita qualquer jogo feito. */
-  let reserva = null
-  for (let i = itens.length - 1; i >= 0; i--) {
-    const lido = lerItem(itens[i])
-    if (!lido || !lido.jogos.length) continue
-    if (!reserva) reserva = lido
-    const totalBlocos = itens[i].querySelectorAll('.carousel-conteudo').length
-    if (lido.jogos.length >= Math.max(4, Math.ceil(totalBlocos / 2))) {
-      return lido
+  /* Rodada corrente: a mais recente com algum resultado; quando essa
+     rodada termina por completo, passa a valer a seguinte — mesmo que
+     seus jogos ainda não tenham começado. */
+  const lidas = itens.map(lerItem).filter(Boolean)
+  if (!lidas.length) return null
+
+  let indice = -1
+  for (let i = lidas.length - 1; i >= 0; i--) {
+    if (lidas[i].realizados > 0) {
+      indice = i
+      break
     }
   }
-  return reserva
+  if (indice === -1) return lidas[0]
+
+  const atual = lidas[indice]
+  const terminou =
+    atual.jogos.length > 0 && atual.realizados >= atual.jogos.length
+  const proxima = lidas[indice + 1]
+  return terminou && proxima ? proxima : atual
 }
 
 function lerCacheUR() {
@@ -388,8 +422,8 @@ export async function importarUltimaRodadaFGF({ forcar = false } = {}) {
       throw new Error('Classificação não encontrada na página da FGF')
     }
 
-    const nomeParaSigla = mapaNomeParaSigla(dadosClass)
-    const rodada = extrairUltimaRodada(html, nomeParaSigla)
+    const entradas = mapaNomeParaSigla(dadosClass)
+    const rodada = extrairUltimaRodada(html, entradas)
 
     const classificacao = dadosClass
       .filter((t) => t.pos > 0)

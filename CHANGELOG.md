@@ -1,5 +1,15 @@
 # Changelog
 
+## 24/08/2026 (5)
+
+### Última Rodada: rodada corrente + ocultar classificação
+- O módulo agora identifica a **rodada corrente** automaticamente: a mais recente com resultados e, quando ela termina, passa a valer a seguinte (hoje: RODADA 8).
+- Jogos ainda não disputados entram com placar vazio (– × –), listando a rodada completa.
+- Correção definitiva dos times trocados: o clube agora é resolvido pelo slug do link do jogo da FGF (nome canônico), com casamento por igualdade > sufixo > contenção — validado 16/16 contra a página real.
+- Cache local reversionado (v3) para descartar dados antigos errados.
+- Novo botão "Ocultar/Mostrar classificação" no controle; a faixa de classificação some do overlay quando oculta.
+- Cabeçalho do cartão de Última Rodada ganhou o mesmo fade neon do cabeçalho da /tabela.
+
 ## 24/08/2026 (4)
 
 ### Última Rodada: parser da FGF blindado

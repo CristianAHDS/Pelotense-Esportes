@@ -36,7 +36,9 @@ const Topo = styled.header`
   align-items: center;
   gap: 12px;
   padding: 12px 18px;
-  background: #000;
+  background:
+    linear-gradient(90deg, rgba(165, 239, 28, 0.14), transparent 55%),
+    #000;
 
   .titulo {
     font-family: 'Rajdhani', 'Inter', sans-serif;
@@ -182,7 +184,8 @@ export function UltimaRodadaCartao({ dados }) {
         </ColunaJogos>
       </Corpo>
 
-      {(dados.posicoes || []).some((p) => p.sigla) && (
+      {dados.classificacaoVisivel !== false &&
+        (dados.posicoes || []).some((p) => p.sigla) && (
         <FaixaClassificacao>
           <LegendaPosicoes>CLASSIFICAÇÃO</LegendaPosicoes>
           <FaixaPosicoes>
