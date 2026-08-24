@@ -3,6 +3,7 @@
 ## 23/08/2026
 
 ### Sincronização na nuvem (multi-dispositivo)
+- **Novo módulo Escalação** (`/escalacao` + `/escalacao/controle`): grid 11x1 por time com escudos, números, nomes e formação editável (4-3-3 padrão, seleção entre formações comuns). Controle com seções lado a lado para casa/visitante (cor, nome, sigla, formação e os 11 jogadores cada), seguindo o mesmo design dos painéis existentes. Overlay transparente para OBS, sincronizado via nuvem/BroadcastChannel/localStorage como os demais módulos, com card no hub.
 - **Acréscimo manual nos 4 controles**: chips fixos (+1 a +10) substituídos por campo numérico com botões −/+ (aceita qualquer minuto de 0 a 99) e botão "Sem" para remover — no placar padrão, PL, BL e LL.
 - **Placar padrão**: chip de acréscimo agora fica colado à faixa do tempo (2px de folga, mesma altura), sem sobrepor nem formar faixa dupla.
 - **Exclusividade de controle por sala**: só um dispositivo publica por vez (`salas/{sala}/controle` com claim transacional, heartbeat de 8s e liberação automática via `onDisconnect`); demais controles viram espectadores com indicador no header e botão "Assumir". Publicações feitas antes de assumir ficam em buffer e são enviadas ao assumir — elimina o conflito/flicker quando dois aparelhos controlam juntos.

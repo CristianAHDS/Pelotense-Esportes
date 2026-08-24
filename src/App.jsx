@@ -46,6 +46,8 @@ export default function App() {
           <Route path="/substituicao/controle" element={<ControleSubstituicao />} />
           <Route path="/penaltis" element={<Penaltis />} />
           <Route path="/penaltis/controle" element={<ControlePenaltis />} />
+          <Route path="/escalacao" element={<Escalacao />} />
+          <Route path="/escalacao/controle" element={<ControleEscalacao />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

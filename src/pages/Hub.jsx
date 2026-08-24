@@ -83,6 +83,15 @@ const GAUCHAO_A2 = [
 
 const EXTRAS = [
   {
+    rota: '/escalacao',
+    tag: 'ESCALAÇÃO',
+    titulo: 'Escalação',
+    descricao:
+      'Grid 11x1 dos dois times com escudos, números, nomes e formação (4-3-3), editável lado a lado.',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
+  },
+  {
     rota: '/substituicao',
     tag: 'SUBSTITUIÇÃO',
     titulo: 'Card de Substituição',
