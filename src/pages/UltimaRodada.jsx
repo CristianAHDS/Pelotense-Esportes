@@ -1,8 +1,10 @@
+import { useRef } from 'react';
 import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { ultimaRodada } from '../store/ultimaRodadaStore';
 import { UltimaRodadaCartao } from '../components/UltimaRodadaCartao';
 import { useFundoTransparente } from '../components/useFundoTransparente';
+import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
 
 const Palco = styled.div`
   min-height: 100vh;
@@ -20,10 +22,18 @@ const Palco = styled.div`
 export default function UltimaRodada() {
   const estado = usePlacarBroadcast(ultimaRodada);
   useFundoTransparente();
+  const cartaoRef = useRef(null);
+  const emPrevia = new URLSearchParams(window.location.search).has('previa');
 
   return (
     <Palco>
-      <UltimaRodadaCartao dados={estado} />
+      {!emPrevia && (
+        <BotaoSalvarImagem
+          alvo={cartaoRef}
+          nome={estado.titulo || 'ultima-rodada'}
+        />
+      )}
+      <UltimaRodadaCartao ref={cartaoRef} dados={estado} />
     </Palco>
   );
 }

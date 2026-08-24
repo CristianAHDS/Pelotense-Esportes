@@ -1,5 +1,14 @@
 # Changelog
 
+## 24/08/2026 (8)
+
+### Tabela e Última Rodada: botão "Salvar imagem"
+- Novo botão fixo no canto superior direito das páginas `/tabela` e `/ultima-rodada` que captura o painel/cartão e baixa um PNG (nome do arquivo derivado da competição/rodada ou do título da rodada).
+- Captura em escala 2x com fundo transparente nos cantos arredondados; escondido no modo prévia do hub.
+- Componente compartilhado `BotaoSalvarImagem` + utilitário `src/lib/capturaImagem.js`; nova dependência `html2canvas`.
+- Correção da captura da Última Rodada: `UltimaRodadaCartao` agora aceita `ref` (forwardRef) e a imagem é tirada do cartão em si, incluindo a borda verde superior e sem sobra transparente à direita.
+- Captura agora desativa animações/transições no clone do DOM (`onclone`), evitando que a animação de entrada do cartão saia deslocada/transparente na foto.
+
 ## 24/08/2026 (7)
 
 ### Nomes de clubes atualizados

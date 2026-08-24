@@ -1,4 +1,4 @@
-﻿import { useEffect } from 'react';
+﻿import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useFundoTransparente } from '../components/useFundoTransparente';
@@ -11,6 +11,8 @@ import {
 } from '../store/tabelaStore';
 import { importarClassificacaoFGF } from '../services/fgfService';
 import { Escudo } from '../components/Escudo';
+import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
+import { slugArquivo } from '../lib/capturaImagem';
 
 /* Regulamento Gauchão Série A2: 1º ao 8º avançam às quartas de final,
    os dois últimos são rebaixados. */
@@ -308,16 +310,21 @@ const SeloAoVivo = styled.span`
 
 export default function Tabela() {
   useFundoTransparente();
+  const painelRef = useRef(null);
   useEffect(() => {
     recarregar();
     importarClassificacaoFGF().catch((e) =>
       console.warn('Tabela: falha ao atualizar da FGF.', e)
-  );
+    );
   }, []);
   const estado = usePlacarBroadcast({ getEstado, inscrever });
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
   const times = ordenarClassificacao(estado.times);
   const total = times.length;
+
+  const nomeArquivo =
+    slugArquivo(estado.competicao) +
+    (estado.rodada > 0 ? `-rodada-${estado.rodada}` : '');
 
   const zonas = [
     { chave: 'class', rotulo: 'Quartas de final (G-8)', cor: CORES_ZONA.class },
@@ -332,7 +339,11 @@ export default function Tabela() {
         </Voltar>
       )}
 
-      <Painel>
+      {!emPrevia && (
+        <BotaoSalvarImagem alvo={painelRef} nome={nomeArquivo} />
+      )}
+
+      <Painel ref={painelRef}>
         <Cabecalho>
           <div>
             <h1>{estado.competicao}</h1>

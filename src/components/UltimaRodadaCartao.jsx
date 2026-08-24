@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { forwardRef } from 'react';
 import { Escudo } from './Escudo';
 
 const VERDE = '#a5ef1c';
@@ -153,9 +154,12 @@ const ChipTime = styled.div`
 `;
 
 /* dados: estado do ultimaRodadaStore */
-export function UltimaRodadaCartao({ dados }) {
+export const UltimaRodadaCartao = forwardRef(function UltimaRodadaCartao(
+  { dados },
+  ref
+) {
   return (
-    <Quadro>
+    <Quadro ref={ref}>
       <Topo>
         <span className="titulo">{dados.titulo || 'ÚLTIMA RODADA'}</span>
         <span className="selo">RESULTADOS</span>
@@ -200,4 +204,4 @@ export function UltimaRodadaCartao({ dados }) {
       )}
     </Quadro>
   );
-}
+});
