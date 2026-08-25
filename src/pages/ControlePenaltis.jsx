@@ -312,7 +312,10 @@ function BlocoLado({ ladoNome, lado, total }) {
               ]
                 .filter(Boolean)
                 .join(' ')}
-              onClick={() => definirCobranca(ladoNome, i, c === 'gol' ? 'perdeu' : 'gol')}
+              onClick={() => {
+                const next = c === null ? 'gol' : c === 'gol' ? 'perdeu' : c;
+                definirCobranca(ladoNome, i, next);
+              }}
             >
               {rotulos[c] || ''}
             </SlotBotao>
