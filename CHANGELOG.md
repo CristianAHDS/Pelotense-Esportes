@@ -1,5 +1,29 @@
 # Changelog
 
+## 25/08/2026
+
+### Times padrão BRA/PEL em todos os scoreboards
+- Siglas padrão alteradas de PAL/BOT para BRA/PEL em todos os stores (Broadcast, PL, BL, LL, Normal) com cores correspondentes (vermelho #b91c1c / azul #1565c0).
+- Placar Normal: escudos (BRA/PEL) ao lado das siglas no overlay e na prévia do controle.
+- Siglas no Placar Normal agora são brancas (antes herdam a cor do time).
+
+### Correções de sync e warnings
+- Corrigido bug do Firebase `removeWrite called with nonexistent writeId` no heartbeat: `onDisconnect().remove()` substituído por `onDisconnect().set()` com os mesmos dados, evitando write IDs órfãos.
+- Suprimidos warnings do React Router com future flags `v7_startTransition` e `v7_relativeSplatPath`.
+
+### Última Rodada: sempre exibe rodada anterior
+- Lógica de seleção da rodada alterada para sempre mostrar a rodada imediatamente anterior à corrente (sempre rodada-1).
+
+### Placar Normal: design enxuto e moderno
+- Redesign completo do Placar Normal com visual compacto (420px): glass morphism, barras de cor com glow neon, tipografia Rajdhani bold e animações de gol.
+- Prévia ao vivo no controle atualizada para espelhar o novo layout.
+
+### Novo módulo: Placar Normal
+- Novo scoreboard tradicional horizontal ao estilo TV (`/placar-normal`): times nas pontas, placar no centro, cronômetro e período no topo, barras de cartões.
+- Store própria (`placarNormalStore.js`) com sincronização local (BroadcastChannel + localStorage) e na nuvem (Firebase RTDB), seguindo o padrão dos demais módulos.
+- Página de controle (`/placar-normal/controle`) com os mesmos painéis existentes: times e placar, cronômetro, partida, substituição e prévia ao vivo.
+- Card adicionado na seção "Scoreboards" do Hub com prévia ao vivo em iframe.
+
 ## 24/08/2026 (8)
 
 ### Tabela e Última Rodada: botão "Salvar imagem"

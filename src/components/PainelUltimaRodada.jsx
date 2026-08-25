@@ -233,7 +233,9 @@ export function PainelUltimaRodada() {
     setErro('');
     setAviso('');
     try {
-      const dados = await importarUltimaRodadaFGF();
+      const m = (estado.titulo || '').match(/(\d+)/);
+      const rodadaAlvo = m ? Number(m[1]) : 0;
+      const dados = await importarUltimaRodadaFGF({ rodadaAlvo });
       if (!dados.jogos?.length) {
         setAviso('Nenhum jogo realizado encontrado na FGF.');
       } else {

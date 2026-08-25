@@ -1,13 +1,13 @@
-﻿import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
+import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
 
-const STORAGE_KEY = 'pelotense:broadcast-bl'
-const CHANNEL_NAME = 'broadcast:sync-bl'
-const MSG_TIPO = 'estado:broadcast-bl'
-const CANAL_NUVEM = 'placar-broadcast-bl'
+const STORAGE_KEY = 'pelotense:normal'
+const CHANNEL_NAME = 'normal:sync'
+const MSG_TIPO = 'estado:normal'
+const CANAL_NUVEM = 'placar-normal'
 
 const estadoPadrao = {
-  timeCasa: { nome: 'BRA', gols: 0 },
-  timeVisitante: { nome: 'PEL', gols: 0 },
+  timeCasa: { nome: 'BRA', gols: 0, escudo: '/escudos/BRA.png' },
+  timeVisitante: { nome: 'PEL', gols: 0, escudo: '/escudos/PEL.png' },
   cronometro: { base: 0, rodando: false, iniciadoEm: null },
   periodo: '1T',
   acrescimo: null,
@@ -31,7 +31,7 @@ function carregar() {
       return { ...estadoPadrao, ...JSON.parse(bruto) }
     }
   } catch (e) {
-    console.warn('Broadcast: falha ao carregar estado.', e)
+    console.warn('PlacarNormal: falha ao carregar estado.', e)
   }
   return structuredClone(estadoPadrao)
 }
@@ -51,7 +51,7 @@ function persistir() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(estado))
   } catch (e) {
-    console.warn('Broadcast: falha ao persistir estado.', e)
+    console.warn('PlacarNormal: falha ao persistir estado.', e)
   }
 }
 
@@ -125,7 +125,7 @@ function aplicarEstadoRemoto(novoEstado) {
   }
 }
 
-/* ---------- SincronizaÃ§Ã£o na nuvem ---------- */
+/* ---------- Sincronização na nuvem ---------- */
 
 inscreverNuvem(CANAL_NUVEM, aplicarEstadoRemoto)
 
@@ -146,7 +146,7 @@ window.addEventListener('storage', (evento) => {
     try {
       aplicarEstadoRemoto(JSON.parse(evento.newValue))
     } catch (e) {
-      console.warn('Broadcast: falha ao sincronizar via storage.', e)
+      console.warn('PlacarNormal: falha ao sincronizar via storage.', e)
     }
   }
 })
@@ -158,7 +158,7 @@ export function inscrever(ouvinte) {
   return () => ouvintes.delete(ouvinte)
 }
 
-/* ---------- AÃ§Ãµes ---------- */
+/* ---------- Ações ---------- */
 
 export function gol(lado, delta) {
   setEstado((estado) => {
@@ -179,10 +179,17 @@ export function definirGols(lado, valor) {
   })
 }
 
+function resolverEscudo(sigla) {
+  const s = String(sigla || '').toUpperCase()
+  return /^[A-Z]{3,4}$/.test(s) ? `/escudos/${s}.png` : null
+}
+
 export function renomearTime(lado, nome) {
   setEstado((estado) => {
     const chave = lado === 'casa' ? 'timeCasa' : 'timeVisitante'
-    estado[chave].nome = nome.slice(0, 6).toUpperCase()
+    const sigla = nome.slice(0, 6).toUpperCase()
+    estado[chave].nome = sigla
+    estado[chave].escudo = resolverEscudo(sigla)
     return estado
   })
 }

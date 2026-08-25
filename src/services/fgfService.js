@@ -306,7 +306,7 @@ function casarSigla(entradas, texto) {
    que usa o nome canônico do clube — o atributo title das imagens traz
    nomes longos ("Grêmio Esportivo Bagé") que não batem com a classificação
    ("Bagé"). Jogos sem placar numérico entram como agendados (gols vazios). */
-function extrairUltimaRodada(html, entradas) {
+function extrairUltimaRodada(html, entradas, rodadaAlvo = 0) {
   const doc = new DOMParser().parseFromString(html, 'text/html')
   const itens = [...doc.querySelectorAll('.carousel-item')]
 
@@ -351,14 +351,20 @@ function extrairUltimaRodada(html, entradas) {
       })
     }
 
-    return { titulo, jogos, realizados }
+    const numero = Number((titulo.match(/(\d+)/) || [])[1]) || 0
+    return { titulo, jogos, realizados, numero }
   }
 
-  /* Rodada corrente: a mais recente com algum resultado; quando essa
-     rodada termina por completo, passa a valer a seguinte — mesmo que
-     seus jogos ainda não tenham começado. */
+  /* Rodada alvo: se um número de rodada é informado, retorna essa
+     rodada diretamente. Caso contrário, retorna a rodada imediatamente
+     anterior à mais recente com resultados. */
   const lidas = itens.map(lerItem).filter(Boolean)
   if (!lidas.length) return null
+
+  if (rodadaAlvo > 0) {
+    const alvo = lidas.find((r) => r.numero === rodadaAlvo)
+    if (alvo) return alvo
+  }
 
   let indice = -1
   for (let i = lidas.length - 1; i >= 0; i--) {
@@ -369,11 +375,9 @@ function extrairUltimaRodada(html, entradas) {
   }
   if (indice === -1) return lidas[0]
 
-  const atual = lidas[indice]
-  const terminou =
-    atual.jogos.length > 0 && atual.realizados >= atual.jogos.length
-  const proxima = lidas[indice + 1]
-  return terminou && proxima ? proxima : atual
+  const numeroAtual = lidas[indice].numero
+  const anterior = lidas.find((r) => r.numero === numeroAtual - 1)
+  return anterior || lidas[0]
 }
 
 function lerCacheUR() {
@@ -399,7 +403,7 @@ function gravarCacheUR(pacote) {
   }
 }
 
-export async function importarUltimaRodadaFGF({ forcar = false } = {}) {
+export async function importarUltimaRodadaFGF({ forcar = false, rodadaAlvo = 0 } = {}) {
   const aplicarPacote = (pacote) => ({
     titulo: pacote.titulo,
     jogos: pacote.jogos,
@@ -421,7 +425,7 @@ export async function importarUltimaRodadaFGF({ forcar = false } = {}) {
     }
 
     const entradas = mapaNomeParaSigla(dadosClass)
-    const rodada = extrairUltimaRodada(html, entradas)
+    const rodada = extrairUltimaRodada(html, entradas, rodadaAlvo)
 
     const classificacao = dadosClass
       .filter((t) => t.pos > 0)

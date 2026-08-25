@@ -6,16 +6,16 @@ const MSG_TIPO = 'estado:broadcast'
 const CANAL_NUVEM = 'placar-broadcast'
 
 const estadoPadrao = {
-  timeCasa: { nome: 'PAL', gols: 0 },
-  timeVisitante: { nome: 'BOT', gols: 0 },
+  timeCasa: { nome: 'BRA', gols: 0 },
+  timeVisitante: { nome: 'PEL', gols: 0 },
   cronometro: { base: 0, rodando: false, iniciadoEm: null },
   periodo: '1T',
   acrescimo: null,
   eventoGol: null,
-  corCasa: '#008F3D',
-  corCasaBorda: '#006b2d',
-  corVisitante: '#252525',
-  corVisitanteBorda: '#1a1a1a',
+  corCasa: '#b91c1c',
+  corCasaBorda: '#7f1d1d',
+  corVisitante: '#1565c0',
+  corVisitanteBorda: '#0d47a1',
   estadoPartida: 'AO VIVO',
   cartoesCasa: { amarelo: 0, vermelho: 0 },
   cartoesVisitante: { amarelo: 0, vermelho: 0 },

@@ -136,16 +136,22 @@ function iniciarBatimento(forcar = false) {
   if (!db) return
   if (!timerBatimento) {
     const referencia = ref(db, caminhoControle())
-    try {
-      onDisconnect(referencia).remove()
-    } catch {}
     const bater = () => {
-      set(referencia, { dono: ID_CLIENTE, ts: Date.now() }).catch(() => {})
+      try {
+        const dados = { dono: ID_CLIENTE, ts: Date.now() }
+        set(referencia, dados).catch(() => {})
+        onDisconnect(referencia).set(dados).catch(() => {})
+      } catch {}
     }
     bater()
     timerBatimento = setInterval(bater, 8000)
   } else if (forcar) {
-    set(ref(db, caminhoControle()), { dono: ID_CLIENTE, ts: Date.now() }).catch(() => {})
+    try {
+      const referencia = ref(db, caminhoControle())
+      const dados = { dono: ID_CLIENTE, ts: Date.now() }
+      set(referencia, dados).catch(() => {})
+      onDisconnect(referencia).set(dados).catch(() => {})
+    } catch {}
   }
 }
 

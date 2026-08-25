@@ -41,7 +41,7 @@ const FaixaTopo = styled.div`
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
-  background: #000;
+  background: #0b0b0b;
 
   .sigla {
     font-size: 0.95rem;
@@ -82,7 +82,7 @@ const LinhaJogador = styled.div`
   align-items: center;
   gap: 12px;
   padding: 8px 16px;
-  background: #000;
+  background: #0b0b0b;
 
   & + & {
     border-top: 1px solid rgba(255, 255, 255, 0.07);
@@ -121,7 +121,7 @@ const LinhaTecnico = styled.div`
   align-items: center;
   gap: 10px;
   padding: 8px 16px;
-  background: #000;
+  background: #0b0b0b;
   border-top: 1px solid ${VERDE}33;
 
   .rotulo {
