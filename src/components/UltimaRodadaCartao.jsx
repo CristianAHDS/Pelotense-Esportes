@@ -111,6 +111,8 @@ const BlocoTime = styled.div`
     letter-spacing: 1px;
     color: rgba(255, 255, 255, 0.92);
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 
@@ -179,13 +181,13 @@ export const UltimaRodadaCartao = forwardRef(function UltimaRodadaCartao(
             <LinhaJogo key={`jogo-${i}`}>
               <BlocoTime $lado="casa">
                 <Escudo cor="#1f1f1f" sigla={jogo.casaSigla} url={urlEscudo(jogo.casaSigla)} tamanho={26} />
-                <span className="sigla">{jogo.casaSigla}</span>
+                <span className="sigla">{jogo.casaNome || jogo.casaSigla}</span>
               </BlocoTime>
               <span className="placar">
                 {jogo.casaGols === '' ? '–' : jogo.casaGols} × {jogo.foraGols === '' ? '–' : jogo.foraGols}
               </span>
               <BlocoTime $lado="fora">
-                <span className="sigla">{jogo.foraSigla}</span>
+                <span className="sigla">{jogo.foraNome || jogo.foraSigla}</span>
                 <Escudo cor="#1f1f1f" sigla={jogo.foraSigla} url={urlEscudo(jogo.foraSigla)} tamanho={26} />
               </BlocoTime>
             </LinhaJogo>

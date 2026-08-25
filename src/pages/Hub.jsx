@@ -44,15 +44,6 @@ const SCOREBOARDS = [
     accent: '#ff4b44',
     glow: 'rgba(255, 75, 68, 0.18)',
   },
-  {
-    rota: '/placar-normal',
-    tag: 'NORMAL',
-    titulo: 'Placar Normal',
-    descricao:
-      'Placar tradicional horizontal ao estilo TV: times nas pontas, placar no centro, cronômetro no topo.',
-    accent: '#a5ef1c',
-    glow: 'rgba(165, 239, 28, 0.2)',
-  },
 ];
 
 const GAUCHAO_A2 = [
