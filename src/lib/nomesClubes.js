@@ -4,53 +4,24 @@
 
 const CLUBES_CANONICOS = [
   {
-    nome: 'Aimoré',
-    variantes: [
-      'Aimoré',
-      'Aimore',
-      'Clube Esportivo Aimoré',
-      'Clube Esportivo Aimore',
-      'EC Aimoré',
-    ],
-  },
-  {
-    nome: 'Apafut',
-    variantes: [
-      'Apafut',
-      'APAFUT',
-      'Apa Fut',
-      'Associação de Pais e Amigos do Futebol',
-      'Associação de Pais e Amigos',
-      'Assoc. de Pais e Amigos',
-    ],
-  },
-  {
-    nome: 'Bagé',
-    variantes: [
-      'Bagé',
-      'Bage',
-      'Grêmio Esportivo Bagé',
-      'Grêmio Esportivo Bage',
-      'GEB',
-    ],
-  },
-  {
     nome: 'Brasil',
     variantes: [
-      'Brasil',
       'Brasil - SAF',
       'Brasil SAF',
       'Brasil-SAF',
       'Brasil de Pelotas',
       'Brasil-PE',
       'Brasil Pelotas',
-      'Esporte Clube Pelotas',
-      'EC Pelotas',
-      'Pelotas',
-      'Grêmio Esportivo Brasil',
-      'Gremio Esportivo Brasil',
-      'Grêmio Esportivo Brasilsaf',
-      'Gremio Esportivo Bra',
+    ],
+  },
+  {
+    nome: 'Guarani - VA',
+    variantes: [
+      'Guarani - VA',
+      'Guarani VA',
+      'Guarani-VA',
+      'Guarani-RS',
+      'Guarani',
     ],
   },
   {
@@ -63,102 +34,16 @@ const CLUBES_CANONICOS = [
     ],
   },
   {
+    nome: 'Apafut',
+    variantes: ['Apafut', 'APAFUT', 'Apa Fut'],
+  },
+  {
     nome: 'Esportivo',
-    variantes: [
-      'Esportivo',
-      'Esportivo-RS',
-      'Clube Esportivo Bento Gonçalves',
-      'Clube Esportivo Bento Goncalves',
-      'Esporte Clube Bento Gonçalves',
-      'EC Bento Gonçalves',
-    ],
-  },
-  {
-    nome: 'Gaúcho',
-    variantes: [
-      'Gaúcho',
-      'Gaucho',
-      'Sport Clube Gaúcho',
-      'Sport Clube Gaucho',
-      'SC Gaúcho',
-    ],
-  },
-  {
-    nome: 'Glória',
-    variantes: [
-      'Glória',
-      'Gloria',
-      'Grêmio Esportivo Glória',
-      'Grêmio Esportivo Gloria',
-      'Grêmio Esportivo Gló',
-      'GEG',
-    ],
-  },
-  {
-    nome: 'Gramadense',
-    variantes: [
-      'Gramadense',
-      'Centro Esportivo Gramadense',
-      'CE Gramadense',
-    ],
-  },
-  {
-    nome: 'Guarani - VA',
-    variantes: [
-      'Guarani - VA',
-      'Guarani VA',
-      'Guarani-VA',
-      'Guarani-RS',
-      'Guarani',
-      'Esporte Clube Guarani',
-      'EC Guarani',
-    ],
-  },
-  {
-    nome: 'Lajeadense',
-    variantes: [
-      'Lajeadense',
-      'Clube Esportivo Laje',
-      'Esporte Clube Laje',
-      'EC Laje',
-      'Laje',
-    ],
-  },
-  {
-    nome: 'Passo Fundo',
-    variantes: [
-      'Passo Fundo',
-      'Esporte Clube Passo Fundo',
-      'EC Passo Fundo',
-      'ECPF',
-    ],
+    variantes: ['Esportivo', 'Esportivo-RS'],
   },
   {
     nome: 'Santa Cruz',
-    variantes: [
-      'Santa Cruz',
-      'Santa Cruz-RS',
-      'Futebol Clube Santa Cruz',
-      'FC Santa Cruz',
-    ],
-  },
-  {
-    nome: 'União Frederiquense',
-    variantes: [
-      'União Frederiquense',
-      'Uniao Frederiquense',
-      'União',
-    ],
-  },
-  {
-    nome: 'Veranópolis',
-    variantes: [
-      'Veranópolis',
-      'Veranopolis',
-      'Veranópolis Esporte Clube',
-      'Veranópolis EC',
-      'VEC',
-    ],
+    variantes: ['Santa Cruz', 'Santa Cruz-RS'],
   },
 ];
 

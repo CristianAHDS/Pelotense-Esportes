@@ -189,6 +189,8 @@ function atualizarJogo(indice, campo, valor) {
     if (!jogo) return estadoAtual
     if (campo === 'casaGols' || campo === 'foraGols') {
       jogo[campo] = String(valor).replace(/[^0-9]/g, '').slice(0, 2)
+    } else if (campo === 'casaNome' || campo === 'foraNome') {
+      jogo[campo] = String(valor).slice(0, 20)
     } else {
       jogo[campo] = String(valor).slice(0, 4).toUpperCase()
     }
@@ -203,7 +205,7 @@ function atualizarPosicao(indice, campo, valor) {
     if (campo === 'pos') {
       posicao.pos = String(valor).replace(/[^0-9]/g, '').slice(0, 2)
     } else if (campo === 'nome') {
-      posicao.nome = String(valor)
+      posicao.nome = String(valor).slice(0, 20)
     } else {
       posicao.sigla = String(valor).slice(0, 4).toUpperCase()
     }
@@ -219,18 +221,18 @@ function preencherDaFGF({ titulo, jogos, classificacao }) {
     if (Array.isArray(jogos) && jogos.length) {
       estadoAtual.jogos = jogos.map((j) => ({
         casaSigla: String(j.casaSigla || '').slice(0, 4).toUpperCase(),
-        casaNome: String(j.casaNome || j.casaSigla || ''),
+        casaNome: String(j.casaNome || j.casaSigla || '').slice(0, 20),
         casaGols: String(j.casaGols ?? ''),
         foraGols: String(j.foraGols ?? ''),
         foraSigla: String(j.foraSigla || '').slice(0, 4).toUpperCase(),
-        foraNome: String(j.foraNome || j.foraSigla || '')
+        foraNome: String(j.foraNome || j.foraSigla || '').slice(0, 20)
       }))
     }
 
     if (Array.isArray(classificacao) && classificacao.length) {
       estadoAtual.posicoes = classificacao.map((c, i) => ({
         sigla: String(c.sigla || '').slice(0, 4).toUpperCase(),
-        nome: String(c.nome || c.sigla || ''),
+        nome: String(c.nome || c.sigla || '').slice(0, 20),
         pos: String(c.pos ?? i + 1)
       }))
     }
