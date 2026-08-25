@@ -101,7 +101,7 @@ const LinhaJogo = styled.div`
 const BlocoTime = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 18px;
   min-width: 0;
   flex: 1;
   justify-content: ${({ $lado }) => ($lado === 'fora' ? 'flex-end' : 'flex-start')};
