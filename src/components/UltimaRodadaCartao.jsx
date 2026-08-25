@@ -101,16 +101,15 @@ const LinhaJogo = styled.div`
 const BlocoTime = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   min-width: 0;
   flex: 1;
   justify-content: ${({ $lado }) => ($lado === 'fora' ? 'flex-end' : 'flex-start')};
 
   .sigla {
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.74rem;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.7);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
