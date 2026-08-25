@@ -1,5 +1,4 @@
 import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
-import { nomeCanonico } from '../lib/nomesClubes.js'
 
 const STORAGE_KEY = 'pelotense:ultima-rodada:v1'
 const CHANNEL_NAME = 'broadcast:sync-ultima-rodada-v1'
@@ -17,12 +16,9 @@ function normalizarEstado(estadoAtual) {
   for (const jogo of estadoAtual.jogos || []) {
     jogo.casaSigla = normalizarSigla(jogo.casaSigla)
     jogo.foraSigla = normalizarSigla(jogo.foraSigla)
-    jogo.casaNome = nomeCanonico(jogo.casaNome || jogo.casaSigla)
-    jogo.foraNome = nomeCanonico(jogo.foraNome || jogo.foraSigla)
   }
   for (const posicao of estadoAtual.posicoes || []) {
     posicao.sigla = normalizarSigla(posicao.sigla)
-    posicao.nome = nomeCanonico(posicao.nome || posicao.sigla)
   }
   return estadoAtual
 }
