@@ -342,12 +342,10 @@ function extrairUltimaRodada(html, entradas, rodadaAlvo = 0) {
           (mSlug && casarSigla(entradas, mSlug[1])) ||
           casarSigla(entradas, nomeCasa) ||
           nomeCasa.slice(0, 4).toUpperCase(),
-        casaNome: nomeCasa || '',
         foraSigla:
           (mSlug && casarSigla(entradas, mSlug[2])) ||
           casarSigla(entradas, nomeFora) ||
           nomeFora.slice(0, 4).toUpperCase(),
-        foraNome: nomeFora || '',
         casaGols: m ? m[1] : '',
         foraGols: m ? m[2] : '',
       })
@@ -434,7 +432,6 @@ export async function importarUltimaRodadaFGF({ forcar = false, rodadaAlvo = 0 }
       .sort((a, b) => a.pos - b.pos)
       .map((t) => ({
         sigla: SIGLAS_FGF_PARA_PADRAO[t.sigla] || t.sigla,
-        nome: t.nome || '',
         pos: t.pos,
       }))
 

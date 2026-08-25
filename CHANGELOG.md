@@ -2,15 +2,6 @@
 
 ## 25/08/2026
 
-### Removido card "Placar Normal" do Hub
-- Card do Placar Normal removido da seção "Scoreboards" do Hub.
-
-### Última Rodada: nomes dos times ao invés de siglas
-- Overlay da Última Rodada agora exibe o nome completo dos times ao invés das siglas.
-- Logotipos continuam sendo carregados pela sigla (escudos existentes em `/escudos/`).
-- Store e controle atualizados com campos de nome para jogos e classificação.
-- Importação da FGF preenche automaticamente os nomes dos times.
-
 ### Times padrão BRA/PEL em todos os scoreboards
 - Siglas padrão alteradas de PAL/BOT para BRA/PEL em todos os stores (Broadcast, PL, BL, LL, Normal) com cores correspondentes (vermelho #b91c1c / azul #1565c0).
 - Placar Normal: escudos (BRA/PEL) ao lado das siglas no overlay e na prévia do controle.

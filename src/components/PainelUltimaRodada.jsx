@@ -71,7 +71,7 @@ const SecaoTitulo = styled.h3`
 
 const LinhaJogo = styled.div`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr) 52px auto 52px minmax(0, 0.6fr) minmax(0, 1fr) 26px;
+  grid-template-columns: minmax(0, 1fr) 52px auto 52px minmax(0, 1fr) 26px;
   gap: 8px;
   align-items: center;
 
@@ -80,13 +80,13 @@ const LinhaJogo = styled.div`
   }
 
   @media (max-width: 480px) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.5fr) 44px auto 44px minmax(0, 0.5fr) minmax(0, 1fr) 26px;
+    grid-template-columns: minmax(0, 1fr) 44px auto 44px minmax(0, 1fr) 26px;
   }
 `;
 
 const LinhaPosicao = styled.div`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 64px 26px;
+  grid-template-columns: minmax(0, 1fr) 64px 26px;
   gap: 8px;
   align-items: center;
 
@@ -283,14 +283,6 @@ export function PainelUltimaRodada() {
                   ultimaRodada.atualizarJogo(i, 'casaSigla', e.target.value)
                 }
               />
-              <Entrada
-                value={jogo.casaNome}
-                placeholder="NOME"
-                maxLength={20}
-                onChange={(e) =>
-                  ultimaRodada.atualizarJogo(i, 'casaNome', e.target.value)
-                }
-              />
               <EntradaNum
                 type="number"
                 min={0}
@@ -308,14 +300,6 @@ export function PainelUltimaRodada() {
                 value={jogo.foraGols}
                 onChange={(e) =>
                   ultimaRodada.atualizarJogo(i, 'foraGols', e.target.value)
-                }
-              />
-              <Entrada
-                value={jogo.foraNome}
-                placeholder="NOME"
-                maxLength={20}
-                onChange={(e) =>
-                  ultimaRodada.atualizarJogo(i, 'foraNome', e.target.value)
                 }
               />
               <Entrada
@@ -349,14 +333,6 @@ export function PainelUltimaRodada() {
                 maxLength={4}
                 onChange={(e) =>
                   ultimaRodada.atualizarPosicao(i, 'sigla', e.target.value)
-                }
-              />
-              <Entrada
-                value={p.nome}
-                placeholder="NOME"
-                maxLength={20}
-                onChange={(e) =>
-                  ultimaRodada.atualizarPosicao(i, 'nome', e.target.value)
                 }
               />
               <EntradaNum

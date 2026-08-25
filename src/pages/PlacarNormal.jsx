@@ -128,6 +128,9 @@ const AcrescimoTag = styled.span`
   font-size:.75rem;
   font-weight:800;
   color:#fbbf24;
+  opacity:0; visibility:hidden;
+  transition:opacity .25s,visibility .25s;
+  ${({ $v }) => $v && 'opacity:1;visibility:visible;'}
 `
 
 const LiveDot = styled.span`
@@ -380,7 +383,7 @@ export default function PlacarNormal() {
             <LiveDot $r={aoVivo} />
             <PeriodoTag>{periodo}</PeriodoTag>
             <Crono $r={aoVivo}>{tempo}</Crono>
-            {acrescimo > 0 && <AcrescimoTag>+{acrescimo}:00</AcrescimoTag>}
+            <AcrescimoTag $v={acrescimo > 0}>+{Math.max(0, acrescimo || 0)}:00</AcrescimoTag>
           </TopoStrip>
 
           <CartoesBar>

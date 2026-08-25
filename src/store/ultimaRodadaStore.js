@@ -26,16 +26,14 @@ function normalizarEstado(estadoAtual) {
 function jogosPadrao() {
   return Array.from({ length: 6 }, () => ({
     casaSigla: '',
-    casaNome: '',
     casaGols: '',
     foraGols: '',
-    foraSigla: '',
-    foraNome: ''
+    foraSigla: ''
   }))
 }
 
 function posicoesPadrao() {
-  return Array.from({ length: 6 }, () => ({ sigla: '', nome: '', pos: '' }))
+  return Array.from({ length: 6 }, () => ({ sigla: '', pontos: '' }))
 }
 
 const estadoPadrao = {
@@ -52,16 +50,11 @@ function carregar() {
     if (bruto) {
       const salvo = JSON.parse(bruto)
       const estado = { ...structuredClone(estadoPadrao), ...salvo }
-      estado.jogos = Array.isArray(salvo.jogos) ? salvo.jogos.map(j => ({
-        ...j,
-        casaNome: j.casaNome || '',
-        foraNome: j.foraNome || ''
-      })) : jogosPadrao()
+      estado.jogos = Array.isArray(salvo.jogos) ? salvo.jogos : jogosPadrao()
       estado.posicoes = Array.isArray(salvo.posicoes) ? salvo.posicoes : posicoesPadrao()
       /* Migração do formato antigo (pontos) para posição na tabela */
       estado.posicoes = estado.posicoes.map((p, i) => ({
         sigla: p.sigla || '',
-        nome: p.nome || '',
         pos: p.pos ?? p.pontos ?? String(i + 1)
       }))
       return normalizarEstado(estado)
@@ -189,8 +182,6 @@ function atualizarJogo(indice, campo, valor) {
     if (!jogo) return estadoAtual
     if (campo === 'casaGols' || campo === 'foraGols') {
       jogo[campo] = String(valor).replace(/[^0-9]/g, '').slice(0, 2)
-    } else if (campo === 'casaNome' || campo === 'foraNome') {
-      jogo[campo] = String(valor).slice(0, 20)
     } else {
       jogo[campo] = String(valor).slice(0, 4).toUpperCase()
     }
@@ -204,8 +195,6 @@ function atualizarPosicao(indice, campo, valor) {
     if (!posicao) return estadoAtual
     if (campo === 'pos') {
       posicao.pos = String(valor).replace(/[^0-9]/g, '').slice(0, 2)
-    } else if (campo === 'nome') {
-      posicao.nome = String(valor).slice(0, 20)
     } else {
       posicao.sigla = String(valor).slice(0, 4).toUpperCase()
     }
@@ -221,18 +210,15 @@ function preencherDaFGF({ titulo, jogos, classificacao }) {
     if (Array.isArray(jogos) && jogos.length) {
       estadoAtual.jogos = jogos.map((j) => ({
         casaSigla: String(j.casaSigla || '').slice(0, 4).toUpperCase(),
-        casaNome: String(j.casaNome || j.casaSigla || '').slice(0, 20),
         casaGols: String(j.casaGols ?? ''),
         foraGols: String(j.foraGols ?? ''),
-        foraSigla: String(j.foraSigla || '').slice(0, 4).toUpperCase(),
-        foraNome: String(j.foraNome || j.foraSigla || '').slice(0, 20)
+        foraSigla: String(j.foraSigla || '').slice(0, 4).toUpperCase()
       }))
     }
 
     if (Array.isArray(classificacao) && classificacao.length) {
       estadoAtual.posicoes = classificacao.map((c, i) => ({
         sigla: String(c.sigla || '').slice(0, 4).toUpperCase(),
-        nome: String(c.nome || c.sigla || '').slice(0, 20),
         pos: String(c.pos ?? i + 1)
       }))
     }
@@ -242,7 +228,7 @@ function preencherDaFGF({ titulo, jogos, classificacao }) {
 }
 
 function linhaJogoVazia() {
-  return { casaSigla: '', casaNome: '', casaGols: '', foraGols: '', foraSigla: '', foraNome: '' }
+  return { casaSigla: '', casaGols: '', foraGols: '', foraSigla: '' }
 }
 
 function adicionarJogo() {
@@ -264,7 +250,7 @@ function adicionarPosicao() {
   setEstado((estadoAtual) => {
     const proxima =
       estadoAtual.posicoes.reduce((maior, p) => Math.max(maior, Number(p.pos) || 0), 0) + 1
-    estadoAtual.posicoes.push({ sigla: '', nome: '', pos: String(proxima) })
+    estadoAtual.posicoes.push({ sigla: '', pos: String(proxima) })
     return estadoAtual
   })
 }
