@@ -286,7 +286,6 @@ export function PainelUltimaRodada() {
               <Entrada
                 value={jogo.casaNome}
                 placeholder="NOME"
-                maxLength={20}
                 onChange={(e) =>
                   ultimaRodada.atualizarJogo(i, 'casaNome', e.target.value)
                 }
@@ -313,7 +312,6 @@ export function PainelUltimaRodada() {
               <Entrada
                 value={jogo.foraNome}
                 placeholder="NOME"
-                maxLength={20}
                 onChange={(e) =>
                   ultimaRodada.atualizarJogo(i, 'foraNome', e.target.value)
                 }
@@ -354,7 +352,6 @@ export function PainelUltimaRodada() {
               <Entrada
                 value={p.nome}
                 placeholder="NOME"
-                maxLength={20}
                 onChange={(e) =>
                   ultimaRodada.atualizarPosicao(i, 'nome', e.target.value)
                 }

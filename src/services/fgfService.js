@@ -342,12 +342,12 @@ function extrairUltimaRodada(html, entradas, rodadaAlvo = 0) {
           (mSlug && casarSigla(entradas, mSlug[1])) ||
           casarSigla(entradas, nomeCasa) ||
           nomeCasa.slice(0, 4).toUpperCase(),
-        casaNome: nomeCasa || '',
+        casaNome: nomeCanonico(nomeCasa) || nomeCasa || '',
         foraSigla:
           (mSlug && casarSigla(entradas, mSlug[2])) ||
           casarSigla(entradas, nomeFora) ||
           nomeFora.slice(0, 4).toUpperCase(),
-        foraNome: nomeFora || '',
+        foraNome: nomeCanonico(nomeFora) || nomeFora || '',
         casaGols: m ? m[1] : '',
         foraGols: m ? m[2] : '',
       })
