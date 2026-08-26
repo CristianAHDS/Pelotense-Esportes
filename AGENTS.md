@@ -1,59 +1,43 @@
-# AGENTS — Guia do projeto
-
-Guia para agentes (e pessoas) trabalhando neste repositório.
+# AGENTS.md
 
 ## Stack
-- **Vite + React 18** (JavaScript, sem TypeScript)
-- **React Router** com `BrowserRouter` — rotas limpas, sem hash (`/#/...` está errado)
-- **styled-components** com tema global em `src/theme.js` (cores, fontes, espaçamentos)
+Vite + React 18 (JS, sem TS) · React Router (BrowserRouter, sem hash) · styled-components (`src/theme.js`)
 
 ## Comandos
-```bash
-npm install        # instalar dependências
-npm run dev        # servidor de desenvolvimento
-npm run build      # build de produção (rodar antes de entregar qualquer tarefa)
-npm run preview    # servir o build localmente
-```
+`npm install` · `npm run dev` · `npm run build` (rodar antes de entregar) · `npm run preview`
 
 ## Arquitetura
 
-### Páginas (`src/pages/`)
-- `LandingPage.jsx` — landing institucional em `/`
-- `Hub.jsx` — catálogo do sistema em `/hub`, com cards e prévias ao vivo (iframes `?previa=1`)
-- Overlays de transmissão: `PlacarBroadcast*` (padrão/PL/BL/LL), `Tabela`, `MataMata` (oitavas), `FasesFinais` (chaveamento), `Substituicao`, `Penaltis`
-- Cada overlay tem sua página de controle: `Controle<X>.jsx` na rota `/controle`
+**Páginas** (`src/pages/`)
+- `LandingPage.jsx` → `/` | `Hub.jsx` → `/hub` (cards com iframes `?previa=1`)
+- Overlays: `PlacarBroadcast*` (padrão/PL/BL/LL), `Tabela`, `MataMata`, `FasesFinais`, `Substituicao`, `Penaltis`
+- Controles: `Controle<X>.jsx` → `/controle`
 
-### Stores sincronizados (`src/store/`)
-Padrão compartilhado por todos os módulos:
-- Estado único + `localStorage` + **BroadcastChannel** para sync local entre abas (overlay ↔ controle)
-- **Sync na nuvem**: cada store publica o estado com `publicarNuvem(CANAL_NUVEM, pacote)` e escuta remotos com `inscreverNuvem(CANAL_NUVEM, ...)` de `src/lib/sincronizacaoNuvem.js` (Firebase RTDB); eco das próprias publicações é filtrado pela lib
-- **Salas**: caminho no banco é `salas/{sala}/{canal}`; a sala vem da URL (`?sala=nome`, padrão `padrao`) e é lida no carregamento dos módulos — trocar de sala recarrega a página
-- **Controle exclusivo**: só o dono da sala publica (`publicarNuvem` filtra via `ehControlador`); claim em `salas/{sala}/controle` com heartbeat/onDisconnect, gerenciado pelo hook `useControleRemoto` + indicador no `Header` (auto-assume na 1ª interação fora do hub)
-- API: `getEstado()`, `inscrever(fn)`, ações que chamam `setEstado()` internamente
-- O hook `src/hooks/usePlacarBroadcast.js` consome `{ getEstado, inscrever }` nas páginas
+**Stores** (`src/store/`) — padrão único:
+- Estado + localStorage + BroadcastChannel (sync local) + Firebase RTDB (sync nuvem via `src/lib/sincronizacaoNuvem.js`)
+- Salas: `salas/{sala}/{canal}`, sala vem de `?sala=` (padrão `padrao`)
+- Controle exclusivo: `useControleRemoto` + claim em `salas/{sala}/controle` com heartbeat
+- API: `getEstado()`, `inscrever(fn)`, ações via `setEstado()` | Hook: `src/hooks/usePlacarBroadcast.js`
 
-### Componentes (`src/components/`)
-- `Escudo` — recebe `{ cor, sigla, url, tamanho }`; tenta `/escudos/SIGLA.png` como fallback
+**Componentes** (`src/components/`)
+- `Escudo({ cor, sigla, url, tamanho })` — fallback `/escudos/SIGLA.png`
 - `PainelOitavas`, `PainelChaveamento`, `Chaveamento`, `ListaOitavas` — mata-mata
-- `Header` — usado nos controles e no hub; inclui `CampoSala` (campo de sala + "Copiar link" para levar a URL ao OBS/outro computador); overlays usam botão "←" voltar para `/hub`
+- `Header` — controles e hub; inclui `CampoSala` ("Copiar link" para OBS)
 
 ## Convenções
-- **Paleta**: fundo escuro (#060606/#0d0d0d), acento neon **#a5ef1c**. Cores de times da A2 (ex.: `#008F3D`) são preservadas — não trocar pelo neon.
-- **Fontes**: Rajdhani (títulos/números), Inter (corpo), via `theme.fontes`.
-- **Overlays**: fundo transparente para OBS via `useFundoTransparente`; parâmetro `?previa=1` esconde o botão voltar e compacta o layout (usado nas prévias do hub).
-- **Novos módulos**: criar store próprio seguindo o padrão acima, página de overlay + página `Controle*`, rota em `App.jsx` e card no `Hub.jsx`.
-- Sem comentários no código; mensagens de commit em português, estilo resumo curto.
+- Paleta: fundo #060606/#0d0d0d, acento #a5ef1c. Cores de times preservadas
+- Fontes: Rajdhani (títulos), Inter (corpo) via `theme.fontes`
+- Overlays: fundo transparente (`useFundoTransparente`), `?previa=1` compacta layout
+- Novos módulos: store próprio + overlay + `Controle*` + rota em `App.jsx` + card no `Hub.jsx`
+- Sem comentários; commits em português
 
-## Registro de tarefas (obrigatório)
-- **Toda tarefa concluída deve ser registrada em `CHANGELOG.md`**, na seção da data correspondente.
-- Formato: título curto da mudança + descrição objetiva do que foi feito (novidades e correções).
-- Nunca apagar entradas antigas: o arquivo é o histórico acumulado do projeto.
-- Ao criar/editar este guia ou o README, aprove a mesma entrega para atualizar o changelog.
+## CHANGELOG
+Toda tarefa concluída → `CHANGELOG.md` (seção da data). Formato: título + descrição. Nunca apagar entradas.
 
-## Armadilhas conhecidas
-- Iframes de prévia do hub têm 720–760px de largura: breakpoints de media query precisam ficar **abaixo** disso.
-- Grades com `nth-child` fixo quebram ao adicionar/remover cards — revisar spans.
-- Ao mudar assinatura de ação de um store, atualizar todos os controles que a usam.
-- O estado publicado na nuvem vai como JSON serializado (string) em `salas/{sala}/{canal}` — não gravar objeto cru no RTDB, senão `null`/arrays perdem fidelidade.
-- Variáveis `VITE_*` são embutidas no build: cadastrar/alterar no Netlify exige novo deploy.
-- Sem `VITE_FIREBASE_DATABASE_URL` configurada, `inscreverNuvem`/`publicarNuvem` viram no-op — testar multi-dispositivo só funciona com as chaves presentes.
+## Armadilhas
+- Iframes prévia: 720–760px → media queries abaixo disso
+- `nth-child` fixo quebra com add/remove de cards
+- Mudar assinatura de ação → atualizar todos os controles
+- Nuvem: JSON serializado (string), não objeto cru
+- `VITE_*`: cadastrar/alterar no Netlify = novo deploy
+- Sem `VITE_FIREBASE_DATABASE_URL`: sync nuvem é no-op

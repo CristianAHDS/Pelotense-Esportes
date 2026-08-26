@@ -69,11 +69,17 @@ export function placarDe(lado) {
   return (lado?.cobrancas || []).filter((c) => c === 'gol').length;
 }
 
-/* Quantas cobranÃ§as cada lado precisa exibir (mÃ­nimo 5, acompanha o maior) */
+function comprimentoUtil(arr) {
+  let len = arr.length;
+  while (len > 0 && arr[len - 1] === null) len--;
+  return len;
+}
+
+/* Quantas cobranÃ§as cada lado precisa exibir (acompanha o maior, mÃ­nimo 5) */
 export function slotsVisiveis(est = estado) {
   const max = Math.max(
-    est.casa?.cobrancas.length || 0,
-    est.visitante?.cobrancas.length || 0,
+    comprimentoUtil(est.casa?.cobrancas || []),
+    comprimentoUtil(est.visitante?.cobrancas || []),
     5,
   );
   return Math.min(max + 1, 30);
