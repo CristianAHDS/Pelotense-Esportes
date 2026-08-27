@@ -85,6 +85,15 @@ const GAUCHAO_A2 = [
     glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
+    rota: '/proximas-rodadas',
+    tag: 'Próxima Rodada',
+    titulo: 'Próxima Rodada',
+    descricao:
+      'Agenda dos próximos confrontos do Gauchão A2 com escudos, sincronizada com a FGF.',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
+  },
+  {
     titulo: 'Oitavas de Final',
     tag: 'MATA-MATA',
     descricao:
@@ -93,6 +102,7 @@ const GAUCHAO_A2 = [
     accent: '#a5ef1c',
     glow: 'rgba(165, 239, 28, 0.16)',
     preview: 'mata',
+    emBreve: true,
   },
   {
     titulo: 'Fases Finais · Chaveamento',
@@ -105,6 +115,7 @@ const GAUCHAO_A2 = [
     glow: 'rgba(165, 239, 28, 0.16)',
     preview: 'fases',
     altura: 700,
+    emBreve: true,
   },
 ];
 
@@ -1051,7 +1062,12 @@ const RodapeCopy = styled.p`
 
 export default function Hub() {
   const [tv, setTv] = useState(null);
-  const [aberto, setAberto] = useState({ scoreboards: false, gauchao: true, extras: false, outros: false });
+  const [aberto, setAberto] = useState({
+    scoreboards: false,
+    gauchao: true,
+    extras: false,
+    outros: false,
+  });
 
   const alternarSegmento = (id) =>
     setAberto((atual) => ({ ...atual, [id]: !atual[id] }));
@@ -1101,178 +1117,209 @@ export default function Hub() {
           </div>
         </Hero>
 
-        <Segmento id="scoreboards" $aberto={aberto.scoreboards} onClick={() => alternarSegmento('scoreboards')} aria-expanded={aberto.scoreboards}>
+        <Segmento
+          id="scoreboards"
+          $aberto={aberto.scoreboards}
+          onClick={() => alternarSegmento('scoreboards')}
+          aria-expanded={aberto.scoreboards}
+        >
           <SegmentoIcone>📺</SegmentoIcone>
           <h2>Scoreboards</h2>
           <Contador>{SCOREBOARDS.length} ativos</Contador>
           <SetaSegmento $aberto={aberto.scoreboards}>▼</SetaSegmento>
         </Segmento>
         {aberto.scoreboards && (
-        <Grade>
-          {SCOREBOARDS.map((m, i) => (
-            <RevelarAoRolar key={m.rota} atraso={(i % 4) * 60}>
-              <Card $accent={m.accent} $glow={m.glow}>
-                <CardTag $accent={m.accent}>{m.tag}</CardTag>
-                <CardTitulo>{m.titulo}</CardTitulo>
-                <CardDescricao>{m.descricao}</CardDescricao>
-                <PreviaRotulo>Prévia ao vivo</PreviaRotulo>
-                <PreviewAoVivo
-                  rota={m.rota}
-                  largura={720}
-                  altura={405}
-                  aoAmpliar={() =>
-                    setTv({
-                      rota: m.rota,
-                      tag: m.tag,
-                      titulo: m.titulo,
-                      accent: m.accent,
-                      largura: 720,
-                      altura: 405,
-                    })
-                  }
-                />
-                <CardAcoes>
-                  <Botao
-                    as="a"
-                    href={m.rota}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="primario"
-                  >
-                    Abrir
-                  </Botao>
-                  <Botao to={`${m.rota}/controle`} className="secundario">
-                    Controlar
-                  </Botao>
-                  <CopiarLink rota={m.rota} />
-                </CardAcoes>
-              </Card>
-            </RevelarAoRolar>
-          ))}
-        </Grade>
+          <Grade>
+            {SCOREBOARDS.map((m, i) => (
+              <RevelarAoRolar key={m.rota} atraso={(i % 4) * 60}>
+                <Card $accent={m.accent} $glow={m.glow}>
+                  <CardTag $accent={m.accent}>{m.tag}</CardTag>
+                  <CardTitulo>{m.titulo}</CardTitulo>
+                  <CardDescricao>{m.descricao}</CardDescricao>
+                  <PreviaRotulo>Prévia ao vivo</PreviaRotulo>
+                  <PreviewAoVivo
+                    rota={m.rota}
+                    largura={720}
+                    altura={405}
+                    aoAmpliar={() =>
+                      setTv({
+                        rota: m.rota,
+                        tag: m.tag,
+                        titulo: m.titulo,
+                        accent: m.accent,
+                        largura: 720,
+                        altura: 405,
+                      })
+                    }
+                  />
+                  <CardAcoes>
+                    <Botao
+                      as="a"
+                      href={m.rota}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="primario"
+                    >
+                      Abrir
+                    </Botao>
+                    <Botao to={`${m.rota}/controle`} className="secundario">
+                      Controlar
+                    </Botao>
+                    <CopiarLink rota={m.rota} />
+                  </CardAcoes>
+                </Card>
+              </RevelarAoRolar>
+            ))}
+          </Grade>
         )}
 
-        <Segmento id="gauchao" $aberto={aberto.gauchao} onClick={() => alternarSegmento('gauchao')} aria-expanded={aberto.gauchao}>
+        <Segmento
+          id="gauchao"
+          $aberto={aberto.gauchao}
+          onClick={() => alternarSegmento('gauchao')}
+          aria-expanded={aberto.gauchao}
+        >
           <SegmentoIcone>🏆</SegmentoIcone>
           <h2>Gauchão A2</h2>
           <Contador>{GAUCHAO_A2.length} ativos</Contador>
           <SetaSegmento $aberto={aberto.gauchao}>▼</SetaSegmento>
         </Segmento>
         {aberto.gauchao && (
-        <Grade>
-          {GAUCHAO_A2.map((t, i) => (
+          <Grade>
+{GAUCHAO_A2.map((t, i) => (
             <RevelarAoRolar key={t.titulo} atraso={(i % 4) * 60}>
-              <Card $accent={t.accent} $glow={t.glow}>
-                <CardTag $accent={t.accent}>{t.tag}</CardTag>
-                <CardTitulo>{t.titulo}</CardTitulo>
-                <CardDescricao>{t.descricao}</CardDescricao>
-                <PreviewAoVivo
-                  rota={t.rota}
-                  largura={760}
-                  altura={t.altura || 620}
-                  aoAmpliar={() =>
-                    setTv({
-                      rota: t.rota,
-                      tag: t.tag,
-                      titulo: t.titulo,
-                      accent: t.accent,
-                      largura: 760,
-                      altura: t.altura || 620,
-                    })
-                  }
-                />
-                <CardAcoes>
-                  <Botao
-                    as="a"
-                    href={t.rota}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="primario"
-                  >
-                    Abrir
-                  </Botao>
-                  <Botao
-                    to={t.controle || `${t.rota}/controle`}
-                    className="secundario"
-                  >
-                    Controlar
-                  </Botao>
-                  <CopiarLink rota={t.rota} />
-                </CardAcoes>
+              <Card className={t.emBreve ? 'breve' : ''} $accent={t.accent} $glow={t.glow}>
+                {t.emBreve ? (
+                  <>
+                    <CardTag $accent={t.accent}>{t.tag}</CardTag>
+                    <CardTitulo>{t.titulo}</CardTitulo>
+                    <CardDescricao>{t.descricao}</CardDescricao>
+                    <EmBreveChip>Em breve</EmBreveChip>
+                  </>
+                ) : (
+                  <>
+                    <CardTag $accent={t.accent}>{t.tag}</CardTag>
+                    <CardTitulo>{t.titulo}</CardTitulo>
+                    <CardDescricao>{t.descricao}</CardDescricao>
+                    <PreviewAoVivo
+                      rota={t.rota}
+                      largura={760}
+                      altura={t.altura || 620}
+                      aoAmpliar={() =>
+                        setTv({
+                          rota: t.rota,
+                          tag: t.tag,
+                          titulo: t.titulo,
+                          accent: t.accent,
+                          largura: 760,
+                          altura: t.altura || 620,
+                        })
+                      }
+                    />
+                    <CardAcoes>
+                      <Botao
+                        as="a"
+                        href={t.rota}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="primario"
+                      >
+                        Abrir
+                      </Botao>
+                      <Botao
+                        to={t.controle || `${t.rota}/controle`}
+                        className="secundario"
+                      >
+                        Controlar
+                      </Botao>
+                      <CopiarLink rota={t.rota} />
+                    </CardAcoes>
+                  </>
+                )}
               </Card>
             </RevelarAoRolar>
           ))}
-        </Grade>
+          </Grade>
         )}
 
-        <Segmento id="extras" $aberto={aberto.extras} onClick={() => alternarSegmento('extras')} aria-expanded={aberto.extras}>
+        <Segmento
+          id="extras"
+          $aberto={aberto.extras}
+          onClick={() => alternarSegmento('extras')}
+          aria-expanded={aberto.extras}
+        >
           <SegmentoIcone>⚡</SegmentoIcone>
           <h2>Extras da Transmissão</h2>
           <Contador>{EXTRAS.length} ativos</Contador>
           <SetaSegmento $aberto={aberto.extras}>▼</SetaSegmento>
         </Segmento>
         {aberto.extras && (
-        <Grade>
-          {EXTRAS.map((x, i) => (
-            <RevelarAoRolar key={x.rota} atraso={(i % 4) * 60}>
-              <Card $accent={x.accent} $glow={x.glow}>
-                <CardTag $accent={x.accent}>{x.tag}</CardTag>
-                <CardTitulo>{x.titulo}</CardTitulo>
-                <CardDescricao>{x.descricao}</CardDescricao>
-                <PreviewAoVivo
-                  rota={x.rota}
-                  largura={720}
-                  altura={405}
-                  aoAmpliar={() =>
-                    setTv({
-                      rota: x.rota,
-                      tag: x.tag,
-                      titulo: x.titulo,
-                      accent: x.accent,
-                      largura: 720,
-                      altura: 405,
-                    })
-                  }
-                />
-                <CardAcoes>
-                  <Botao
-                    as="a"
-                    href={x.rota}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="primario"
-                  >
-                    Abrir
-                  </Botao>
-                  <Botao to={`${x.rota}/controle`} className="secundario">
-                    Controlar
-                  </Botao>
-                  <CopiarLink rota={x.rota} />
-                </CardAcoes>
-              </Card>
-            </RevelarAoRolar>
-          ))}
-        </Grade>
+          <Grade>
+            {EXTRAS.map((x, i) => (
+              <RevelarAoRolar key={x.rota} atraso={(i % 4) * 60}>
+                <Card $accent={x.accent} $glow={x.glow}>
+                  <CardTag $accent={x.accent}>{x.tag}</CardTag>
+                  <CardTitulo>{x.titulo}</CardTitulo>
+                  <CardDescricao>{x.descricao}</CardDescricao>
+                  <PreviewAoVivo
+                    rota={x.rota}
+                    largura={720}
+                    altura={405}
+                    aoAmpliar={() =>
+                      setTv({
+                        rota: x.rota,
+                        tag: x.tag,
+                        titulo: x.titulo,
+                        accent: x.accent,
+                        largura: 720,
+                        altura: 405,
+                      })
+                    }
+                  />
+                  <CardAcoes>
+                    <Botao
+                      as="a"
+                      href={x.rota}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="primario"
+                    >
+                      Abrir
+                    </Botao>
+                    <Botao to={`${x.rota}/controle`} className="secundario">
+                      Controlar
+                    </Botao>
+                    <CopiarLink rota={x.rota} />
+                  </CardAcoes>
+                </Card>
+              </RevelarAoRolar>
+            ))}
+          </Grade>
         )}
 
-        <Segmento id="outros" $aberto={aberto.outros} onClick={() => alternarSegmento('outros')} aria-expanded={aberto.outros}>
+        <Segmento
+          id="outros"
+          $aberto={aberto.outros}
+          onClick={() => alternarSegmento('outros')}
+          aria-expanded={aberto.outros}
+        >
           <SegmentoIcone>🏟️</SegmentoIcone>
           <h2>Outros Esportes</h2>
           <Contador>em breve</Contador>
           <SetaSegmento $aberto={aberto.outros}>▼</SetaSegmento>
         </Segmento>
         {aberto.outros && (
-        <Grade>
-          {ESPORTES.map((e, i) => (
-            <RevelarAoRolar key={e.titulo} atraso={(i % 4) * 60}>
-              <Card className="breve" $accent="#3b82f6">
-                <CardTitulo>{e.titulo}</CardTitulo>
-                <CardDescricao>{e.descricao}</CardDescricao>
-                <EmBreveChip>Em breve</EmBreveChip>
-              </Card>
-            </RevelarAoRolar>
-          ))}
-        </Grade>
+          <Grade>
+            {ESPORTES.map((e, i) => (
+              <RevelarAoRolar key={e.titulo} atraso={(i % 4) * 60}>
+                <Card className="breve" $accent="#3b82f6">
+                  <CardTitulo>{e.titulo}</CardTitulo>
+                  <CardDescricao>{e.descricao}</CardDescricao>
+                  <EmBreveChip>Em breve</EmBreveChip>
+                </Card>
+              </RevelarAoRolar>
+            ))}
+          </Grade>
         )}
       </Conteudo>
       <Rodape>

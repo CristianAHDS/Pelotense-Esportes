@@ -29,6 +29,8 @@ import UltimaRodada from './pages/UltimaRodada';
 import ControleUltimaRodada from './pages/ControleUltimaRodada';
 import Artilheiros from './pages/Artilheiros';
 import ControleArtilheiros from './pages/ControleArtilheiros';
+import ProximasRodadas from './pages/ProximasRodadas';
+import ControleProximasRodadas from './pages/ControleProximasRodadas';
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -87,6 +89,11 @@ export default function App() {
           <Route
             path="/artilheiros/controle"
             element={<ControleArtilheiros />}
+          />
+          <Route path="/proximas-rodadas" element={<ProximasRodadas />} />
+          <Route
+            path="/proximas-rodadas/controle"
+            element={<ControleProximasRodadas />}
           />
         </Routes>
       </BrowserRouter>
