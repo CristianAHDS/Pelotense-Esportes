@@ -2,6 +2,11 @@
 
 ## 27/08/2026
 
+### Tabela Compacta · Live
+- Nova tabela de classificação otimizada para livestreams (`/tabela-compacta`), com o mesmo estilo visual da tabela padrão porém mais estreita (max-width 460px).
+- Removeu as colunas %, GP, GC, SG; mantém apenas #, Time, J e P, com colunas de Time/P reduzidas.
+- Reusa os dados da `tabelaStore`; card adicionado ao Hub na seção Gauchão A2.
+
 ### Módulo Próxima Rodada
 
 - Novo overlay de Próxima Rodada (agenda de jogos agendados) seguindo o padrão do projeto: store próprio, cartão visual, overlay, painel de controle e rota `/proximas-rodadas` + `/proximas-rodadas/controle`.

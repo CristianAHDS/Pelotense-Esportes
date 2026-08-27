@@ -16,6 +16,7 @@ import PlacarNormal from './pages/PlacarNormal';
 import ControlePlacarNormal from './pages/ControlePlacarNormal';
 import Tabela from './pages/Tabela';
 import ControleTabela from './pages/ControleTabela';
+import TabelaCompacta from './pages/TabelaCompacta';
 import MataMata from './pages/MataMata';
 import ControleMataMata from './pages/ControleMataMata';
 import FasesFinais from './pages/FasesFinais';
@@ -68,6 +69,7 @@ export default function App() {
           />
           <Route path="/tabela" element={<Tabela />} />
           <Route path="/tabela/controle" element={<ControleTabela />} />
+          <Route path="/tabela-compacta" element={<TabelaCompacta />} />
           <Route path="/mata-mata" element={<MataMata />} />
           <Route path="/mata-mata/controle" element={<ControleMataMata />} />
           <Route path="/fases-finais" element={<FasesFinais />} />

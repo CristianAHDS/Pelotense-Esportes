@@ -184,7 +184,12 @@ export const ArtilheirosCartao = forwardRef(function ArtilheirosCartao(
   return (
     <Quadro ref={ref}>
       <Topo>
-        <span className="titulo">{dados.titulo || 'ARTILHEIROS'}</span>
+        <div>
+          <h1>{dados.titulo || 'ARTILHEIROS'}</h1>
+          <span className="sub">
+            Goleadores · Temporada {new Date().getFullYear()}
+          </span>
+        </div>
         <span className="selo">GOLS</span>
       </Topo>
 
