@@ -67,6 +67,15 @@ const GAUCHAO_A2 = [
     preview: 'tabela',
   },
   {
+    titulo: 'Tabela Compacta · Live',
+    tag: 'LIVE',
+    descricao:
+      'Tabela otimizada para transmissões: posição, nome, escudo, P, J, V, E, D e saldo de gols.',
+    rota: '/tabela-compacta',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
+  },
+  {
     rota: '/ultima-rodada',
     tag: 'ÚLTIMA RODADA',
     titulo: 'Última Rodada',
