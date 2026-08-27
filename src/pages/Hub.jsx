@@ -67,15 +67,6 @@ const GAUCHAO_A2 = [
     preview: 'tabela',
   },
   {
-    titulo: 'Tabela Compacta · Live',
-    tag: 'LIVE',
-    descricao:
-      'Tabela otimizada para transmissões: formato enxuto com apenas posição, time, jogos e pontos.',
-    rota: '/tabela-compacta',
-    accent: '#a5ef1c',
-    glow: 'rgba(165, 239, 28, 0.16)',
-  },
-  {
     rota: '/ultima-rodada',
     tag: 'ÚLTIMA RODADA',
     titulo: 'Última Rodada',
@@ -125,6 +116,18 @@ const GAUCHAO_A2 = [
     preview: 'fases',
     altura: 700,
     emBreve: true,
+  },
+];
+
+const PROGRAMAS = [
+  {
+    titulo: 'Tabela Compacta · Live',
+    tag: 'LIVE',
+    descricao:
+      'Tabela otimizada para transmissões: posição, nome, escudo, P, J, V, E, D e saldo de gols.',
+    rota: '/tabela-compacta',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
   },
 ];
 
@@ -1074,6 +1077,7 @@ export default function Hub() {
   const [aberto, setAberto] = useState({
     scoreboards: false,
     gauchao: true,
+    programas: false,
     extras: false,
     outros: false,
   });
@@ -1248,6 +1252,61 @@ export default function Hub() {
               </Card>
             </RevelarAoRolar>
           ))}
+          </Grade>
+        )}
+
+        <Segmento
+          id="programas"
+          $aberto={aberto.programas}
+          onClick={() => alternarSegmento('programas')}
+          aria-expanded={aberto.programas}
+        >
+          <SegmentoIcone>📊</SegmentoIcone>
+          <h2>Programas</h2>
+          <Contador>{PROGRAMAS.length} ativos</Contador>
+          <SetaSegmento $aberto={aberto.programas}>▼</SetaSegmento>
+        </Segmento>
+        {aberto.programas && (
+          <Grade>
+            {PROGRAMAS.map((p, i) => (
+              <RevelarAoRolar key={p.rota} atraso={(i % 4) * 60}>
+                <Card $accent={p.accent} $glow={p.glow}>
+                  <CardTag $accent={p.accent}>{p.tag}</CardTag>
+                  <CardTitulo>{p.titulo}</CardTitulo>
+                  <CardDescricao>{p.descricao}</CardDescricao>
+                  <PreviewAoVivo
+                    rota={p.rota}
+                    largura={720}
+                    altura={405}
+                    aoAmpliar={() =>
+                      setTv({
+                        rota: p.rota,
+                        tag: p.tag,
+                        titulo: p.titulo,
+                        accent: p.accent,
+                        largura: 720,
+                        altura: 405,
+                      })
+                    }
+                  />
+                  <CardAcoes>
+                    <Botao
+                      as="a"
+                      href={p.rota}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="primario"
+                    >
+                      Abrir
+                    </Botao>
+                    <Botao to={`${p.rota}/controle`} className="secundario">
+                      Controlar
+                    </Botao>
+                    <CopiarLink rota={p.rota} />
+                  </CardAcoes>
+                </Card>
+              </RevelarAoRolar>
+            ))}
           </Grade>
         )}
 

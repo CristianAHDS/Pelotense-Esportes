@@ -9,6 +9,7 @@ import {
   ordenarClassificacao,
   recarregar,
 } from '../store/tabelaStore';
+import { tabelaCompacta } from '../store/tabelaCompactaStore';
 import { Escudo } from '../components/Escudo';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
 import { slugArquivo } from '../lib/capturaImagem';
@@ -35,7 +36,7 @@ const Tela = styled.div`
 
 const Voltar = styled(Link)`
   align-self: flex-start;
-  max-width: 460px;
+  max-width: 820px;
   width: 100%;
   margin: 0 auto 14px;
   text-decoration: none;
@@ -48,7 +49,7 @@ const Voltar = styled(Link)`
 
 const Painel = styled.section`
   width: 100%;
-  max-width: 500px;
+  max-width: 820px;
   background: linear-gradient(
     165deg,
     ${({ theme }) => theme.cores.superficie},
@@ -119,6 +120,17 @@ const BadgeRodada = styled.div`
 
 const Grade = styled.div`
   min-width: 0;
+`;
+
+const GradeDividida = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-width: 0;
+
+  > * + * {
+    border-left: 1px solid ${({ theme }) => theme.cores.borda};
+  }
 `;
 
 const LinhaCabecalho = styled.div`
@@ -301,9 +313,16 @@ export default function TabelaCompacta() {
     recarregar();
   }, []);
   const estado = usePlacarBroadcast({ getEstado, inscrever });
+  const compacta = usePlacarBroadcast(tabelaCompacta);
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
   const times = ordenarClassificacao(estado.times);
   const total = times.length;
+
+  const dividir = Boolean(compacta.dividir);
+  const metade = 8;
+  const colunas = dividir
+    ? [times.slice(0, metade), times.slice(metade)]
+    : [times];
 
   const nomeArquivo =
     slugArquivo(estado.competicao) + (estado.rodada > 0 ? `-rodada-${estado.rodada}` : '');
@@ -312,6 +331,44 @@ export default function TabelaCompacta() {
     { chave: 'class', rotulo: 'G-8', cor: CORES_ZONA.class },
     { chave: 'reb', rotulo: 'Rebaixamento', cor: CORES_ZONA.reb },
   ].filter((z) => times.some((_, i) => zonaDa(i + 1, total) === z.chave));
+
+  const renderColuna = (items, offset) => (
+    <div>
+      <LinhaCabecalho>
+        <span>#</span>
+        <span>TIME</span>
+        <span className="num destaque">P</span>
+        <span className="num">J</span>
+        <span className="num">V</span>
+        <span className="num">E</span>
+        <span className="num">D</span>
+        <span className="num">SG</span>
+      </LinhaCabecalho>
+
+      {items.map((t, i) => {
+        const pos = offset + i + 1;
+        const zona = zonaDa(pos, total);
+        const s = t.gp - t.gc;
+        return (
+          <LinhaTime key={`${t.sigla}-${pos}`} $zona={zona}>
+            <span className="pos">{pos}</span>
+            <div className="time">
+              <Escudo cor={t.cor} sigla={t.sigla} url={t.escudo} tamanho={22} />
+              <span className="nome">{t.nome}</span>
+            </div>
+            <span className="num pontos">{t.p}</span>
+            <span className="num">{t.j}</span>
+            <span className="num">{t.v}</span>
+            <span className="num">{t.e}</span>
+            <span className="num">{t.d}</span>
+            <span className={`num ${s > 0 ? 'saldoPos' : s < 0 ? 'saldoNeg' : ''}`}>
+              {saldo(t.gp, t.gc)}
+            </span>
+          </LinhaTime>
+        );
+      })}
+    </div>
+  );
 
   return (
     <Tela $previa={emPrevia}>
@@ -331,41 +388,20 @@ export default function TabelaCompacta() {
           {estado.rodada > 0 && <BadgeRodada>RODADA {estado.rodada}</BadgeRodada>}
         </Cabecalho>
 
-        <Grade>
-          <LinhaCabecalho>
-            <span>#</span>
-            <span>TIME</span>
-            <span className="num destaque">P</span>
-            <span className="num">J</span>
-            <span className="num">V</span>
-            <span className="num">E</span>
-            <span className="num">D</span>
-            <span className="num">SG</span>
-          </LinhaCabecalho>
-
-          {times.map((t, i) => {
-            const pos = i + 1;
-            const zona = zonaDa(pos, total);
-            const s = t.gp - t.gc;
-            return (
-              <LinhaTime key={`${t.sigla}-${i}`} $zona={zona}>
-                <span className="pos">{pos}</span>
-                <div className="time">
-                  <Escudo cor={t.cor} sigla={t.sigla} url={t.escudo} tamanho={22} />
-                  <span className="nome">{t.nome}</span>
-                </div>
-                <span className="num pontos">{t.p}</span>
-                <span className="num">{t.j}</span>
-                <span className="num">{t.v}</span>
-                <span className="num">{t.e}</span>
-                <span className="num">{t.d}</span>
-                <span className={`num ${s > 0 ? 'saldoPos' : s < 0 ? 'saldoNeg' : ''}`}>
-                  {saldo(t.gp, t.gc)}
-                </span>
-              </LinhaTime>
-            );
-          })}
-        </Grade>
+        {dividir ? (
+          <GradeDividida>
+            {colunas.map((items, c) => {
+              const offset = items.length
+                ? times.findIndex((t) => t.sigla === items[0].sigla)
+                : 0;
+              return (
+                <div key={c}>{renderColuna(items, offset)}</div>
+              );
+            })}
+          </GradeDividida>
+        ) : (
+          <Grade>{renderColuna(times, 0)}</Grade>
+        )}
 
         <RodapePainel>
           <Legenda>

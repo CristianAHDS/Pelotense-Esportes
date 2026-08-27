@@ -2,6 +2,11 @@
 
 ## 27/08/2026
 
+### Tabela Compacta: opção dividir em 2 e aba Programas
+- Nova aba "Programas" no Hub, para onde a Tabela Compacta foi movida (saiu de Gauchão A2).
+- Novo controle da Tabela Compacta (`/tabela-compacta/controle`) com toggle "Separar em 2 colunas": à esquerda os 8 primeiros e à direita os 8 últimos.
+- Store próprio `tabelaCompactaStore` guardando a opção de divisão, sincronizado (localStorage + BroadcastChannel + nuvem).
+
 ### Tabela Compacta · Live
 - Nova tabela de classificação otimizada para livestreams (`/tabela-compacta`), com o mesmo estilo visual da tabela padrão porém mais estreita (max-width 460px).
 - Removeu as colunas %, GP, GC, SG; mantém apenas #, Time, J e P, com colunas de Time/P reduzidas.
