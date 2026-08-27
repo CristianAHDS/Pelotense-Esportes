@@ -1,5 +1,19 @@
 # Changelog
 
+## 27/08/2026
+
+### Módulo Artilheiros
+- Novo overlay de artilheiros (ranking de gols) seguindo o padrão do projeto: store próprio, cartão visual, overlay, painel de controle e rota `/artilheiros` + `/artilheiros/controle`.
+- Sincronizado com a FGF via `importarArtilheirosFGF` (extrai a seção `.table-artilheiros`), com cache local e mapeamento de siglas dos clubes.
+- Card adicionado ao Hub na seção Gauchão A2.
+
+### Hub: seções em abas/dropdowns colapsáveis
+- As seções do Hub (Scoreboards, Gauchão A2, Extras, Outros Esportes) viraram acordeões: clicar no cabeçalho expande/recolhe a grade de cards, com chevron rotativo e destaque verde no título.
+- Gauchão A2 inicia aberta por padrão; demais seções começam recolhidas.
+
+### AGENTS.md: padrão de criação de módulos documentado
+- Adicionada seção "Como criar um novo módulo" com o passo a passo dos 6 artefatos (Store, Overlay, Cartão, Painel, Controle, rotas/card) e a integração com a FGF, para não precisar redescobrir o esqueleto a cada componente novo.
+
 ## 25/08/2026
 
 ### Times padrão BRA/PEL em todos os scoreboards

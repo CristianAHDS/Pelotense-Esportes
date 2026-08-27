@@ -76,6 +76,15 @@ const GAUCHAO_A2 = [
     glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
+    rota: '/artilheiros',
+    tag: 'ARTILHEIROS',
+    titulo: 'Artilheiros',
+    descricao:
+      'Ranking de goleadores do Gauchão A2 com escudos, posição e gols marcados, sincronizado com a FGF.',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
+  },
+  {
     titulo: 'Oitavas de Final',
     tag: 'MATA-MATA',
     descricao:
@@ -350,11 +359,18 @@ const HeroBotao = styled.button`
   }
 `;
 
-const Segmento = styled.div`
+const Segmento = styled.button`
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 14px;
   margin: 44px 0 20px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  user-select: none;
 
   &:first-of-type {
     margin-top: 36px;
@@ -368,6 +384,11 @@ const Segmento = styled.div`
     text-transform: uppercase;
     color: ${({ theme }) => theme.cores.texto};
     white-space: nowrap;
+    transition: color 0.15s ease;
+  }
+
+  &:hover h2 {
+    color: ${({ theme }) => theme.cores.primaria};
   }
 
   &::after {
@@ -381,6 +402,31 @@ const Segmento = styled.div`
       transparent
     );
   }
+`;
+
+const SetaSegmento = styled.span`
+  order: 5;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  color: ${({ theme }) => theme.cores.textoSuave};
+  font-size: 0.7rem;
+  transition:
+    transform 0.2s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  ${({ $aberto, theme }) =>
+    $aberto &&
+    `
+    transform: rotate(180deg);
+    color: ${theme.cores.primaria};
+    border-color: rgba(165, 239, 28, 0.4);
+  `}
 `;
 
 const SegmentoIcone = styled.span`
@@ -1005,6 +1051,10 @@ const RodapeCopy = styled.p`
 
 export default function Hub() {
   const [tv, setTv] = useState(null);
+  const [aberto, setAberto] = useState({ scoreboards: false, gauchao: true, extras: false, outros: false });
+
+  const alternarSegmento = (id) =>
+    setAberto((atual) => ({ ...atual, [id]: !atual[id] }));
 
   useEffect(() => {
     if (!tv) return undefined;
@@ -1051,11 +1101,13 @@ export default function Hub() {
           </div>
         </Hero>
 
-        <Segmento id="scoreboards">
+        <Segmento id="scoreboards" $aberto={aberto.scoreboards} onClick={() => alternarSegmento('scoreboards')} aria-expanded={aberto.scoreboards}>
           <SegmentoIcone>📺</SegmentoIcone>
           <h2>Scoreboards</h2>
           <Contador>{SCOREBOARDS.length} ativos</Contador>
+          <SetaSegmento $aberto={aberto.scoreboards}>▼</SetaSegmento>
         </Segmento>
+        {aberto.scoreboards && (
         <Grade>
           {SCOREBOARDS.map((m, i) => (
             <RevelarAoRolar key={m.rota} atraso={(i % 4) * 60}>
@@ -1098,12 +1150,15 @@ export default function Hub() {
             </RevelarAoRolar>
           ))}
         </Grade>
+        )}
 
-        <Segmento id="gauchao">
+        <Segmento id="gauchao" $aberto={aberto.gauchao} onClick={() => alternarSegmento('gauchao')} aria-expanded={aberto.gauchao}>
           <SegmentoIcone>🏆</SegmentoIcone>
           <h2>Gauchão A2</h2>
           <Contador>{GAUCHAO_A2.length} ativos</Contador>
+          <SetaSegmento $aberto={aberto.gauchao}>▼</SetaSegmento>
         </Segmento>
+        {aberto.gauchao && (
         <Grade>
           {GAUCHAO_A2.map((t, i) => (
             <RevelarAoRolar key={t.titulo} atraso={(i % 4) * 60}>
@@ -1148,12 +1203,15 @@ export default function Hub() {
             </RevelarAoRolar>
           ))}
         </Grade>
+        )}
 
-        <Segmento id="extras">
+        <Segmento id="extras" $aberto={aberto.extras} onClick={() => alternarSegmento('extras')} aria-expanded={aberto.extras}>
           <SegmentoIcone>⚡</SegmentoIcone>
           <h2>Extras da Transmissão</h2>
           <Contador>{EXTRAS.length} ativos</Contador>
+          <SetaSegmento $aberto={aberto.extras}>▼</SetaSegmento>
         </Segmento>
+        {aberto.extras && (
         <Grade>
           {EXTRAS.map((x, i) => (
             <RevelarAoRolar key={x.rota} atraso={(i % 4) * 60}>
@@ -1195,12 +1253,15 @@ export default function Hub() {
             </RevelarAoRolar>
           ))}
         </Grade>
+        )}
 
-        <Segmento id="outros">
+        <Segmento id="outros" $aberto={aberto.outros} onClick={() => alternarSegmento('outros')} aria-expanded={aberto.outros}>
           <SegmentoIcone>🏟️</SegmentoIcone>
           <h2>Outros Esportes</h2>
           <Contador>em breve</Contador>
+          <SetaSegmento $aberto={aberto.outros}>▼</SetaSegmento>
         </Segmento>
+        {aberto.outros && (
         <Grade>
           {ESPORTES.map((e, i) => (
             <RevelarAoRolar key={e.titulo} atraso={(i % 4) * 60}>
@@ -1212,6 +1273,7 @@ export default function Hub() {
             </RevelarAoRolar>
           ))}
         </Grade>
+        )}
       </Conteudo>
       <Rodape>
         <RodapeTopo>

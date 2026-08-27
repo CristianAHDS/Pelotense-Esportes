@@ -27,6 +27,8 @@ import Escalacao from './pages/Escalacao';
 import ControleEscalacao from './pages/ControleEscalacao';
 import UltimaRodada from './pages/UltimaRodada';
 import ControleUltimaRodada from './pages/ControleUltimaRodada';
+import Artilheiros from './pages/Artilheiros';
+import ControleArtilheiros from './pages/ControleArtilheiros';
 export default function App() {
   return (
     <ThemeProvider theme={theme}>
@@ -80,6 +82,11 @@ export default function App() {
           <Route
             path="/ultima-rodada/controle"
             element={<ControleUltimaRodada />}
+          />
+          <Route path="/artilheiros" element={<Artilheiros />} />
+          <Route
+            path="/artilheiros/controle"
+            element={<ControleArtilheiros />}
           />
         </Routes>
       </BrowserRouter>

@@ -403,6 +403,88 @@ function gravarCacheUR(pacote) {
   }
 }
 
+/* ---------- Artilheiros (ranking de gols) ---------- */
+
+const CHAVE_CACHE_AR = 'pelotense:artilheiros:fgf:v1'
+
+function extrairArtilheiros(html, entradas) {
+  const doc = new DOMParser().parseFromString(html, 'text/html')
+  const jogadores = []
+
+  for (const tr of doc.querySelectorAll('.table-artilheiros table tr')) {
+    const tds = tr.querySelectorAll('td')
+    if (tds.length < 4) continue
+
+    const posTexto = (tds[0]?.textContent || '').replace(/\D/g, '')
+    const nome = (
+      tds[2]?.querySelector('.uk-text-bold')?.textContent || ''
+    ).trim()
+    const clube = (
+      tds[2]?.querySelector('.uk-text-muted')?.textContent || ''
+    ).trim()
+    const golsTexto = (tds[3]?.textContent || '').match(/(\d+)/)
+
+    if (!nome) continue
+
+    jogadores.push({
+      pos: jogadores.length + 1,
+      nome,
+      sigla: casarSigla(entradas, clube) || clube.slice(0, 4).toUpperCase(),
+      gols: golsTexto ? Number(golsTexto[1]) : 0,
+    })
+  }
+
+  return jogadores
+}
+
+function lerCacheAR() {
+  try {
+    const bruto = localStorage.getItem(CHAVE_CACHE_AR)
+    if (!bruto) return null
+    const cache = JSON.parse(bruto)
+    if (!Array.isArray(cache?.jogadores) || !cache.jogadores.length) return null
+    return cache
+  } catch (e) {
+    return null
+  }
+}
+
+function gravarCacheAR(jogadores) {
+  try {
+    localStorage.setItem(
+      CHAVE_CACHE_AR,
+      JSON.stringify({ quando: Date.now(), jogadores })
+    )
+  } catch (e) {
+    console.warn('FGF: falha ao salvar cache dos artilheiros.', e)
+  }
+}
+
+export async function importarArtilheirosFGF({ forcar = false } = {}) {
+  const cache = lerCacheAR()
+  const idade = cache ? Date.now() - (cache.quando || 0) : Infinity
+  if (!forcar && cache && idade < TTL_CACHE_MS) {
+    return { jogadores: cache.jogadores, origem: 'cache' }
+  }
+
+  try {
+    const html = await obterHtml()
+    const dadosClass = extrairClassificacao(html)
+    const entradas = mapaNomeParaSigla(dadosClass)
+    const jogadores = extrairArtilheiros(html, entradas)
+    if (!jogadores.length) {
+      throw new Error('Artilheiros não encontrados na página da FGF')
+    }
+    gravarCacheAR(jogadores)
+    return { jogadores, origem: 'rede' }
+  } catch (erro) {
+    if (cache) {
+      return { jogadores: cache.jogadores, origem: 'cache' }
+    }
+    throw erro
+  }
+}
+
 export async function importarUltimaRodadaFGF({ forcar = false, rodadaAlvo = 0 } = {}) {
   const aplicarPacote = (pacote) => ({
     titulo: pacote.titulo,
