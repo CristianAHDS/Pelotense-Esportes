@@ -1075,7 +1075,7 @@ export default function Hub() {
     scoreboards: false,
     gauchao: true,
     programas: false,
-    extras: false,
+    extras: true,
     outros: false,
   });
 
