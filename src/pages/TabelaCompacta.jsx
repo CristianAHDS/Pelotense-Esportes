@@ -36,7 +36,7 @@ const Tela = styled.div`
 
 const Voltar = styled(Link)`
   align-self: flex-start;
-  max-width: 820px;
+  max-width: 900px;
   width: 100%;
   margin: 0 auto 14px;
   text-decoration: none;
@@ -49,7 +49,7 @@ const Voltar = styled(Link)`
 
 const Painel = styled.section`
   width: 100%;
-  max-width: 820px;
+  max-width: 900px;
   background: linear-gradient(
     165deg,
     ${({ theme }) => theme.cores.superficie},
@@ -325,7 +325,8 @@ export default function TabelaCompacta() {
     : [times];
 
   const nomeArquivo =
-    slugArquivo(estado.competicao) + (estado.rodada > 0 ? `-rodada-${estado.rodada}` : '');
+    slugArquivo(estado.competicao) +
+    (estado.rodada > 0 ? `-rodada-${estado.rodada}` : '');
 
   const zonas = [
     { chave: 'class', rotulo: 'G-8', cor: CORES_ZONA.class },
@@ -361,7 +362,9 @@ export default function TabelaCompacta() {
             <span className="num">{t.v}</span>
             <span className="num">{t.e}</span>
             <span className="num">{t.d}</span>
-            <span className={`num ${s > 0 ? 'saldoPos' : s < 0 ? 'saldoNeg' : ''}`}>
+            <span
+              className={`num ${s > 0 ? 'saldoPos' : s < 0 ? 'saldoNeg' : ''}`}
+            >
               {saldo(t.gp, t.gc)}
             </span>
           </LinhaTime>
@@ -383,9 +386,13 @@ export default function TabelaCompacta() {
         <Cabecalho>
           <div>
             <h1>{estado.competicao}</h1>
-            <span className="sub">Classificação · Temporada {new Date().getFullYear()}</span>
+            <span className="sub">
+              Classificação · Temporada {new Date().getFullYear()}
+            </span>
           </div>
-          {estado.rodada > 0 && <BadgeRodada>RODADA {estado.rodada}</BadgeRodada>}
+          {estado.rodada > 0 && (
+            <BadgeRodada>RODADA {estado.rodada}</BadgeRodada>
+          )}
         </Cabecalho>
 
         {dividir ? (
@@ -394,9 +401,7 @@ export default function TabelaCompacta() {
               const offset = items.length
                 ? times.findIndex((t) => t.sigla === items[0].sigla)
                 : 0;
-              return (
-                <div key={c}>{renderColuna(items, offset)}</div>
-              );
+              return <div key={c}>{renderColuna(items, offset)}</div>;
             })}
           </GradeDividida>
         ) : (
