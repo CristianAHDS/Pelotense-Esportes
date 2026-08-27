@@ -27,38 +27,64 @@ const Quadro = styled.div`
   width: min(760px, 100%);
   border-radius: 10px;
   overflow: hidden;
-  border-top: 4px solid ${VERDE};
   box-shadow: 0 14px 44px -14px rgba(0, 0, 0, 0.75);
   animation: ${Entrada} 0.4s cubic-bezier(0.2, 0.9, 0.25, 1);
   font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
 `;
 
 const Topo = styled.header`
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 18px;
-  background:
-    linear-gradient(90deg, rgba(165, 239, 28, 0.14), transparent 55%),
-    #000;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 26px;
+  border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
+  background: linear-gradient(90deg, rgba(165, 239, 28, 0.1), transparent 55%),
+    ${({ theme }) => theme.cores.superficie};
 
-  .titulo {
-    font-family: 'Rajdhani', 'Inter', sans-serif;
-    font-size: 1.05rem;
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: ${({ theme }) => theme.cores.primaria};
+  }
+
+  h1 {
+    font-family: ${({ theme }) => theme.fontes.titulo};
+    font-size: clamp(1.15rem, 2.6vw, 1.55rem);
     font-weight: 700;
     letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1.1;
     color: #fff;
   }
 
-  .selo {
-    margin-left: auto;
-    padding: 3px 12px;
-    border-radius: 999px;
-    background: ${VERDE};
-    color: #0a0f00;
+  .sub {
+    display: block;
+    margin-top: 3px;
+    font-family: 'Inter', sans-serif;
     font-size: 0.62rem;
-    font-weight: 800;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.cores.textoSuave};
+  }
+
+  .selo {
+    flex-shrink: 0;
+    font-family: ${({ theme }) => theme.fontes.titulo};
+    font-size: 0.78rem;
+    font-weight: 700;
     letter-spacing: 2px;
+    color: #0a0f00;
+    background: ${({ theme }) => theme.cores.primaria};
+    padding: 7px 16px;
+    border-radius: 999px;
+    white-space: nowrap;
   }
 `;
 
@@ -181,7 +207,12 @@ export const UltimaRodadaCartao = forwardRef(function UltimaRodadaCartao(
   return (
     <Quadro ref={ref}>
       <Topo>
-        <span className="titulo">{dados.titulo || 'ÚLTIMA RODADA'}</span>
+        <div>
+          <h1>{dados.titulo || 'ÚLTIMA RODADA'}</h1>
+          <span className="sub">
+            Resultados · Temporada {new Date().getFullYear()}
+          </span>
+        </div>
         <span className="selo">RESULTADOS</span>
       </Topo>
 

@@ -35,6 +35,7 @@ const CLUBES_EXEMPLO = {
     cor: '#047857',
     estadio: 'ANTÔNIO DAVID FARINA',
     cidade: 'VERANÓPOLIS/RS',
+    estadioImg: '/img/estadios/VER.jpg',
   },
   PAS: {
     nome: 'PASSO FUNDO',
@@ -42,6 +43,7 @@ const CLUBES_EXEMPLO = {
     cor: '#c1121f',
     estadio: 'VERMELHÃO DA SERRA',
     cidade: 'PASSO FUNDO/RS',
+    estadioImg: '/img/estadios/PAS.jpg',
   },
   ESP: {
     nome: 'ESPORTIVO',
@@ -49,6 +51,7 @@ const CLUBES_EXEMPLO = {
     cor: '#0e7490',
     estadio: 'MONTE CRISTO',
     cidade: 'BENTO GONÇALVES/RS',
+    estadioImg: '/img/estadios/ESP.jpg',
   },
   AIM: {
     nome: 'AIMORÉ',
@@ -56,6 +59,7 @@ const CLUBES_EXEMPLO = {
     cor: '#b91c1c',
     estadio: 'CRISTO REI',
     cidade: 'SÃO LEOPOLDO/RS',
+    estadioImg: '/img/estadios/AIM.jpg',
   },
   BRA: {
     nome: 'BRASIL',
@@ -63,6 +67,7 @@ const CLUBES_EXEMPLO = {
     cor: '#b91c1c',
     estadio: 'BENTO FREITAS',
     cidade: 'PELOTAS/RS',
+    estadioImg: '/img/estadios/BRA.jpg',
   },
   PEL: {
     nome: 'PELOTAS',
@@ -70,6 +75,7 @@ const CLUBES_EXEMPLO = {
     cor: '#1565c0',
     estadio: 'BOCA DO LOBO',
     cidade: 'PELOTAS/RS',
+    estadioImg: '/img/estadios/PEL.jpg',
   },
   SCR: {
     nome: 'SANTA CRUZ',
@@ -77,6 +83,7 @@ const CLUBES_EXEMPLO = {
     cor: '#ca8a04',
     estadio: 'DOS PLÁTANOS',
     cidade: 'SANTA CRUZ DO SUL/RS',
+    estadioImg: '/img/estadios/SCR.jpg',
   },
   GUA: {
     nome: 'GUARANI-VA',
@@ -84,6 +91,7 @@ const CLUBES_EXEMPLO = {
     cor: '#166534',
     estadio: 'DOS EUCALIPTOS',
     cidade: 'VENÂNCIO AIRES/RS',
+    estadioImg: '/img/estadios/GUA.jpg',
   },
 };
 
@@ -549,18 +557,81 @@ const EstiloPulso = createGlobalStyle`
   }
 `;
 
+const kenburns = keyframes`
+  0% {
+    transform: scale(1.12) translate3d(-1.6%, -1.2%, 0);
+  }
+  100% {
+    transform: scale(1.02) translate3d(1.6%, 1.2%, 0);
+  }
+`;
+
+const deslizarIn = keyframes`
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+`;
+
+const ImagemJogo = styled.div`
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url(${({ $img }) => $img});
+  background-size: cover;
+  background-position: center;
+  animation: ${kenburns} 26s ease-in-out infinite alternate;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(6, 6, 6, 0.32),
+        rgba(6, 6, 6, 0.55) 55%,
+        rgba(6, 6, 6, 0.85)
+      ),
+      radial-gradient(
+        circle at 50% 20%,
+        transparent 0%,
+        rgba(6, 6, 6, 0.55) 100%
+      );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+`;
+
 const PlacarMockup = styled.div`
   position: relative;
   z-index: 2;
   border-radius: 18px;
-  background: linear-gradient(160deg, #101010, #0b0d07);
+  background: transparent;
   border: 1px solid rgba(165, 239, 28, 0.28);
   box-shadow:
     0 40px 90px -40px rgba(0, 0, 0, 0.9),
     0 0 60px -20px rgba(165, 239, 28, 0.14);
   overflow: hidden;
+  animation: ${deslizarIn} 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* fundo escurecido para legibilidade sobre a foto */
+  background: linear-gradient(
+    160deg,
+    rgba(16, 16, 16, 0.88),
+    rgba(11, 13, 7, 0.86)
+  );
+  backdrop-filter: blur(1.5px);
 
   .faixa-topo {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -578,6 +649,8 @@ const PlacarMockup = styled.div`
   }
 
   .placar-linha {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
@@ -626,13 +699,15 @@ const PlacarMockup = styled.div`
   }
 
   .rodape-mockup {
+    position: relative;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
     padding: 11px 20px;
     border-top: 1px solid rgba(252, 252, 251, 0.07);
-    background: rgba(165, 239, 28, 0.04);
+    background: rgba(6, 6, 6, 0.72);
     font-family: ${F.dados};
     font-size: 0.72rem;
     font-weight: 600;
@@ -705,9 +780,12 @@ function Hero({ jogo }) {
           </EtiquetaFlutuante>
           <Revelar atraso={220}>
             <PlacarMockup>
+              <ImagemJogo $img={jogo.casa.estadioImg} />
               <div className="faixa-topo">
-                <span>CAMPEONATO GAÚCHO SÉRIE A2</span>
-                <span>
+                <span style={{ color: '#fff' }}>
+                  CAMPEONATO GAÚCHO SÉRIE A2
+                </span>
+                <span style={{ color: '#fff' }}>
                   RODADA <b>{String(jogo.rodada).padStart(2, '0')}</b>
                 </span>
               </div>
@@ -737,7 +815,7 @@ function Hero({ jogo }) {
                 </div>
               </div>
               <div className="rodape-mockup">
-                <span>
+                <span style={{ color: '#fff' }}>
                   {jogo.casa.estadio} · {jogo.casa.cidade}
                 </span>
                 <span className="tempo">{jogo.cron}</span>
@@ -1350,6 +1428,59 @@ const MiniTabela = styled.div`
   }
 `;
 
+const MiniArtilheiros = styled.div`
+  border-radius: 10px;
+  border: 1px solid rgba(252, 252, 251, 0.08);
+  overflow: hidden;
+  font-family: ${F.dados};
+
+  .cab,
+  .linha {
+    display: grid;
+    grid-template-columns: 30px 1fr 44px 40px;
+    gap: 10px;
+    align-items: center;
+    padding: 8px 12px;
+  }
+
+  .cab {
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 0.56rem;
+    letter-spacing: 2px;
+    color: ${C.neu};
+  }
+
+  .linha {
+    border-top: 1px solid rgba(252, 252, 251, 0.05);
+    border-left: 3px solid transparent;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: ${C.txt};
+
+    &:first-of-type {
+      border-left-color: ${C.acc};
+    }
+
+    .pos {
+      color: ${C.neu};
+      text-align: center;
+    }
+
+    .sig {
+      text-align: center;
+      font-size: 0.64rem;
+      letter-spacing: 1px;
+      color: ${C.mut};
+    }
+
+    .gols {
+      text-align: right;
+      color: ${C.acc};
+      font-weight: 700;
+    }
+  }
+`;
+
 const MiniOitavas = styled.div`
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.35);
@@ -1800,6 +1931,34 @@ function PalcoDeFerramenta({ tipo }) {
     );
   }
 
+  if (tipo === 'artilheiros') {
+    const jogadores = [
+      ['1', 'MATHEUS', 'VER', 4],
+      ['2', 'MARCELINHO', 'BFR', 3],
+      ['3', 'MORBECK', 'BRA', 3],
+      ['4', 'PATRICK', 'PAS', 3],
+      ['5', 'CARLINHOS', 'UFR', 2],
+    ];
+    return (
+      <MiniArtilheiros>
+        <div className="cab">
+          <span>#</span>
+          <span>JOGADOR</span>
+          <span style={{ textAlign: 'center' }}>CLUBE</span>
+          <span style={{ textAlign: 'right' }}>GOLS</span>
+        </div>
+        {jogadores.map(([pos, nome, sig, gols]) => (
+          <div key={pos} className="linha">
+            <span className="pos">{pos}º</span>
+            <span>{nome}</span>
+            <span className="sig">{sig}</span>
+            <span className="gols">{gols}</span>
+          </div>
+        ))}
+      </MiniArtilheiros>
+    );
+  }
+
   return null;
 }
 
@@ -1850,6 +2009,14 @@ const FERRAMENTAS = [
     descricao: 'Disputa cobrança a cobrança, com histórico visual por lado.',
     palco: 'penaltis',
   },
+  {
+    rota: '/artilheiros',
+    indice: '07',
+    titulo: 'Artilheiros',
+    descricao:
+      'Ranking de goleadores com escudos e gols marcados, sincronizado com a FGF.',
+    palco: 'artilheiros',
+  },
 ];
 
 /* ---------- Seção: demonstração animada ao vivo ---------- */
@@ -1860,6 +2027,7 @@ const DEMOS_AO_VIVO = [
   { id: 'fases', rotulo: 'Fases finais', rota: '/fases-finais' },
   { id: 'escalacao', rotulo: 'Escalação', rota: '/escalacao' },
   { id: 'rodada', rotulo: 'Última Rodada', rota: '/ultima-rodada' },
+  { id: 'artilheiros', rotulo: 'Artilheiros', rota: '/artilheiros' },
 ];
 
 const ROTAS_EXTRAS = [

@@ -2,6 +2,18 @@
 
 ## 27/08/2026
 
+### Padronização do cabeçalho (Artilheiros e Última Rodada)
+- Cartões de Artilheiros e Última Rodada passaram a usar o mesmo cabeçalho da tabela de classificação: barra verde à esquerda, título (h1) + subtítulo, e selo/badge verde à direita.
+
+### Landing: hero com componente sobre imagem do jogo
+- O mockup do placar no hero agora usa imagem real de estádio como fundo, com efeito Ken Burns (zoom/pan lento) e o placar deslizando para dentro, no estilo da home do overlays.uno.
+- A imagem de fundo é escolhida conforme o time mandante sorteado (fotos de estádios em `public/img/estadios/`, uma por clube).
+- Imagens de estádios de times pequenos do RS (não estádios grandes), redimensionadas para carregamento rápido.
+- Conteúdo com leve esmaecimento (backdrop) para legibilidade sobre a foto.
+
+### Landing: Artilheiros nas Ferramentas
+- Card "Artilheiros" adicionado à grade de ferramentas da landing, com miniranking de goleadores (posição, jogador, clube, gols).
+
 ### Módulo Artilheiros
 - Novo overlay de artilheiros (ranking de gols) seguindo o padrão do projeto: store próprio, cartão visual, overlay, painel de controle e rota `/artilheiros` + `/artilheiros/controle`.
 - Sincronizado com a FGF via `importarArtilheirosFGF` (extrai a seção `.table-artilheiros`), com cache local e mapeamento de siglas dos clubes.
