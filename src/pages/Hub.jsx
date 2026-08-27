@@ -128,18 +128,6 @@ const GAUCHAO_A2 = [
   },
 ];
 
-const PROGRAMAS = [
-  {
-    titulo: 'Tabela Compacta · Live',
-    tag: 'LIVE',
-    descricao:
-      'Tabela otimizada para transmissões: posição, nome, escudo, P, J, V, E, D e saldo de gols.',
-    rota: '/tabela-compacta',
-    accent: '#a5ef1c',
-    glow: 'rgba(165, 239, 28, 0.16)',
-  },
-];
-
 const EXTRAS = [
   {
     rota: '/escalacao',
@@ -1208,111 +1196,60 @@ export default function Hub() {
         </Segmento>
         {aberto.gauchao && (
           <Grade>
-{GAUCHAO_A2.map((t, i) => (
-            <RevelarAoRolar key={t.titulo} atraso={(i % 4) * 60}>
-              <Card className={t.emBreve ? 'breve' : ''} $accent={t.accent} $glow={t.glow}>
-                {t.emBreve ? (
-                  <>
-                    <CardTag $accent={t.accent}>{t.tag}</CardTag>
-                    <CardTitulo>{t.titulo}</CardTitulo>
-                    <CardDescricao>{t.descricao}</CardDescricao>
-                    <EmBreveChip>Em breve</EmBreveChip>
-                  </>
-                ) : (
-                  <>
-                    <CardTag $accent={t.accent}>{t.tag}</CardTag>
-                    <CardTitulo>{t.titulo}</CardTitulo>
-                    <CardDescricao>{t.descricao}</CardDescricao>
-                    <PreviewAoVivo
-                      rota={t.rota}
-                      largura={760}
-                      altura={t.altura || 620}
-                      aoAmpliar={() =>
-                        setTv({
-                          rota: t.rota,
-                          tag: t.tag,
-                          titulo: t.titulo,
-                          accent: t.accent,
-                          largura: 760,
-                          altura: t.altura || 620,
-                        })
-                      }
-                    />
-                    <CardAcoes>
-                      <Botao
-                        as="a"
-                        href={t.rota}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="primario"
-                      >
-                        Abrir
-                      </Botao>
-                      <Botao
-                        to={t.controle || `${t.rota}/controle`}
-                        className="secundario"
-                      >
-                        Controlar
-                      </Botao>
-                      <CopiarLink rota={t.rota} />
-                    </CardAcoes>
-                  </>
-                )}
-              </Card>
-            </RevelarAoRolar>
-          ))}
-          </Grade>
-        )}
-
-        <Segmento
-          id="programas"
-          $aberto={aberto.programas}
-          onClick={() => alternarSegmento('programas')}
-          aria-expanded={aberto.programas}
-        >
-          <SegmentoIcone>📊</SegmentoIcone>
-          <h2>Programas</h2>
-          <Contador>{PROGRAMAS.length} ativos</Contador>
-          <SetaSegmento $aberto={aberto.programas}>▼</SetaSegmento>
-        </Segmento>
-        {aberto.programas && (
-          <Grade>
-            {PROGRAMAS.map((p, i) => (
-              <RevelarAoRolar key={p.rota} atraso={(i % 4) * 60}>
-                <Card $accent={p.accent} $glow={p.glow}>
-                  <CardTag $accent={p.accent}>{p.tag}</CardTag>
-                  <CardTitulo>{p.titulo}</CardTitulo>
-                  <CardDescricao>{p.descricao}</CardDescricao>
-                  <PreviewAoVivo
-                    rota={p.rota}
-                    largura={720}
-                    altura={405}
-                    aoAmpliar={() =>
-                      setTv({
-                        rota: p.rota,
-                        tag: p.tag,
-                        titulo: p.titulo,
-                        accent: p.accent,
-                        largura: 720,
-                        altura: 405,
-                      })
-                    }
-                  />
-                  <CardAcoes>
-                    <Botao
-                      as="a"
-                      href={p.rota}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="primario"
-                    >
-                      Abrir
-                    </Botao>
-                    <Botao to={`${p.rota}/controle`} className="secundario">
-                      Controlar
-                    </Botao>
-                    <CopiarLink rota={p.rota} />
-                  </CardAcoes>
+            {GAUCHAO_A2.map((t, i) => (
+              <RevelarAoRolar key={t.titulo} atraso={(i % 4) * 60}>
+                <Card
+                  className={t.emBreve ? 'breve' : ''}
+                  $accent={t.accent}
+                  $glow={t.glow}
+                >
+                  {t.emBreve ? (
+                    <>
+                      <CardTag $accent={t.accent}>{t.tag}</CardTag>
+                      <CardTitulo>{t.titulo}</CardTitulo>
+                      <CardDescricao>{t.descricao}</CardDescricao>
+                      <EmBreveChip>Em breve</EmBreveChip>
+                    </>
+                  ) : (
+                    <>
+                      <CardTag $accent={t.accent}>{t.tag}</CardTag>
+                      <CardTitulo>{t.titulo}</CardTitulo>
+                      <CardDescricao>{t.descricao}</CardDescricao>
+                      <PreviewAoVivo
+                        rota={t.rota}
+                        largura={760}
+                        altura={t.altura || 620}
+                        aoAmpliar={() =>
+                          setTv({
+                            rota: t.rota,
+                            tag: t.tag,
+                            titulo: t.titulo,
+                            accent: t.accent,
+                            largura: 760,
+                            altura: t.altura || 620,
+                          })
+                        }
+                      />
+                      <CardAcoes>
+                        <Botao
+                          as="a"
+                          href={t.rota}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="primario"
+                        >
+                          Abrir
+                        </Botao>
+                        <Botao
+                          to={t.controle || `${t.rota}/controle`}
+                          className="secundario"
+                        >
+                          Controlar
+                        </Botao>
+                        <CopiarLink rota={t.rota} />
+                      </CardAcoes>
+                    </>
+                  )}
                 </Card>
               </RevelarAoRolar>
             ))}
