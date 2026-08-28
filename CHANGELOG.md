@@ -2,6 +2,16 @@
 
 ## 28/08/2026
 
+### Placar Broadcast Escalação: gol por jogador, tempo congelado e notificações unificadas
+- **Gol pelo jogador**: novo botão ⚽ em cada jogador marca gol — muda o placar automaticamente, incrementa os gols do jogador, aciona o flash de gol no scoreboard e sobe um **card de gol**.
+- **Badge de gols na escalação**: ao lado do nome do jogador aparece uma **bolinha de futebol com contador** (badge verde com o total de gols acima da bola, quando >1) — mesmo estilo dos quadradinhos de cartão.
+- **Notificações unificadas (mesmo design do Substituição)**: cartão, gol e troca agora usam o mesmo `SubstituicaoCartao` (faixa do time com escudo/sigla/nome/minuto + linha do jogador). Centralizadas no **meio inferior** da tela.
+  - **Gol**: ícone de **bola de futebol** na linha do jogador + **escudo do time** no lugar do antigo texto "GOOOL!".
+  - **Cartão**: retângulo amarelo/vermelho na linha do jogador + rótulo "Cartão Amarelo/Vermelho".
+- **Tempo congelado nas notificações**: cards de cartão, gol e troca agora guardam o **minuto de jogo** no momento do clique (não os segundos, e sem ficar subindo junto com o cronômetro). Armazenado como `minuto` e exibido como `45'`.
+- Modelo de jogador ganhou campo `gols` (default/limpeza em elencos, normalização e substituições).
+- Ações `marcarGol(lado, indice)` e `notificarGol` no store.
+
 ### Placar Broadcast Escalação: auto-preenchimento e ajustes
 - **Auto-preenchimento da escalação pela sigla**: novo `src/lib/elencos.js` com elencos-titulares por sigla (16 clubes da Série A2). No painel de escalação, escolher um time no seletor de sigla preenche automaticamente os 11 jogadores (número + nome) e o nome do time daquele lado. Ação `preencherDeSigla` no store.
 - **Card de troca com o design do Substituição**: a notificação de troca da escalação agora reutiliza o `SubstituicaoCartao` existente (faixa do time + linhas "↓ sai" e "↑ entra" com números/nomes), em vez do layout antigo.
@@ -15,7 +25,7 @@
   - Cartões (amarelo/vermelho) são atribuídos **por jogador** na escalação (botões em cada linha).
   - O cartão aparece como traço no scoreboard, como marca ao lado do jogador no grid de escalação e sobe uma **notificação de cartão** no overlay.
   - Ao confirmar uma **troca** (marcar quem sai + quem entra), a escalação é atualizada e sobe a **notificação de troca** (estilo do card de substituição), além de aparecer na prévia.
-- Overlay renderiza o placar + os dois grids de escalação quando visíveis; notificações aparecem fixas no canto (autodismiss).
+- Overlay renderiza o placar + os dois grids de escalação quando visíveis; notificações aparecem fixas no meio inferior (autodismiss).
 - Estado/sync centralizado em `placarBroadcastEscalacaoStore` (localStorage + BroadcastChannel + nuvem `placar-broadcast-escalacao`).
 - `EscalacaoCartao` agora renderiza marcas de cartão por jogador (retrocompatível — sem cartão não exibe nada).
 

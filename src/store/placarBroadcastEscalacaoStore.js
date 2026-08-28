@@ -414,6 +414,7 @@ function notificarCartao(lado, indice, cor, estadoAtual) {
     tipo: 'cartao',
     lado,
     cor,
+    corTime: lado === 'casa' ? estadoAtual.escalacao.corCasa : estadoAtual.escalacao.corFora,
     indice,
     num: jogador.num,
     nome: jogador.nome,

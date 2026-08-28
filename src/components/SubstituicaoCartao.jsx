@@ -21,6 +21,34 @@ const Entrada = keyframes`
 }
 `;
 
+const BolaGolIcon = styled.span`
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.82rem;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #dcdcdc);
+  box-shadow: inset -2px -3px 4px rgba(0, 0, 0, 0.35);
+  color: #04140a;
+`;
+
+const CartaoGolIcon = styled.span`
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #04140a;
+  background: ${({ $cor }) => ($cor === 'amarelo' ? '#eab308' : '#ef4444')};
+`;
+
 const Cartao = styled.div`
   display: flex;
   flex-direction: column;
@@ -86,6 +114,14 @@ const RotuloAcao = styled.span`
   letter-spacing: 2.5px;
     text-transform: uppercase;
   color: ${({ $tipo }) => ($tipo === 'sai' ? VERMELHO : VERDE)};
+`;
+
+const EscudoEvento = styled.span`
+  flex-shrink: 0;
+  margin-left: auto;
+  padding-left: 14px;
+  display: flex;
+  align-items: center;
 `;
 
 const LinhaJogador = styled.div`
@@ -159,6 +195,48 @@ function corContraste(hex) {
 export function SubstituicaoCartao({ dados }) {
   const cor = dados.corTime || '#16a34a';
   const temMinuto = Boolean(dados.minuto);
+  const evento = dados.tipo || 'troca';
+
+  if (evento === 'gol' || evento === 'cartao') {
+    const isGol = evento === 'gol';
+    const rotulo = isGol ? null : `Cartão ${dados.cartaoCor === 'amarelo' ? 'Amarelo' : 'Vermelho'}`;
+    return (
+      <Cartao $cor={cor}>
+        <FaixaTopo $cor={cor} $corTexto={corContraste(cor)}>
+          <Escudo
+            cor={cor}
+            sigla={dados.siglaTime}
+            url={urlEscudoTime(dados.escudoTime, dados.siglaTime)}
+            tamanho={24}
+          />
+          <span className="sigla">{dados.siglaTime}</span>
+          <span className="nome">{dados.nomeTime}</span>
+          {temMinuto && <span className="minuto">{dados.minuto}</span>}
+        </FaixaTopo>
+        <LinhaJogador $tipo={isGol ? 'gol' : 'sai'} $destaque>
+          {isGol ? (
+            <BolaGolIcon>⚽</BolaGolIcon>
+          ) : (
+            <CartaoGolIcon $cor={dados.cartaoCor} />
+          )}
+          <span className="num">{dados.saiNum}</span>
+          <span className="nome">{dados.saiNome}</span>
+          {isGol ? (
+            <EscudoEvento>
+              <Escudo
+                cor={cor}
+                sigla={dados.siglaTime}
+                url={urlEscudoTime(dados.escudoTime, dados.siglaTime)}
+                tamanho={26}
+              />
+            </EscudoEvento>
+          ) : (
+            <RotuloAcao $tipo="sai">{rotulo}</RotuloAcao>
+          )}
+        </LinhaJogador>
+      </Cartao>
+    );
+  }
 
   return (
     <Cartao $cor={cor}>

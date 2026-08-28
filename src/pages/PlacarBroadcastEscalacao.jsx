@@ -277,8 +277,9 @@ const AreaEscalacao = styled.div`
 
 const NotificacaoFixa = styled.div`
   position: fixed;
-  left: 48px;
+  left: 50%;
   bottom: 48px;
+  transform: translateX(-50%);
   z-index: 30;
 `
 

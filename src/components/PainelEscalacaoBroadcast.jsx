@@ -498,7 +498,7 @@ export function PainelEscalacaoBroadcast() {
                         ? jogador.cartoes.vermelho
                         : 'V'}
                     </BotaoCartao>
-                    <BotaoGol title="Gol" onClick={() => gol(lado, +1)}>
+                    <BotaoGol title="Gol" onClick={() => marcarGol(lado, i)}>
                       ⚽
                     </BotaoGol>
                     <TrocarBotao

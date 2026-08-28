@@ -142,6 +142,34 @@ const BolaGol = styled.span`
   font-size: 0;
 `;
 
+const GolBadge = styled.span`
+  position: relative;
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+
+  em {
+    position: absolute;
+    top: -8px;
+    right: -9px;
+    min-width: 15px;
+    height: 15px;
+    padding: 0 3px;
+    display: grid;
+    place-items: center;
+    border-radius: 999px;
+    background: ${VERDE};
+    color: #0a0f00;
+    font-family: 'Rajdhani', 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 0.6rem;
+    font-weight: 800;
+    line-height: 1;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  }
+`;
+
 const LinhaTecnico = styled.div`
   display: flex;
   align-items: center;
@@ -207,9 +235,12 @@ export function EscalacaoCartao({ dados, lado }) {
             jogador.cartoes?.amarelo > 0 ||
             jogador.cartoes?.vermelho > 0) && (
             <span className="marcas">
-              {Array(jogador.gols || 0)
-                .fill('gol')
-                .map((g, gi) => <BolaGol key={`gol-${i}-${gi}`} />)}
+              {jogador.gols > 0 && (
+                <GolBadge>
+                  <BolaGol />
+                  {jogador.gols > 1 && <em>{jogador.gols}</em>}
+                </GolBadge>
+              )}
               {Array(jogador.cartoes?.amarelo || 0)
                 .fill('amarelo')
                 .map((c, ci) => <CartaoMarca key={`am-${i}-${ci}`} $cor={c} />)}
