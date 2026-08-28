@@ -2,6 +2,15 @@
 
 ## 28/08/2026
 
+### Pré-Jogo: countdown não reseta mais ao recarregar a página
+- Corrigido bug em que recarregar a página do controle reiniciava o countdown do Pré-Jogo (na página de controle e na visualização).
+- Causa: o snapshot remoto (nuvem) guardava um `segundos` defasado; ao recarregar, `aplicarEstadoRemoto` re-baseava `base`/`iniciadoEm` a partir desse `segundos` obsoleto, reiniciando a contagem e propagando o reset para todas as abas.
+- Correção: quando o estado remoto traz `iniciadoEm` válido (referência absoluta), o tempo agora é recomputado a partir dele, ignorando o `segundos` do snapshot. O re-base via `segundos` só é usado como fallback quando não há `iniciadoEm` (estado antigo). O tick de sincronização também é retomado ao recarregar com o countdown rodando, mantendo as abas atualizadas.
+
+### Seletor de siglas nos controles
+- Novos campos de sigla agora usam um seletor (`SeletorSigla`) com as siglas padrão da competição em vez de digitação manual, em todos os painéis de controle (Placar Broadcast e variantes, Placar Normal, Placar Model, Pré-Jogo, Tabela, Mata-Mata, Pênaltis, Escalação, Substituição, Artilheiros e Última Rodada).
+- Valores já salvos fora da lista são preservados como opção extra no seletor.
+
 ### Pré-Jogo: countdown não reseta mais ao abrir a visualização
 - Corrigido bug em que abrir o overlay de Pré-Jogo fazia o countdown em andamento voltar (reset) na tela de controle.
 - Causa: o módulo só publicava o snapshot do countdown uma vez (no início), deixando o valor `segundos` defasado na nuvem/localStorage. Ao abrir a visualização, ela rebaseava o contador para esse valor antigo e o re-gravava no `localStorage` compartilhado, que propagava o reset ao controle via evento `storage`.

@@ -23,6 +23,7 @@ import {
   segundosAtuais,
   formatarTempo,
 } from '../store/placarModelStore';
+import { SeletorSigla } from './SeletorSigla';
 
 const CORES = CORES_PRESET;
 
@@ -372,11 +373,9 @@ function PainelTimes() {
       {cfg.map(({ lado, time, cor, corBorda, cartoes, titulo }) => (
         <BlocoTime key={lado}>
           <Rotulo>{titulo} (sigla)</Rotulo>
-          <Entrada
+          <SeletorSigla
             value={time.nome}
-            placeholder="SIGLA"
-            maxLength={6}
-            onChange={(e) => definirTime(lado, e.target.value)}
+            onChange={(v) => definirTime(lado, v)}
           />
           <LinhaGols>
             <BotaoPasso

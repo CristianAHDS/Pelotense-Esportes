@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
+import { SeletorSigla } from '../components/SeletorSigla';
 import { usePlacarNormal } from '../hooks/usePlacarNormal';
 import {
   gol,
@@ -594,11 +595,9 @@ function PainelTimes() {
       {cfg.map(({ lado, time, titulo, cor, corBorda, cartoes }) => (
         <BlocoTime key={lado}>
           <Rotulo>{titulo} (sigla 3 letras)</Rotulo>
-          <EntradaNome
+          <SeletorSigla
             value={time.nome}
-            placeholder="PAL"
-            maxLength={6}
-            onChange={(e) => renomearTime(lado, e.target.value)}
+            onChange={(v) => renomearTime(lado, v)}
           />
           <Rotulo style={{ marginTop: 10 }}>Gols</Rotulo>
           <LinhaGols>

@@ -102,18 +102,22 @@ function aplicarEstadoRemoto(novoEstado) {
   registrarSync(novoEstado)
 
   if (!processandoRemoto) {
-    if (novoEstado.cronometro?.rodando && typeof novoEstado.cronometro.segundos === 'number') {
-      const local = segundosRestantes(estado.cronometro)
-      const diff = Math.abs(novoEstado.cronometro.segundos - local)
-      if (diff > 2) {
-        novoEstado.cronometro.base = novoEstado.cronometro.segundos
-        novoEstado.cronometro.iniciadoEm = Date.now()
+    const cron = novoEstado.cronometro
+    if (cron?.rodando) {
+      /* Com `iniciadoEm` válido o tempo é recomputado a partir dele (referência
+         absoluta), então nunca re-basear pelo snapshot `segundos` — isso causava
+         reset do countdown ao recarregar a página. Só re-baseamos quando não há
+         referência de tempo (estado antigo/corrompido). */
+      if (typeof cron.iniciadoEm !== 'number') {
+        const seg = typeof cron.segundos === 'number' ? cron.segundos : segundosRestantes(cron)
+        cron.base = Math.max(0, Math.floor(seg))
+        cron.iniciadoEm = Date.now()
       }
-      delete novoEstado.cronometro.segundos
-    } else if (novoEstado.cronometro?.rodando && novoEstado.cronometro?.iniciadoEm) {
-      novoEstado.cronometro.iniciadoEm = Date.now()
     }
+    delete novoEstado.cronometro?.segundos
     setEstado(novoEstado, { remoto: true })
+    if (novoEstado.cronometro?.rodando) iniciarTickSync()
+    else pararTickSync()
   }
 }
 
@@ -141,6 +145,9 @@ function pararTickSync() {
     tickSync = null
   }
 }
+
+/* Ao recarregar a página com o countdown rodando, retoma o tick de sincronização */
+if (estado.cronometro?.rodando) iniciarTickSync()
 
 /* ---------- BroadcastChannel ---------- */
 
