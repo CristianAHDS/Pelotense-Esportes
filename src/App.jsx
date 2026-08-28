@@ -14,6 +14,8 @@ import PlacarBroadcastLL from './pages/PlacarBroadcastLL';
 import ControlePlacarBroadcastLL from './pages/ControlePlacarBroadcastLL';
 import PlacarNormal from './pages/PlacarNormal';
 import ControlePlacarNormal from './pages/ControlePlacarNormal';
+import PlacarModel from './pages/PlacarModel';
+import ControlePlacarModel from './pages/ControlePlacarModel';
 import Tabela from './pages/Tabela';
 import ControleTabela from './pages/ControleTabela';
 import TabelaCompacta from './pages/TabelaCompacta';
@@ -67,6 +69,11 @@ export default function App() {
           <Route
             path="/placar-normal/controle"
             element={<ControlePlacarNormal />}
+          />
+          <Route path="/placar-model" element={<PlacarModel />} />
+          <Route
+            path="/placar-model/controle"
+            element={<ControlePlacarModel />}
           />
           <Route path="/tabela" element={<Tabela />} />
           <Route path="/tabela/controle" element={<ControleTabela />} />

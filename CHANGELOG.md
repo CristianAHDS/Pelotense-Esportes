@@ -1,5 +1,14 @@
 # Changelog
 
+## 28/08/2026
+
+### Novo módulo: Placar Model
+
+- Novo overlay compacto (`/placar-model`): placar horizontal com glass morphism, barra de cor gradiente (cores dos dois times + verde), glow neon pulsante quando ao vivo, escudos, siglas, placar, cronômetro e período/estado da partida.
+- Store própria (`placarModelStore`) com sincronização local (BroadcastChannel + localStorage) e na nuvem (Firebase RTDB), seguindo o padrão dos demais módulos: `getEstado`/`inscrever`/`setEstado`, cronômetro com contagem em tempo real e ações para times, gols, período, estado, cores e escudos.
+- Página de controle (`/placar-model/controle`) com painéis de Times e Placar, Cronômetro e Partida, além da prévia ao vivo via `PreviaOverlay`.
+- Rotas adicionadas no `App.jsx` e card na seção Scoreboards do Hub com prévia ao vivo em iframe.
+
 ## 27/08/2026
 
 ### Tabela Compacta: opção dividir em 2 e aba Programas

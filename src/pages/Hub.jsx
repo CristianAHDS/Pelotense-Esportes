@@ -53,6 +53,15 @@ const SCOREBOARDS = [
     accent: '#a5ef1c',
     glow: 'rgba(165, 239, 28, 0.2)',
   },
+  {
+    rota: '/placar-model',
+    tag: 'MODEL',
+    titulo: 'Placar Model',
+    descricao:
+      'Placar compacto com glass morphism, barra de cor gradiente, glow neon e cronômetro ao vivo.',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.2)',
+  },
 ];
 
 const GAUCHAO_A2 = [

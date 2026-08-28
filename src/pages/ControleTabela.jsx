@@ -142,7 +142,10 @@ const GradeTimes = styled.div`
 
 const CabecalhoGrid = styled.div`
   display: grid;
-  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 64px repeat(7, 52px) 38px;
+  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 64px repeat(
+      7,
+      52px
+    ) 38px;
   gap: 6px;
   align-items: center;
   padding: 0 4px 8px;
@@ -153,13 +156,16 @@ const CabecalhoGrid = styled.div`
   color: ${({ theme }) => theme.cores.textoSuave};
 
   .num {
-  text-align: center;
+    text-align: center;
   }
 `;
 
 const LinhaTime = styled.div`
   display: grid;
-  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 64px repeat(7, 52px) 38px;
+  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 64px repeat(
+      7,
+      52px
+    ) 38px;
   gap: 6px;
   align-items: center;
   padding: 4px;
@@ -170,10 +176,10 @@ const LinhaTime = styled.div`
   }
 
   .pos {
-  text-align: center;
-  font-family: ${({ theme }) => theme.fontes.titulo};
-  font-weight: 700;
-  color: ${({ theme }) => theme.cores.textoSuave};
+    text-align: center;
+    font-family: ${({ theme }) => theme.fontes.titulo};
+    font-weight: 700;
+    color: ${({ theme }) => theme.cores.textoSuave};
     border-left: 3px solid transparent;
     padding-left: 4px;
   }
@@ -236,7 +242,7 @@ const CelulaEscudo = styled.label`
     position: absolute;
     inset: -4px;
     opacity: 0;
-  cursor: pointer;
+    cursor: pointer;
   }
 `;
 
@@ -274,9 +280,9 @@ const StatusFgf = styled.span`
   letter-spacing: 0.5px;
   color: ${({ $tipo, theme }) =>
     $tipo === 'erro'
-        ? '#f87171'
+      ? '#f87171'
       : $tipo === 'ok'
-      ? theme.cores.primaria
+        ? theme.cores.primaria
         : theme.cores.textoSuave};
 `;
 
@@ -300,32 +306,32 @@ const MiniLinha = styled.div`
   border-left: 3px solid ${({ $zona }) => $zona || 'transparent'};
 
   .pos {
-  font-family: ${({ theme }) => theme.fontes.titulo};
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: ${({ theme }) => theme.cores.textoSuave};
+    font-family: ${({ theme }) => theme.fontes.titulo};
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: ${({ theme }) => theme.cores.textoSuave};
   }
 
   .time {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
     gap: 9px;
     min-width: 0;
   }
 
   .sigla {
-  font-family: ${({ theme }) => theme.fontes.titulo};
-  font-weight: 700;
-  letter-spacing: 1px;
+    font-family: ${({ theme }) => theme.fontes.titulo};
+    font-weight: 700;
+    letter-spacing: 1px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .p {
-  text-align: center;
+    text-align: center;
     font-variant-numeric: tabular-nums;
-  font-weight: 700;
+    font-weight: 700;
     color: ${({ theme }) => theme.cores.primaria};
   }
 `;
@@ -336,7 +342,7 @@ function zonaDa(pos, total) {
   if (pos <= Math.min(8, total)) return 'class';
   if (pos >= total - 1) return 'reb';
   return null;
-  }
+}
 
 function PreviewTabela({ estado }) {
   const times = ordenarClassificacao(estado.times);
@@ -344,12 +350,7 @@ function PreviewTabela({ estado }) {
   return (
     <PreviaClicavel
       title="Abrir visualização em nova guia"
-      onClick={() =>
-        window.open(
-          `${window.location.origin}/tabela`,
-          '_blank'
-        )
-  }
+      onClick={() => window.open(`${window.location.origin}/tabela`, '_blank')}
     >
       <Cartao style={{ marginBottom: 0 }}>
         <Rotulo>Prévia · clique para abrir em nova guia</Rotulo>
@@ -360,32 +361,42 @@ function PreviewTabela({ estado }) {
             paddingBottom: 6,
             marginBottom: 4,
           }}
-    >
+        >
           <span className="pos">#</span>
-          <span className="time" style={{ fontSize: '.62rem', letterSpacing: '2px', color: '#94a3b8' }}>
+          <span
+            className="time"
+            style={{
+              fontSize: '.62rem',
+              letterSpacing: '2px',
+              color: '#94a3b8',
+            }}
+          >
             CLASSIFICAÇÃO
           </span>
           <span className="p">P</span>
         </MiniLinha>
         {times.map((t, i) => (
-          <MiniLinha key={`${t.sigla}-${i}`} $zona={CORES_ZONA[zonaDa(i + 1, total)]}>
+          <MiniLinha
+            key={`${t.sigla}-${i}`}
+            $zona={CORES_ZONA[zonaDa(i + 1, total)]}
+          >
             <span className="pos">{i + 1}</span>
             <span className="time">
               <Escudo cor={t.cor} sigla={t.sigla} url={t.escudo} tamanho={15} />
               <span className="sigla">{t.sigla}</span>
-          </span>
+            </span>
             <span className="p">{t.p}</span>
-        </MiniLinha>
+          </MiniLinha>
         ))}
       </Cartao>
     </PreviaClicavel>
   );
-  }
+}
 
 function mensagemFgf(resultado) {
   const hora = new Date(resultado.quando || Date.now()).toLocaleTimeString(
     'pt-BR',
-    { hour: '2-digit', minute: '2-digit' }
+    { hour: '2-digit', minute: '2-digit' },
   );
   if (resultado.mudou) {
     return `Classificação da FGF atualizada às ${hora}`;
@@ -393,7 +404,7 @@ function mensagemFgf(resultado) {
   return resultado.origem === 'cache'
     ? `Em dia com a FGF (cache de ${hora})`
     : `Em dia com a FGF · verificado às ${hora}`;
-  }
+}
 
 export default function ControleTabela() {
   const [statusFgf, setStatusFgf] = useState(null);
@@ -402,8 +413,8 @@ export default function ControleTabela() {
     recarregar();
     importarClassificacaoFGF()
       .then((resultado) =>
-        setStatusFgf({ tipo: 'ok', texto: mensagemFgf(resultado) })
-        )
+        setStatusFgf({ tipo: 'ok', texto: mensagemFgf(resultado) }),
+      )
       .catch((e) => {
         console.warn('Tabela: falha ao atualizar da FGF.', e);
         setStatusFgf({
@@ -423,9 +434,10 @@ export default function ControleTabela() {
       console.warn('Tabela: falha ao atualizar da FGF.', e);
       setStatusFgf({
         tipo: 'erro',
-        texto: 'Não foi possível buscar os dados da FGF. Verifique a conexão ou o servidor dev.',
+        texto:
+          'Não foi possível buscar os dados da FGF. Verifique a conexão ou o servidor dev.',
       });
-  }
+    }
   }
 
   return (
@@ -435,7 +447,6 @@ export default function ControleTabela() {
         Controle · <span>Tabela</span>
       </Titulo>
       <PreviaOverlay rota="/tabela" altura={420} />
-
 
       <Cartao>
         <Rotulo>Competição</Rotulo>
@@ -476,36 +487,41 @@ export default function ControleTabela() {
             <LinhaTime key={t._i}>
               <span className="pos">{t._i + 1}</span>
               <CelulaEscudo title="Cor do escudo">
-                <Escudo cor={t.cor} sigla={t.sigla} url={t.escudo} tamanho={24} />
+                <Escudo
+                  cor={t.cor}
+                  sigla={t.sigla}
+                  url={t.escudo}
+                  tamanho={24}
+                />
               </CelulaEscudo>
               <InputNome
                 value={t.nome}
                 maxLength={24}
                 onChange={(e) => atualizarTime(t._i, 'nome', e.target.value)}
-          />
+              />
               <InputNum
                 value={t.sigla}
                 maxLength={4}
                 style={{ textAlign: 'center' }}
                 onChange={(e) => atualizarTime(t._i, 'sigla', e.target.value)}
-          />
+              />
               {['p', 'j', 'v', 'e', 'd', 'gp', 'gc'].map((campo) => (
-              <InputNum
+                <InputNum
                   key={campo}
-            type="number"
-            min={0}
+                  type="number"
+                  min={0}
                   value={t[campo]}
                   onChange={(e) => atualizarTime(t._i, campo, e.target.value)}
-          />
-        ))}
+                />
+              ))}
               <BotaoRemover
                 title="Remover time"
                 onClick={() => removerTime(t._i)}
-    >
+              >
                 ×
               </BotaoRemover>
             </LinhaTime>
-        ))}
+          ))}
         </GradeTimes>
         <Acoes>
           <Botao
@@ -513,7 +529,7 @@ export default function ControleTabela() {
             disabled={statusFgf?.tipo === 'carregando'}
             title="Busca a classificação atual no site da FGF"
             onClick={atualizarDaFgf}
-    >
+          >
             ⟳ Atualizar da FGF
           </Botao>
           {statusFgf && (
@@ -528,17 +544,21 @@ export default function ControleTabela() {
           <Botao
             $variante="perigo"
             onClick={() => {
-              if (window.confirm('Restaurar tabela padrão? Todos os dados atuais serão perdidos.')) {
+              if (
+                window.confirm(
+                  'Restaurar tabela padrão? Todos os dados atuais serão perdidos.',
+                )
+              ) {
                 restaurarPadrao();
-  }
-          }}
-    >
+              }
+            }}
+          >
             Restaurar padrão
           </Botao>
         </Acoes>
       </Cartao>
 
-      <PreviewTabela estado={estado} />
+      {/*<PreviewTabela estado={estado} />*/}
     </Tela>
   );
-  }
+}
