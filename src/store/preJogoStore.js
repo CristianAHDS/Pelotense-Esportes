@@ -9,6 +9,7 @@ const estadoPadrao = {
   timeCasa: { nome: 'PEL', escudo: '/escudos/PEL.png' },
   timeVisitante: { nome: 'GLO', escudo: '/escudos/GLO.png' },
   cronometro: { base: 0, rodando: false, iniciadoEm: null },
+  atualizadoEm: 0,
   mostrar: true,
 }
 
@@ -16,7 +17,9 @@ function carregar() {
   try {
     const bruto = localStorage.getItem(STORAGE_KEY)
     if (bruto) {
-      return { ...structuredClone(estadoPadrao), ...JSON.parse(bruto) }
+      const salvo = JSON.parse(bruto)
+      if (typeof salvo.atualizadoEm !== 'number') salvo.atualizadoEm = 0
+      return { ...structuredClone(estadoPadrao), ...salvo }
     }
   } catch (e) {
     console.warn('PreJogo: falha ao carregar estado.', e)
@@ -74,6 +77,7 @@ export function setEstado(atualizador, { remoto = false } = {}) {
     typeof atualizador === 'function'
       ? atualizador(structuredClone(estado))
       : atualizador
+  if (!remoto) estado.atualizadoEm = Date.now()
   persistir()
   notificar()
 
@@ -99,6 +103,21 @@ function registrarSync(valor) {
 function aplicarEstadoRemoto(novoEstado) {
   const serializado = JSON.stringify(novoEstado)
   if (ultimosSync.includes(serializado) || serializado === JSON.stringify(estado)) return
+
+  /* Rejeitar estados mais antigos que o atual (last-write-wins). Evita que um
+     snapshot "rodando" já em trânsito (echo do tick na nuvem) revele o pause
+     e religue o cronômetro. */
+  const atualizadoNovo = Number(novoEstado.atualizadoEm)
+  const atualizadoLocal = Number(estado.atualizadoEm || 0)
+  if (!Number.isFinite(atualizadoNovo)) {
+    /* Estado antigo sem carimbo de tempo (nuvem entregue por um cliente com
+       código legado). Só é aceito se o local ainda não tem um estado com
+       carimbo; caso contrário o carimbo local representa um estado mais novo
+       (ex.: o pause) e o snapshot "rodando" legado não pode desfazê-lo. */
+    if (atualizadoLocal > 0) return
+  } else if (atualizadoNovo <= atualizadoLocal) {
+    return
+  }
   registrarSync(novoEstado)
 
   if (!processandoRemoto) {
@@ -116,38 +135,12 @@ function aplicarEstadoRemoto(novoEstado) {
     }
     delete novoEstado.cronometro?.segundos
     setEstado(novoEstado, { remoto: true })
-    if (novoEstado.cronometro?.rodando) iniciarTickSync()
-    else pararTickSync()
   }
 }
 
 /* ---------- Sincronização na nuvem ---------- */
 
 inscreverNuvem(CANAL_NUVEM, aplicarEstadoRemoto)
-
-/* ---------- Tick de sincronização periódica ---------- */
-
-let tickSync = null
-
-function iniciarTickSync() {
-  if (tickSync) return
-  tickSync = setInterval(() => {
-    if (!estado.cronometro?.rodando) return
-    const pacote = pacoteSincronizacao()
-    canal?.postMessage({ tipo: MSG_TIPO, estado: pacote })
-    publicarNuvem(CANAL_NUVEM, pacote)
-  }, 2000)
-}
-
-function pararTickSync() {
-  if (tickSync) {
-    clearInterval(tickSync)
-    tickSync = null
-  }
-}
-
-/* Ao recarregar a página com o countdown rodando, retoma o tick de sincronização */
-if (estado.cronometro?.rodando) iniciarTickSync()
 
 /* ---------- BroadcastChannel ---------- */
 
@@ -197,7 +190,6 @@ export function definirTime(lado, nome) {
 
 /* Define a duração total (em segundos) e zera o contador para o valor completo */
 export function definirDuracao(segundos) {
-  pararTickSync()
   setEstado((estado) => {
     const s = Math.max(0, Math.floor(Number(segundos) || 0))
     estado.cronometro = { base: s, rodando: false, iniciadoEm: null }
@@ -212,18 +204,15 @@ export function alternarCronometro() {
       cron.rodando = false
       cron.base = Math.max(0, segundosRestantes(cron))
       cron.iniciadoEm = null
-      pararTickSync()
     } else {
       cron.iniciadoEm = Date.now()
       cron.rodando = true
-      iniciarTickSync()
     }
     return estado
   })
 }
 
 export function zerarCronometro() {
-  pararTickSync()
   setEstado((estado) => {
     estado.cronometro = { base: 0, rodando: false, iniciadoEm: null }
     return estado
@@ -245,7 +234,6 @@ export function ocultar() {
 }
 
 export function resetar() {
-  pararTickSync()
   setEstado(() => structuredClone(estadoPadrao))
 }
 

@@ -18,6 +18,15 @@ const SCOREBOARDS = [
     glow: 'rgba(165, 239, 28, 0.2)',
   },
   {
+    rota: '/placar-broadcast-escalacao',
+    tag: 'BROADCAST + ESCALAÇÃO',
+    titulo: 'Placar Broadcast Escalação',
+    descricao:
+      'Placar Broadcast com escalações integradas no mesmo link: cartões por jogador aparecem no placar, na escalação e sobem notificações (cartão e troca).',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.2)',
+  },
+  {
     rota: '/placar-pl',
     tag: 'PREMIER LEAGUE',
     titulo: 'Placar Premier League',

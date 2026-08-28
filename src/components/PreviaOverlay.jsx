@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import styled from 'styled-components'
-import { salaAtual } from '../lib/sincronizacaoNuvem'
+import { useState } from 'react';
+import styled from 'styled-components';
+import { salaAtual } from '../lib/sincronizacaoNuvem';
 
 const VERDE = '#a5ef1c';
 
@@ -35,8 +35,13 @@ const Ponto = styled.span`
   animation: pulsar 1.6s ease-in-out infinite;
 
   @keyframes pulsar {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.35; }
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.35;
+    }
   }
 `;
 
@@ -67,7 +72,8 @@ const Tela = styled.iframe`
   width: 100%;
   height: ${({ $altura }) => $altura}px;
   border: 0;
-  background: repeating-conic-gradient(#111 0% 25%, #0a0a0a 0% 50%) 0 0 / 24px 24px;
+  background: repeating-conic-gradient(#111 0% 25%, #0a0a0a 0% 50%) 0 0 / 24px
+    24px;
 `;
 
 /* Prévia ao vivo do overlay embutida no próprio controle.

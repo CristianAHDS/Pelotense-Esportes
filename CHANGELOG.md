@@ -2,10 +2,31 @@
 
 ## 28/08/2026
 
-### Pré-Jogo: countdown não reseta mais ao recarregar a página
-- Corrigido bug em que recarregar a página do controle reiniciava o countdown do Pré-Jogo (na página de controle e na visualização).
-- Causa: o snapshot remoto (nuvem) guardava um `segundos` defasado; ao recarregar, `aplicarEstadoRemoto` re-baseava `base`/`iniciadoEm` a partir desse `segundos` obsoleto, reiniciando a contagem e propagando o reset para todas as abas.
-- Correção: quando o estado remoto traz `iniciadoEm` válido (referência absoluta), o tempo agora é recomputado a partir dele, ignorando o `segundos` do snapshot. O re-base via `segundos` só é usado como fallback quando não há `iniciadoEm` (estado antigo). O tick de sincronização também é retomado ao recarregar com o countdown rodando, mantendo as abas atualizadas.
+### Placar Broadcast Escalação: auto-preenchimento e ajustes
+- **Auto-preenchimento da escalação pela sigla**: novo `src/lib/elencos.js` com elencos-titulares por sigla (16 clubes da Série A2). No painel de escalação, escolher um time no seletor de sigla preenche automaticamente os 11 jogadores (número + nome) e o nome do time daquele lado. Ação `preencherDeSigla` no store.
+- **Card de troca com o design do Substituição**: a notificação de troca da escalação agora reutiliza o `SubstituicaoCartao` existente (faixa do time + linhas "↓ sai" e "↑ entra" com números/nomes), em vez do layout antigo.
+- **Remover cartões do jogador**: os botões de cartão amarelo/vermelho agora alternam — dar se o jogador não tem, remover se já tem.
+- **Layout do controle**: seções com até 3 quadros por linha (responsivo: 3→2→1); na seção de escalação o painel de controles fica mais largo (2fr) que a prévia (1fr); escalação mostra a lista toda sem corte.
+
+### Novo módulo: Placar Broadcast Escalação (`/placar-broadcast-escalacao`)
+- Cópia do `/placar-broadcast` com as escalações centralizadas no mesmo link (controle e overlay).
+- Controle integrado em uma única página: placar (times/gols, cronômetro, partida) + escalação completa dos dois times + substituição, tudo no mesmo `/controle`.
+- Escalações integradas ao placar:
+  - Cartões (amarelo/vermelho) são atribuídos **por jogador** na escalação (botões em cada linha).
+  - O cartão aparece como traço no scoreboard, como marca ao lado do jogador no grid de escalação e sobe uma **notificação de cartão** no overlay.
+  - Ao confirmar uma **troca** (marcar quem sai + quem entra), a escalação é atualizada e sobe a **notificação de troca** (estilo do card de substituição), além de aparecer na prévia.
+- Overlay renderiza o placar + os dois grids de escalação quando visíveis; notificações aparecem fixas no canto (autodismiss).
+- Estado/sync centralizado em `placarBroadcastEscalacaoStore` (localStorage + BroadcastChannel + nuvem `placar-broadcast-escalacao`).
+- `EscalacaoCartao` agora renderiza marcas de cartão por jogador (retrocompatível — sem cartão não exibe nada).
+
+### Pré-Jogo: countdown não reseta mais ao pausar (correção definitiva)
+- Corrigido bug em que pausar o countdown do Pré-Jogo ainda o reiniciava (no controle e na visualização), mesmo após tentativas anteriores.
+- Causa real: enquanto o countdown roda, fontes de sincronização (tick periódico e/ou snapshots "rodando" defasados já em trânsito na nuvem/BroadcastChannel/localStorage) entregavam um estado "rodando" antigo após o pause. Esse snapshot re-baseava o contador a partir do `segundos` obsoleto (ou registrava um novo `iniciadoEm`) e religava o cronômetro, desfazendo o pause e parecendo um reset.
+- Correções aplicadas em `preJogoStore`:
+  - Removido o tick periódico de sincronização por completo. A visualização apenas exibe (recomputa o tempo pelo `iniciadoEm` absoluto) e não publica mais nada, eliminando a fonte de snapshots "rodando" concorrentes.
+  - `aplicarEstadoRemoto` nunca mais re-baseia um countdown que já tenha `iniciadoEm` válido (referência absoluta); o tempo é sempre recomputado a partir dele, ignorando o `segundos` do snapshot.
+  - Estados agora carregam um carimbo `atualizadoEm` (última alteração local). `aplicarEstadoRemoto` aplica last-write-wins e rejeita estados com `atualizadoEm` menor/igual ao atual, descartando ecos antigos; o pause (mais recente) nunca é sobrescrito por um snapshot "rodando" antigo.
+  - Guarda reforçada: um estado "rodando" sem `atualizadoEm` (cliente legado) só é aceito se o local ainda não tiver um estado com carimbo — assim um snapshot legado não desfaz um pause já gravado.
 
 ### Seletor de siglas nos controles
 - Novos campos de sigla agora usam um seletor (`SeletorSigla`) com as siglas padrão da competição em vez de digitação manual, em todos os painéis de controle (Placar Broadcast e variantes, Placar Normal, Placar Model, Pré-Jogo, Tabela, Mata-Mata, Pênaltis, Escalação, Substituição, Artilheiros e Última Rodada).

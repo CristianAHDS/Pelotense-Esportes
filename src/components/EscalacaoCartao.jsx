@@ -114,6 +114,22 @@ const LinhaJogador = styled.div`
     color: rgba(255, 255, 255, 0.28);
     font-weight: 500;
   }
+
+  .marcas {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+`;
+
+const CartaoMarca = styled.span`
+  display: inline-block;
+  width: 11px;
+  height: 15px;
+  border-radius: 2px;
+  box-shadow: inset 0 -1.6px 0 rgba(0, 0, 0, 0.35);
+  background: ${({ $cor }) => ($cor === 'amarelo' ? '#eab308' : '#dc2626')};
 `;
 
 const LinhaTecnico = styled.div`
@@ -177,6 +193,20 @@ export function EscalacaoCartao({ dados, lado }) {
           <span className={`nome${jogador.nome ? '' : ' vazio'}`}>
             {jogador.nome || `Jogador ${i + 1}`}
           </span>
+          {(jogador.cartoes?.amarelo > 0 || jogador.cartoes?.vermelho > 0) && (
+            <span className="marcas">
+              {Array(jogador.cartoes?.amarelo || 0)
+                .fill('amarelo')
+                .map((c) => (
+                  <CartaoMarca key={`am-${i}-${c}`} $cor={c} />
+                ))}
+              {Array(jogador.cartoes?.vermelho || 0)
+                .fill('vermelho')
+                .map((c) => (
+                  <CartaoMarca key={`vm-${i}-${c}`} $cor={c} />
+                ))}
+            </span>
+          )}
         </LinhaJogador>
       ))}
       {tecnico && (
