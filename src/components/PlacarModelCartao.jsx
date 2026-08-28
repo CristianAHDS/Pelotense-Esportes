@@ -161,6 +161,35 @@ const PeriodoTag = styled.span`
   animation: ${entrar} 0.3s ease;
 `;
 
+const AcrescimoTag = styled(PeriodoTag)`
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.35);
+  background: rgba(251, 191, 36, 0.08);
+`;
+
+const Cartoes = styled.div`
+  display: flex;
+  gap: 5px;
+  margin-top: 6px;
+  min-height: 12px;
+`;
+
+const CartaoMini = styled.span`
+  width: 12px;
+  height: 16px;
+  border-radius: 2px;
+  background: ${({ $cor }) => $cor};
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.12);
+`;
+
+const CartaoContador = styled.span`
+  font-family: ${({ theme }) => theme.fontes.titulo};
+  font-size: 0.66rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1;
+`;
+
 function rotuloStatus(estadoPartida, periodo) {
   if (estadoPartida === 'INÍCIO' || estadoPartida === 'AO VIVO') {
     return periodo;
@@ -220,7 +249,21 @@ export const PlacarModelCartao = forwardRef(function PlacarModelCartao(
               tamanho={26}
             />
           )}
-          <Sigla>{timeCasa.nome}</Sigla>
+          <div>
+            <Sigla>{timeCasa.nome}</Sigla>
+            <Cartoes>
+              {Array.from({ length: dados.cartoesCasa?.amarelo || 0 }).map(
+                (_, i) => (
+                  <CartaoMini key={`ca${i}`} $cor="#eab308" />
+                ),
+              )}
+              {Array.from({ length: dados.cartoesCasa?.vermelho || 0 }).map(
+                (_, i) => (
+                  <CartaoMini key={`cv${i}`} $cor="#ef4444" />
+                ),
+              )}
+            </Cartoes>
+          </div>
           <GolNum $a={animC}>{dados.golsCasa}</GolNum>
         </Equipe>
 
@@ -235,13 +278,28 @@ export const PlacarModelCartao = forwardRef(function PlacarModelCartao(
               tamanho={26}
             />
           )}
-          <Sigla>{timeVisitante.nome}</Sigla>
+          <div>
+            <Sigla>{timeVisitante.nome}</Sigla>
+            <Cartoes>
+              {Array.from({
+                length: dados.cartoesVisitante?.amarelo || 0,
+              }).map((_, i) => (
+                <CartaoMini key={`va${i}`} $cor="#eab308" />
+              ))}
+              {Array.from({
+                length: dados.cartoesVisitante?.vermelho || 0,
+              }).map((_, i) => (
+                <CartaoMini key={`vv${i}`} $cor="#ef4444" />
+              ))}
+            </Cartoes>
+          </div>
           <GolNum $a={animV}>{dados.golsVisitante}</GolNum>
         </Equipe>
 
         <Meta>
           <PontoVivo $r={aoVivo} />
           <Crono $r={aoVivo}>{tempo}</Crono>
+          {dados.acrescimo > 0 && <AcrescimoTag>+{dados.acrescimo}'</AcrescimoTag>}
           <PeriodoTag>{rotulo}</PeriodoTag>
         </Meta>
       </Corpo>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { PreviaOverlay } from '../components/PreviaOverlay';
 import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
+import { SeletorSigla } from '../components/SeletorSigla';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { importarClassificacaoFGF } from '../services/fgfService';
 import {
@@ -142,7 +143,7 @@ const GradeTimes = styled.div`
 
 const CabecalhoGrid = styled.div`
   display: grid;
-  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 64px repeat(
+  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 78px repeat(
       7,
       52px
     ) 38px;
@@ -162,7 +163,7 @@ const CabecalhoGrid = styled.div`
 
 const LinhaTime = styled.div`
   display: grid;
-  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 64px repeat(
+  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 78px repeat(
       7,
       52px
     ) 38px;
@@ -499,11 +500,9 @@ export default function ControleTabela() {
                 maxLength={24}
                 onChange={(e) => atualizarTime(t._i, 'nome', e.target.value)}
               />
-              <InputNum
+              <SeletorSigla
                 value={t.sigla}
-                maxLength={4}
-                style={{ textAlign: 'center' }}
-                onChange={(e) => atualizarTime(t._i, 'sigla', e.target.value)}
+                onChange={(v) => atualizarTime(t._i, 'sigla', v)}
               />
               {['p', 'j', 'v', 'e', 'd', 'gp', 'gc'].map((campo) => (
                 <InputNum

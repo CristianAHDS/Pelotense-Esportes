@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { ultimaRodada } from '../store/ultimaRodadaStore';
 import { importarUltimaRodadaFGF } from '../services/fgfService';
+import { SeletorSigla } from './SeletorSigla';
 
 const Cartao = styled.section`
   background: #0d0d0d;
@@ -275,13 +276,9 @@ export function PainelUltimaRodada() {
           <SecaoTitulo>Resultados</SecaoTitulo>
           {(estado.jogos || []).map((jogo, i) => (
             <LinhaJogo key={`jogo-${i}`}>
-              <Entrada
+              <SeletorSigla
                 value={jogo.casaSigla}
-                placeholder="SIGLA"
-                maxLength={4}
-                onChange={(e) =>
-                  ultimaRodada.atualizarJogo(i, 'casaSigla', e.target.value)
-                }
+                onChange={(v) => ultimaRodada.atualizarJogo(i, 'casaSigla', v)}
               />
               <EntradaNum
                 type="number"
@@ -302,13 +299,9 @@ export function PainelUltimaRodada() {
                   ultimaRodada.atualizarJogo(i, 'foraGols', e.target.value)
                 }
               />
-              <Entrada
+              <SeletorSigla
                 value={jogo.foraSigla}
-                placeholder="SIGLA"
-                maxLength={4}
-                onChange={(e) =>
-                  ultimaRodada.atualizarJogo(i, 'foraSigla', e.target.value)
-                }
+                onChange={(v) => ultimaRodada.atualizarJogo(i, 'foraSigla', v)}
               />
               <BotaoLinha
                 onClick={() => ultimaRodada.removerJogo(i)}
@@ -327,13 +320,9 @@ export function PainelUltimaRodada() {
           <SecaoTitulo>Classificação após a rodada</SecaoTitulo>
           {(estado.posicoes || []).map((p, i) => (
             <LinhaPosicao key={`pos-${i}`}>
-              <Entrada
+              <SeletorSigla
                 value={p.sigla}
-                placeholder="SIGLA"
-                maxLength={4}
-                onChange={(e) =>
-                  ultimaRodada.atualizarPosicao(i, 'sigla', e.target.value)
-                }
+                onChange={(v) => ultimaRodada.atualizarPosicao(i, 'sigla', v)}
               />
               <EntradaNum
                 type="number"

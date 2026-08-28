@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { artilheiros } from '../store/artilheirosStore';
 import { importarArtilheirosFGF } from '../services/fgfService';
+import { SeletorSigla } from './SeletorSigla';
 
 const Cartao = styled.section`
   background: #0d0d0d;
@@ -257,13 +258,9 @@ export function PainelArtilheiros() {
               artilheiros.atualizarJogador(i, 'nome', e.target.value)
             }
           />
-          <Entrada
+          <SeletorSigla
             value={j.sigla}
-            placeholder="SIGLA"
-            maxLength={4}
-            onChange={(e) =>
-              artilheiros.atualizarJogador(i, 'sigla', e.target.value)
-            }
+            onChange={(v) => artilheiros.atualizarJogador(i, 'sigla', v)}
           />
           <EntradaNum
             type="number"

@@ -16,6 +16,8 @@ import PlacarNormal from './pages/PlacarNormal';
 import ControlePlacarNormal from './pages/ControlePlacarNormal';
 import PlacarModel from './pages/PlacarModel';
 import ControlePlacarModel from './pages/ControlePlacarModel';
+import PreJogo from './pages/PreJogo';
+import ControlePreJogo from './pages/ControlePreJogo';
 import Tabela from './pages/Tabela';
 import ControleTabela from './pages/ControleTabela';
 import TabelaCompacta from './pages/TabelaCompacta';
@@ -109,6 +111,8 @@ export default function App() {
             path="/proximas-rodadas/controle"
             element={<ControleProximasRodadas />}
           />
+          <Route path="/pre-jogo" element={<PreJogo />} />
+          <Route path="/pre-jogo/controle" element={<ControlePreJogo />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>

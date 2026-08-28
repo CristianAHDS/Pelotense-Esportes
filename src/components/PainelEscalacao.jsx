@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { escalacao } from '../store/escalacaoStore';
 import { CoresFixas } from './CoresFixas';
+import { SeletorSigla } from './SeletorSigla';
 
 const VERDE = '#a5ef1c';
 
@@ -215,12 +216,12 @@ function ColunaTime({ estado, config, atualizarCampo, atualizarJogador }) {
         </Campo>
         <Campo>
           <Rotulo>Sigla</Rotulo>
-          <Entrada
-            style={{ width: 90 }}
-            value={estado[config.campoSigla]}
-            maxLength={4}
-            onChange={(e) => atualizarCampo(config.campoSigla, e.target.value)}
-          />
+          <div style={{ width: 90 }}>
+            <SeletorSigla
+              value={estado[config.campoSigla]}
+              onChange={(v) => atualizarCampo(config.campoSigla, v)}
+            />
+          </div>
         </Campo>
       </Linha>
       <Linha>

@@ -1,45 +1,16 @@
 import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js'
 
-const STORAGE_KEY = 'pelotense:placar-model'
-const CHANNEL_NAME = 'placar-model:sync'
-const MSG_TIPO = 'estado:placar-model'
-const CANAL_NUVEM = 'placar-model'
-
-export const PERIODOS = ['1º', '2º', 'INT', 'FT', 'PROR']
-export const ESTADOS_PARTIDA = ['INÍCIO', 'AO VIVO', 'INTERVALO', 'ENCERRADO']
+const STORAGE_KEY = 'pelotense:pre-jogo'
+const CHANNEL_NAME = 'pre-jogo:sync'
+const MSG_TIPO = 'estado:pre-jogo'
+const CANAL_NUVEM = 'pre-jogo'
 
 const estadoPadrao = {
   timeCasa: { nome: 'PEL', escudo: '/escudos/PEL.png' },
   timeVisitante: { nome: 'GLO', escudo: '/escudos/GLO.png' },
-  golsCasa: 0,
-  golsVisitante: 0,
   cronometro: { base: 0, rodando: false, iniciadoEm: null },
-  periodo: '1º',
-  acrescimo: null,
-  estadoPartida: 'INÍCIO',
-  corCasa: '#1565c0',
-  corCasaBorda: '#0d47a1',
-  corVisitante: '#ca8a04',
-  corVisitanteBorda: '#854d0e',
-  cartoesCasa: { amarelo: 0, vermelho: 0 },
-  cartoesVisitante: { amarelo: 0, vermelho: 0 },
-  mostrarEscudos: true,
+  mostrar: true,
 }
-
-export const CORES_PRESET = [
-  { fundo: '#008F3D', borda: '#006b2d', nome: 'Verde' },
-  { fundo: '#1565c0', borda: '#0d47a1', nome: 'Azul' },
-  { fundo: '#b91c1c', borda: '#7f1d1d', nome: 'Vermelho' },
-  { fundo: '#ca8a04', borda: '#854d0e', nome: 'Amarelo' },
-  { fundo: '#ea580c', borda: '#9a3412', nome: 'Laranja' },
-  { fundo: '#7c3aed', borda: '#5b21b6', nome: 'Roxo' },
-  { fundo: '#1f1f1f', borda: '#0a0a0a', nome: 'Preto' },
-  { fundo: '#e5e5e5', borda: '#a3a3a3', nome: 'Branco' },
-  { fundo: '#4b5563', borda: '#374151', nome: 'Cinza' },
-  { fundo: '#0891b2', borda: '#155e75', nome: 'Ciano' },
-  { fundo: '#059669', borda: '#065f46', nome: 'Esmeralda' },
-  { fundo: '#db2777', borda: '#9d174d', nome: 'Rosa' },
-]
 
 function carregar() {
   try {
@@ -48,7 +19,7 @@ function carregar() {
       return { ...structuredClone(estadoPadrao), ...JSON.parse(bruto) }
     }
   } catch (e) {
-    console.warn('Placar Model: falha ao carregar estado.', e)
+    console.warn('PreJogo: falha ao carregar estado.', e)
   }
   return structuredClone(estadoPadrao)
 }
@@ -68,7 +39,7 @@ function persistir() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(estado))
   } catch (e) {
-    console.warn('Placar Model: falha ao persistir estado.', e)
+    console.warn('PreJogo: falha ao persistir estado.', e)
   }
 }
 
@@ -76,11 +47,12 @@ export function getEstado() {
   return estado
 }
 
-export function segundosAtuais(cron) {
+/* Segundos restantes do countdown */
+export function segundosRestantes(cron) {
   if (!cron) return 0
   const { base, rodando, iniciadoEm } = cron
   if (rodando && iniciadoEm) {
-    return Math.max(0, base + Math.floor((Date.now() - iniciadoEm) / 1000))
+    return Math.max(0, base - Math.floor((Date.now() - iniciadoEm) / 1000))
   }
   return Math.max(0, base)
 }
@@ -88,7 +60,7 @@ export function segundosAtuais(cron) {
 function pacoteSincronizacao() {
   const pacote = structuredClone(estado)
   if (pacote.cronometro?.rodando) {
-    pacote.cronometro.segundos = segundosAtuais(pacote.cronometro)
+    pacote.cronometro.segundos = segundosRestantes(pacote.cronometro)
   }
   return pacote
 }
@@ -131,7 +103,7 @@ function aplicarEstadoRemoto(novoEstado) {
 
   if (!processandoRemoto) {
     if (novoEstado.cronometro?.rodando && typeof novoEstado.cronometro.segundos === 'number') {
-      const local = segundosAtuais(estado.cronometro)
+      const local = segundosRestantes(estado.cronometro)
       const diff = Math.abs(novoEstado.cronometro.segundos - local)
       if (diff > 2) {
         novoEstado.cronometro.base = novoEstado.cronometro.segundos
@@ -148,6 +120,27 @@ function aplicarEstadoRemoto(novoEstado) {
 /* ---------- Sincronização na nuvem ---------- */
 
 inscreverNuvem(CANAL_NUVEM, aplicarEstadoRemoto)
+
+/* ---------- Tick de sincronização periódica ---------- */
+
+let tickSync = null
+
+function iniciarTickSync() {
+  if (tickSync) return
+  tickSync = setInterval(() => {
+    if (!estado.cronometro?.rodando) return
+    const pacote = pacoteSincronizacao()
+    canal?.postMessage({ tipo: MSG_TIPO, estado: pacote })
+    publicarNuvem(CANAL_NUVEM, pacote)
+  }, 2000)
+}
+
+function pararTickSync() {
+  if (tickSync) {
+    clearInterval(tickSync)
+    tickSync = null
+  }
+}
 
 /* ---------- BroadcastChannel ---------- */
 
@@ -166,7 +159,7 @@ window.addEventListener('storage', (evento) => {
     try {
       aplicarEstadoRemoto(JSON.parse(evento.newValue))
     } catch (e) {
-      console.warn('Placar Model: falha ao sincronizar via storage.', e)
+      console.warn('PreJogo: falha ao sincronizar via storage.', e)
     }
   }
 })
@@ -195,18 +188,12 @@ export function definirTime(lado, nome) {
   })
 }
 
-export function definirGols(lado, valor) {
+/* Define a duração total (em segundos) e zera o contador para o valor completo */
+export function definirDuracao(segundos) {
+  pararTickSync()
   setEstado((estado) => {
-    if (lado === 'casa') estado.golsCasa = Math.max(0, Number(valor) || 0)
-    else estado.golsVisitante = Math.max(0, Number(valor) || 0)
-    return estado
-  })
-}
-
-export function gol(lado, delta) {
-  setEstado((estado) => {
-    if (lado === 'casa') estado.golsCasa = Math.max(0, estado.golsCasa + delta)
-    else estado.golsVisitante = Math.max(0, estado.golsVisitante + delta)
+    const s = Math.max(0, Math.floor(Number(segundos) || 0))
+    estado.cronometro = { base: s, rodando: false, iniciadoEm: null }
     return estado
   })
 }
@@ -215,101 +202,43 @@ export function alternarCronometro() {
   setEstado((estado) => {
     const cron = estado.cronometro
     if (cron.rodando) {
-      cron.base += Math.floor((Date.now() - cron.iniciadoEm) / 1000)
       cron.rodando = false
+      cron.base = Math.max(0, segundosRestantes(cron))
       cron.iniciadoEm = null
+      pararTickSync()
     } else {
-      cron.rodando = true
       cron.iniciadoEm = Date.now()
+      cron.rodando = true
+      iniciarTickSync()
     }
     return estado
   })
 }
 
 export function zerarCronometro() {
+  pararTickSync()
   setEstado((estado) => {
     estado.cronometro = { base: 0, rodando: false, iniciadoEm: null }
     return estado
   })
 }
 
-export function ajustarSegundos(delta) {
+export function mostrar() {
   setEstado((estado) => {
-    const cron = estado.cronometro
-    let base = cron.base
-    if (cron.rodando) {
-      base += Math.floor((Date.now() - cron.iniciadoEm) / 1000)
-      cron.iniciadoEm = Date.now()
-    }
-    cron.base = Math.max(0, base + delta)
+    estado.mostrar = true
     return estado
   })
 }
 
-export function definirAcrescimo(minutos) {
+export function ocultar() {
   setEstado((estado) => {
-    const m = Math.floor(Number(minutos))
-    estado.acrescimo = m > 0 ? m : null
+    estado.mostrar = false
     return estado
   })
 }
 
-export function definirPeriodo(periodo) {
-  setEstado((estado) => {
-    estado.periodo = periodo
-    return estado
-  })
-}
-
-export function definirEstadoPartida(valor) {
-  setEstado((estado) => {
-    estado.estadoPartida = valor
-    return estado
-  })
-}
-
-export function definirCor(lado, cor, tipo = 'fundo') {
-  setEstado((estado) => {
-    const prefixo = lado === 'casa' ? 'corCasa' : 'corVisitante'
-    const chave = tipo === 'borda' ? prefixo + 'Borda' : prefixo
-    estado[chave] = cor
-    return estado
-  })
-}
-
-export function definirCorPreset(lado, preset) {
-  setEstado((estado) => {
-    const prefixo = lado === 'casa' ? 'corCasa' : 'corVisitante'
-    estado[prefixo] = preset.fundo
-    estado[prefixo + 'Borda'] = preset.borda
-    return estado
-  })
-}
-
-export function darCartao(lado, cor) {
-  setEstado((estado) => {
-    const chave = lado === 'casa' ? 'cartoesCasa' : 'cartoesVisitante'
-    estado[chave][cor]++
-    return estado
-  })
-}
-
-export function removerCartao(lado, cor) {
-  setEstado((estado) => {
-    const chave = lado === 'casa' ? 'cartoesCasa' : 'cartoesVisitante'
-    estado[chave][cor] = Math.max(0, estado[chave][cor] - 1)
-    return estado
-  })
-}
-
-export function alternarEscudos() {
-  setEstado((estado) => {
-    estado.mostrarEscudos = !estado.mostrarEscudos
-    return estado
-  })
-}
-
-export function resetarPartida() {
+export function resetar() {
+  pararTickSync()
   setEstado(() => structuredClone(estadoPadrao))
 }
 

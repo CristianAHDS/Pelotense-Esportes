@@ -6,33 +6,25 @@ import {
   inscrever,
   PERIODOS,
   ESTADOS_PARTIDA,
+  CORES_PRESET,
   definirTime,
   gol,
   alternarCronometro,
   zerarCronometro,
+  ajustarSegundos,
   definirPeriodo,
   definirEstadoPartida,
-  definirCor,
+  definirAcrescimo,
+  definirCorPreset,
+  darCartao,
+  removerCartao,
   alternarEscudos,
   resetarPartida,
   segundosAtuais,
   formatarTempo,
 } from '../store/placarModelStore';
 
-const CORES = [
-  { fundo: '#008F3D', nome: 'Verde' },
-  { fundo: '#1565c0', nome: 'Azul' },
-  { fundo: '#b91c1c', nome: 'Vermelho' },
-  { fundo: '#ca8a04', nome: 'Amarelo' },
-  { fundo: '#ea580c', nome: 'Laranja' },
-  { fundo: '#7c3aed', nome: 'Roxo' },
-  { fundo: '#1f1f1f', nome: 'Preto' },
-  { fundo: '#e5e5e5', nome: 'Branco' },
-  { fundo: '#4b5563', nome: 'Cinza' },
-  { fundo: '#0891b2', nome: 'Ciano' },
-  { fundo: '#059669', nome: 'Esmeralda' },
-  { fundo: '#db2777', nome: 'Rosa' },
-];
+const CORES = CORES_PRESET;
 
 const Cartao = styled.section`
   background: #0d0d0d;
@@ -207,6 +199,43 @@ const GradeBotoes = styled.div`
   gap: 8px;
 `;
 
+const LinhaCartoes = styled.div`
+  display: flex;
+  gap: 6px;
+  align-items: center;
+`;
+
+const ContagemCartao = styled.span`
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  min-width: 16px;
+  text-align: center;
+`;
+
+const BotaoCartao = styled.button`
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: ${({ $cor }) => $cor};
+  color: #000;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: filter 120ms ease;
+
+  &:hover:not(:disabled) {
+    filter: brightness(1.15);
+  }
+
+  &:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+`;
+
 const Botao = styled.button`
   padding: 10px 14px;
   border-radius: 8px;
@@ -240,6 +269,40 @@ const ListaChips = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 14px;
+`;
+
+const GrupoAcrescimo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+`;
+
+const EntradaNum = styled(Entrada)`
+  width: 70px;
+  padding: 9px 6px;
+  text-align: center;
+`;
+
+const BotaoPassoAcr = styled.button`
+  width: 38px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: transparent;
+  color: #ddd;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    border-color 120ms ease,
+    color 120ms ease;
+
+  &:hover {
+    border-color: #a5ef1c;
+    color: #a5ef1c;
+  }
 `;
 
 const Chip = styled.button`
@@ -286,18 +349,27 @@ const LOJA = { getEstado, inscrever };
 function PainelTimes() {
   const estado = usePlacarBroadcast(LOJA);
   const cfg = [
-    { lado: 'casa', time: estado.timeCasa, cor: estado.corCasa, titulo: 'Casa' },
+    {
+      lado: 'casa',
+      time: estado.timeCasa,
+      cor: estado.corCasa,
+      corBorda: estado.corCasaBorda,
+      cartoes: estado.cartoesCasa || { amarelo: 0, vermelho: 0 },
+      titulo: 'Casa',
+    },
     {
       lado: 'visitante',
       time: estado.timeVisitante,
       cor: estado.corVisitante,
+      corBorda: estado.corVisitanteBorda,
+      cartoes: estado.cartoesVisitante || { amarelo: 0, vermelho: 0 },
       titulo: 'Visitante',
     },
   ];
   return (
     <div>
       <SecaoTitulo>Times e placar</SecaoTitulo>
-      {cfg.map(({ lado, time, cor, titulo }) => (
+      {cfg.map(({ lado, time, cor, corBorda, cartoes, titulo }) => (
         <BlocoTime key={lado}>
           <Rotulo>{titulo} (sigla)</Rotulo>
           <Entrada
@@ -316,15 +388,44 @@ function PainelTimes() {
             <Numero>{lado === 'casa' ? estado.golsCasa : estado.golsVisitante}</Numero>
             <BotaoPasso onClick={() => gol(lado, 1)}>+</BotaoPasso>
           </LinhaGols>
-          <Rotulo style={{ marginTop: 10 }}>Cor de destaque</Rotulo>
+
+          <Rotulo style={{ marginTop: 12 }}>Cartões</Rotulo>
+          <LinhaCartoes>
+            <BotaoCartao
+              $cor="#eab308"
+              onClick={() => removerCartao(lado, 'amarelo')}
+              disabled={cartoes.amarelo === 0}
+              title="Remover amarelo"
+            >
+              −
+            </BotaoCartao>
+            <ContagemCartao>{cartoes.amarelo}</ContagemCartao>
+            <BotaoCartao $cor="#eab308" onClick={() => darCartao(lado, 'amarelo')} title="Amarelo">
+              +
+            </BotaoCartao>
+            <BotaoCartao
+              $cor="#ef4444"
+              onClick={() => removerCartao(lado, 'vermelho')}
+              disabled={cartoes.vermelho === 0}
+              title="Remover vermelho"
+            >
+              −
+            </BotaoCartao>
+            <ContagemCartao>{cartoes.vermelho}</ContagemCartao>
+            <BotaoCartao $cor="#ef4444" onClick={() => darCartao(lado, 'vermelho')} title="Vermelho">
+              +
+            </BotaoCartao>
+          </LinhaCartoes>
+
+          <Rotulo style={{ marginTop: 12 }}>Cor de destaque</Rotulo>
           <GradeCores>
             {CORES.map((c) => (
               <Swatch
                 key={c.nome}
                 $cor={c.fundo}
-                $ativo={cor === c.fundo}
+                $ativo={cor === c.fundo && corBorda === c.borda}
                 title={c.nome}
-                onClick={() => definirCor(lado, c.fundo)}
+                onClick={() => definirCorPreset(lado, c)}
               />
             ))}
           </GradeCores>
@@ -355,6 +456,10 @@ function PainelCronometro() {
         <Botao onClick={zerarCronometro} disabled={rodando}>
           ⟲ Zerar
         </Botao>
+        <Botao onClick={() => ajustarSegundos(-30)}>− 30s</Botao>
+        <Botao onClick={() => ajustarSegundos(30)}>+ 30s</Botao>
+        <Botao onClick={() => ajustarSegundos(-60)}>− 1 min</Botao>
+        <Botao onClick={() => ajustarSegundos(60)}>+ 1 min</Botao>
       </GradeBotoes>
     </div>
   );
@@ -382,6 +487,26 @@ function PainelPartida() {
           </Chip>
         ))}
       </ListaChips>
+      <SecaoTitulo>Acréscimo</SecaoTitulo>
+      <GrupoAcrescimo>
+        <BotaoPassoAcr onClick={() => definirAcrescimo((estado.acrescimo || 0) - 1)}>
+          −
+        </BotaoPassoAcr>
+        <EntradaNum
+          type="number"
+          min="0"
+          max="99"
+          placeholder="Sem"
+          value={estado.acrescimo ?? ''}
+          onChange={(e) => definirAcrescimo(e.target.value)}
+        />
+        <BotaoPassoAcr onClick={() => definirAcrescimo((estado.acrescimo || 0) + 1)}>
+          +
+        </BotaoPassoAcr>
+        <Chip $ativo={!(estado.acrescimo > 0)} onClick={() => definirAcrescimo(0)}>
+          Sem
+        </Chip>
+      </GrupoAcrescimo>
       <SecaoTitulo>Estado da partida</SecaoTitulo>
       <ListaChips>
         {ESTADOS_PARTIDA.map((e) => (

@@ -5,6 +5,7 @@ import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { getEstado, inscrever } from '../store/mataMataStore';
+import { SeletorSigla } from '../components/SeletorSigla';
 import {
   definirCompeticao,
   definirFase,
@@ -448,12 +449,12 @@ export default function ControleMataMata() {
                       maxLength={24}
                       onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'nome', e.target.value)}
           />
-                    <InputNum
-                      value={lado.sigla}
-                      maxLength={4}
-                      title="Sigla"
-                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'sigla', e.target.value)}
-          />
+                    <span style={{ width: 60, flexShrink: 0 }}>
+                      <SeletorSigla
+                        value={lado.sigla}
+                        onChange={(v) => atualizarLado(faseAtiva, ci, ladoNome, 'sigla', v)}
+                      />
+                    </span>
                     <InputNum
                       type="number"
                       min={0}

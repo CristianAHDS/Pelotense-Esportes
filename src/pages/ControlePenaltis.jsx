@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
+import { SeletorSigla } from '../components/SeletorSigla';
 import {
   getEstado,
   inscrever,
@@ -284,10 +285,9 @@ function BlocoLado({ ladoNome, lado, total }) {
           </Campo>
           <Campo style={{ width: 84 }}>
             <span>Sigla</span>
-            <InputTexto
+            <SeletorSigla
               value={lado.sigla}
-              maxLength={4}
-              onChange={(e) => atualizarLado(ladoNome, 'sigla', e.target.value)}
+              onChange={(v) => atualizarLado(ladoNome, 'sigla', v)}
             />
           </Campo>
         </LinhaLado>

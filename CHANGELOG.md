@@ -2,12 +2,24 @@
 
 ## 28/08/2026
 
+### Pré-Jogo: countdown não reseta mais ao abrir a visualização
+- Corrigido bug em que abrir o overlay de Pré-Jogo fazia o countdown em andamento voltar (reset) na tela de controle.
+- Causa: o módulo só publicava o snapshot do countdown uma vez (no início), deixando o valor `segundos` defasado na nuvem/localStorage. Ao abrir a visualização, ela rebaseava o contador para esse valor antigo e o re-gravava no `localStorage` compartilhado, que propagava o reset ao controle via evento `storage`.
+- Correção: `preJogoStore` agora mantém um tick periódico de sincronização (a cada 2s) enquanto o cronômetro está rodando (padrão já usado por `placarStore`), mantendo os snapshots atualizados. O tick é interrompido ao pausar, zerar, definir duração ou resetar.
+
+### Novo módulo: Placar Model
+
 ### Novo módulo: Placar Model
 
 - Novo overlay compacto (`/placar-model`): placar horizontal com glass morphism, barra de cor gradiente (cores dos dois times + verde), glow neon pulsante quando ao vivo, escudos, siglas, placar, cronômetro e período/estado da partida.
 - Store própria (`placarModelStore`) com sincronização local (BroadcastChannel + localStorage) e na nuvem (Firebase RTDB), seguindo o padrão dos demais módulos: `getEstado`/`inscrever`/`setEstado`, cronômetro com contagem em tempo real e ações para times, gols, período, estado, cores e escudos.
 - Página de controle (`/placar-model/controle`) com painéis de Times e Placar, Cronômetro e Partida, além da prévia ao vivo via `PreviaOverlay`.
 - Rotas adicionadas no `App.jsx` e card na seção Scoreboards do Hub com prévia ao vivo em iframe.
+
+### Placar Model: opções padrão dos scoreboards
+
+- Placar Model ganhou as opções padrão dos demais scoreboards: **cartões** (amarelo/vermelho) por time (exibidos como mini-cartões abaixo da sigla no overlay), **acréscimo** (exibido ao lado do cronômetro), **ajustes de cronômetro** (±30s e ±1 min) e **cores fundo + borda** via `CORES_PRESET`.
+- Painel de controle do Placar Model passou a incluir o **Painel de Substituição** (mesmo padrão dos placares Broadcast/Normal).
 
 ## 27/08/2026
 

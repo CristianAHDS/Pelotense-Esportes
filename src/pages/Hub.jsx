@@ -139,6 +139,14 @@ const GAUCHAO_A2 = [
 
 const EXTRAS = [
   {
+    rota: '/pre-jogo',
+    tag: 'PRÉ-JOGO',
+    titulo: 'Pré-Jogo Countdown',
+    descricao: 'CoontDown de cronometro de pré-jogo com os escudos dos times.',
+    accent: '#a5ef1c',
+    glow: 'rgba(165, 239, 28, 0.16)',
+  },
+  {
     rota: '/escalacao',
     tag: 'ESCALAÇÃO',
     titulo: 'Escalação',

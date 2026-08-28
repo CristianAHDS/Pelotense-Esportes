@@ -2,6 +2,7 @@
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { substituicaoPro } from '../store/substituicaoStore';
 import { CoresFixas } from './CoresFixas';
+import { SeletorSigla } from './SeletorSigla';
 
 const VERDE = '#a5ef1c';
 
@@ -166,12 +167,12 @@ export function PainelSubstituicao({ loja = substituicaoPro }) {
         </Campo>
         <Campo>
           <Rotulo>Sigla</Rotulo>
-          <Entrada
-            style={{ width: 90 }}
-            value={sub.siglaTime}
-            maxLength={4}
-            onChange={(e) => atualizarCampo('siglaTime', e.target.value)}
-          />
+          <div style={{ width: 90 }}>
+            <SeletorSigla
+              value={sub.siglaTime}
+              onChange={(v) => atualizarCampo('siglaTime', v)}
+            />
+          </div>
         </Campo>
         <Campo>
           <Rotulo>Minuto</Rotulo>
