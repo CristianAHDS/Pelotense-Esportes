@@ -11,6 +11,7 @@ const Container = styled.main`
 const Conteudo = styled.div`
   max-width: 1100px;
   margin: 0 auto;
+  margin-top: 40px;
 `;
 
 export default function ControleUltimaRodada() {

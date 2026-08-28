@@ -12,6 +12,7 @@ const Container = styled.main`
 const Conteudo = styled.div`
   max-width: 1100px;
   margin: 0 auto;
+  margin-top: 40px;
 `;
 
 const Cartao = styled.section`
@@ -120,7 +121,11 @@ export default function ControleTabelaCompacta() {
               type="checkbox"
               checked={estado.dividir}
               onChange={(e) => tabelaCompacta.definirDivisao(e.target.checked)}
-              style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+              style={{
+                position: 'absolute',
+                opacity: 0,
+                pointerEvents: 'none',
+              }}
             />
             <Switch $on={estado.dividir} />
           </LinhaOpcao>
