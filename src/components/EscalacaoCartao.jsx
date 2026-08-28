@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+﻿import styled, { keyframes } from 'styled-components';
 import { Escudo } from './Escudo';
 
 const VERDE = '#a5ef1c';
@@ -26,7 +26,7 @@ const Cartao = styled.div`
   width: 380px;
   border-radius: 10px;
   overflow: hidden;
-  border-left: 6px solid ${({ $cor }) => $cor};
+  border-left: 6px solid ${VERDE};
   box-shadow: 0 14px 44px -14px rgba(0, 0, 0, 0.75);
   animation: ${Entrada} 0.4s cubic-bezier(0.2, 0.9, 0.25, 1);
   font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
@@ -41,7 +41,7 @@ const FaixaTopo = styled.div`
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
-  background: #0b0b0b;
+  background: #000;
 
   .sigla {
     font-size: 0.95rem;
@@ -82,7 +82,7 @@ const LinhaJogador = styled.div`
   align-items: center;
   gap: 12px;
   padding: 8px 16px;
-  background: #0b0b0b;
+  background: #000;
 
   & + & {
     border-top: 1px solid rgba(255, 255, 255, 0.07);
@@ -134,40 +134,19 @@ const CartaoMarca = styled.span`
 
 const BolaGol = styled.span`
   display: inline-block;
-  width: 13px;
-  height: 13px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ffffff, #e0e0e0);
-  box-shadow: inset -2px -3px 4px rgba(0, 0, 0, 0.35);
-  font-size: 0;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+  font-size: 0.92rem;
+  line-height: 1;
 `;
 
 const GolBadge = styled.span`
   position: relative;
-  display: inline-block;
-  width: 13px;
-  height: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
   flex-shrink: 0;
-
-  em {
-    position: absolute;
-    top: -8px;
-    right: -9px;
-    min-width: 15px;
-    height: 15px;
-    padding: 0 3px;
-    display: grid;
-    place-items: center;
-    border-radius: 999px;
-    background: ${VERDE};
-    color: #0a0f00;
-    font-family: 'Rajdhani', 'Inter', sans-serif;
-    font-style: normal;
-    font-size: 0.6rem;
-    font-weight: 800;
-    line-height: 1;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-  }
 `;
 
 const LinhaTecnico = styled.div`
@@ -175,7 +154,7 @@ const LinhaTecnico = styled.div`
   align-items: center;
   gap: 10px;
   padding: 8px 16px;
-  background: #0b0b0b;
+  background: #000;
   border-top: 1px solid ${VERDE}33;
 
   .rotulo {
@@ -237,8 +216,11 @@ export function EscalacaoCartao({ dados, lado }) {
             <span className="marcas">
               {jogador.gols > 0 && (
                 <GolBadge>
-                  <BolaGol />
-                  {jogador.gols > 1 && <em>{jogador.gols}</em>}
+                  {Array(jogador.gols)
+                    .fill(null)
+                    .map((_, gi) => (
+                      <BolaGol key={gi}>⚽</BolaGol>
+                    ))}
                 </GolBadge>
               )}
               {Array(jogador.cartoes?.amarelo || 0)
@@ -253,7 +235,7 @@ export function EscalacaoCartao({ dados, lado }) {
       ))}
       {tecnico && (
         <LinhaTecnico>
-          <span className="rotulo">TÉC</span>
+          <span className="rotulo">TÃ‰C</span>
           <span className="nome">{tecnico}</span>
         </LinhaTecnico>
       )}

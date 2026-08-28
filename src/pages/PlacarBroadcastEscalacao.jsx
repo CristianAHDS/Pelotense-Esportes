@@ -13,6 +13,8 @@ import { useFundoTransparente } from '../components/useFundoTransparente'
 
 const compacto = new URLSearchParams(window.location.search).has('compacto')
 
+const VERDE = '#a5ef1c'
+
 function corContraste(hex) {
   const r = parseInt(hex.slice(1, 3), 16) / 255
   const g = parseInt(hex.slice(3, 5), 16) / 255
@@ -368,7 +370,7 @@ export default function PlacarBroadcastEscalacao() {
           <BlocoTime
             $cor={estado.corCasa}
             $gol={golAtivo?.lado === 'casa'}
-            style={{ borderLeft: `6px solid ${estado.corCasaBorda}` }}
+            style={{ borderLeft: `6px solid ${VERDE}` }}
           >
             <span className="sigla">{timeCasa.nome}</span>
             <span className="gols">{timeCasa.gols}</span>
@@ -384,7 +386,7 @@ export default function PlacarBroadcastEscalacao() {
           <BlocoTime
             $cor={estado.corVisitante}
             $gol={golAtivo?.lado === 'visitante'}
-            style={{ borderRight: `6px solid ${estado.corVisitanteBorda}` }}
+            style={{ borderRight: `6px solid ${VERDE}` }}
           >
             <span className="gols">{timeVisitante.gols}</span>
             <span className="sigla">{timeVisitante.nome}</span>

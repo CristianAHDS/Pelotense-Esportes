@@ -9,6 +9,8 @@ import { useFundoTransparente } from '../components/useFundoTransparente'
 
 const compacto = new URLSearchParams(window.location.search).has('compacto')
 
+const VERDE = '#a5ef1c'
+
 function corContraste(hex) {
   const r = parseInt(hex.slice(1, 3), 16) / 255
   const g = parseInt(hex.slice(3, 5), 16) / 255
@@ -350,7 +352,7 @@ export default function PlacarBroadcast() {
         <CorpoPlacar $penaltis={periodo === 'PÊNALTIS'}>
           {periodo === 'PÊNALTIS' ? (
             <>
-              <BlocoTime $cor={estado.corCasa} $gol={golAtivo?.lado === 'casa'} style={{ borderLeft: `6px solid ${estado.corCasaBorda}` }}>
+              <BlocoTime $cor={estado.corCasa} $gol={golAtivo?.lado === 'casa'} style={{ borderLeft: `6px solid ${VERDE}` }}>
                 <span className="sigla">{timeCasa.nome}</span>
                 {golAtivo?.lado === 'casa' && (
                   <FaixaGol key={golAtivo.em}><span>{TEXTO_GOL}{TEXTO_GOL}</span></FaixaGol>
@@ -361,7 +363,7 @@ export default function PlacarBroadcast() {
                 <span style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.3)' }}>×</span>
                 <span style={{ fontSize: '1.3rem', fontWeight: 700, color: '#fff' }}>{timeVisitante.gols}</span>
               </Separador>
-              <BlocoTime $cor={estado.corVisitante} $gol={golAtivo?.lado === 'visitante'} style={{ borderRight: `6px solid ${estado.corVisitanteBorda}` }}>
+              <BlocoTime $cor={estado.corVisitante} $gol={golAtivo?.lado === 'visitante'} style={{ borderRight: `6px solid ${VERDE}` }}>
                 <span className="sigla">{timeVisitante.nome}</span>
                 {golAtivo?.lado === 'visitante' && (
                   <FaixaGol key={golAtivo.em}><span>{TEXTO_GOL}{TEXTO_GOL}</span></FaixaGol>
@@ -370,7 +372,7 @@ export default function PlacarBroadcast() {
             </>
           ) : (
             <>
-              <BlocoTime $cor={estado.corCasa} $gol={golAtivo?.lado === 'casa'} style={{ borderLeft: `6px solid ${estado.corCasaBorda}` }}>
+              <BlocoTime $cor={estado.corCasa} $gol={golAtivo?.lado === 'casa'} style={{ borderLeft: `6px solid ${VERDE}` }}>
                 <span className="sigla">{timeCasa.nome}</span>
                 <span className="gols">{timeCasa.gols}</span>
                 {golAtivo?.lado === 'casa' && (
@@ -380,7 +382,7 @@ export default function PlacarBroadcast() {
               <Separador>
                 <span>×</span>
               </Separador>
-              <BlocoTime $cor={estado.corVisitante} $gol={golAtivo?.lado === 'visitante'} style={{ borderRight: `6px solid ${estado.corVisitanteBorda}` }}>
+              <BlocoTime $cor={estado.corVisitante} $gol={golAtivo?.lado === 'visitante'} style={{ borderRight: `6px solid ${VERDE}` }}>
                 <span className="gols">{timeVisitante.gols}</span>
                 <span className="sigla">{timeVisitante.nome}</span>
                 {golAtivo?.lado === 'visitante' && (

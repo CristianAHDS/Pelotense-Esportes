@@ -298,26 +298,13 @@ const Botao = styled.button`
 `;
 
 function CampoNomeDois({ valor, onChange, placeholder }) {
-  const espaços = String(valor || '').indexOf(' ');
-  const nome =
-    espaços >= 0 ? String(valor).slice(0, espaços) : String(valor || '');
-  const sobrenome = espaços >= 0 ? String(valor).slice(espaços + 1) : '';
-  const montar = (n, s) => (s ? `${n} ${s}`.trim() : String(n || '').trim());
   return (
-    <JogadorNomeDuplo>
-      <NomeParte
-        value={nome}
-        maxLength={14}
-        placeholder={`${placeholder} (nome)`}
-        onChange={(e) => onChange(montar(e.target.value, sobrenome))}
-      />
-      <NomeParte
-        value={sobrenome}
-        maxLength={14}
-        placeholder="Sobrenome"
-        onChange={(e) => onChange(montar(nome, e.target.value))}
-      />
-    </JogadorNomeDuplo>
+    <NomeParte
+      value={String(valor || '')}
+      maxLength={24}
+      placeholder={placeholder}
+      onChange={(e) => onChange(e.target.value)}
+    />
   );
 }
 
@@ -326,13 +313,6 @@ const NomeParte = styled(Entrada)`
   min-width: 0;
   font-size: 0.82rem;
   padding: 8px 10px;
-`;
-
-const JogadorNomeDuplo = styled.div`
-  flex: 1;
-  min-width: 0;
-  display: flex;
-  gap: 6px;
 `;
 
 export function PainelEscalacaoBroadcast() {

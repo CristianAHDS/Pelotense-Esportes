@@ -28,11 +28,8 @@ const BolaGolIcon = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  font-size: 0.82rem;
-  background: radial-gradient(circle at 35% 30%, #ffffff, #dcdcdc);
-  box-shadow: inset -2px -3px 4px rgba(0, 0, 0, 0.35);
-  color: #04140a;
+  font-size: 1.02rem;
+  line-height: 1;
 `;
 
 const CartaoGolIcon = styled.span`
@@ -55,7 +52,7 @@ const Cartao = styled.div`
   min-width: 380px;
   border-radius: 10px;
   overflow: hidden;
-  border-left: 6px solid ${({ $cor }) => $cor};
+  border-left: 6px solid ${VERDE};
   box-shadow: 0 14px 44px -14px rgba(0, 0, 0, 0.75);
   animation: ${Entrada} 0.4s cubic-bezier(0.2, 0.9, 0.25, 1);
   font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
@@ -96,8 +93,8 @@ const FaixaTopo = styled.div`
     flex-shrink: 0;
     padding: 3px 12px;
     border-radius: 999px;
-    background: ${({ $cor }) => $cor};
-    color: ${({ $corTexto }) => $corTexto};
+    background: ${VERDE};
+    color: #0a0f00;
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 1px;
