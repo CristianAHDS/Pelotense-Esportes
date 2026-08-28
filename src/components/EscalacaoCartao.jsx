@@ -23,7 +23,7 @@ const Entrada = keyframes`
 const Cartao = styled.div`
   display: flex;
   flex-direction: column;
-  width: 340px;
+  width: 380px;
   border-radius: 10px;
   overflow: hidden;
   border-left: 6px solid ${({ $cor }) => $cor};
@@ -32,7 +32,7 @@ const Cartao = styled.div`
   font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
 
   @media (max-width: 420px) {
-    width: 300px;
+    width: 320px;
   }
 `;
 
@@ -132,6 +132,16 @@ const CartaoMarca = styled.span`
   background: ${({ $cor }) => ($cor === 'amarelo' ? '#eab308' : '#dc2626')};
 `;
 
+const BolaGol = styled.span`
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #e0e0e0);
+  box-shadow: inset -2px -3px 4px rgba(0, 0, 0, 0.35);
+  font-size: 0;
+`;
+
 const LinhaTecnico = styled.div`
   display: flex;
   align-items: center;
@@ -193,18 +203,19 @@ export function EscalacaoCartao({ dados, lado }) {
           <span className={`nome${jogador.nome ? '' : ' vazio'}`}>
             {jogador.nome || `Jogador ${i + 1}`}
           </span>
-          {(jogador.cartoes?.amarelo > 0 || jogador.cartoes?.vermelho > 0) && (
+          {(jogador.gols > 0 ||
+            jogador.cartoes?.amarelo > 0 ||
+            jogador.cartoes?.vermelho > 0) && (
             <span className="marcas">
+              {Array(jogador.gols || 0)
+                .fill('gol')
+                .map((g, gi) => <BolaGol key={`gol-${i}-${gi}`} />)}
               {Array(jogador.cartoes?.amarelo || 0)
                 .fill('amarelo')
-                .map((c) => (
-                  <CartaoMarca key={`am-${i}-${c}`} $cor={c} />
-                ))}
+                .map((c, ci) => <CartaoMarca key={`am-${i}-${ci}`} $cor={c} />)}
               {Array(jogador.cartoes?.vermelho || 0)
                 .fill('vermelho')
-                .map((c) => (
-                  <CartaoMarca key={`vm-${i}-${c}`} $cor={c} />
-                ))}
+                .map((c, ci) => <CartaoMarca key={`vm-${i}-${ci}`} $cor={c} />)}
             </span>
           )}
         </LinhaJogador>

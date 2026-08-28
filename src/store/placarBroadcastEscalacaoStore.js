@@ -10,7 +10,7 @@ export const ESTADOS_PARTIDA = ['AO VIVO', 'INTERVALO', 'ENCERRADO']
 export const FORMACOES = ['4-3-3', '4-4-2', '4-2-3-1', '4-1-4-1', '3-5-2', '3-4-3', '5-3-2', '4-3-1-2']
 
 function jogadorPadrao() {
-  return { num: '', nome: '', cartoes: { amarelo: 0, vermelho: 0 } }
+  return { num: '', nome: '', cartoes: { amarelo: 0, vermelho: 0 }, gols: 0 }
 }
 
 function timePadrao() {
@@ -30,7 +30,7 @@ const estadoPadrao = {
   corVisitanteBorda: '#0d47a1',
   estadoPartida: 'AO VIVO',
   escalacao: {
-    nomeCasa: 'PELOTENSE',
+    nomeCasa: 'PELOTAS',
     siglaCasa: 'PEL',
     formacaoCasa: '4-3-3',
     tecnicoCasa: '',
@@ -75,7 +75,12 @@ function normalizarJogador(j) {
     amarelo: Math.max(0, Number(j?.cartoes?.amarelo) || 0),
     vermelho: Math.max(0, Number(j?.cartoes?.vermelho) || 0)
   }
-  return { num: String(j?.num || ''), nome: String(j?.nome || ''), cartoes }
+  return {
+    num: String(j?.num || ''),
+    nome: String(j?.nome || ''),
+    cartoes,
+    gols: Math.max(0, Number(j?.gols) || 0)
+  }
 }
 
 let estado = carregar()
@@ -108,6 +113,10 @@ export function segundosAtuais(cron) {
     return Math.max(0, base + Math.floor((Date.now() - iniciadoEm) / 1000))
   }
   return Math.max(0, base)
+}
+
+function minutoDeJogo(cron) {
+  return Math.floor(segundosAtuais(cron) / 60)
 }
 
 function pacoteSincronizacao() {
@@ -391,7 +400,7 @@ export function atualizarJogador(lado, indice, campo, valor) {
     const lista = estado.escalacao.jogadores[lado]
     if (!lista || !lista[indice]) return estado
     if (campo === 'num') lista[indice].num = String(valor).slice(0, 2)
-    else if (campo === 'nome') lista[indice].nome = String(valor).slice(0, 22).toUpperCase()
+    else if (campo === 'nome') lista[indice].nome = String(valor).slice(0, 28).toUpperCase()
     return estado
   })
 }
@@ -409,9 +418,42 @@ function notificarCartao(lado, indice, cor, estadoAtual) {
     num: jogador.num,
     nome: jogador.nome,
     sigla: time,
+    minuto: minutoDeJogo(estadoAtual.cronometro),
     em: Date.now(),
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
   }
+}
+
+export function notificarGol(lado, indice, estadoAtual) {
+  const lista = estadoAtual.escalacao.jogadores[lado]
+  const jogador = lista?.[indice] || {}
+  const chave = lado === 'casa' ? 'siglaCasa' : 'siglaFora'
+  const time = estadoAtual.escalacao[chave]
+  return {
+    tipo: 'gol',
+    lado,
+    indice,
+    num: jogador.num,
+    nome: jogador.nome,
+    sigla: time,
+    cor: lado === 'casa' ? estadoAtual.escalacao.corCasa : estadoAtual.escalacao.corFora,
+    minuto: minutoDeJogo(estadoAtual.cronometro),
+    em: Date.now(),
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
+  }
+}
+
+export function marcarGol(lado, indice) {
+  setEstado((estado) => {
+    const lista = estado.escalacao.jogadores[lado]
+    if (!lista || !lista[indice]) return estado
+    lista[indice].gols = (lista[indice].gols || 0) + 1
+    const chaveTime = lado === 'casa' ? 'timeCasa' : 'timeVisitante'
+    estado[chaveTime].gols = Math.max(0, estado[chaveTime].gols + 1)
+    estado.eventoGol = { lado: lado === 'casa' ? 'casa' : 'visitante', em: Date.now() }
+    estado.notificacao = notificarGol(lado, indice, estado)
+    return estado
+  })
 }
 
 export function darCartaoJogador(lado, indice, cor) {
@@ -457,9 +499,9 @@ export function realizarSubstituicao({ lado, sairIndice, numEntra, nomeEntra, mi
     if (!lista || !lista[sairIndice]) return estado
     const esc = estado.escalacao
     const sair = lista[sairIndice]
-    const m = String(minuto).slice(0, 6) || `'`
+    const m = String(minuto || `${minutoDeJogo(estado.cronometro)}'`).slice(0, 6) || `'`
     const entraNum = String(numEntra || '').slice(0, 2)
-    const entraNome = String(nomeEntra || '').slice(0, 22).toUpperCase()
+    const entraNome = String(nomeEntra || '').slice(0, 28).toUpperCase()
     estado.notificacao = {
       tipo: 'troca',
       lado,
@@ -477,7 +519,8 @@ export function realizarSubstituicao({ lado, sairIndice, numEntra, nomeEntra, mi
     lista[sairIndice] = {
       num: entraNum,
       nome: entraNome,
-      cartoes: { amarelo: 0, vermelho: 0 }
+      cartoes: { amarelo: 0, vermelho: 0 },
+      gols: 0
     }
     return estado
   })

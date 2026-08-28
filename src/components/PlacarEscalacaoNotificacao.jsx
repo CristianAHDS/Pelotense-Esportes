@@ -102,6 +102,17 @@ const Marca = styled.span`
   background: ${({ $cor }) => $cor};
 `
 
+const Bola = styled.span`
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 30px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffffff, #e2e2e2);
+  box-shadow: inset -3px -4px 6px rgba(0, 0, 0, 0.4);
+`
+
 export function PlacarEscalacaoNotificacao({ notificacao, tempoMinuto }) {
   const [atual, setAtual] = useState(notificacao)
   const [, forcarTick] = useState(0)
@@ -134,7 +145,7 @@ export function PlacarEscalacaoNotificacao({ notificacao, tempoMinuto }) {
         <Linha>
           <div className="topo">
             <span className="sigla">{atual.sigla || 'TIME'}</span>
-            {tempoMinuto && <span className="minuto">{tempoMinuto}</span>}
+            {atual.minuto != null && <span className="minuto">{atual.minuto}'</span>}
           </div>
           <span className="principal">
             {atual.nome || `Jogador ${(atual.indice || 0) + 1}`}
@@ -147,6 +158,27 @@ export function PlacarEscalacaoNotificacao({ notificacao, tempoMinuto }) {
       </Cartao>
     )
   }
+
+  if (atual.tipo === 'gol') {
+    const cor = atual.cor || VERDE
+    return (
+      <Cartao $cor={cor}>
+        <Bola $cor={cor} />
+        <Linha>
+          <div className="topo">
+            <span className="sigla">{atual.sigla || 'TIME'}</span>
+            {atual.minuto != null && <span className="minuto">{atual.minuto}'</span>}
+          </div>
+          <span className="principal">
+            {atual.nome || `Jogador ${(atual.indice || 0) + 1}`}
+            {atual.num ? ` · ${atual.num}` : ''}
+          </span>
+          <span className="evento">⚽ GOOOL!</span>
+        </Linha>
+      </Cartao>
+    )
+  }
+
   const cor = atual.cor || VERDE
   return (
     <SubstituicaoCartao
@@ -155,7 +187,7 @@ export function PlacarEscalacaoNotificacao({ notificacao, tempoMinuto }) {
         siglaTime: atual.sigla || 'TIME',
         nomeTime: atual.nome || '',
         escudoTime: undefined,
-        minuto: atual.minuto || tempoMinuto,
+        minuto: atual.minuto ? `${atual.minuto}'` : tempoMinuto,
         saiNum: atual.saiNum,
         saiNome: atual.saiNome || 'Sai',
         entraNum: atual.entraNum,

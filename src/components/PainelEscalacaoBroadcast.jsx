@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import styled from 'styled-components'
-import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
+import { useState } from 'react';
+import styled from 'styled-components';
+import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import {
   FORMACOES,
   atualizarEscalacaoCampo,
@@ -9,22 +9,23 @@ import {
   darCartaoJogador,
   removerCartaoJogador,
   realizarSubstituicao,
+  marcarGol,
   mostrarEscalacao,
   ocultarEscalacao,
   segundosAtuais,
-  placarBroadcastEscalacao
-} from '../store/placarBroadcastEscalacaoStore'
-import { CoresFixas } from './CoresFixas'
-import { SeletorSigla } from './SeletorSigla'
+  placarBroadcastEscalacao,
+} from '../store/placarBroadcastEscalacaoStore';
+import { CoresFixas } from './CoresFixas';
+import { SeletorSigla } from './SeletorSigla';
 
-const VERDE = '#a5ef1c'
+const VERDE = '#a5ef1c';
 
 const Painel = styled.section`
   background: ${({ theme }) => theme.cores.superficie};
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 16px;
   padding: 20px 24px;
-`
+`;
 
 const Titulo = styled.h2`
   font-family: ${({ theme }) => theme.fontes.titulo};
@@ -36,7 +37,7 @@ const Titulo = styled.h2`
   span {
     color: ${VERDE};
   }
-`
+`;
 
 const GradeTimes = styled.div`
   display: grid;
@@ -46,7 +47,7 @@ const GradeTimes = styled.div`
   @media (max-width: 760px) {
     grid-template-columns: 1fr;
   }
-`
+`;
 
 const SecaoTime = styled.div`
   background: ${({ theme }) => theme.cores.fundo};
@@ -54,7 +55,7 @@ const SecaoTime = styled.div`
   border-left: 4px solid ${({ $cor }) => $cor};
   border-radius: 12px;
   padding: 14px 16px;
-`
+`;
 
 const RotuloTime = styled.h3`
   font-family: ${({ theme }) => theme.fontes.titulo};
@@ -64,7 +65,7 @@ const RotuloTime = styled.h3`
   text-transform: uppercase;
   color: ${({ theme }) => theme.cores.textoSuave};
   margin-bottom: 12px;
-`
+`;
 
 const Rotulo = styled.span`
   display: block;
@@ -74,7 +75,7 @@ const Rotulo = styled.span`
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: ${({ theme }) => theme.cores.textoSuave};
-`
+`;
 
 const Linha = styled.div`
   display: flex;
@@ -86,7 +87,7 @@ const Linha = styled.div`
   &:last-of-type {
     margin-bottom: 0;
   }
-`
+`;
 
 const Campo = styled.label`
   display: flex;
@@ -97,7 +98,7 @@ const Campo = styled.label`
     flex: 1;
     min-width: 130px;
   }
-`
+`;
 
 const Entrada = styled.input`
   width: 100%;
@@ -116,7 +117,7 @@ const Entrada = styled.input`
   &:focus {
     border-color: ${VERDE};
   }
-`
+`;
 
 const Selecao = styled.select`
   width: 100%;
@@ -135,7 +136,7 @@ const Selecao = styled.select`
   &:focus {
     border-color: ${VERDE};
   }
-`
+`;
 
 const EntradaNum = styled(Entrada)`
   width: 64px;
@@ -147,7 +148,7 @@ const EntradaNum = styled(Entrada)`
   &::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-`
+`;
 
 const LinhaJogador = styled.div`
   display: flex;
@@ -158,19 +159,34 @@ const LinhaJogador = styled.div`
   border-radius: 10px;
   padding: 8px;
   background: ${({ theme }) => theme.cores.superficie};
-`
+`;
 
 const ListaJogadores = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
-const JogadorNome = styled(Entrada)`
-  flex: 1;
-  min-width: 0;
-  font-size: 0.82rem;
-  padding: 8px 10px;
-`
+const BotaoGol = styled.button`
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  background: #1f2937;
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 800;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  transition: filter 0.15s ease;
+
+  &:hover {
+    filter: brightness(1.25);
+  }
+`;
 
 const BotaoCartao = styled.button`
   flex-shrink: 0;
@@ -204,7 +220,7 @@ const BotaoCartao = styled.button`
     opacity: 0.35;
     cursor: not-allowed;
   }
-`
+`;
 
 const TrocarBotao = styled.button`
   flex-shrink: 0;
@@ -229,14 +245,14 @@ const TrocarBotao = styled.button`
     background: ${VERDE};
     border-color: ${VERDE};
   }
-`
+`;
 
 const Acoes = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 18px;
-`
+`;
 
 const Botao = styled.button`
   border: none;
@@ -279,13 +295,54 @@ const Botao = styled.button`
       background: ${({ theme }) => theme.cores.superficieHover};
     }
   }
-`
+`;
+
+function CampoNomeDois({ valor, onChange, placeholder }) {
+  const espaços = String(valor || '').indexOf(' ');
+  const nome =
+    espaços >= 0 ? String(valor).slice(0, espaços) : String(valor || '');
+  const sobrenome = espaços >= 0 ? String(valor).slice(espaços + 1) : '';
+  const montar = (n, s) => (s ? `${n} ${s}`.trim() : String(n || '').trim());
+  return (
+    <JogadorNomeDuplo>
+      <NomeParte
+        value={nome}
+        maxLength={14}
+        placeholder={`${placeholder} (nome)`}
+        onChange={(e) => onChange(montar(e.target.value, sobrenome))}
+      />
+      <NomeParte
+        value={sobrenome}
+        maxLength={14}
+        placeholder="Sobrenome"
+        onChange={(e) => onChange(montar(nome, e.target.value))}
+      />
+    </JogadorNomeDuplo>
+  );
+}
+
+const NomeParte = styled(Entrada)`
+  flex: 1;
+  min-width: 0;
+  font-size: 0.82rem;
+  padding: 8px 10px;
+`;
+
+const JogadorNomeDuplo = styled.div`
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  gap: 6px;
+`;
 
 export function PainelEscalacaoBroadcast() {
-  const estado = usePlacarBroadcast(placarBroadcastEscalacao)
-  const esc = estado.escalacao
-  const [sair, setSair] = useState({ casa: null, fora: null })
-  const [entra, setEntra] = useState({ casa: { num: '', nome: '' }, fora: { num: '', nome: '' } })
+  const estado = usePlacarBroadcast(placarBroadcastEscalacao);
+  const esc = estado.escalacao;
+  const [sair, setSair] = useState({ casa: null, fora: null });
+  const [entra, setEntra] = useState({
+    casa: { num: '', nome: '' },
+    fora: { num: '', nome: '' },
+  });
 
   const configColuna = (lado) => ({
     lado,
@@ -294,22 +351,22 @@ export function PainelEscalacaoBroadcast() {
     campoNome: lado === 'casa' ? 'nomeCasa' : 'nomeFora',
     campoSigla: lado === 'casa' ? 'siglaCasa' : 'siglaFora',
     campoFormacao: lado === 'casa' ? 'formacaoCasa' : 'formacaoFora',
-    campoTecnico: lado === 'casa' ? 'tecnicoCasa' : 'tecnicoFora'
-  })
+    campoTecnico: lado === 'casa' ? 'tecnicoCasa' : 'tecnicoFora',
+  });
 
   const confirmarTroca = (lado) => {
-    const conf = configColuna(lado)
-    if (sair[lado] == null) return
+    const conf = configColuna(lado);
+    if (sair[lado] == null) return;
     realizarSubstituicao({
       lado,
       sairIndice: sair[lado],
       numEntra: entra[lado].num,
       nomeEntra: entra[lado].nome,
-      minuto: formatarMinuto(estado.cronometro)
-    })
-    setSair((p) => ({ ...p, [lado]: null }))
-    setEntra((p) => ({ ...p, [lado]: { num: '', nome: '' } }))
-  }
+      minuto: formatarMinuto(estado.cronometro),
+    });
+    setSair((p) => ({ ...p, [lado]: null }));
+    setEntra((p) => ({ ...p, [lado]: { num: '', nome: '' } }));
+  };
 
   return (
     <Painel>
@@ -319,9 +376,9 @@ export function PainelEscalacaoBroadcast() {
 
       <GradeTimes>
         {['casa', 'fora'].map((lado) => {
-          const conf = configColuna(lado)
-          const cor = esc[conf.campoCor]
-          const jogadores = esc.jogadores?.[lado] || []
+          const conf = configColuna(lado);
+          const cor = esc[conf.campoCor];
+          const jogadores = esc.jogadores?.[lado] || [];
           return (
             <SecaoTime key={lado} $cor={cor}>
               <RotuloTime>{conf.rotulo}</RotuloTime>
@@ -349,14 +406,21 @@ export function PainelEscalacaoBroadcast() {
                   <Entrada
                     value={esc[conf.campoNome]}
                     maxLength={24}
-                    onChange={(e) => atualizarEscalacaoCampo(conf.campoNome, e.target.value)}
+                    onChange={(e) =>
+                      atualizarEscalacaoCampo(conf.campoNome, e.target.value)
+                    }
                   />
                 </Campo>
                 <Campo>
                   <Rotulo>Formação</Rotulo>
                   <Selecao
                     value={esc[conf.campoFormacao]}
-                    onChange={(e) => atualizarEscalacaoCampo(conf.campoFormacao, e.target.value)}
+                    onChange={(e) =>
+                      atualizarEscalacaoCampo(
+                        conf.campoFormacao,
+                        e.target.value,
+                      )
+                    }
                   >
                     {FORMACOES.map((f) => (
                       <option key={f} value={f}>
@@ -373,7 +437,9 @@ export function PainelEscalacaoBroadcast() {
                     value={esc[conf.campoTecnico]}
                     maxLength={28}
                     placeholder="Nome do técnico"
-                    onChange={(e) => atualizarEscalacaoCampo(conf.campoTecnico, e.target.value)}
+                    onChange={(e) =>
+                      atualizarEscalacaoCampo(conf.campoTecnico, e.target.value)
+                    }
                   />
                 </Campo>
               </Linha>
@@ -387,13 +453,16 @@ export function PainelEscalacaoBroadcast() {
                       max={99}
                       value={jogador.num}
                       title="Número"
-                      onChange={(e) => atualizarJogador(lado, i, 'num', e.target.value)}
+                      onChange={(e) =>
+                        atualizarJogador(lado, i, 'num', e.target.value)
+                      }
                     />
-                    <JogadorNome
-                      value={jogador.nome}
-                      maxLength={22}
+                    <CampoNomeDois
+                      valor={jogador.nome}
                       placeholder={`Jogador ${i + 1}`}
-                      onChange={(e) => atualizarJogador(lado, i, 'nome', e.target.value)}
+                      onChange={(nome) =>
+                        atualizarJogador(lado, i, 'nome', nome)
+                      }
                     />
                     <BotaoCartao
                       className="amarelo"
@@ -408,7 +477,9 @@ export function PainelEscalacaoBroadcast() {
                           : darCartaoJogador(lado, i, 'amarelo')
                       }
                     >
-                      {jogador.cartoes?.amarelo > 0 ? jogador.cartoes.amarelo : 'A'}
+                      {jogador.cartoes?.amarelo > 0
+                        ? jogador.cartoes.amarelo
+                        : 'A'}
                     </BotaoCartao>
                     <BotaoCartao
                       className="vermelho"
@@ -423,13 +494,25 @@ export function PainelEscalacaoBroadcast() {
                           : darCartaoJogador(lado, i, 'vermelho')
                       }
                     >
-                      {jogador.cartoes?.vermelho > 0 ? jogador.cartoes.vermelho : 'V'}
+                      {jogador.cartoes?.vermelho > 0
+                        ? jogador.cartoes.vermelho
+                        : 'V'}
                     </BotaoCartao>
+                    <BotaoGol title="Gol" onClick={() => gol(lado, +1)}>
+                      ⚽
+                    </BotaoGol>
                     <TrocarBotao
                       className={sair[lado] === i ? 'ativo' : ''}
-                      title={sair[lado] === i ? 'Desfazer seleção' : 'Marcar para sair'}
+                      title={
+                        sair[lado] === i
+                          ? 'Desfazer seleção'
+                          : 'Marcar para sair'
+                      }
                       onClick={() =>
-                        setSair((p) => ({ ...p, [lado]: p[lado] === i ? null : i }))
+                        setSair((p) => ({
+                          ...p,
+                          [lado]: p[lado] === i ? null : i,
+                        }))
                       }
                     >
                       ⇄
@@ -445,7 +528,7 @@ export function PainelEscalacaoBroadcast() {
                     padding: 10,
                     border: '1px solid rgba(165,239,28,0.35)',
                     borderRadius: 10,
-                    background: 'rgba(165,239,28,0.06)'
+                    background: 'rgba(165,239,28,0.06)',
                   }}
                 >
                   <Campo className="cresce">
@@ -457,7 +540,7 @@ export function PainelEscalacaoBroadcast() {
                       onChange={(e) =>
                         setEntra((p) => ({
                           ...p,
-                          [lado]: { ...p[lado], nome: e.target.value }
+                          [lado]: { ...p[lado], nome: e.target.value },
                         }))
                       }
                     />
@@ -472,18 +555,21 @@ export function PainelEscalacaoBroadcast() {
                       onChange={(e) =>
                         setEntra((p) => ({
                           ...p,
-                          [lado]: { ...p[lado], num: e.target.value }
+                          [lado]: { ...p[lado], num: e.target.value },
                         }))
                       }
                     />
                   </Campo>
-                  <Botao className="primario" onClick={() => confirmarTroca(lado)}>
+                  <Botao
+                    className="primario"
+                    onClick={() => confirmarTroca(lado)}
+                  >
                     Confirmar troca
                   </Botao>
                 </Linha>
               )}
             </SecaoTime>
-          )
+          );
         })}
       </GradeTimes>
 
@@ -499,11 +585,10 @@ export function PainelEscalacaoBroadcast() {
         )}
       </Acoes>
     </Painel>
-  )
+  );
 }
 
 function formatarMinuto(cron) {
-  const s = segundosAtuais(cron)
-  return `${s}'`
+  const s = segundosAtuais(cron);
+  return `${Math.floor(s / 60)}'`;
 }
-

@@ -221,13 +221,14 @@ export function elencoDaSigla(sigla) {
     num: String(j.num || ''),
     nome: String(j.nome || '').toUpperCase(),
     cartoes: { amarelo: 0, vermelho: 0 },
+    gols: 0,
   }))
 }
 
 /* Nome completo por sigla (usado no auto-preenchimento) */
 export const NOMES_POR_SIGLA = {
-  PEL: 'PELOTENSE',
-  BRA: 'BRASIL DE PELOTAS',
+  PEL: 'PELOTAS',
+  BRA: 'BRASIL',
   VER: 'VERANÓPOLIS',
   PAS: 'PASSO FUNDO',
   ESP: 'ESPORTIVO',
