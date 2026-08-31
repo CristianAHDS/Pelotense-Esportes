@@ -44,7 +44,7 @@ const LIMITE_ECO = 16
 const publicacoesRecentes = new Map()
 
 /* Janela em que edições locais protegem o estado contra entregas defasadas */
-const JANELA_EDICAO_LOCAL_MS = 1200
+const JANELA_EDICAO_LOCAL_MS = 300
 const ultimaEdicaoLocal = new Map()
 
 function marcarPublicacao(canal, texto) {
@@ -144,7 +144,7 @@ function iniciarBatimento(forcar = false) {
       } catch {}
     }
     bater()
-    timerBatimento = setInterval(bater, 8000)
+    timerBatimento = setInterval(bater, 3000)
   } else if (forcar) {
     try {
       const referencia = ref(db, caminhoControle())

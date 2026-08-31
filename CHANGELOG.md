@@ -2,6 +2,10 @@
 
 ## 31/08/2026
 
+### Sincronização nuvem: reduzir latência entre dispositivos
+- Batimento de controle do claim reduzido de 8s para 3s (`setInterval`), mantendo a conexão/claim Firebase mais quente e reduzindo o atraso percebido (~8–10s antes) ao propagar estados, ex.: start do cronômetro, para overlays em outros dispositivos.
+- `JANELA_EDICAO_LOCAL_MS` reduzida de 1200ms para 300ms, encurtando a janela em que entregas da nuvem são ignoradas após edição local.
+
 ### Placar Broadcast Escalação: desfazer/refazer gols
 - Novo undo/redo **exclusivo para gols do placar** (opção 9), no painel "Times e Placar": botões `↩ Desfazer gol` e `↪ Refazer gol`.
 - O histórico registra um snapshot dos gols (`timeCasa.gols`/`timeVisitante.gols`) **e dos gols de cada jogador** a cada alteração vinda de `gol()` (botões +/-) ou `marcarGol` (⚽ do jogador). `desfazerGol`/`refazerGol` restauram o placar dos dois times e também a contagem de gols dos atletas — ao desfazer, a bolinha ⚽ some (ou diminui) ao lado do jogador.
