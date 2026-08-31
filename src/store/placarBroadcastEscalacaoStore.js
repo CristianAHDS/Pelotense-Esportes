@@ -88,6 +88,19 @@ let estado = carregar()
 const ouvintes = new Set()
 let processandoRemoto = false
 
+let pilhaDesfazerGols = []
+let pilhaRefazerGols = []
+
+function snapshotGols(estado) {
+  return { casa: estado.timeCasa.gols, visitante: estado.timeVisitante.gols }
+}
+
+function registrarDesfazerGol(estado) {
+  pilhaDesfazerGols.push(snapshotGols(estado))
+  if (pilhaDesfazerGols.length > 50) pilhaDesfazerGols.shift()
+  pilhaRefazerGols = []
+}
+
 const canal =
   typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel(CHANNEL_NAME) : null
 
@@ -210,10 +223,37 @@ export function inscrever(ouvinte) {
 export function gol(lado, delta) {
   setEstado((estado) => {
     const chave = lado === 'casa' ? 'timeCasa' : 'timeVisitante'
-    estado[chave].gols = Math.max(0, estado[chave].gols + delta)
+    const antes = estado[chave].gols
+    const proximo = Math.max(0, antes + delta)
+    if (proximo === antes) return estado
+    registrarDesfazerGol(estado)
+    estado[chave].gols = proximo
     if (delta > 0) {
       estado.eventoGol = { lado, em: Date.now() }
     }
+    return estado
+  })
+}
+
+export function desfazerGol() {
+  setEstado((estado) => {
+    const snap = pilhaDesfazerGols.pop()
+    if (!snap) return estado
+    pilhaRefazerGols.push(snapshotGols(estado))
+    estado.timeCasa.gols = snap.casa
+    estado.timeVisitante.gols = snap.visitante
+    estado.eventoGol = null
+    return estado
+  })
+}
+
+export function refazerGol() {
+  setEstado((estado) => {
+    const snap = pilhaRefazerGols.pop()
+    if (!snap) return estado
+    pilhaDesfazerGols.push(snapshotGols(estado))
+    estado.timeCasa.gols = snap.casa
+    estado.timeVisitante.gols = snap.visitante
     return estado
   })
 }
@@ -445,6 +485,7 @@ export function marcarGol(lado, indice) {
   setEstado((estado) => {
     const lista = estado.escalacao.jogadores[lado]
     if (!lista || !lista[indice]) return estado
+    registrarDesfazerGol(estado)
     lista[indice].gols = (lista[indice].gols || 0) + 1
     const chaveTime = lado === 'casa' ? 'timeCasa' : 'timeVisitante'
     estado[chaveTime].gols = Math.max(0, estado[chaveTime].gols + 1)

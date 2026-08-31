@@ -5,6 +5,8 @@ import { SeletorSigla } from '../components/SeletorSigla'
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
 import {
   gol,
+  desfazerGol,
+  refazerGol,
   renomearTime,
   alternarCronometro,
   zerarCronometro,
@@ -395,6 +397,14 @@ function PainelTimes() {
           )}
         </BlocoTime>
       ))}
+      <div style={{ display: 'flex', gap: 10, marginTop: 18 }}>
+        <Botao className="neutro" onClick={desfazerGol}>
+          ↩ Desfazer gol
+        </Botao>
+        <Botao className="neutro" onClick={refazerGol}>
+          ↪ Refazer gol
+        </Botao>
+      </div>
     </Painel>
   )
 }

@@ -2,6 +2,12 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: desfazer/refazer gols
+- Novo undo/redo **exclusivo para gols do placar** (opção 9), no painel "Times e Placar": botões `↩ Desfazer gol` e `↪ Refazer gol`.
+- O histórico registra um snapshot dos gols (`timeCasa.gols`/`timeVisitante.gols`) a cada alteração vinda de `gol()` (botões +/-) ou `marcarGol` (⚽ do jogador). `desfazerGol`/`refazerGol` restauram o placar dos dois times pela pilha.
+- As pilhas de histórico são locais ao operador (não persistidas nem sincronizadas); a restauração do placar em si sincroniza normalmente (BroadcastChannel + nuvem).
+- Nota: como o escopo é "gols somente" (placar), o desfazer restaura o placar mesmo quando o gol veio de um jogador (`marcarGol` não reverte a contagem de gols do atleta).
+
 ### PainelEscalacaoBroadcast: espaçamento abaixo do dropdown de cores
 - O bloco colapsável de cores (`▸/▾ Cores`) ganhou `margin-bottom` (`BlocoCores`), criando um respiro entre o dropdown e a lista de jogadores da escalação no controle.
 
