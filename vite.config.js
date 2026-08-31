@@ -1,23 +1,23 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 const proxyFGF = {
   '/fgf': {
     target: 'https://fgf.com.br',
     changeOrigin: true,
     secure: true,
-    rewrite: (path) => path.replace(/^\/fgf/, '')
-  }
-}
+    rewrite: (path) => path.replace(/^\/fgf/, ''),
+  },
+};
 
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 5173,
+    port: 5174,
     open: false,
-    proxy: proxyFGF
+    proxy: proxyFGF,
   },
   preview: {
-    proxy: proxyFGF
-  }
-})
+    proxy: proxyFGF,
+  },
+});

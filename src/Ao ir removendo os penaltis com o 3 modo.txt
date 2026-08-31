@@ -1,1 +1,0 @@
-Ao ir removendo os penaltis com o 3 modod e click, faça a lista se readequar(diminuindo a lista de penalts)

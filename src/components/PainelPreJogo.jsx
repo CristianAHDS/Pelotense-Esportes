@@ -187,6 +187,18 @@ export function PainelPreJogo() {
   }, []);
   const rodando = Boolean(estado.cronometro?.rodando);
   const restante = segundosRestantes(estado.cronometro);
+  const [duracaoHoras, setDuracaoHoras] = useState('');
+  const [duracaoMinutos, setDuracaoMinutos] = useState('');
+  const aplicarDuracao = () => {
+    const h = Math.max(0, Math.floor(Number(duracaoHoras) || 0));
+    const min = Math.max(0, Math.floor(Number(duracaoMinutos) || 0));
+    const totalSeg = h * 3600 + min * 60;
+    if (totalSeg > 0) {
+      definirDuracao(totalSeg);
+      setDuracaoHoras('');
+      setDuracaoMinutos('');
+    }
+  };
 
   return (
     <Cartao>
@@ -207,6 +219,34 @@ export function PainelPreJogo() {
               </Chip>
             ))}
           </ListaChips>
+          <Rotulo>Tempo livre</Rotulo>
+          <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
+            <Entrada
+              type="number"
+              min="0"
+              step="1"
+              placeholder="Horas"
+              style={{ width: 'auto', flex: 1 }}
+              value={duracaoHoras}
+              onChange={(e) => setDuracaoHoras(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') aplicarDuracao();
+              }}
+            />
+            <Entrada
+              type="number"
+              min="0"
+              step="1"
+              placeholder="Minutos"
+              style={{ width: 'auto', flex: 1 }}
+              value={duracaoMinutos}
+              onChange={(e) => setDuracaoMinutos(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') aplicarDuracao();
+              }}
+            />
+            <Botao onClick={aplicarDuracao}>Definir</Botao>
+          </div>
           <GradeBotoes>
             <Botao $primario onClick={alternarCronometro}>
               {rodando ? '⏸ Pausar' : '▶ Iniciar'}
