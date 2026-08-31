@@ -90,11 +90,7 @@ export function criarSubstituicaoStore(rotulo) {
   }
   function aplicarEstadoRemoto(novoEstado) {
     const serializado = JSON.stringify(novoEstado);
-    if (
-      ultimosSync.includes(serializado) ||
-      serializado === JSON.stringify(estado)
-    )
-      return;
+    if (serializado === JSON.stringify(estado)) return;
     registrarSync(novoEstado);
 
     if (!processandoRemoto) {

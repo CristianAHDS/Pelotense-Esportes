@@ -102,7 +102,7 @@ function registrarSync(valor) {
 
 function aplicarEstadoRemoto(novoEstado) {
   const serializado = JSON.stringify(novoEstado)
-  if (ultimosSync.includes(serializado) || serializado === JSON.stringify(estado)) return
+  if (serializado === JSON.stringify(estado)) return
 
   /* Rejeitar estados mais antigos que o atual (last-write-wins). Evita que um
      snapshot "rodando" já em trânsito (echo do tick na nuvem) revele o pause

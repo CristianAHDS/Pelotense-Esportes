@@ -2,6 +2,17 @@
 
 ## 31/08/2026
 
+### Correção: toggles e remoções não refletiam no overlay até dar refresh
+- **Sintoma**: no controle, mudanças de estado que retornavam a um valor já visto (ex.: ocultar e reexibir a escalação, remover o acréscimo do cronômetro) não atualizavam ao vivo no overlay — só sumiam/apareciam após recarregar a página.
+- **Causa**: `aplicarEstadoRemoto` suprimia qualquer pacote cuja serialização já estivesse em `ultimosSync`. Ao alternar uma flag para um estado anterior (escalação `true→false→true`, acréscimo `null→X→null`), o pacote novo serializava idêntico a um já registrado e era **descartado**, mesmo o overlay estando num estado diferente.
+- **Correção**: removida a checagem `ultimosSync.includes(...)` (eco redundante, já tratado na camada de nuvem via `ehEcoProprio`). O guard agora compara apenas `JSON.stringify(novoEstado) === JSON.stringify(estado)` — idempotente, corrige a dupla entrega (BroadcastChannel + nuvem) sem descartar estados legítimos.
+- Aplicado em todos os stores com o padrão de sincronização: `placarBroadcastEscalacaoStore`, `placarBroadcastStore`, `placarBroadcastPLStore`, `placarBroadcastBLStore`, `placarBroadcastLLStore`, `placarNormalStore`, `placarModelStore`, `placarProStore`, `placarStore`, `artilheirosStore`, `escalacaoStore`, `mataMataStore`, `penaltisStore`, `preJogoStore`, `proximasRodadasStore`, `substituicaoStore`, `tabelaStore`, `tabelaCompactaStore` e `ultimaRodadaStore`.
+
+### Placar Broadcast Escalação: notificação de cartão sem linha no nome + padrões de reset
+- **Cartão sem riscado**: o nome do jogador no card de cartão amarelo/vermelho não é mais exibido com `line-through`. A decoração só permanece na troca (linha "Sai") — `SubstituicaoCartao` agora usa prop `$riscado` no lugar do `text-decoration` baseado apenas no `$tipo`.
+- **Cor padrão do placar**: a cor padrão do scoreboard agora é preta (`#1f1f1f`/`#0a0a0a`), igual ao quadradinho "Preto" da paleta — aplicada a `corCasa`/`corVisitante` e bordas.
+- **Reset padrão CASA × VISITANTE**: ao resetar a partida inteira (e no estado inicial), os times iniciam como `CASA` (escalação: `siglaCasa CAS`) e `VISITANTE` — substituindo `BRA`/`PEL`/`PELOTAS`.
+
 ### Correção: relógio pulava/voltava ao mudar qualquer informação no controle
 - **Sintoma**: no overlay (ex.: `/placar-broadcast-escalacao`), o cronômetro do jogo voltava/pulava sempre que outra informação era alterada no controle (escalação, cartão, nome, etc.).
 - **Causa**: `aplicarEstadoRemoto` re-baseara o cronômetro a partir do snapshot `segundos` enviado no pacote de sincronização. Como esse snapshot é gerado no momento da publicação e chega defasado pela latência da nuvem (BroadcastChannel + Firebase), o `diff` excedia o limite e o relógio era reiniciado para o valor **antigo** do snapshot.

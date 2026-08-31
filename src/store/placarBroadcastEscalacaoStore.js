@@ -18,20 +18,20 @@ function timePadrao() {
 }
 
 const estadoPadrao = {
-  timeCasa: { nome: 'BRA', gols: 0 },
-  timeVisitante: { nome: 'PEL', gols: 0 },
+  timeCasa: { nome: 'CASA', gols: 0 },
+  timeVisitante: { nome: 'VISITANTE', gols: 0 },
   cronometro: { base: 0, rodando: false, iniciadoEm: null },
   periodo: '1T',
   acrescimo: null,
   eventoGol: null,
-  corCasa: '#b91c1c',
-  corCasaBorda: '#7f1d1d',
-  corVisitante: '#1565c0',
-  corVisitanteBorda: '#0d47a1',
+  corCasa: '#1f1f1f',
+  corCasaBorda: '#0a0a0a',
+  corVisitante: '#1f1f1f',
+  corVisitanteBorda: '#0a0a0a',
   estadoPartida: 'AO VIVO',
   escalacao: {
-    nomeCasa: 'PELOTAS',
-    siglaCasa: 'PEL',
+    nomeCasa: 'CASA',
+    siglaCasa: 'CAS',
     formacaoCasa: '4-3-3',
     tecnicoCasa: '',
     corCasa: '#008F3D',
@@ -141,25 +141,13 @@ export function setEstado(atualizador, { remoto = false } = {}) {
     const pacote = pacoteSincronizacao()
     canal?.postMessage({ tipo: MSG_TIPO, estado: pacote })
     publicarNuvem(CANAL_NUVEM, pacote)
-    registrarSync(pacote)
   }
 
   processandoRemoto = false
 }
 
-const ultimosSync = []
-const LIMITE_SYNC = 16
-
-function registrarSync(valor) {
-  const texto = JSON.stringify(valor)
-  ultimosSync.push(texto)
-  while (ultimosSync.length > LIMITE_SYNC) ultimosSync.shift()
-}
 function aplicarEstadoRemoto(novoEstado) {
-  const serializado = JSON.stringify(novoEstado)
-  if (ultimosSync.includes(serializado) || serializado === JSON.stringify(estado)) return
-  registrarSync(novoEstado)
-
+  if (JSON.stringify(novoEstado) === JSON.stringify(estado)) return
   if (!processandoRemoto) {
     const cron = novoEstado.cronometro
     if (cron?.rodando) {

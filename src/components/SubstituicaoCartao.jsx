@@ -177,7 +177,7 @@ const LinhaJogador = styled.div`
   overflow: hidden;
     text-overflow: ellipsis;
     color: ${({ $tipo }) => ($tipo === 'sai' ? 'rgba(255,255,255,.42)' : '#fff')};
-    text-decoration: ${({ $tipo }) => ($tipo === 'sai' ? 'line-through' : 'none')};
+    text-decoration: ${({ $riscado }) => ($riscado ? 'line-through' : 'none')};
 }
 `;
 
@@ -248,7 +248,7 @@ export function SubstituicaoCartao({ dados }) {
         <span className="nome">{dados.nomeTime}</span>
         {temMinuto && <span className="minuto">{dados.minuto}</span>}
       </FaixaTopo>
-      <LinhaJogador $tipo="sai">
+      <LinhaJogador $tipo="sai" $riscado>
         <span className="seta sai">↓</span>
         <span className="num">{dados.saiNum}</span>
         <span className="nome">{dados.saiNome}</span>
