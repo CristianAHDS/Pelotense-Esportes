@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: lados casa/fora com mesma largura
+- No overlay do scoreboard, os dois `BlocoTime` (casa e fora) agora usam `flex: 1` (com `min-width: 0`) no `CorpoPlacar`, garantindo que ambos os lados tenham a mesma largura independentemente do tamanho da sigla/escudo.
+
 ### Placar Broadcast Escalação: play do cronômetro seta estado para AO VIVO
 - Ao dar play no cronômetro, `estadoPartida` vai automaticamente para `AO VIVO` caso não esteja (ex.: INTERVALO/ENCERRADO). Ao pausar, o estado da partida permanece como está.
 

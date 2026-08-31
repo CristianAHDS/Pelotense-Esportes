@@ -117,12 +117,13 @@ const CorpoPlacar = styled.div`
 const BlocoTime = styled.div`
   position: relative;
   display: flex;
+  flex: 1;
   align-items: center;
   justify-content: center;
   gap: 14px;
   padding: 10px 24px;
   background: ${({ $cor }) => $cor};
-  min-width: 140px;
+  min-width: 0;
 
   ${({ $gol }) =>
     $gol &&
