@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### PainelEscalacaoBroadcast: espaçamento abaixo do dropdown de cores
+- O bloco colapsável de cores (`▸/▾ Cores`) ganhou `margin-bottom` (`BlocoCores`), criando um respiro entre o dropdown e a lista de jogadores da escalação no controle.
+
 ### PainelEscalacaoBroadcast: configuração de cor do time em dropdown escondido
 - A cor da escalação (`Cor do time`, via `CoresFixas`) deixou de ficar sempre visível ao lado da sigla e passou para um **dropdown colapsável** (`▸/▾ Cores`) por time, no mesmo padrão do painel "Times e Placar". O botão abre o seletor de cores da paleta fixa quando necessário, deixando o cabeçalho do time mais limpo (sigla, nome, formação e técnico sempre visíveis).
 
