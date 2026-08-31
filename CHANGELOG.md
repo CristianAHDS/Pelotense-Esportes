@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### Hub: placares desabilitados (em breve)
+- Marcados como `emBreve` (exibidos com chip "Em breve", sem prévia nem ações) os cards: Placar Broadcast, Placar Premier League, Placar Bundesliga, Placar LaLiga, Placar Normal e Placar Model. Placar Broadcast Escalação permanece ativo.
+
 ### Placar Broadcast Escalação: rótulos CASA/VISITANTE → HOME/AWAY
 - Textos exibidos como sigla padrão dos times alterados de `CASA`/`VISITANTE` para `HOME`/`AWAY` no `placarBroadcastEscalacaoStore.js` (estado padrão e fallback de `aplicarTimeSelecionado`).
 

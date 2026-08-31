@@ -16,6 +16,7 @@ const SCOREBOARDS = [
       'Design flat profissional com siglas e cores personalizáveis. Ideal para transmissões ao vivo e overlays.',
     accent: '#a5ef1c',
     glow: 'rgba(165, 239, 28, 0.2)',
+    emBreve: true,
   },
   {
     rota: '/placar-broadcast-escalacao',
@@ -34,6 +35,7 @@ const SCOREBOARDS = [
       'Identidade da Premier League em roxo e verde menta, com cronômetro em destaque.',
     accent: '#a5ef1c',
     glow: 'rgba(165, 239, 28, 0.16)',
+    emBreve: true,
   },
   {
     rota: '/placar-bl',
@@ -43,6 +45,7 @@ const SCOREBOARDS = [
       'Estilo alemão: vermelho e grafite, paralelogramos inclinados e cantos retos.',
     accent: '#d20515',
     glow: 'rgba(210, 5, 21, 0.22)',
+    emBreve: true,
   },
   {
     rota: '/placar-ll',
@@ -52,6 +55,7 @@ const SCOREBOARDS = [
       'Visual espanhol: barra branca com coral e azul-marinho, limpo e arredondado.',
     accent: '#ff4b44',
     glow: 'rgba(255, 75, 68, 0.18)',
+    emBreve: true,
   },
   {
     rota: '/placar-normal',
@@ -61,6 +65,7 @@ const SCOREBOARDS = [
       'Placar tradicional horizontal ao estilo TV: times nas pontas, placar no centro, cronômetro no topo.',
     accent: '#a5ef1c',
     glow: 'rgba(165, 239, 28, 0.2)',
+    emBreve: true,
   },
   {
     rota: '/placar-model',
@@ -70,6 +75,7 @@ const SCOREBOARDS = [
       'Placar compacto com glass morphism, barra de cor gradiente, glow neon e cronômetro ao vivo.',
     accent: '#a5ef1c',
     glow: 'rgba(165, 239, 28, 0.2)',
+    emBreve: true,
   },
 ];
 
@@ -1168,41 +1174,56 @@ export default function Hub() {
           <Grade>
             {SCOREBOARDS.map((m, i) => (
               <RevelarAoRolar key={m.rota} atraso={(i % 4) * 60}>
-                <Card $accent={m.accent} $glow={m.glow}>
-                  <CardTag $accent={m.accent}>{m.tag}</CardTag>
-                  <CardTitulo>{m.titulo}</CardTitulo>
-                  <CardDescricao>{m.descricao}</CardDescricao>
-                  <PreviaRotulo>Prévia ao vivo</PreviaRotulo>
-                  <PreviewAoVivo
-                    rota={m.rota}
-                    largura={720}
-                    altura={405}
-                    aoAmpliar={() =>
-                      setTv({
-                        rota: m.rota,
-                        tag: m.tag,
-                        titulo: m.titulo,
-                        accent: m.accent,
-                        largura: 720,
-                        altura: 405,
-                      })
-                    }
-                  />
-                  <CardAcoes>
-                    <Botao
-                      as="a"
-                      href={m.rota}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="primario"
-                    >
-                      Abrir
-                    </Botao>
-                    <Botao to={`${m.rota}/controle`} className="secundario">
-                      Controlar
-                    </Botao>
-                    <CopiarLink rota={m.rota} />
-                  </CardAcoes>
+                <Card
+                  className={m.emBreve ? 'breve' : ''}
+                  $accent={m.accent}
+                  $glow={m.glow}
+                >
+                  {m.emBreve ? (
+                    <>
+                      <CardTag $accent={m.accent}>{m.tag}</CardTag>
+                      <CardTitulo>{m.titulo}</CardTitulo>
+                      <CardDescricao>{m.descricao}</CardDescricao>
+                      <EmBreveChip>Em breve</EmBreveChip>
+                    </>
+                  ) : (
+                    <>
+                      <CardTag $accent={m.accent}>{m.tag}</CardTag>
+                      <CardTitulo>{m.titulo}</CardTitulo>
+                      <CardDescricao>{m.descricao}</CardDescricao>
+                      <PreviaRotulo>Prévia ao vivo</PreviaRotulo>
+                      <PreviewAoVivo
+                        rota={m.rota}
+                        largura={720}
+                        altura={405}
+                        aoAmpliar={() =>
+                          setTv({
+                            rota: m.rota,
+                            tag: m.tag,
+                            titulo: m.titulo,
+                            accent: m.accent,
+                            largura: 720,
+                            altura: 405,
+                          })
+                        }
+                      />
+                      <CardAcoes>
+                        <Botao
+                          as="a"
+                          href={m.rota}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="primario"
+                        >
+                          Abrir
+                        </Botao>
+                        <Botao to={`${m.rota}/controle`} className="secundario">
+                          Controlar
+                        </Botao>
+                        <CopiarLink rota={m.rota} />
+                      </CardAcoes>
+                    </>
+                  )}
                 </Card>
               </RevelarAoRolar>
             ))}
