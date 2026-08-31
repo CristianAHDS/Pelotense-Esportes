@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: fix flicker do acréscimo (last-write-wins)
+- Adicionado carimbo `atualizadoEm` e guard de last-write-wins em `aplicarEstadoRemoto`: estados defasados que chegam atrasados pela nuvem (latência) já não revertem edições mais novas. Isso elimina o "piscar"/ir e voltar do bloco de acréscimo (e de qualquer outro campo) ao editar — mais evidente no localhost, onde a prévia (iframe same-origin) entrega por BroadcastChannel + `storage` + nuvem.
+
 ### Placar Broadcast Escalação: acréscimo sem border-radius no topo
 - O bloco de acréscimo (`+X:00`) perdeu o arredondamento dos cantos superiores (`border-radius: 6px 6px 0 0` → `0 0 6px 6px`), ficando com o topo reto.
 

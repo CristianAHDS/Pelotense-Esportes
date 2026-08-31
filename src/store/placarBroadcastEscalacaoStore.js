@@ -43,7 +43,8 @@ const estadoPadrao = {
     jogadores: { casa: timePadrao(), fora: timePadrao() }
   },
   escalacaoVisivel: true,
-  notificacao: null
+  notificacao: null,
+  atualizadoEm: 0
 }
 
 function carregar() {
@@ -164,6 +165,7 @@ export function setEstado(atualizador, { remoto = false } = {}) {
 
   estado =
     typeof atualizador === 'function' ? atualizador(structuredClone(estado)) : atualizador
+  if (!remoto) estado.atualizadoEm = Date.now()
   persistir()
   notificar()
 
@@ -178,6 +180,18 @@ export function setEstado(atualizador, { remoto = false } = {}) {
 
 function aplicarEstadoRemoto(novoEstado) {
   if (JSON.stringify(novoEstado) === JSON.stringify(estado)) return
+
+  /* Rejeitar estados mais antigos que o atual (last-write-wins). Evita que um
+     snapshot defasado da nuvem (latência) reverta edições mais novas — ex.:
+     o acréscimo voltando a 0 e o bloco piscando. */
+  const atualizadoNovo = Number(novoEstado.atualizadoEm)
+  const atualizadoLocal = Number(estado.atualizadoEm || 0)
+  if (!Number.isFinite(atualizadoNovo)) {
+    if (atualizadoLocal > 0) return
+  } else if (atualizadoNovo <= atualizadoLocal) {
+    return
+  }
+
   if (!processandoRemoto) {
     const cron = novoEstado.cronometro
     if (cron?.rodando) {
