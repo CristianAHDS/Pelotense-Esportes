@@ -315,6 +315,9 @@ export function alternarCronometro() {
     } else {
       cron.rodando = true
       cron.iniciadoEm = Date.now()
+      if (estado.estadoPartida !== 'AO VIVO') {
+        estado.estadoPartida = 'AO VIVO'
+      }
     }
     return estado
   })

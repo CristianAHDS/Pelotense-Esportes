@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: play do cronômetro seta estado para AO VIVO
+- Ao dar play no cronômetro, `estadoPartida` vai automaticamente para `AO VIVO` caso não esteja (ex.: INTERVALO/ENCERRADO). Ao pausar, o estado da partida permanece como está.
+
 ### Sincronização nuvem: reduzir latência entre dispositivos
 - Batimento de controle do claim reduzido de 8s para 3s (`setInterval`), mantendo a conexão/claim Firebase mais quente e reduzindo o atraso percebido (~8–10s antes) ao propagar estados, ex.: start do cronômetro, para overlays em outros dispositivos.
 - `JANELA_EDICAO_LOCAL_MS` reduzida de 1200ms para 300ms, encurtando a janela em que entregas da nuvem são ignoradas após edição local.
