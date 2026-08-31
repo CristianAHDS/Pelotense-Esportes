@@ -394,7 +394,7 @@ export default function PlacarBroadcastEscalacao() {
                 cor={estado.corVisitante}
                 sigla={timeVisitante.nome}
                 url={urlEscudoTime(null, timeVisitante.nome)}
-                tamanho={38}
+                tamanho={60}
               />
             </span>
             {golAtivo?.lado === 'visitante' && (
