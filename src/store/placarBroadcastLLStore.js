@@ -110,16 +110,16 @@ function aplicarEstadoRemoto(novoEstado) {
   registrarSync(novoEstado)
 
   if (!processandoRemoto) {
-    if (novoEstado.cronometro?.rodando && typeof novoEstado.cronometro.segundos === 'number') {
-      const local = segundosAtuais(estado.cronometro)
-      const diff = Math.abs(novoEstado.cronometro.segundos - local)
-      if (diff > 2) {
-        novoEstado.cronometro.base = novoEstado.cronometro.segundos
-        novoEstado.cronometro.iniciadoEm = Date.now()
+    const cron = novoEstado.cronometro
+    if (cron?.rodando) {
+      if (typeof cron.iniciadoEm === 'number') {
+        delete cron.segundos
+      } else {
+        const baseSnap = typeof cron.segundos === 'number' ? cron.segundos : segundosAtuais(cron)
+        cron.base = Math.max(0, Math.floor(baseSnap))
+        cron.iniciadoEm = Date.now()
+        delete cron.segundos
       }
-      delete novoEstado.cronometro.segundos
-    } else if (novoEstado.cronometro?.rodando && novoEstado.cronometro?.iniciadoEm) {
-      novoEstado.cronometro.iniciadoEm = Date.now()
     }
     setEstado(novoEstado, { remoto: true })
   }

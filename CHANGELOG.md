@@ -1,5 +1,13 @@
 # Changelog
 
+## 31/08/2026
+
+### Correção: relógio pulava/voltava ao mudar qualquer informação no controle
+- **Sintoma**: no overlay (ex.: `/placar-broadcast-escalacao`), o cronômetro do jogo voltava/pulava sempre que outra informação era alterada no controle (escalação, cartão, nome, etc.).
+- **Causa**: `aplicarEstadoRemoto` re-baseara o cronômetro a partir do snapshot `segundos` enviado no pacote de sincronização. Como esse snapshot é gerado no momento da publicação e chega defasado pela latência da nuvem (BroadcastChannel + Firebase), o `diff` excedia o limite e o relógio era reiniciado para o valor **antigo** do snapshot.
+- **Correção**: agora o lado remoto **confia no `iniciadoEm`** (carimbo de época, imune à latência) para recomputar o tempo, descartando o `segundos` do pacote — mesmo comportamento já adotado no `preJogoStore`. O `segundos` só é usado para re-basear quando não há referência de tempo confiável (estado antigo/corrompido).
+- Aplicado em todos os stores de placar: `placarBroadcastEscalacaoStore`, `placarBroadcastStore`, `placarBroadcastPLStore`, `placarBroadcastBLStore`, `placarBroadcastLLStore`, `placarNormalStore`, `placarModelStore`, `placarProStore` e `placarStore`.
+
 ## 28/08/2026
 
 ### Placar Broadcast Escalação: gol por jogador, tempo congelado e notificações unificadas
