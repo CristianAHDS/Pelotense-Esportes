@@ -92,7 +92,23 @@ let pilhaDesfazerGols = []
 let pilhaRefazerGols = []
 
 function snapshotGols(estado) {
-  return { casa: estado.timeCasa.gols, visitante: estado.timeVisitante.gols }
+  return {
+    casa: estado.timeCasa.gols,
+    visitante: estado.timeVisitante.gols,
+    jogadoresCasa: (estado.escalacao.jogadores.casa || []).map((j) => j.gols || 0),
+    jogadoresFora: (estado.escalacao.jogadores.fora || []).map((j) => j.gols || 0)
+  }
+}
+
+function aplicarSnapshotGols(estado, snap) {
+  estado.timeCasa.gols = snap.casa
+  estado.timeVisitante.gols = snap.visitante
+  ;(estado.escalacao.jogadores.casa || []).forEach((j, i) => {
+    j.gols = snap.jogadoresCasa[i] || 0
+  })
+  ;(estado.escalacao.jogadores.fora || []).forEach((j, i) => {
+    j.gols = snap.jogadoresFora[i] || 0
+  })
 }
 
 function registrarDesfazerGol(estado) {
@@ -240,8 +256,7 @@ export function desfazerGol() {
     const snap = pilhaDesfazerGols.pop()
     if (!snap) return estado
     pilhaRefazerGols.push(snapshotGols(estado))
-    estado.timeCasa.gols = snap.casa
-    estado.timeVisitante.gols = snap.visitante
+    aplicarSnapshotGols(estado, snap)
     estado.eventoGol = null
     return estado
   })
@@ -252,8 +267,7 @@ export function refazerGol() {
     const snap = pilhaRefazerGols.pop()
     if (!snap) return estado
     pilhaDesfazerGols.push(snapshotGols(estado))
-    estado.timeCasa.gols = snap.casa
-    estado.timeVisitante.gols = snap.visitante
+    aplicarSnapshotGols(estado, snap)
     return estado
   })
 }
