@@ -119,8 +119,8 @@ const BlocoTime = styled.div`
   align-items: center;
   justify-content: ${({ $lado }) =>
     $lado === 'fora' ? 'flex-start' : 'flex-end'};
-  gap: 14px;
-  padding: 10px 24px;
+  gap: 16px;
+  padding: 12px 30px;
   background: ${({ $cor }) => $cor};
   min-width: 0;
 
@@ -128,7 +128,7 @@ const BlocoTime = styled.div`
 
   .sigla {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     letter-spacing: 1px;
     color: ${({ $cor }) => corContraste($cor)};
@@ -138,7 +138,7 @@ const BlocoTime = styled.div`
   .gols {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
     font-variant-numeric: tabular-nums;
-    font-size: 2rem;
+    font-size: 2.6rem;
     font-weight: 700;
     color: ${({ $cor }) => corContraste($cor)};
     line-height: 1;
@@ -151,13 +151,13 @@ const Separador = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 8px;
+  padding: 12px 10px;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(4px);
 
   span {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.5);
   }
@@ -371,7 +371,7 @@ export default function PlacarBroadcastEscalacao() {
                 cor={estado.corCasa}
                 sigla={timeCasa.nome}
                 url={urlEscudoTime(null, timeCasa.nome)}
-                tamanho={30}
+                tamanho={42}
               />
             </span>
             <span className="sigla">{timeCasa.nome}</span>
@@ -401,7 +401,7 @@ export default function PlacarBroadcastEscalacao() {
                 cor={estado.corVisitante}
                 sigla={timeVisitante.nome}
                 url={urlEscudoTime(null, timeVisitante.nome)}
-                tamanho={30}
+                tamanho={38}
               />
             </span>
             {golAtivo?.lado === 'visitante' && (

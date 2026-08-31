@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: placar com maior proporção
+- Aumentadas as proporções do placar (escudo, sigla, gols e separador ×): escudo `30→38`, sigla `1.2→1.5rem`, gols `2→2.6rem`, separador `1.6→1.9rem`, com gap e padding maiores no `BlocoTime`. A escalação permanece com o tamanho atual.
+
 ### Placar Broadcast Escalação: fix flicker do acréscimo (last-write-wins)
 - Adicionado carimbo `atualizadoEm` e guard de last-write-wins em `aplicarEstadoRemoto`: estados defasados que chegam atrasados pela nuvem (latência) já não revertem edições mais novas. Isso elimina o "piscar"/ir e voltar do bloco de acréscimo (e de qualquer outro campo) ao editar — mais evidente no localhost, onde a prévia (iframe same-origin) entrega por BroadcastChannel + `storage` + nuvem.
 
