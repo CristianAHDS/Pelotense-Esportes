@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: simetria do conteúdo em relação ao separador ×
+- O conteúdo de cada `BlocoTime` passou a ser ancorado contra o separador central (`×`): lado casa usa `flex-end` (conteúdo à direita) e lado fora usa `flex-start` (conteúdo à esquerda), com o mesmo padding fixo nos dois lados. Assim o espaço entre o `×` e cada lado fica idêntico, eliminando o vão a mais no lado do visitante.
+
 ### Placar Broadcast Escalação: lados casa/fora com mesma largura
 - No overlay do scoreboard, os dois `BlocoTime` (casa e fora) agora usam `flex: 1` (com `min-width: 0`) no `CorpoPlacar`, garantindo que ambos os lados tenham a mesma largura independentemente do tamanho da sigla/escudo.
 

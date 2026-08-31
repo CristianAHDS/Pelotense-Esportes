@@ -119,7 +119,7 @@ const BlocoTime = styled.div`
   display: flex;
   flex: 1;
   align-items: center;
-  justify-content: center;
+  justify-content: ${({ $lado }) => ($lado === 'fora' ? 'flex-start' : 'flex-end')};
   gap: 14px;
   padding: 10px 24px;
   background: ${({ $cor }) => $cor};
@@ -370,6 +370,7 @@ export default function PlacarBroadcastEscalacao() {
 
         <CorpoPlacar>
           <BlocoTime
+            $lado="casa"
             $cor={estado.corCasa}
             $gol={golAtivo?.lado === 'casa'}
             style={{ borderLeft: `6px solid ${VERDE}` }}
@@ -394,6 +395,7 @@ export default function PlacarBroadcastEscalacao() {
             <span>×</span>
           </Separador>
           <BlocoTime
+            $lado="fora"
             $cor={estado.corVisitante}
             $gol={golAtivo?.lado === 'visitante'}
             style={{ borderRight: `6px solid ${VERDE}` }}
