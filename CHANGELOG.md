@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: rótulos CASA/VISITANTE → HOME/AWAY
+- Textos exibidos como sigla padrão dos times alterados de `CASA`/`VISITANTE` para `HOME`/`AWAY` no `placarBroadcastEscalacaoStore.js` (estado padrão e fallback de `aplicarTimeSelecionado`).
+
 ### Placar Broadcast Escalação: traços de cartões abaixo do placar
 - Os contadores de cartões (traços amarelos e vermelhos) foram movidos do topo (entre o relógio e o placar) para abaixo do `CorpoPlacar`.
 

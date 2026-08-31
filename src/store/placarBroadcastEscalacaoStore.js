@@ -18,8 +18,8 @@ function timePadrao() {
 }
 
 const estadoPadrao = {
-  timeCasa: { nome: 'CASA', gols: 0 },
-  timeVisitante: { nome: 'VISITANTE', gols: 0 },
+  timeCasa: { nome: 'HOME', gols: 0 },
+  timeVisitante: { nome: 'AWAY', gols: 0 },
   cronometro: { base: 0, rodando: false, iniciadoEm: null },
   periodo: '1T',
   acrescimo: null,
@@ -30,13 +30,13 @@ const estadoPadrao = {
   corVisitanteBorda: '#0a0a0a',
   estadoPartida: 'AO VIVO',
   escalacao: {
-    nomeCasa: 'CASA',
+    nomeCasa: 'HOME',
     siglaCasa: 'CAS',
     formacaoCasa: '4-3-3',
     tecnicoCasa: '',
     corCasa: '#008F3D',
     corFora: '#1d4ed8',
-    nomeFora: 'VISITANTE',
+    nomeFora: 'AWAY',
     siglaFora: 'VIS',
     formacaoFora: '4-3-3',
     tecnicoFora: '',
@@ -294,7 +294,7 @@ function aplicarTimeSelecionado(estado, lado, sigla) {
   const campoSigla = prefCasa ? 'siglaCasa' : 'siglaFora'
   const campoNome = prefCasa ? 'nomeCasa' : 'nomeFora'
 
-  estado[chave].nome = s || (prefCasa ? 'CASA' : 'VISITANTE')
+  estado[chave].nome = s || (prefCasa ? 'HOME' : 'AWAY')
 
   esc[campoSigla] = s || '---'
   if (nome) esc[campoNome] = nome
