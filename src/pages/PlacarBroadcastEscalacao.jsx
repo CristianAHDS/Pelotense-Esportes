@@ -7,7 +7,8 @@ import {
   formatarTempo,
   placarBroadcastEscalacao
 } from '../store/placarBroadcastEscalacaoStore'
-import { EscalacaoCartao } from '../components/EscalacaoCartao'
+import { Escudo } from '../components/Escudo'
+import { EscalacaoCartao, urlEscudoTime } from '../components/EscalacaoCartao'
 import { PlacarEscalacaoNotificacao } from '../components/PlacarEscalacaoNotificacao'
 import { useFundoTransparente } from '../components/useFundoTransparente'
 
@@ -125,7 +126,7 @@ const BlocoTime = styled.div`
 
   ${({ $gol }) =>
     $gol &&
-    ` .sigla, .gols { visibility: hidden; } `}
+    ` .sigla, .gols, .escudo { visibility: hidden; } `}
 
   .sigla {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
@@ -372,6 +373,14 @@ export default function PlacarBroadcastEscalacao() {
             $gol={golAtivo?.lado === 'casa'}
             style={{ borderLeft: `6px solid ${VERDE}` }}
           >
+            <span className="escudo">
+              <Escudo
+                cor={estado.corCasa}
+                sigla={timeCasa.nome}
+                url={urlEscudoTime(null, timeCasa.nome)}
+                tamanho={30}
+              />
+            </span>
             <span className="sigla">{timeCasa.nome}</span>
             <span className="gols">{timeCasa.gols}</span>
             {golAtivo?.lado === 'casa' && (
@@ -388,6 +397,14 @@ export default function PlacarBroadcastEscalacao() {
             $gol={golAtivo?.lado === 'visitante'}
             style={{ borderRight: `6px solid ${VERDE}` }}
           >
+            <span className="escudo">
+              <Escudo
+                cor={estado.corVisitante}
+                sigla={timeVisitante.nome}
+                url={urlEscudoTime(null, timeVisitante.nome)}
+                tamanho={30}
+              />
+            </span>
             <span className="gols">{timeVisitante.gols}</span>
             <span className="sigla">{timeVisitante.nome}</span>
             {golAtivo?.lado === 'visitante' && (

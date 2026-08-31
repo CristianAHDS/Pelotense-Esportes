@@ -10,7 +10,7 @@ export const ESTADOS_PARTIDA = ['AO VIVO', 'INTERVALO', 'ENCERRADO']
 export const FORMACOES = ['4-3-3', '4-4-2', '4-2-3-1', '4-1-4-1', '3-5-2', '3-4-3', '5-3-2', '4-3-1-2']
 
 function jogadorPadrao() {
-  return { num: '', nome: '', cartoes: { amarelo: 0, vermelho: 0 }, gols: 0 }
+  return { num: '', nome: '', cartoes: { amarelo: 0, vermelho: 0 }, gols: 0, expulso: false }
 }
 
 function timePadrao() {
@@ -79,7 +79,8 @@ function normalizarJogador(j) {
     num: String(j?.num || ''),
     nome: String(j?.nome || ''),
     cartoes,
-    gols: Math.max(0, Number(j?.gols) || 0)
+    gols: Math.max(0, Number(j?.gols) || 0),
+    expulso: Boolean(j?.expulso)
   }
 }
 
@@ -460,6 +461,7 @@ export function darCartaoJogador(lado, indice, cor) {
     if (cor === 'amarelo' && lista[indice].cartoes.amarelo >= 1) return estado
     if (cor === 'vermelho' && lista[indice].cartoes.vermelho >= 1) return estado
     lista[indice].cartoes[cor]++
+    if (cor === 'vermelho') lista[indice].expulso = true
     estado.notificacao = notificarCartao(lado, indice, cor, estado)
     return estado
   })
@@ -470,6 +472,9 @@ export function removerCartaoJogador(lado, indice, cor) {
     const lista = estado.escalacao.jogadores[lado]
     if (!lista || !lista[indice]) return estado
     lista[indice].cartoes[cor] = Math.max(0, lista[indice].cartoes[cor] - 1)
+    if (cor === 'vermelho' && lista[indice].cartoes.vermelho === 0) {
+      lista[indice].expulso = false
+    }
     return estado
   })
 }
