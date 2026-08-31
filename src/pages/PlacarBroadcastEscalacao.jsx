@@ -397,6 +397,8 @@ export default function PlacarBroadcastEscalacao() {
             $gol={golAtivo?.lado === 'visitante'}
             style={{ borderRight: `6px solid ${VERDE}` }}
           >
+            <span className="gols">{timeVisitante.gols}</span>
+            <span className="sigla">{timeVisitante.nome}</span>
             <span className="escudo">
               <Escudo
                 cor={estado.corVisitante}
@@ -405,8 +407,6 @@ export default function PlacarBroadcastEscalacao() {
                 tamanho={30}
               />
             </span>
-            <span className="gols">{timeVisitante.gols}</span>
-            <span className="sigla">{timeVisitante.nome}</span>
             {golAtivo?.lado === 'visitante' && (
               <FaixaGol key={golAtivo.em}>
                 <span>{TEXTO_GOL}{TEXTO_GOL}</span>

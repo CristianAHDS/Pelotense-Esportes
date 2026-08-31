@@ -121,6 +121,20 @@ const LinhaJogador = styled.div`
     align-items: center;
     gap: 3px;
   }
+
+  ${({ $expulso }) =>
+    $expulso &&
+    `
+      background: #161616;
+      opacity: 0.72;
+      .num {
+        color: rgba(165, 239, 28, 0.45);
+      }
+      .nome {
+        color: rgba(255, 255, 255, 0.42);
+        text-decoration: line-through;
+      }
+    `}
 `;
 
 const CartaoMarca = styled.span`
@@ -179,52 +193,6 @@ const LinhaTecnico = styled.div`
   }
 `;
 
-const LinhaExpulso = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 16px;
-  background: rgba(220, 38, 38, 0.08);
-  border-top: 1px solid ${VERDE}33;
-
-  .num {
-    min-width: 26px;
-    text-align: center;
-    font-variant-numeric: tabular-nums;
-    font-size: 1rem;
-    font-weight: 700;
-    color: ${VERDE};
-  }
-
-  .nome {
-    flex: 1;
-    min-width: 0;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: rgba(255, 255, 255, 0.5);
-    text-decoration: line-through;
-  }
-
-  .rotulo {
-    flex-shrink: 0;
-    font-family: 'Rajdhani', 'Inter', sans-serif;
-    font-size: 0.6rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: #f87171;
-  }
-
-  .marca {
-    flex-shrink: 0;
-    font-size: 0.85rem;
-  }
-`;
-
 function corContraste(hex) {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
   const g = parseInt(hex.slice(3, 5), 16) / 255;
@@ -240,9 +208,7 @@ export function EscalacaoCartao({ dados, lado }) {
   const nomeTime = casa ? dados.nomeCasa : dados.nomeFora;
   const formacao = casa ? dados.formacaoCasa : dados.formacaoFora;
   const tecnico = casa ? dados.tecnicoCasa : dados.tecnicoFora;
-  const todos = dados.jogadores?.[lado] || [];
-  const expulsos = todos.filter((j) => j.expulso);
-  const emCampo = todos.filter((j) => !j.expulso).slice(0, 11);
+  const jogadores = (dados.jogadores?.[lado] || []).slice(0, 11);
 
   return (
     <Cartao $cor={cor}>
@@ -252,8 +218,8 @@ export function EscalacaoCartao({ dados, lado }) {
         <span className="nome">{nomeTime}</span>
         <span className="formacao">{formacao}</span>
       </FaixaTopo>
-      {emCampo.map((jogador, i) => (
-        <LinhaJogador key={`${lado}-${i}`}>
+      {jogadores.map((jogador, i) => (
+        <LinhaJogador key={`${lado}-${i}`} $expulso={jogador.expulso}>
           <span className="num">{jogador.num || i + 1}</span>
           <span className={`nome${jogador.nome ? '' : ' vazio'}`}>
             {jogador.nome || `Jogador ${i + 1}`}
@@ -280,16 +246,6 @@ export function EscalacaoCartao({ dados, lado }) {
             </span>
           )}
         </LinhaJogador>
-      ))}
-      {expulsos.map((jogador, i) => (
-        <LinhaExpulso key={`exp-${lado}-${i}`}>
-          <span className="num">{jogador.num || i + 1}</span>
-          <span className={`nome${jogador.nome ? '' : ' vazio'}`}>
-            {jogador.nome || `Jogador ${i + 1}`}
-          </span>
-          <span className="rotulo">EXPULSO</span>
-          <span className="marca">🟥</span>
-        </LinhaExpulso>
       ))}
       {tecnico && (
         <LinhaTecnico>

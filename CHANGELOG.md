@@ -3,8 +3,8 @@
 ## 31/08/2026
 
 ### Placar Broadcast Escalação: escudo no placar e cartão vermelho = expulsão
-- **Escudo no placar** (`PlacarBroadcastEscalacao.jsx`): os blocos do time (`BlocoTime`) agora exibem o escudo do time (`Escudo`, com fallback `/escudos/SIGLA.png`) ao lado da sigla e dos gols, junto da cor do time. O escudo desaparece junto da sigla/gols durante o flash de gol.
-- **Cartão vermelho = expulsão**: ao dar cartão vermelho (`darCartaoJogador`), o jogador é marcado `expulso: true`; removendo o cartão (`removerCartaoJogador`) volta a `false`. No `EscalacaoCartao`, o expulso sai da escalação titular (campo passa a ter até 11 não-expulsos) e aparece no rodapé do card numa linha riscada com rótulo `EXPULSO` e cartão 🟥.
+- **Escudo no placar** (`PlacarBroadcastEscalacao.jsx`): os blocos do time (`BlocoTime`) agora exibem o escudo do time (`Escudo`, com fallback `/escudos/SIGLA.png`) junto da cor do time. O escudo da casa fica à esquerda, o do visitante à direita. O escudo desaparece junto da sigla/gols durante o flash de gol.
+- **Cartão vermelho = expulsão**: ao dar cartão vermelho (`darCartaoJogador`), o jogador é marcado `expulso: true`; removendo o cartão (`removerCartaoJogador`) volta a `false`. No `EscalacaoCartao`, o jogador expulso **permanece na mesma posição da lista**, com aparência desabilitada (fundo levemente mais claro que `#000`, opacidade reduzida, nome riscado e num apagado) — sem ser movido para o fim.
 
 ### Placar Broadcast Escalação: sigla do time interligada entre placar e escalação
 - **Antes**: a escolha da sigla do time era independente entre o seletor do placar (`renomearTime`) e o das escalações (`preencherDeSigla`). Mudar um não refletia no outro.
