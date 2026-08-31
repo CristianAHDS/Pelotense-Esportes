@@ -2,9 +2,6 @@
 
 ## 31/08/2026
 
-### Placar Broadcast Escalação: relógio encostado no resto do scoreboard
-- Removido o `gap: 16px` da `Tela`, deixando o relógio (FaixaTempo), o placar e o status (`AO VIVO`) encostados uns nos outros. A escalação mantém respiro pelo próprio `padding: 20px`.
-
 ### EscalacaoCartao: remoção dos box-shadow
 - Removidos os `box-shadow` do `EscalacaoCartao`: sombra externa do cartão e o `inset` do quadradinho de cartão (`CartaoMarca`).
 
