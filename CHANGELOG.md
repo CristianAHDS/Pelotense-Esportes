@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: acréscimo sem border-radius no topo
+- O bloco de acréscimo (`+X:00`) perdeu o arredondamento dos cantos superiores (`border-radius: 6px 6px 0 0` → `0 0 6px 6px`), ficando com o topo reto.
+
 ### Pré-Jogo: tempo livre com campos separados de horas e minutos
 - No controle de pré-jogo (`PainelPreJogo`), adicionado campo de "Tempo livre" com dois inputs numéricos separados (horas e minutos), além dos chips de duração fixa. Aplica a duração somando `horas*3600 + minutos*60` e zera os campos.
 

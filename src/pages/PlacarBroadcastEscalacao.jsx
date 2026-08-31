@@ -39,7 +39,6 @@ const BarraPlacar = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
   position: relative;
 `;
 
@@ -87,7 +86,7 @@ const FaixaTempo = styled.div`
     align-items: center;
     padding: 0 16px;
     background: rgba(0, 0, 0, 0.7);
-    border-radius: 6px 6px 0 0;
+    border-radius: 0 0 6px 6px;
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
     font-variant-numeric: tabular-nums;
     font-size: 1rem;
