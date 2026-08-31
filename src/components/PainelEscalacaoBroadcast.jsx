@@ -276,6 +276,7 @@ const ToggleCores = styled.button`
 
 const BlocoCores = styled.div`
   margin-top: 8px;
+  margin-bottom: 18px;
   padding: 12px;
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 10px;
