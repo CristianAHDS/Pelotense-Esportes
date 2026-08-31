@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: traços de cartões abaixo do placar
+- Os contadores de cartões (traços amarelos e vermelhos) foram movidos do topo (entre o relógio e o placar) para abaixo do `CorpoPlacar`.
+
 ### EscalacaoCartao: remoção dos box-shadow
 - Removidos os `box-shadow` do `EscalacaoCartao`: sombra externa do cartão e o `inset` do quadradinho de cartão (`CartaoMarca`).
 
