@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### EscalacaoCartao: expulso sem transparência
+- Jogador expulso mantém a posição, o fundo escuro `#161616` e o nome riscado, mas remove-se toda a transparência: linha sem `opacity: 0.72`, número em verde sólido `#a5ef1c` e nome em cinza sólido `#9a9a9a` (sem alphas).
+
 ### Placar Broadcast Escalação: simetria do conteúdo em relação ao separador ×
 - O conteúdo de cada `BlocoTime` passou a ser ancorado contra o separador central (`×`): lado casa usa `flex-end` (conteúdo à direita) e lado fora usa `flex-start` (conteúdo à esquerda), com o mesmo padding fixo nos dois lados. Assim o espaço entre o `×` e cada lado fica idêntico, eliminando o vão a mais no lado do visitante.
 

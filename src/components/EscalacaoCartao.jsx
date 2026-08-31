@@ -126,12 +126,11 @@ const LinhaJogador = styled.div`
     $expulso &&
     `
       background: #161616;
-      opacity: 0.72;
       .num {
-        color: rgba(165, 239, 28, 0.45);
+        color: #a5ef1c;
       }
       .nome {
-        color: rgba(255, 255, 255, 0.42);
+        color: #9a9a9a;
         text-decoration: line-through;
       }
     `}
