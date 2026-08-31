@@ -31,7 +31,7 @@ const Tela = styled.div`
   justify-content: flex-start;
   padding-top: 60px;
   background: transparent;
-  gap: 16px;
+  gap: 0;
 `
 
 const BarraPlacar = styled.div`
