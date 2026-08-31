@@ -2,6 +2,13 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: sigla do time interligada entre placar e escalação
+- **Antes**: a escolha da sigla do time era independente entre o seletor do placar (`renomearTime`) e o das escalações (`preencherDeSigla`). Mudar um não refletia no outro.
+- **Agora**: ambos os seletores compartilham o mesmo helper `aplicarTimeSelecionado`, mantendo placar e escalação sincronizados nos dois sentidos. Ao escolher a sigla:
+  - no **placar** (`ControlePlacarBroadcastEscalacao`), a escalação também atualiza `siglaCasa/siglaFora`, o nome completo (quando conhecido) e carrega o elenco.
+  - na **escalação** (`PainelEscalacaoBroadcast`), o placar também atualiza `timeCasa.nome/timeVisitante.nome`.
+- Siglas inválidas/desconhecidas mantêm o placar sincronizado com a sigla digitada; o elenco só é carregado para siglas conhecidas. Fallback `CASA`/`VISITANTE` quando a sigla é limpa.
+
 ### Placar Broadcast Escalação: nome do jogador que sai no card de troca
 - **Sintoma**: no card de substituição, a linha "Sai" exibia o **nome do time** (ex.: `PELOTAS`) junto da indicação `Sai`, em vez do nome do jogador que está saindo (o "Entra" mostrava o jogador corretamente).
 - **Causa**: `PlacarEscalacaoNotificacao` montava o `dados` do cartão com `saiNum: atual.num` / `saiNome: atual.nome`. Para o evento `troca` o store popula `saiNum`/`saiNome` (jogador que sai), enquanto `nome` guarda o **time**; os campos `num`/`nome` só existem para cartão/gol.

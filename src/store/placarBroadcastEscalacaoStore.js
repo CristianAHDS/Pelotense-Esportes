@@ -225,12 +225,29 @@ export function definirGols(lado, valor) {
   })
 }
 
-export function renomearTime(lado, nome) {
-  setEstado((estado) => {
-    const chave = lado === 'casa' ? 'timeCasa' : 'timeVisitante'
-    estado[chave].nome = nome.slice(0, 6).toUpperCase()
-    return estado
-  })
+export function renomearTime(lado, sigla) {
+  setEstado((estado) => aplicarTimeSelecionado(estado, lado, sigla))
+}
+
+function aplicarTimeSelecionado(estado, lado, sigla) {
+  const prefCasa = lado === 'casa'
+  const chave = prefCasa ? 'timeCasa' : 'timeVisitante'
+  const esc = estado.escalacao
+  const s = String(sigla || '').toUpperCase()
+  const nome = nomeDaSigla(s)
+  const elenco = elencoDaSigla(s)
+  const campoSigla = prefCasa ? 'siglaCasa' : 'siglaFora'
+  const campoNome = prefCasa ? 'nomeCasa' : 'nomeFora'
+
+  estado[chave].nome = s || (prefCasa ? 'CASA' : 'VISITANTE')
+
+  esc[campoSigla] = s || '---'
+  if (nome) esc[campoNome] = nome
+  if (elenco) {
+    if (prefCasa) esc.jogadores.casa = elenco
+    else esc.jogadores.fora = elenco
+  }
+  return estado
 }
 
 export function alternarCronometro() {
@@ -371,23 +388,7 @@ export function atualizarEscalacaoCampo(campo, valor) {
 }
 
 export function preencherDeSigla(lado, sigla) {
-  const elenco = elencoDaSigla(sigla)
-  if (!elenco) return
-  const nome = nomeDaSigla(sigla)
-  const prefCasa = lado === 'casa'
-  setEstado((estado) => {
-    const esc = estado.escalacao
-    if (prefCasa) {
-      esc.siglaCasa = String(sigla).toUpperCase()
-      if (nome) esc.nomeCasa = nome
-      esc.jogadores.casa = elenco
-    } else {
-      esc.siglaFora = String(sigla).toUpperCase()
-      if (nome) esc.nomeFora = nome
-      esc.jogadores.fora = elenco
-    }
-    return estado
-  })
+  setEstado((estado) => aplicarTimeSelecionado(estado, lado, sigla))
 }
 
 export function atualizarJogador(lado, indice, campo, valor) {
