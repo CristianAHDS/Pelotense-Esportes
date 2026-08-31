@@ -8,6 +8,11 @@
 - **Correção**: agora o lado remoto **confia no `iniciadoEm`** (carimbo de época, imune à latência) para recomputar o tempo, descartando o `segundos` do pacote — mesmo comportamento já adotado no `preJogoStore`. O `segundos` só é usado para re-basear quando não há referência de tempo confiável (estado antigo/corrompido).
 - Aplicado em todos os stores de placar: `placarBroadcastEscalacaoStore`, `placarBroadcastStore`, `placarBroadcastPLStore`, `placarBroadcastBLStore`, `placarBroadcastLLStore`, `placarNormalStore`, `placarModelStore`, `placarProStore` e `placarStore`.
 
+### Documentação de componentes para agentes (`.agent.md`)
+- Criado um arquivo `.agent.md` ao lado de cada um dos 28 componentes em `src/components/` (ex.: `Escudo.agent.md`, `PainelPlacarModel.agent.md`, `Chaveamento.agent.md`).
+- Cada arquivo documenta para agentes de IA: propósito, props/API, dependências (stores/hooks/services), animações/keyframes, armadilhas e convenções específicas do componente (padrão `Entrada`, `CoresFixas`, `SeletorSigla`, `useFundoTransparente`, `forwardRef` para `BotaoSalvarImagem`, sincronização relógio/`iniciadoEm`, etc.).
+- Sem impacto no build (apenas documentação; `npm run build` passa com 147 módulos).
+
 ## 28/08/2026
 
 ### Placar Broadcast Escalação: gol por jogador, tempo congelado e notificações unificadas
