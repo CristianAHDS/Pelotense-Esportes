@@ -254,6 +254,34 @@ const Acoes = styled.div`
   margin-top: 18px;
 `;
 
+const ToggleCores = styled.button`
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  border: none;
+  color: ${({ theme }) => theme.cores.textoSuave};
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: ${VERDE};
+  }
+`;
+
+const BlocoCores = styled.div`
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  border-radius: 10px;
+  background: ${({ theme }) => theme.cores.superficie};
+`;
+
 const Botao = styled.button`
   border: none;
   border-radius: 10px;
@@ -323,6 +351,7 @@ export function PainelEscalacaoBroadcast() {
     casa: { num: '', nome: '' },
     fora: { num: '', nome: '' },
   });
+  const [coresAberto, setCoresAberto] = useState({});
 
   const configColuna = (lado) => ({
     lado,
@@ -363,13 +392,6 @@ export function PainelEscalacaoBroadcast() {
             <SecaoTime key={lado} $cor={cor}>
               <RotuloTime>{conf.rotulo}</RotuloTime>
               <Linha>
-                <Campo className="cresce">
-                  <Rotulo>Cor</Rotulo>
-                  <CoresFixas
-                    valor={cor}
-                    onChange={(v) => atualizarEscalacaoCampo(conf.campoCor, v)}
-                  />
-                </Campo>
                 <Campo>
                   <Rotulo>Sigla</Rotulo>
                   <div style={{ width: 90 }}>
@@ -423,6 +445,24 @@ export function PainelEscalacaoBroadcast() {
                   />
                 </Campo>
               </Linha>
+
+              <ToggleCores
+                type="button"
+                onClick={() =>
+                  setCoresAberto((p) => ({ ...p, [lado]: !p[lado] }))
+                }
+              >
+                {coresAberto[lado] ? '▾' : '▸'} Cores
+              </ToggleCores>
+              {coresAberto[lado] && (
+                <BlocoCores>
+                  <Rotulo>Cor do time</Rotulo>
+                  <CoresFixas
+                    valor={cor}
+                    onChange={(v) => atualizarEscalacaoCampo(conf.campoCor, v)}
+                  />
+                </BlocoCores>
+              )}
 
               <ListaJogadores>
                 {jogadores.map((jogador, i) => (

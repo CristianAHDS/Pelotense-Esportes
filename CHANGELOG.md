@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### PainelEscalacaoBroadcast: configuração de cor do time em dropdown escondido
+- A cor da escalação (`Cor do time`, via `CoresFixas`) deixou de ficar sempre visível ao lado da sigla e passou para um **dropdown colapsável** (`▸/▾ Cores`) por time, no mesmo padrão do painel "Times e Placar". O botão abre o seletor de cores da paleta fixa quando necessário, deixando o cabeçalho do time mais limpo (sigla, nome, formação e técnico sempre visíveis).
+
 ### Placar Broadcast Escalação: escudo no placar e cartão vermelho = expulsão
 - **Escudo no placar** (`PlacarBroadcastEscalacao.jsx`): os blocos do time (`BlocoTime`) agora exibem o escudo do time (`Escudo`, com fallback `/escudos/SIGLA.png`) junto da cor do time. O escudo da casa fica à esquerda, o do visitante à direita. O escudo desaparece junto da sigla/gols durante o flash de gol.
 - **Cartão vermelho = expulsão**: ao dar cartão vermelho (`darCartaoJogador`), o jogador é marcado `expulso: true`; removendo o cartão (`removerCartaoJogador`) volta a `false`. No `EscalacaoCartao`, o jogador expulso **permanece na mesma posição da lista**, com aparência desabilitada (fundo levemente mais claro que `#000`, opacidade reduzida, nome riscado e num apagado) — sem ser movido para o fim.
