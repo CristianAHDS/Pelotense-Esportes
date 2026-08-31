@@ -2,6 +2,9 @@
 
 ## 31/08/2026
 
+### EscalacaoCartao: remoção dos box-shadow
+- Removidos os `box-shadow` do `EscalacaoCartao`: sombra externa do cartão e o `inset` do quadradinho de cartão (`CartaoMarca`).
+
 ### EscalacaoCartao: expulso sem transparência
 - Jogador expulso mantém a posição, o fundo escuro `#161616` e o nome riscado, mas remove-se toda a transparência: linha sem `opacity: 0.72`, número em verde sólido `#a5ef1c` e nome em cinza sólido `#9a9a9a` (sem alphas).
 

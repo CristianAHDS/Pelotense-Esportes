@@ -27,7 +27,6 @@ const Cartao = styled.div`
   border-radius: 10px;
   overflow: hidden;
   border-left: 6px solid ${VERDE};
-  box-shadow: 0 14px 44px -14px rgba(0, 0, 0, 0.75);
   animation: ${Entrada} 0.4s cubic-bezier(0.2, 0.9, 0.25, 1);
   font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
 
@@ -141,7 +140,6 @@ const CartaoMarca = styled.span`
   width: 11px;
   height: 15px;
   border-radius: 2px;
-  box-shadow: inset 0 -1.6px 0 rgba(0, 0, 0, 0.35);
   background: ${({ $cor }) => ($cor === 'amarelo' ? '#eab308' : '#dc2626')};
 `;
 
