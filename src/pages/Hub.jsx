@@ -169,6 +169,7 @@ const EXTRAS = [
       'Grid 11x1 dos dois times com escudos, números, nomes e formação (4-3-3), editável lado a lado.',
     accent: '#a5ef1c',
     glow: 'rgba(165, 239, 28, 0.16)',
+    emBreve: true,
   },
   {
     rota: '/substituicao',
@@ -178,6 +179,7 @@ const EXTRAS = [
       'Tarja animada com escudo e cor do time, jogador que sai (↓) e que entra (↑), com minuto da troca. Também integrada ao Placar Broadcast.',
     accent: '#a5ef1c',
     glow: 'rgba(165, 239, 28, 0.16)',
+    emBreve: true,
   },
   {
     rota: '/penaltis',
@@ -1318,40 +1320,55 @@ export default function Hub() {
           <Grade>
             {EXTRAS.map((x, i) => (
               <RevelarAoRolar key={x.rota} atraso={(i % 4) * 60}>
-                <Card $accent={x.accent} $glow={x.glow}>
-                  <CardTag $accent={x.accent}>{x.tag}</CardTag>
-                  <CardTitulo>{x.titulo}</CardTitulo>
-                  <CardDescricao>{x.descricao}</CardDescricao>
-                  <PreviewAoVivo
-                    rota={x.rota}
-                    largura={720}
-                    altura={405}
-                    aoAmpliar={() =>
-                      setTv({
-                        rota: x.rota,
-                        tag: x.tag,
-                        titulo: x.titulo,
-                        accent: x.accent,
-                        largura: 720,
-                        altura: 405,
-                      })
-                    }
-                  />
-                  <CardAcoes>
-                    <Botao
-                      as="a"
-                      href={x.rota}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="primario"
-                    >
-                      Abrir
-                    </Botao>
-                    <Botao to={`${x.rota}/controle`} className="secundario">
-                      Controlar
-                    </Botao>
-                    <CopiarLink rota={x.rota} />
-                  </CardAcoes>
+                <Card
+                  className={x.emBreve ? 'breve' : ''}
+                  $accent={x.accent}
+                  $glow={x.glow}
+                >
+                  {x.emBreve ? (
+                    <>
+                      <CardTag $accent={x.accent}>{x.tag}</CardTag>
+                      <CardTitulo>{x.titulo}</CardTitulo>
+                      <CardDescricao>{x.descricao}</CardDescricao>
+                      <EmBreveChip>Em breve</EmBreveChip>
+                    </>
+                  ) : (
+                    <>
+                      <CardTag $accent={x.accent}>{x.tag}</CardTag>
+                      <CardTitulo>{x.titulo}</CardTitulo>
+                      <CardDescricao>{x.descricao}</CardDescricao>
+                      <PreviewAoVivo
+                        rota={x.rota}
+                        largura={720}
+                        altura={405}
+                        aoAmpliar={() =>
+                          setTv({
+                            rota: x.rota,
+                            tag: x.tag,
+                            titulo: x.titulo,
+                            accent: x.accent,
+                            largura: 720,
+                            altura: 405,
+                          })
+                        }
+                      />
+                      <CardAcoes>
+                        <Botao
+                          as="a"
+                          href={x.rota}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="primario"
+                        >
+                          Abrir
+                        </Botao>
+                        <Botao to={`${x.rota}/controle`} className="secundario">
+                          Controlar
+                        </Botao>
+                        <CopiarLink rota={x.rota} />
+                      </CardAcoes>
+                    </>
+                  )}
                 </Card>
               </RevelarAoRolar>
             ))}

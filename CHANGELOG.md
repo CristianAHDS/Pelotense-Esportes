@@ -2,6 +2,12 @@
 
 ## 31/08/2026
 
+### Pré-Jogo: tempo livre com campos separados de horas e minutos
+- No controle de pré-jogo (`PainelPreJogo`), adicionado campo de "Tempo livre" com dois inputs numéricos separados (horas e minutos), além dos chips de duração fixa. Aplica a duração somando `horas*3600 + minutos*60` e zera os campos.
+
+### Hub: componentes Escalação e Card de Substituição desabilitados (em breve)
+- Marcados como `emBreve` (chip "Em breve", sem prévia nem ações) os cards "Escalação" e "Card de Substituição" no segmento "Extras da Transmissão"; a renderização do `EXTRAS` foi adaptada para tratar `emBreve`.
+
 ### Hub: placares desabilitados (em breve)
 - Marcados como `emBreve` (exibidos com chip "Em breve", sem prévia nem ações) os cards: Placar Broadcast, Placar Premier League, Placar Bundesliga, Placar LaLiga, Placar Normal e Placar Model. Placar Broadcast Escalação permanece ativo.
 
