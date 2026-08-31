@@ -19,8 +19,8 @@ const Img = styled.img`
 const Svg = styled.svg`
   display: block;
   flex-shrink: 0;
-  width: ${({ $tamanho }) => $tamanho}px;
-  height: auto;
+  height: ${({ $tamanho }) => $tamanho}px;
+  width: auto;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.45));
 
   .campo {

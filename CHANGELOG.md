@@ -2,6 +2,11 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: proporção do timer, acréscimo, cartões e escudo
+- Timer (`FaixaTempo`): relógio `1→1.3rem`, período `0.85→1.05rem`, padding maior; acréscimo `1→1.3rem` com padding maior — mantendo a proporção com o placar maior.
+- Traços de cartões: `14×4px → 18×5px`, com container com altura ajustada.
+- `Escudo`: fallback SVG agora é limitado pela **altura** (`height: tamanho`) como a versão com imagem, corrigindo o escudo do away que ficava mais alto (fora de proporção) quando caía no fallback.
+
 ### Placar Broadcast Escalação: placar com maior proporção
 - Aumentadas as proporções do placar (escudo, sigla, gols e separador ×): escudo `30→38`, sigla `1.2→1.5rem`, gols `2→2.6rem`, separador `1.6→1.9rem`, com gap e padding maiores no `BlocoTime`. A escalação permanece com o tamanho atual.
 

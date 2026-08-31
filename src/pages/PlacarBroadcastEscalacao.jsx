@@ -47,7 +47,7 @@ const FaixaTempo = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 6px 28px;
+  padding: 8px 32px;
   position: relative;
   background: rgba(0, 0, 0, 0.7);
   margin-bottom: 5px;
@@ -56,7 +56,7 @@ const FaixaTempo = styled.div`
   .tempo {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
     font-variant-numeric: tabular-nums;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 700;
     letter-spacing: 2px;
     color: #ffffff;
@@ -64,7 +64,7 @@ const FaixaTempo = styled.div`
 
   .periodo {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
-    font-size: 0.85rem;
+    font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: 1px;
     color: rgba(255, 255, 255, 0.7);
@@ -84,11 +84,11 @@ const FaixaTempo = styled.div`
     bottom: 0;
     display: flex;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 20px;
     background: rgba(0, 0, 0, 0.7);
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
     font-variant-numeric: tabular-nums;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-weight: 800;
     letter-spacing: 1px;
     color: #fbbf24;
@@ -251,9 +251,9 @@ const FaixaGol = styled.span`
 
 const TracoCartao = styled.span`
   display: inline-block;
-  width: 14px;
-  height: 4px;
-  border-radius: 1px;
+  width: 18px;
+  height: 5px;
+  border-radius: 2px;
   background: ${({ $cor }) => ($cor === 'amarelo' ? '#eab308' : '#dc2626')};
   margin: 0 1px;
 `;
@@ -341,13 +341,6 @@ export default function PlacarBroadcastEscalacao() {
 
   return (
     <Tela $compacto={compacto}>
-      {!compacto && (
-        <Voltar to="/hub" title="Voltar ao hub">
-          ←
-        </Voltar>
-      )}
-      {!compacto && <Marca>PELOTENSE ESPORTES</Marca>}
-
       <BarraPlacar>
         <FaixaTempo>
           <span className="periodo">{periodo}</span>
@@ -371,7 +364,7 @@ export default function PlacarBroadcastEscalacao() {
                 cor={estado.corCasa}
                 sigla={timeCasa.nome}
                 url={urlEscudoTime(null, timeCasa.nome)}
-                tamanho={42}
+                tamanho={60}
               />
             </span>
             <span className="sigla">{timeCasa.nome}</span>
@@ -415,7 +408,7 @@ export default function PlacarBroadcastEscalacao() {
           </BlocoTime>
         </CorpoPlacar>
 
-        <div style={{ display: 'flex', height: 5, width: '100%' }}>
+        <div style={{ display: 'flex', height: 6, width: '100%' }}>
           <div
             style={{
               flex: 1,
