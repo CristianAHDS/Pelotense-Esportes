@@ -86,7 +86,6 @@ const FaixaTempo = styled.div`
     align-items: center;
     padding: 0 16px;
     background: rgba(0, 0, 0, 0.7);
-    border-radius: 0 0 6px 6px;
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
     font-variant-numeric: tabular-nums;
     font-size: 1rem;
