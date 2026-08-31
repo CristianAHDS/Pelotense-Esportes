@@ -51,7 +51,7 @@ const FaixaTempo = styled.div`
   padding: 6px 28px;
   position: relative;
   background: rgba(0, 0, 0, 0.7);
-
+  margin-bottom: 5px;
   backdrop-filter: blur(4px);
 
   .tempo {

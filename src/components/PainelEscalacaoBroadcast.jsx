@@ -448,6 +448,7 @@ export function PainelEscalacaoBroadcast() {
               </Linha>
 
               <ToggleCores
+                style={{ marginBottom: '20px' }}
                 type="button"
                 onClick={() =>
                   setCoresAberto((p) => ({ ...p, [lado]: !p[lado] }))
