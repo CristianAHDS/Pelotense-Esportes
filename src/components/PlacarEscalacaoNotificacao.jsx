@@ -44,8 +44,8 @@ export function PlacarEscalacaoNotificacao({ notificacao, tempoMinuto }) {
         escudoTime: undefined,
         minuto,
         cartaoCor: atual.cor,
-        saiNum: atual.num,
-        saiNome: atual.nome || `Jogador ${(atual.indice || 0) + 1}`,
+        saiNum: atual.saiNum ?? atual.num,
+        saiNome: atual.saiNome ?? (atual.nome || `Jogador ${(atual.indice || 0) + 1}`),
         entraNum: atual.entraNum,
         entraNome: atual.entraNome || 'Entra',
       }}

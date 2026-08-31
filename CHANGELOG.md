@@ -2,6 +2,11 @@
 
 ## 31/08/2026
 
+### Placar Broadcast Escalação: nome do jogador que sai no card de troca
+- **Sintoma**: no card de substituição, a linha "Sai" exibia o **nome do time** (ex.: `PELOTAS`) junto da indicação `Sai`, em vez do nome do jogador que está saindo (o "Entra" mostrava o jogador corretamente).
+- **Causa**: `PlacarEscalacaoNotificacao` montava o `dados` do cartão com `saiNum: atual.num` / `saiNome: atual.nome`. Para o evento `troca` o store popula `saiNum`/`saiNome` (jogador que sai), enquanto `nome` guarda o **time**; os campos `num`/`nome` só existem para cartão/gol.
+- **Correção**: o cartão agora lê `saiNum: atual.saiNum ?? atual.num` e `saiNome: atual.saiNome ?? atual.nome` — usa o jogador que sai na troca e mantém o fallback para cartão/gol.
+
 ### Correção: toggles e remoções não refletiam no overlay até dar refresh
 - **Sintoma**: no controle, mudanças de estado que retornavam a um valor já visto (ex.: ocultar e reexibir a escalação, remover o acréscimo do cronômetro) não atualizavam ao vivo no overlay — só sumiam/apareciam após recarregar a página.
 - **Causa**: `aplicarEstadoRemoto` suprimia qualquer pacote cuja serialização já estivesse em `ultimosSync`. Ao alternar uma flag para um estado anterior (escalação `true→false→true`, acréscimo `null→X→null`), o pacote novo serializava idêntico a um já registrado e era **descartado**, mesmo o overlay estando num estado diferente.
