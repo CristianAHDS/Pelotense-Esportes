@@ -13,10 +13,10 @@ const Cartao = styled.section`
     ${({ theme }) => theme.cores.superficie},
     ${({ theme }) => theme.cores.fundoClaro}
   );
-  border: 1px solid rgba(252, 252, 251, 0.09);
+  border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.5);
 `;
 
 const TituloSecao = styled.header`
@@ -26,7 +26,7 @@ const TituloSecao = styled.header`
   justify-content: space-between;
   gap: 18px;
   padding: 16px 22px;
-  border-bottom: 1px solid rgba(252, 252, 251, 0.08);
+  border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
   background: linear-gradient(90deg, rgba(165, 239, 28, 0.08), transparent 55%);
 
   &::before {
@@ -46,7 +46,7 @@ const TituloSecao = styled.header`
     font-weight: 800;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #fcfcfb;
+    color: ${({ theme }) => theme.cores.texto};
   }
 
   span {
@@ -54,7 +54,7 @@ const TituloSecao = styled.header`
     font-size: 0.66rem;
     font-weight: 700;
     letter-spacing: 2px;
-    color: rgba(252, 252, 251, 0.4);
+    color: ${({ theme }) => theme.cores.textoSuave};
   }
 `;
 

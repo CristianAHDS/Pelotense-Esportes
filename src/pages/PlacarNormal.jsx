@@ -7,6 +7,7 @@ import { substituicaoPro } from '../store/substituicaoStore'
 import { SubstituicaoCartao } from '../components/SubstituicaoCartao'
 import { Escudo } from '../components/Escudo'
 import { useFundoTransparente } from '../components/useFundoTransparente'
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema'
 
 const compacto = new URLSearchParams(window.location.search).has('compacto')
 
@@ -77,9 +78,9 @@ const Shell = styled.div`
   position:relative;
   border-radius:10px;
   overflow:hidden;
-  background:rgba(8,8,8,.85);
+  background:${({ theme }) => theme.cores.barraForte};
   backdrop-filter:blur(14px) saturate(1.3);
-  border:1px solid rgba(255,255,255,.06);
+  border:1px solid ${({ theme }) => theme.cores.borda};
   box-shadow:0 3px 18px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.02) inset;
 `
 
@@ -97,7 +98,7 @@ const TopoStrip = styled.div`
   justify-content:center;
   gap:8px;
   padding:3px 14px;
-  border-bottom:1px solid rgba(255,255,255,.04);
+  border-bottom:1px solid ${({ theme }) => theme.cores.borda};
 `
 
 const PeriodoTag = styled.span`
@@ -106,8 +107,8 @@ const PeriodoTag = styled.span`
   font-weight:700;
   letter-spacing:2px;
   text-transform:uppercase;
-  color:rgba(255,255,255,.45);
-  background:rgba(255,255,255,.05);
+  color:${({ theme }) => theme.cores.textoSuave};
+  background:${({ theme }) => theme.cores.superficieHover};
   padding:2px 7px;
   border-radius:4px;
 `
@@ -118,7 +119,7 @@ const Crono = styled.span`
   font-size:.82rem;
   font-weight:700;
   letter-spacing:1.5px;
-  color:${({ $r }) => $r ? '#a5ef1c' : 'rgba(255,255,255,.5)'};
+  color:${({ theme, $r }) => $r ? theme.cores.primaria : theme.cores.textoSuave};
   transition:color .3s;
 `
 
@@ -136,7 +137,7 @@ const AcrescimoTag = styled.span`
 const LiveDot = styled.span`
   width:5px; height:5px;
   border-radius:50%;
-  background:${({ $r }) => $r ? '#ef4444' : 'rgba(255,255,255,.25)'};
+  background:${({ theme, $r }) => $r ? '#ef4444' : theme.cores.borda};
   box-shadow:${({ $r }) => $r ? '0 0 6px rgba(239,68,68,.6)' : 'none'};
   animation:${({ $r }) => $r ? pulso : 'none'} 1.2s ease-in-out infinite;
   transition:background .3s,box-shadow .3s;
@@ -178,7 +179,7 @@ const Sigla = styled.span`
   font-size:.95rem;
   font-weight:700;
   letter-spacing:2px;
-  color:#fff;
+  color:${({ theme }) => theme.cores.texto};
   white-space:nowrap;
 `
 
@@ -190,7 +191,7 @@ const GolNum = styled.span`
   line-height:1;
   min-width:1.1em;
   text-align:center;
-  color:#fff;
+  color:${({ theme }) => theme.cores.texto};
   ${({ $a }) => $a && `animation:${glisseScore} .3s cubic-bezier(.34,1.56,.64,1);`}
 `
 
@@ -213,7 +214,7 @@ const Traco = styled.span`
   font-family:${({ theme }) => theme.fontes.titulo};
   font-size:1.1rem;
   font-weight:300;
-  color:rgba(255,255,255,.2);
+  color:${({ theme }) => theme.cores.textoVideoFino};
   line-height:1;
 `
 
@@ -278,9 +279,9 @@ const Voltar = styled(Link)`
   display:grid;
   place-items:center;
   border-radius:10px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  color:rgba(255,255,255,.4);
+  background:${({ theme }) => theme.cores.superficieHover};
+  border:1px solid ${({ theme }) => theme.cores.borda};
+  color:${({ theme }) => theme.cores.textoSuave};
   font-size:1.1rem;
   text-decoration:none;
   opacity:0;
@@ -295,6 +296,7 @@ const Marca = styled.div`
   font-weight:600;
   letter-spacing:5px;
   text-transform:uppercase;
+  color:${({ theme }) => theme.cores.texto};
 `
 
 const CartaoSubFixo = styled.div`
@@ -372,6 +374,7 @@ export default function PlacarNormal() {
   return (
     <Tela>
       {!compacto && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+      {!compacto && <BotaoAlternarTema />}
       {!compacto && <Marca>PELOTENSE ESPORTES</Marca>}
 
       <Barra>

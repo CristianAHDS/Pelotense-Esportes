@@ -34,13 +34,13 @@ const LinhaCabecalho = styled.div`
   grid-template-columns: 70px minmax(0, 1fr) 72px 36px 72px minmax(0, 1fr);
   align-items: center;
   padding: 10px 18px;
-  border-bottom: 1px solid rgba(252, 252, 251, 0.07);
-  background: rgba(252, 252, 251, 0.03);
+  border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
+  background: ${({ theme }) => theme.cores.superficieHover};
   font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 1.5px;
-  color: rgba(252, 252, 251, 0.5);
+  color: ${({ theme }) => theme.cores.textoSuave};
 
   .centro {
     text-align: center;
@@ -54,7 +54,7 @@ const LinhaJogo = styled.div`
   grid-template-columns: 70px minmax(0, 1fr) 72px 36px 72px minmax(0, 1fr);
   align-items: stretch;
   padding: 0 18px;
-  border-bottom: 1px solid rgba(252, 252, 251, 0.04);
+  border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
 
   &:last-child {
     border-bottom: none;
@@ -68,7 +68,7 @@ const LinhaJogo = styled.div`
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 1px;
-    color: rgba(252, 252, 251, 0.5);
+    color: ${({ theme }) => theme.cores.textoSuave};
 
     i {
       width: 6px;
@@ -91,8 +91,7 @@ const TimeCasa = styled.div`
   .nome {
     font-size: 0.72rem;
     letter-spacing: 0.5px;
-    color: ${({ $destaque }) =>
-      $destaque === 'sim' ? ACC : 'rgba(252,252,251,.45)'};
+    color: ${({ theme }) => theme.cores.textoSuave};
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -103,7 +102,8 @@ const TimeCasa = styled.div`
     font-size: 0.95rem;
     font-weight: 700;
     letter-spacing: 1px;
-    color: ${({ $destaque }) => ($destaque === 'sim' ? ACC : '#fcfcfb')};
+    color: ${({ theme, $destaque }) =>
+      $destaque === 'sim' ? ACC : theme.cores.texto};
     opacity: ${({ $destaque }) => ($destaque === 'fora' ? 0.45 : 1)};
     white-space: nowrap;
   }
@@ -147,7 +147,7 @@ const Placar = styled.div`
   .traco {
     width: 14px;
     height: 2px;
-    background: rgba(252, 252, 251, 0.18);
+    background: ${({ theme }) => theme.cores.borda};
   }
 `;
 
@@ -157,7 +157,7 @@ const Separador = styled.div`
   font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.7rem;
   font-weight: 700;
-  color: rgba(252, 252, 251, 0.4);
+  color: ${({ theme }) => theme.cores.textoSuave};
   padding: 0 4px;
 `;
 

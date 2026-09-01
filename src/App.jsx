@@ -1,6 +1,6 @@
 ﻿import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './theme';
+import { TemaProvider, useTema } from './hooks/useTema.jsx';
 import { GlobalStyle } from './styles/GlobalStyle';
 import Hub from './pages/Hub';
 import LandingPage from './pages/LandingPage';
@@ -39,10 +39,21 @@ import Artilheiros from './pages/Artilheiros';
 import ControleArtilheiros from './pages/ControleArtilheiros';
 import ProximasRodadas from './pages/ProximasRodadas';
 import ControleProximasRodadas from './pages/ControleProximasRodadas';
+import Brasileirao from './pages/Brasileirao';
+import ControleBrasileirao from './pages/ControleBrasileirao';
+import BrasileiraoCompacta from './pages/BrasileiraoCompacta';
+import ControleBrasileiraoCompacta from './pages/ControleBrasileiraoCompacta';
+
+function TemaDinamico({ children }) {
+  const { tema } = useTema();
+  return <ThemeProvider theme={tema}>{children}</ThemeProvider>;
+}
+
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
+    <TemaProvider>
+      <TemaDinamico>
+        <GlobalStyle />
       <BrowserRouter
         future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
       >
@@ -123,8 +134,22 @@ export default function App() {
           />
           <Route path="/pre-jogo" element={<PreJogo />} />
           <Route path="/pre-jogo/controle" element={<ControlePreJogo />} />
+          <Route path="/brasileirao" element={<Brasileirao />} />
+          <Route
+            path="/brasileirao/controle"
+            element={<ControleBrasileirao />}
+          />
+          <Route
+            path="/brasileirao-compacta"
+            element={<BrasileiraoCompacta />}
+          />
+          <Route
+            path="/brasileirao-compacta/controle"
+            element={<ControleBrasileiraoCompacta />}
+          />
         </Routes>
       </BrowserRouter>
-    </ThemeProvider>
+      </TemaDinamico>
+    </TemaProvider>
   );
 }

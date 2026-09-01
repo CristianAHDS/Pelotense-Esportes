@@ -6,6 +6,7 @@ import { segundosAtuais, formatarTempo } from '../store/placarBroadcastStore'
 import { substituicaoPro } from '../store/substituicaoStore'
 import { SubstituicaoCartao } from '../components/SubstituicaoCartao'
 import { useFundoTransparente } from '../components/useFundoTransparente'
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema'
 
 const compacto = new URLSearchParams(window.location.search).has('compacto')
 
@@ -45,7 +46,7 @@ const FaixaTempo = styled.div`
   gap: 10px;
   padding: 6px 28px;
   position: relative;
-  background: rgba(0, 0, 0, 0.7);
+  background: ${({ theme }) => theme.cores.barra};
   border-radius: 6px 6px 0 0;
   backdrop-filter: blur(4px);
 
@@ -55,7 +56,7 @@ const FaixaTempo = styled.div`
     font-size: 1rem;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #ffffff;
+    color: ${({ theme }) => theme.cores.texto};
 }
 
   .periodo {
@@ -63,7 +64,7 @@ const FaixaTempo = styled.div`
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.7);
+    color: ${({ theme }) => theme.cores.textoVideo};
     text-transform: uppercase;
 }
 
@@ -81,7 +82,7 @@ const FaixaTempo = styled.div`
     display: flex;
     align-items: center;
     padding: 0 16px;
-    background: rgba(0, 0, 0, 0.7);
+    background: ${({ theme }) => theme.cores.barra};
     border-radius: 6px 6px 0 0;
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
     font-variant-numeric: tabular-nums;
@@ -151,7 +152,7 @@ const Separador = styled.div`
   align-items: center;
   justify-content: center;
   padding: 10px 8px;
-  background: rgba(0, 0, 0, 0.85);
+  background: ${({ theme }) => theme.cores.barraForte};
   backdrop-filter: blur(4px);
   position: relative;
 
@@ -159,7 +160,7 @@ const Separador = styled.div`
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
     font-size: 1.6rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.5);
+    color: ${({ theme }) => theme.cores.textoVideoFino};
 }
 `
 
@@ -168,7 +169,7 @@ const StatusBar = styled.div`
   align-items: center;
   gap: 8px;
   padding: 5px 20px;
-  background: rgba(0, 0, 0, 0.6);
+  background: ${({ theme }) => theme.cores.barra};
   border-radius: 4px;
   backdrop-filter: blur(4px);
 
@@ -178,7 +179,8 @@ const StatusBar = styled.div`
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: ${({ $ativo }) => ($ativo ? '#a5ef1c' : '#ffffff')};
+    color: ${({ theme, $ativo }) =>
+      $ativo ? theme.cores.primaria : theme.cores.texto};
 }
 `
 
@@ -204,9 +206,9 @@ const Voltar = styled(Link)`
   display: grid;
   place-items: center;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.4);
+  background: ${({ theme }) => theme.cores.superficieHover};
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  color: ${({ theme }) => theme.cores.textoSuave};
     font-size: 1.2rem;
   text-decoration: none;
   opacity: 0;
@@ -329,6 +331,7 @@ export default function PlacarBroadcast() {
   return (
     <Tela $compacto={compacto}>
       {!compacto && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+      {!compacto && <BotaoAlternarTema />}
 
       {!compacto && <Marca>PELOTENSE ESPORTES</Marca>}
 

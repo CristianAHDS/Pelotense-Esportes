@@ -152,6 +152,27 @@ const GAUCHAO_A2 = [
   },
 ];
 
+const BRASILEIRAO = [
+  {
+    titulo: 'Classificação',
+    tag: 'CLASSIFICAÇÃO',
+    descricao:
+      'Tabela oficial do Brasileirão Série A (UOL) com G-4, G-8 e Z-4: zonas de Libertadores, Sul-Americana e rebaixamento.',
+    rota: '/brasileirao',
+    accent: '#1e88e5',
+    glow: 'rgba(30, 136, 229, 0.16)',
+  },
+  {
+    titulo: 'Tabela Compacta · Live',
+    tag: 'LIVE',
+    descricao:
+      'Tabela compacta otimizada para transmissões: posição, nome, escudo, P, J, V, E, D e saldo de gols.',
+    rota: '/brasileirao-compacta',
+    accent: '#1e88e5',
+    glow: 'rgba(30, 136, 229, 0.16)',
+  },
+];
+
 const EXTRAS = [
   {
     rota: '/pre-jogo',
@@ -206,6 +227,7 @@ const ESPORTES = [
 const RODAPE_LINKS = [
   { id: 'scoreboards', label: 'Scoreboards' },
   { id: 'gauchao', label: 'Gauchão A2' },
+  { id: 'brasileirao', label: 'Brasileirão 26' },
   { id: 'extras', label: 'Extras' },
 ];
 
@@ -1108,8 +1130,9 @@ export default function Hub() {
   const [aberto, setAberto] = useState({
     scoreboards: false,
     gauchao: true,
-    programas: false,
-    extras: true,
+    programa: false,
+    brasileirao: false,
+    extras: false,
     outros: false,
   });
 
@@ -1246,6 +1269,79 @@ export default function Hub() {
         {aberto.gauchao && (
           <Grade>
             {GAUCHAO_A2.map((t, i) => (
+              <RevelarAoRolar key={t.titulo} atraso={(i % 4) * 60}>
+                <Card
+                  className={t.emBreve ? 'breve' : ''}
+                  $accent={t.accent}
+                  $glow={t.glow}
+                >
+                  {t.emBreve ? (
+                    <>
+                      <CardTag $accent={t.accent}>{t.tag}</CardTag>
+                      <CardTitulo>{t.titulo}</CardTitulo>
+                      <CardDescricao>{t.descricao}</CardDescricao>
+                      <EmBreveChip>Em breve</EmBreveChip>
+                    </>
+                  ) : (
+                    <>
+                      <CardTag $accent={t.accent}>{t.tag}</CardTag>
+                      <CardTitulo>{t.titulo}</CardTitulo>
+                      <CardDescricao>{t.descricao}</CardDescricao>
+                      <PreviewAoVivo
+                        rota={t.rota}
+                        largura={760}
+                        altura={t.altura || 620}
+                        aoAmpliar={() =>
+                          setTv({
+                            rota: t.rota,
+                            tag: t.tag,
+                            titulo: t.titulo,
+                            accent: t.accent,
+                            largura: 760,
+                            altura: t.altura || 620,
+                          })
+                        }
+                      />
+                      <CardAcoes>
+                        <Botao
+                          as="a"
+                          href={t.rota}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="primario"
+                        >
+                          Abrir
+                        </Botao>
+                        <Botao
+                          to={t.controle || `${t.rota}/controle`}
+                          className="secundario"
+                        >
+                          Controlar
+                        </Botao>
+                        <CopiarLink rota={t.rota} />
+                      </CardAcoes>
+                    </>
+                  )}
+                </Card>
+              </RevelarAoRolar>
+            ))}
+          </Grade>
+        )}
+
+        <Segmento
+          id="brasileirao"
+          $aberto={aberto.brasileirao}
+          onClick={() => alternarSegmento('brasileirao')}
+          aria-expanded={aberto.brasileirao}
+        >
+          <SegmentoIcone>⚽</SegmentoIcone>
+          <h2>Brasileirão 26</h2>
+          <Contador>{BRASILEIRAO.length} ativos</Contador>
+          <SetaSegmento $aberto={aberto.brasileirao}>▼</SetaSegmento>
+        </Segmento>
+        {aberto.brasileirao && (
+          <Grade>
+            {BRASILEIRAO.map((t, i) => (
               <RevelarAoRolar key={t.titulo} atraso={(i % 4) * 60}>
                 <Card
                   className={t.emBreve ? 'breve' : ''}

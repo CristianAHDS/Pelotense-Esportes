@@ -10,14 +10,23 @@ const proxyFGF = {
   },
 };
 
+const proxyUOL = {
+  '/uol': {
+    target: 'https://www.uol.com.br',
+    changeOrigin: true,
+    secure: true,
+    rewrite: (path) => path.replace(/^\/uol/, ''),
+  },
+};
+
 export default defineConfig({
   plugins: [react()],
   server: {
     port: 5174,
     open: false,
-    proxy: proxyFGF,
+    proxy: { ...proxyFGF, ...proxyUOL },
   },
   preview: {
-    proxy: proxyFGF,
+    proxy: { ...proxyFGF, ...proxyUOL },
   },
 });

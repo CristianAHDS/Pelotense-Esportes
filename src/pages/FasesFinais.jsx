@@ -4,6 +4,7 @@ import { useFundoTransparente } from '../components/useFundoTransparente';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { getEstado, inscrever } from '../store/mataMataStore';
 import { PainelChaveamento } from '../components/PainelChaveamento';
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 
 const ACC = '#a5ef1c';
 
@@ -67,7 +68,7 @@ const CartaoCabecalho = styled.header`
     letter-spacing: 2px;
     text-transform: uppercase;
     line-height: 1.1;
-    color: #fcfcfb;
+    color: ${({ theme }) => theme.cores.texto};
   }
 
   span.sub {
@@ -103,6 +104,7 @@ export default function FasesFinais() {
   return (
     <Tela $previa={emPrevia}>
       {!emPrevia && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+      {!emPrevia && <BotaoAlternarTema />}
 
       <CartaoCabecalho>
         <div>

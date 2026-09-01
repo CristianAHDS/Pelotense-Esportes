@@ -5,6 +5,7 @@ import { artilheiros } from '../store/artilheirosStore';
 import { ArtilheirosCartao } from '../components/ArtilheirosCartao';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 
 const Palco = styled.div`
   min-height: 100vh;
@@ -28,7 +29,10 @@ export default function Artilheiros() {
   return (
     <Palco>
       {!emPrevia && (
-        <BotaoSalvarImagem alvo={cartaoRef} nome={estado.titulo || 'artilheiros'} />
+        <>
+          <BotaoAlternarTema aoLado />
+          <BotaoSalvarImagem alvo={cartaoRef} nome={estado.titulo || 'artilheiros'} />
+        </>
       )}
       <ArtilheirosCartao ref={cartaoRef} dados={estado} />
     </Palco>

@@ -3,6 +3,7 @@ import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { substituicaoPro } from '../store/substituicaoStore';
 import { SubstituicaoCartao } from '../components/SubstituicaoCartao';
 import { useFundoTransparente } from '../components/useFundoTransparente';
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 
 const Palco = styled.div`
   min-height: 100vh;
@@ -19,6 +20,7 @@ export default function Substituicao() {
 
   return (
     <Palco>
+      <BotaoAlternarTema />
       <SubstituicaoCartao dados={estado} />
     </Palco>
   );

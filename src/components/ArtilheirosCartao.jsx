@@ -3,8 +3,6 @@ import { forwardRef, useMemo } from 'react';
 import { Escudo } from './Escudo';
 import { getEstado as getTabela } from '../store/tabelaStore';
 
-const VERDE = '#a5ef1c';
-
 function urlEscudo(sigla) {
   const s = String(sigla || '').toUpperCase();
   return /^[A-Z]{3,4}$/.test(s) ? `/escudos/${s}.png` : null;
@@ -65,7 +63,7 @@ const Topo = styled.header`
     letter-spacing: 3px;
     text-transform: uppercase;
     line-height: 1.1;
-    color: #fff;
+    color: ${({ theme }) => theme.cores.texto};
   }
 
   .sub {
@@ -99,11 +97,11 @@ const Legenda = styled.div`
   gap: 10px;
   align-items: center;
   padding: 8px 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
   font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 2.5px;
-  color: rgba(255, 255, 255, 0.45);
+  color: ${({ theme }) => theme.cores.textoSuave};
 `;
 
 const Linha = styled.div`
@@ -114,7 +112,7 @@ const Linha = styled.div`
   padding: 9px 16px;
 
   & + & {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid ${({ theme }) => theme.cores.borda};
   }
 
   &:hover {
@@ -126,7 +124,7 @@ const Linha = styled.div`
     font-size: 0.95rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
-    color: ${VERDE};
+    color: ${({ theme }) => theme.cores.primaria};
     text-align: center;
   }
 
@@ -134,7 +132,7 @@ const Linha = styled.div`
     font-size: 0.86rem;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: #fff;
+    color: ${({ theme }) => theme.cores.texto};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -143,7 +141,7 @@ const Linha = styled.div`
   .clube {
     font-size: 0.68rem;
     letter-spacing: 1px;
-    color: rgba(255, 255, 255, 0.5);
+    color: ${({ theme }) => theme.cores.textoSuave};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -155,7 +153,7 @@ const Linha = styled.div`
     font-size: 1.05rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
-    color: ${VERDE};
+    color: ${({ theme }) => theme.cores.primaria};
   }
 `;
 
@@ -163,7 +161,7 @@ const Vazio = styled.span`
   padding: 14px 16px;
   font-size: 0.75rem;
   letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.35);
+  color: ${({ theme }) => theme.cores.textoVideoFino};
 `;
 
 /* dados: estado do artilheirosStore */

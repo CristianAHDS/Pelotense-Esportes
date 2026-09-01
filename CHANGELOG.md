@@ -1,5 +1,49 @@
 # Changelog
 
+## 01/09/2026
+
+### Tema claro: placar de escalação sem botão de tema e fontes brancas restantes
+- Removido o `BotaoAlternarTema` do overlay placar-broadcast-escalacao (`PlacarBroadcastEscalacao.jsx`); as demais páginas de placar mantêm o botão.
+- Corrigidas as fontes que ainda ficavam brancas no tema claro, trocando `#fff`/`rgba(255,255,255,…)` fixos por `theme.cores` em: ArtilheirosCartao (nome, clube, legenda, vazio e bordas), UltimaRodadaCartao (siglas, legenda de classificação, vazio e bordas), ProximasRodadasCartao (siglas, "×", vazio e bordas), PreJogoCartao (rótulo e "×") e Penaltis (placar, slots e rodapé).
+- Acentos verdes em texto sobre os painéis (placares, posições, gols) passam a usar `theme.cores.primaria`, mantendo o `#a5ef1c` no tema escuro e ganhando um verde mais escuro legível no claro.
+- Componentes propositalmente escuros (PlacarModelCartao, EscalacaoCartao, SubstituicaoCartao, cartões de jogo do chaveamento, Placar/PlacarPro legado) seguem com texto claro.
+
+### Tema claro: correção dos títulos e textos que ficavam brancos
+- Títulos (`h1`/`h2`) dos cartões e painéis que usavam `color: #fff`/`#fcfcfb` fixo passam a usar `theme.cores.texto`, respeitando o tema claro/escuro (UltimaRodadaCartao, ArtilheirosCartao, ProximasRodadasCartao, PreJogoCartao, FasesFinais, MataMata, PainelOitavas, PainelChaveamento).
+- ListaOitavas (mata-mata) teve textos, bordas e separadores ajustados para `theme.cores` (texto/textoSuave/borda), ficando legível no tema claro.
+- Bordas e sombras dos painéis de mata-mata passam a usar `theme.cores.borda`.
+- Componentes com fundo propositalmente escuro (placares broadcast, cartões de jogo do chaveamento, pênaltis) mantêm texto claro, preservando o contraste nos dois temas.
+
+### Tema claro para os overlays e botão de alternar tema
+- Novo `lightTheme` em `src/theme.js` com paleta clara equivalente (fundo claro, texto escuro, acento verde mais escuro).
+- Novo hook `useTema` (`src/hooks/useTema.jsx`) com `TemaProvider` e `BotaoAlternarTema` (`src/components/BotaoAlternarTema.jsx`), persiste a escolha em `localStorage` e alimenta o `ThemeProvider` dinamicamente no `App.jsx`.
+- Botão de alternar tema adicionado aos 20 overlays. Nos que têm "Salvar imagem", fica ao lado do botão de salvar; nos demais, fica no mesmo local (topo à direita).
+- Escolha valida em todos os componentes via `theme.cores`; a sincronização se aplica globalmente sem necessidade de recompilar por overlay.
+
+### Brasileirão 26: nova aba com Classificação e Tabela Compacta · Live
+- Nova aba "Brasileirão 26" no hub com dois cards: Classificação (`/brasileirao`) e Tabela Compacta · Live (`/brasileirao-compacta`), iniciando com o dropdown fechado.
+- Dados sincronizados com o GE Globo (`ge.globo.com/futebol/brasileirao-serie-a/`) via novo serviço `brasileiraoService.js`, que extrai a variável `const classificacao` embutida na página, com cache de 3 min. Proxy `/ge/*` adicionado no `vite.config.js` (dev) e `netlify.toml` (produção).
+- Novos stores `brasileiraoStore.js` e `brasileiraoCompactaStore.js` (dividir colunas) seguindo o padrão de sync local + BroadcastChannel + Firebase RTDB.
+- Dados padrão (rodada 25) com a classificação real atual e escudos de cada clube.
+- Zonas da tabela adaptadas para o Brasileirão: Libertadores (1–6), Pré-Libertadores (7–8) e Rebaixamento (17–20).
+
+### Brasileirão 26: fonte de dados via Google (sem extração do GE)
+- Removida a sincronização automática com o GE Globo: deletado `brasileiraoService.js`, o proxy `/ge/*` no `vite.config.js` e `netlify.toml`, e o botão "Atualizar do GE" do controle.
+- Dados congelados no padrão da tabela do Google (pós-25ª rodada, 31/08): corrigida a ordem das posições 7–9 (Atlético-MG, Bragantino, Coritiba) e os números do Coritiba.
+- Controle passa a ter o botão "Abrir tabela no Google" (abre a busca da classificação no Google para conferir/atualizar manualmente).
+- Selos dos overlays atualizados de "Sincronizado em tempo real" para "Referência: Google".
+
+### Brasileirão 26: fonte oficial CBF com regras de classificação (G-4, G-8, Z-4)
+- Fonte de dados trocada para o site oficial da CBF (`cbf.com.br/.../serie-a/2026`): novo `cbfService.js` que lê a classificação embutida no HTML (JSON) com cache de 3 min, e novo proxy `/cbf/*` no `vite.config.js` (com `secure: false` por causa da cadeia de certificados da máquina) e `netlify.toml`.
+- Tabela ao vivo atualizada ao abrir os overlays e via botão "⟳ Atualizar da CBF" no controle, com link "Abrir tabela no site da CBF".
+- Regras do Brasileirão aplicadas nas duas tabelas: G-4 (1º–4º, Libertadores), G-8 (5º–8º, Sul-Americana) e Z-4 (17º–20º, rebaixamento), com legenda colorida, no mesmo mecanismo das demais tabelas.
+- Dados padrão corrigidos pela CBF: Coritiba 7º com 37pts/25j, Atlético-MG 8º, Bragantino 9º; escudos dos clubes passam a usar os da CBF; selo dos overlays: "Referência: CBF".
+
+### Brasileirão 26: correção da importação CBF e escudos ausentes
+- Corrigido o parser do `cbfService` que nunca extraía a classificação (o HTML da CBF vem com aspas escapadas `\"`, e o leitor que ignorava strings fazia o `JSON.parse` sempre falhar). Agora usa contador simples de colchetes, validado contra a página real: 20/20 clubes com `escudo` e `sigla` corretos.
+- Corrigido o mapeamento de siglas (o `normalizar` removia espaços, mas as chaves de `SIGLAS_CBF` têm espaços → todas viriam `---` e cinza). Mantém espaços e garante a cor de cada clube após atualizar.
+- Store agora "cura" estados antigos salvos sem escudo: no carregamento, clubes conhecidos pela sigla recebem o escudo padrão da CBF (`carregar()`).
+
 ## 31/08/2026
 
 ### Placar Broadcast Escalação: proporção do timer, acréscimo, cartões e escudo

@@ -3,8 +3,6 @@ import { forwardRef, useMemo } from 'react';
 import { Escudo } from './Escudo';
 import { getEstado as getTabela } from '../store/tabelaStore';
 
-const VERDE = '#a5ef1c';
-
 function urlEscudo(sigla) {
   const s = String(sigla || '').toUpperCase();
   return /^[A-Z]{3,4}$/.test(s) ? `/escudos/${s}.png` : null;
@@ -61,7 +59,7 @@ const Topo = styled.header`
     letter-spacing: 3px;
     text-transform: uppercase;
     line-height: 1.1;
-    color: #fff;
+    color: ${({ theme }) => theme.cores.texto};
   }
 
   .sub {
@@ -101,7 +99,7 @@ const Corpo = styled.div`
 
 const Rodada = styled.section`
   & + & {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid ${({ theme }) => theme.cores.borda};
   }
 `;
 
@@ -112,7 +110,7 @@ const RodadaTitulo = styled.h2`
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: ${VERDE};
+  color: ${({ theme }) => theme.cores.primaria};
 `;
 
 const LinhaJogo = styled.div`
@@ -123,7 +121,7 @@ const LinhaJogo = styled.div`
   padding: 8px 16px;
 
   & + & {
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid ${({ theme }) => theme.cores.borda};
   }
 `;
 
@@ -139,7 +137,7 @@ const BlocoTime = styled.div`
   .sigla {
     font-size: 0.74rem;
     letter-spacing: 0.5px;
-    color: rgba(255, 255, 255, 0.7);
+    color: ${({ theme }) => theme.cores.textoSuave};
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -150,14 +148,14 @@ const Vs = styled.span`
   font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.78rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.35);
+  color: ${({ theme }) => theme.cores.textoVideoFino};
 `;
 
 const Vazio = styled.span`
   padding: 14px 16px;
   font-size: 0.75rem;
   letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.35);
+  color: ${({ theme }) => theme.cores.textoVideoFino};
 `;
 
 /* dados: estado do proximasRodadasStore */

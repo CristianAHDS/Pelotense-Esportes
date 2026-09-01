@@ -5,6 +5,7 @@ import { ultimaRodada } from '../store/ultimaRodadaStore';
 import { UltimaRodadaCartao } from '../components/UltimaRodadaCartao';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 
 const Palco = styled.div`
   min-height: 100vh;
@@ -28,10 +29,13 @@ export default function UltimaRodada() {
   return (
     <Palco>
       {!emPrevia && (
-        <BotaoSalvarImagem
-          alvo={cartaoRef}
-          nome={estado.titulo || 'ultima-rodada'}
-        />
+        <>
+          <BotaoAlternarTema aoLado />
+          <BotaoSalvarImagem
+            alvo={cartaoRef}
+            nome={estado.titulo || 'ultima-rodada'}
+          />
+        </>
       )}
       <UltimaRodadaCartao ref={cartaoRef} dados={estado} />
     </Palco>

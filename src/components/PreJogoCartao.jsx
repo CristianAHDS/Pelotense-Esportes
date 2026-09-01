@@ -41,7 +41,7 @@ const Titulo = styled.h2`
   font-weight: 800;
   letter-spacing: 6px;
   text-transform: uppercase;
-  color: #fff;
+  color: ${({ theme }) => theme.cores.texto};
   line-height: 1;
   text-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
 `;
@@ -59,7 +59,7 @@ const Rotulo = styled.span`
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6);
+  color: ${({ theme }) => theme.cores.textoSuave};
   white-space: nowrap;
   text-shadow: 0 0 18px rgba(0, 0, 0, 0.5);
 `;
@@ -98,7 +98,7 @@ const Vs = styled.span`
   font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: clamp(5rem, 2vw, 1rem);
   font-weight: 800;
-  color: #fff;
+  color: ${({ theme }) => theme.cores.texto};
   opacity: 0.9;
 `;
 

@@ -4,6 +4,7 @@ import { useFundoTransparente } from '../components/useFundoTransparente';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { getEstado, inscrever, placarDe, slotsVisiveis } from '../store/penaltisStore';
 import { Escudo } from '../components/Escudo';
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 
 const ACENTO = '#a5ef1c';
 const VERDE = '#a5ef1c';
@@ -134,7 +135,7 @@ const LadoBox = styled.div`
     font-weight: 700;
     line-height: 1;
     font-variant-numeric: tabular-nums;
-    color: #fff;
+    color: ${({ theme }) => theme.cores.texto};
     text-shadow: 0 4px 30px rgba(165, 239, 28, 0.22);
 }
 `;
@@ -156,7 +157,7 @@ const Slot = styled.span`
   border-radius: 50%;
   font-size: 0.82rem;
   font-weight: 800;
-  border: 2px solid rgba(255, 255, 255, 0.14);
+  border: 2px solid ${({ theme }) => theme.cores.borda};
   color: transparent;
   transition:
     transform 0.15s ease,
@@ -210,7 +211,8 @@ const RodapePainel = styled.footer`
   gap: 12px;
   padding: 12px 20px;
   border-top: 1px solid ${({ theme }) => theme.cores.borda};
-  background: rgba(255, 255, 255, 0.02);
+  background: ${({ theme }) =>
+    theme.escuro ? 'rgba(255, 255, 255, 0.02)' : 'rgba(0, 0, 0, 0.02)'};
 
   .legenda {
   display: inline-flex;
@@ -296,6 +298,7 @@ export default function Penaltis() {
   return (
     <Tela $previa={emPrevia}>
       {!emPrevia && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+      {!emPrevia && <BotaoAlternarTema />}
 
       <Painel>
         <Cabecalho>

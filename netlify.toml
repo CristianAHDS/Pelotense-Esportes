@@ -9,6 +9,13 @@
   status = 200
   force = true
 
+# Proxy para a UOL (evita CORS na busca da classificação do Brasileirão)
+[[redirects]]
+  from = "/uol/*"
+  to = "https://www.uol.com.br/:splat"
+  status = 200
+  force = true
+
 # SPA fallback
 [[redirects]]
   from = "/*"

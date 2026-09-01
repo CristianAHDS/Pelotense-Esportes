@@ -2,6 +2,7 @@
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useFundoTransparente } from '../components/useFundoTransparente'
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema'
 import { substituicaoPL } from '../store/substituicaoStore'
 import { SubstituicaoCartao } from '../components/SubstituicaoCartao'
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
@@ -76,7 +77,7 @@ const ChipPeriodo = styled.div`
   align-items: center;
   justify-content: center;
   padding: 7px 16px;
-  background: rgba(0, 0, 0, 0.78);
+  background: ${({ theme }) => theme.cores.barra};
   border-radius: 8px 8px 0 0;
 
   span {
@@ -84,7 +85,7 @@ const ChipPeriodo = styled.div`
     font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #ffffff;
+    color: ${({ theme }) => theme.cores.texto};
     text-transform: uppercase;
   }
 `
@@ -98,7 +99,7 @@ const ChipAcrescimo = styled.div`
   align-items: center;
   justify-content: center;
   padding: 7px 16px;
-  background: rgba(0, 0, 0, 0.78);
+  background: ${({ theme }) => theme.cores.barra};
   border-radius: 8px 8px 0 0;
   white-space: nowrap;
   opacity: ${({ $visivel }) => ($visivel ? 1 : 0)};
@@ -168,7 +169,7 @@ const Separador = styled.div`
   justify-content: center;
   gap: 10px;
   padding: 10px 12px;
-  background: rgba(0, 0, 0, 0.55);
+  background: ${({ theme }) => theme.cores.barra};
 
   > span:first-child {
     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
@@ -182,12 +183,12 @@ const Separador = styled.div`
     font-variant-numeric: tabular-nums;
     font-size: 1.3rem;
     font-weight: 800;
-    color: #ffffff;
+    color: ${({ theme }) => theme.cores.texto};
   }
 
   .xPen {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.35);
+    color: ${({ theme }) => theme.cores.textoVideoFino};
   }
 `
 
@@ -196,7 +197,7 @@ const StatusBar = styled.div`
   align-items: center;
   gap: 8px;
   padding: 5px 20px;
-  background: rgba(0, 0, 0, 0.6);
+  background: ${({ theme }) => theme.cores.barra};
   border-radius: 999px;
   backdrop-filter: blur(4px);
 
@@ -206,7 +207,8 @@ const StatusBar = styled.div`
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: ${({ $ativo }) => ($ativo ? PL_MINT : '#ffffff')};
+    color: ${({ theme, $ativo }) =>
+      $ativo ? PL_MINT : theme.cores.texto};
   }
 `
 
@@ -232,9 +234,9 @@ const Voltar = styled(Link)`
   display: grid;
   place-items: center;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.4);
+  background: ${({ theme }) => theme.cores.superficieHover};
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  color: ${({ theme }) => theme.cores.textoSuave};
     font-size: 1.2rem;
   text-decoration: none;
   opacity: 0;
@@ -306,7 +308,7 @@ const Marca = styled.div`
   font-weight: 600;
   letter-spacing: 4px;
     text-transform: uppercase;
-    color: #ffffff;
+    color: ${({ theme }) => theme.cores.texto};
 `
 
 
@@ -358,6 +360,7 @@ export default function PlacarBroadcastPL() {
   return (
     <Tela $compacto={compacto}>
       {!compacto && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+      {!compacto && <BotaoAlternarTema />}
 
       {!compacto && <Marca>PELOTENSE ESPORTES</Marca>}
 

@@ -5,6 +5,7 @@ import { getEstado, inscrever } from '../store/preJogoStore';
 import { PreJogoCartao } from '../components/PreJogoCartao';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 
 const Palco = styled.div`
   min-height: 100vh;
@@ -29,7 +30,12 @@ export default function PreJogo() {
 
   return (
     <Palco>
-      {!emPrevia && <BotaoSalvarImagem alvo={cartaoRef} nome="pre-jogo" />}
+      {!emPrevia && (
+        <>
+          <BotaoAlternarTema aoLado />
+          <BotaoSalvarImagem alvo={cartaoRef} nome="pre-jogo" />
+        </>
+      )}
       <PreJogoCartao ref={cartaoRef} dados={estado} />
     </Palco>
   );

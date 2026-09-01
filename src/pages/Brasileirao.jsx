@@ -8,22 +8,37 @@ import {
   inscrever,
   ordenarClassificacao,
   recarregar,
-} from '../store/tabelaStore';
-import { tabelaCompacta } from '../store/tabelaCompactaStore';
+} from '../store/brasileiraoStore';
+import { importarClassificacaoUOL } from '../services/uolService';
 import { Escudo } from '../components/Escudo';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
 import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 import { slugArquivo } from '../lib/capturaImagem';
 
+/* Regulamento Brasileirão Série A: G-4 (1º–4º) Libertadores, G-8 (5º–8º)
+   Sul-Americana e Z-4 (17º–20º) rebaixamento. */
 const CORES_ZONA = {
-  class: '#a5ef1c',
+  lib: '#1e88e5',
+  sud: '#66bb6a',
   reb: '#ef4444',
 };
 
 function zonaDa(pos, total) {
-  if (pos <= Math.min(8, total)) return 'class';
-  if (pos >= total - 1) return 'reb';
+  if (pos <= Math.min(4, total)) return 'lib';
+  if (pos <= Math.min(8, total)) return 'sud';
+  if (pos >= total - 3) return 'reb';
   return null;
+}
+
+function saldo(gp, gc) {
+  const s = gp - gc;
+  if (s > 0) return `+${s}`;
+  return String(s);
+}
+
+function aproveitamento(p, j) {
+  if (!j) return '0%';
+  return `${Math.min(100, Math.round((p / (j * 3)) * 100))}%`;
 }
 
 const Tela = styled.div`
@@ -37,7 +52,7 @@ const Tela = styled.div`
 
 const Voltar = styled(Link)`
   align-self: flex-start;
-  max-width: 900px;
+  max-width: 1600px;
   width: 100%;
   margin: 0 auto 14px;
   text-decoration: none;
@@ -50,7 +65,7 @@ const Voltar = styled(Link)`
 
 const Painel = styled.section`
   width: 100%;
-  max-width: 900px;
+  max-width: 1020px;
   background: linear-gradient(
     165deg,
     ${({ theme }) => theme.cores.superficie},
@@ -70,7 +85,7 @@ const Cabecalho = styled.header`
   gap: 18px;
   padding: 20px 26px;
   border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
-  background: linear-gradient(90deg, rgba(165, 239, 28, 0.1), transparent 55%);
+  background: linear-gradient(90deg, rgba(30, 136, 229, 0.1), transparent 55%);
 
   &::before {
     content: '';
@@ -84,14 +99,11 @@ const Cabecalho = styled.header`
 
   h1 {
     font-family: ${({ theme }) => theme.fontes.titulo};
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-size: clamp(1.15rem, 2.6vw, 1.55rem);
     font-weight: 700;
     letter-spacing: 3px;
     text-transform: uppercase;
     line-height: 1.1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 
   span.sub {
@@ -119,32 +131,25 @@ const BadgeRodada = styled.div`
   white-space: nowrap;
 `;
 
-const Grade = styled.div`
-  min-width: 0;
+const Rolagem = styled.div`
+  overflow-x: auto;
 `;
 
-const GradeDividida = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  min-width: 0;
-
-  > * + * {
-    border-left: 1px solid ${({ theme }) => theme.cores.borda};
-  }
+const Grade = styled.div`
+  min-width: 780px;
 `;
 
 const LinhaCabecalho = styled.div`
   display: grid;
-  grid-template-columns: 28px minmax(0, 1fr) 34px 30px 30px 30px 30px 40px;
+  grid-template-columns: 52px minmax(200px, 1fr) repeat(9, 58px);
   align-items: center;
   padding: 10px 18px;
   border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
   background: rgba(255, 255, 255, 0.03);
   font-family: ${({ theme }) => theme.fontes.titulo};
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   color: ${({ theme }) => theme.cores.textoSuave};
 
   .num {
@@ -159,9 +164,9 @@ const LinhaCabecalho = styled.div`
 const LinhaTime = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: 28px minmax(0, 1fr) 34px 30px 30px 30px 30px 40px;
+  grid-template-columns: 52px minmax(200px, 1fr) repeat(9, 58px);
   align-items: center;
-  padding: 10px 18px;
+  padding: 11px 18px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   transition: background 0.12s ease;
 
@@ -170,25 +175,25 @@ const LinhaTime = styled.div`
   }
 
   &:hover {
-    background: rgba(165, 239, 28, 0.05);
+    background: rgba(30, 136, 229, 0.05);
   }
 
   .pos {
     position: relative;
     text-align: center;
     font-family: ${({ theme }) => theme.fontes.titulo};
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: ${({ theme }) => theme.cores.textoSuave};
     border-left: 4px solid transparent;
-    padding-left: 14px;
+    padding-left: 6px;
 
     &::before {
       content: '';
       position: absolute;
       left: 0;
-      top: -10px;
-      bottom: -10px;
+      top: -11px;
+      bottom: -11px;
       width: 4px;
       background: ${({ $zona }) => CORES_ZONA[$zona] || 'transparent'};
     }
@@ -197,31 +202,36 @@ const LinhaTime = styled.div`
   .time {
     display: flex;
     align-items: center;
-    gap: 9px;
+    gap: 10px;
     min-width: 0;
-    margin-left: 10px;
+  }
+
+  .sigla {
+    font-family: ${({ theme }) => theme.fontes.titulo};
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
   }
 
   .nome {
-    font-family: ${({ theme }) => theme.fontes.titulo};
-    font-size: 0.86rem;
-    font-weight: 700;
+    font-size: 0.74rem;
     letter-spacing: 0.5px;
-    white-space: nowrap;
+    color: ${({ theme }) => theme.cores.textoSuave};
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .num {
     text-align: center;
     font-variant-numeric: tabular-nums;
-    font-size: 0.84rem;
+    font-size: 0.88rem;
     color: ${({ theme }) => theme.cores.textoSuave};
   }
 
   .pontos {
     font-family: ${({ theme }) => theme.fontes.titulo};
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 700;
     color: ${({ theme }) => theme.cores.texto};
   }
@@ -236,12 +246,6 @@ const LinhaTime = styled.div`
     font-weight: 600;
   }
 `;
-
-function saldo(gp, gc) {
-  const s = gp - gc;
-  if (s > 0) return `+${s}`;
-  return String(s);
-}
 
 const RodapePainel = styled.footer`
   display: flex;
@@ -307,72 +311,29 @@ const SeloAoVivo = styled.span`
   }
 `;
 
-export default function TabelaCompacta() {
+export default function Brasileirao() {
   useFundoTransparente();
   const painelRef = useRef(null);
   useEffect(() => {
     recarregar();
+    importarClassificacaoUOL().catch((e) =>
+      console.warn('Brasileirão: falha ao atualizar da UOL.', e),
+    );
   }, []);
   const estado = usePlacarBroadcast({ getEstado, inscrever });
-  const compacta = usePlacarBroadcast(tabelaCompacta);
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
   const times = ordenarClassificacao(estado.times);
   const total = times.length;
-
-  const dividir = Boolean(compacta.dividir);
-  const metade = 8;
-  const colunas = dividir
-    ? [times.slice(0, metade), times.slice(metade)]
-    : [times];
 
   const nomeArquivo =
     slugArquivo(estado.competicao) +
     (estado.rodada > 0 ? `-rodada-${estado.rodada}` : '');
 
   const zonas = [
-    { chave: 'class', rotulo: 'G-8', cor: CORES_ZONA.class },
-    { chave: 'reb', rotulo: 'Rebaixamento', cor: CORES_ZONA.reb },
+    { chave: 'lib', rotulo: 'Libertadores (G-4)', cor: CORES_ZONA.lib },
+    { chave: 'sud', rotulo: 'Sul-Americana (G-8)', cor: CORES_ZONA.sud },
+    { chave: 'reb', rotulo: 'Rebaixamento (Z-4)', cor: CORES_ZONA.reb },
   ].filter((z) => times.some((_, i) => zonaDa(i + 1, total) === z.chave));
-
-  const renderColuna = (items, offset) => (
-    <div>
-      <LinhaCabecalho>
-        <span>#</span>
-        <span>TIME</span>
-        <span className="num destaque">P</span>
-        <span className="num">J</span>
-        <span className="num">V</span>
-        <span className="num">E</span>
-        <span className="num">D</span>
-        <span className="num">SG</span>
-      </LinhaCabecalho>
-
-      {items.map((t, i) => {
-        const pos = offset + i + 1;
-        const zona = zonaDa(pos, total);
-        const s = t.gp - t.gc;
-        return (
-          <LinhaTime key={`${t.sigla}-${pos}`} $zona={zona}>
-            <span className="pos">{pos}</span>
-            <div className="time">
-              <Escudo cor={t.cor} sigla={t.sigla} url={t.escudo} tamanho={22} />
-              <span className="nome">{t.nome}</span>
-            </div>
-            <span className="num pontos">{t.p}</span>
-            <span className="num">{t.j}</span>
-            <span className="num">{t.v}</span>
-            <span className="num">{t.e}</span>
-            <span className="num">{t.d}</span>
-            <span
-              className={`num ${s > 0 ? 'saldoPos' : s < 0 ? 'saldoNeg' : ''}`}
-            >
-              {saldo(t.gp, t.gc)}
-            </span>
-          </LinhaTime>
-        );
-      })}
-    </div>
-  );
 
   return (
     <Tela $previa={emPrevia}>
@@ -381,14 +342,13 @@ export default function TabelaCompacta() {
           ←
         </Voltar>
       )}
+
       {!emPrevia && (
         <>
           <BotaoAlternarTema aoLado />
           <BotaoSalvarImagem alvo={painelRef} nome={nomeArquivo} />
         </>
-      )}
-
-      <Painel ref={painelRef}>
+      )}      <Painel ref={painelRef}>
         <Cabecalho>
           <div>
             <h1>{estado.competicao}</h1>
@@ -401,18 +361,57 @@ export default function TabelaCompacta() {
           )}
         </Cabecalho>
 
-        {dividir ? (
-          <GradeDividida>
-            {colunas.map((items, c) => {
-              const offset = items.length
-                ? times.findIndex((t) => t.sigla === items[0].sigla)
-                : 0;
-              return <div key={c}>{renderColuna(items, offset)}</div>;
+        <Rolagem>
+          <Grade>
+            <LinhaCabecalho>
+              <span>#</span>
+              <span>TIME</span>
+              <span className="num destaque">P</span>
+              <span className="num">J</span>
+              <span className="num">V</span>
+              <span className="num">E</span>
+              <span className="num">D</span>
+              <span className="num">GP</span>
+              <span className="num">GC</span>
+              <span className="num">SG</span>
+              <span className="num">%</span>
+            </LinhaCabecalho>
+
+            {times.map((t, i) => {
+              const pos = i + 1;
+              const zona = zonaDa(pos, total);
+              const s = t.gp - t.gc;
+              return (
+                <LinhaTime key={`${t.sigla}-${i}`} $zona={zona}>
+                  <span className="pos">{pos}</span>
+                  <div className="time">
+                    <Escudo
+                      cor={t.cor}
+                      sigla={t.sigla}
+                      url={t.escudo}
+                      tamanho={24}
+                    />
+                    <span className="sigla">{t.sigla}</span>
+                    <span className="nome">{t.nome}</span>
+                  </div>
+                  <span className="num pontos">{t.p}</span>
+                  <span className="num">{t.j}</span>
+                  <span className="num">{t.v}</span>
+                  <span className="num">{t.e}</span>
+                  <span className="num">{t.d}</span>
+                  <span className="num">{t.gp}</span>
+                  <span className="num">{t.gc}</span>
+                  <span
+                    className={`num ${s > 0 ? 'saldoPos' : s < 0 ? 'saldoNeg' : ''}`}
+                  >
+                    {saldo(t.gp, t.gc)}
+                  </span>
+                  <span className="num">{aproveitamento(t.p, t.j)}</span>
+                </LinhaTime>
+              );
             })}
-          </GradeDividida>
-        ) : (
-          <Grade>{renderColuna(times, 0)}</Grade>
-        )}
+          </Grade>
+        </Rolagem>
 
         <RodapePainel>
           <Legenda>
@@ -423,7 +422,7 @@ export default function TabelaCompacta() {
               </span>
             ))}
           </Legenda>
-          <SeloAoVivo>Sincronizado em tempo real</SeloAoVivo>
+          <SeloAoVivo>Referência: UOL</SeloAoVivo>
         </RodapePainel>
       </Painel>
     </Tela>

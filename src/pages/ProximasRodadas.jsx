@@ -5,6 +5,7 @@ import { proximasRodadas } from '../store/proximasRodadasStore';
 import { ProximasRodadasCartao } from '../components/ProximasRodadasCartao';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 
 const Palco = styled.div`
   min-height: 100vh;
@@ -28,7 +29,10 @@ export default function ProximasRodadas() {
   return (
     <Palco>
       {!emPrevia && (
-        <BotaoSalvarImagem alvo={cartaoRef} nome={estado.titulo || 'proximas-rodadas'} />
+        <>
+          <BotaoAlternarTema aoLado />
+          <BotaoSalvarImagem alvo={cartaoRef} nome={estado.titulo || 'proximas-rodadas'} />
+        </>
       )}
       <ProximasRodadasCartao ref={cartaoRef} dados={estado} />
     </Palco>

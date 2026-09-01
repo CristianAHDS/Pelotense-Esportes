@@ -5,6 +5,7 @@ import { getEstado, inscrever } from '../store/placarModelStore';
 import { PlacarModelCartao } from '../components/PlacarModelCartao';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 
 const Palco = styled.div`
   min-height: 100vh;
@@ -27,7 +28,12 @@ export default function PlacarModel() {
 
   return (
     <Palco>
-      {!emPrevia && <BotaoSalvarImagem alvo={cartaoRef} nome="placar-model" />}
+      {!emPrevia && (
+        <>
+          <BotaoAlternarTema aoLado />
+          <BotaoSalvarImagem alvo={cartaoRef} nome="placar-model" />
+        </>
+      )}
       <PlacarModelCartao ref={cartaoRef} dados={estado} />
     </Palco>
   );

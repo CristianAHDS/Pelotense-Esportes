@@ -8,21 +8,26 @@ import {
   inscrever,
   ordenarClassificacao,
   recarregar,
-} from '../store/tabelaStore';
-import { tabelaCompacta } from '../store/tabelaCompactaStore';
+} from '../store/brasileiraoStore';
+import { brasilieraCompacta } from '../store/brasileiraoCompactaStore';
+import { importarClassificacaoUOL } from '../services/uolService';
 import { Escudo } from '../components/Escudo';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
 import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 import { slugArquivo } from '../lib/capturaImagem';
 
+/* Regulamento Brasileirão Série A: G-4 (1º–4º) Libertadores, G-8 (5º–8º)
+   Sul-Americana e Z-4 (17º–20º) rebaixamento. */
 const CORES_ZONA = {
-  class: '#a5ef1c',
+  lib: '#1e88e5',
+  sud: '#66bb6a',
   reb: '#ef4444',
 };
 
 function zonaDa(pos, total) {
-  if (pos <= Math.min(8, total)) return 'class';
-  if (pos >= total - 1) return 'reb';
+  if (pos <= Math.min(4, total)) return 'lib';
+  if (pos <= Math.min(8, total)) return 'sud';
+  if (pos >= total - 3) return 'reb';
   return null;
 }
 
@@ -70,7 +75,7 @@ const Cabecalho = styled.header`
   gap: 18px;
   padding: 20px 26px;
   border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
-  background: linear-gradient(90deg, rgba(165, 239, 28, 0.1), transparent 55%);
+  background: linear-gradient(90deg, rgba(30, 136, 229, 0.1), transparent 55%);
 
   &::before {
     content: '';
@@ -117,10 +122,6 @@ const BadgeRodada = styled.div`
   padding: 7px 16px;
   border-radius: 999px;
   white-space: nowrap;
-`;
-
-const Grade = styled.div`
-  min-width: 0;
 `;
 
 const GradeDividida = styled.div`
@@ -170,7 +171,7 @@ const LinhaTime = styled.div`
   }
 
   &:hover {
-    background: rgba(165, 239, 28, 0.05);
+    background: rgba(30, 136, 229, 0.05);
   }
 
   .pos {
@@ -307,20 +308,23 @@ const SeloAoVivo = styled.span`
   }
 `;
 
-export default function TabelaCompacta() {
+export default function BrasileiraoCompacta() {
   useFundoTransparente();
   const painelRef = useRef(null);
   useEffect(() => {
     recarregar();
+    importarClassificacaoUOL().catch((e) =>
+      console.warn('Brasileirão compacta: falha ao atualizar da UOL.', e),
+    );
   }, []);
   const estado = usePlacarBroadcast({ getEstado, inscrever });
-  const compacta = usePlacarBroadcast(tabelaCompacta);
+  const compacta = usePlacarBroadcast(brasilieraCompacta);
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
   const times = ordenarClassificacao(estado.times);
   const total = times.length;
 
   const dividir = Boolean(compacta.dividir);
-  const metade = 8;
+  const metade = 10;
   const colunas = dividir
     ? [times.slice(0, metade), times.slice(metade)]
     : [times];
@@ -330,8 +334,9 @@ export default function TabelaCompacta() {
     (estado.rodada > 0 ? `-rodada-${estado.rodada}` : '');
 
   const zonas = [
-    { chave: 'class', rotulo: 'G-8', cor: CORES_ZONA.class },
-    { chave: 'reb', rotulo: 'Rebaixamento', cor: CORES_ZONA.reb },
+    { chave: 'lib', rotulo: 'Libertadores (G-4)', cor: CORES_ZONA.lib },
+    { chave: 'sud', rotulo: 'Sul-Americana (G-8)', cor: CORES_ZONA.sud },
+    { chave: 'reb', rotulo: 'Rebaixamento (Z-4)', cor: CORES_ZONA.reb },
   ].filter((z) => times.some((_, i) => zonaDa(i + 1, total) === z.chave));
 
   const renderColuna = (items, offset) => (
@@ -411,7 +416,7 @@ export default function TabelaCompacta() {
             })}
           </GradeDividida>
         ) : (
-          <Grade>{renderColuna(times, 0)}</Grade>
+          <div>{renderColuna(times, 0)}</div>
         )}
 
         <RodapePainel>
@@ -423,7 +428,7 @@ export default function TabelaCompacta() {
               </span>
             ))}
           </Legenda>
-          <SeloAoVivo>Sincronizado em tempo real</SeloAoVivo>
+          <SeloAoVivo>Referência: UOL</SeloAoVivo>
         </RodapePainel>
       </Painel>
     </Tela>

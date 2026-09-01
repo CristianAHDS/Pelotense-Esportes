@@ -2,6 +2,7 @@
 import styled, { keyframes } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useFundoTransparente } from '../components/useFundoTransparente'
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema'
 import { substituicaoLL } from '../store/substituicaoStore'
 import { SubstituicaoCartao } from '../components/SubstituicaoCartao'
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
@@ -242,9 +243,9 @@ const Voltar = styled(Link)`
   display: grid;
   place-items: center;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.4);
+  background: ${({ theme }) => theme.cores.superficieHover};
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  color: ${({ theme }) => theme.cores.textoSuave};
     font-size: 1.2rem;
   text-decoration: none;
   opacity: 0;
@@ -316,7 +317,7 @@ const Marca = styled.div`
   font-weight: 600;
   letter-spacing: 4px;
     text-transform: uppercase;
-  color: #ffffff;
+  color: ${({ theme }) => theme.cores.texto};
 `
 
 
@@ -368,6 +369,7 @@ export default function PlacarBroadcastLL() {
   return (
     <Tela $compacto={compacto}>
       {!compacto && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+      {!compacto && <BotaoAlternarTema />}
 
       {!compacto && <Marca>PELOTENSE ESPORTES</Marca>}
 

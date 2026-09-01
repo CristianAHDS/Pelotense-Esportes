@@ -12,6 +12,7 @@ import {
 import { importarClassificacaoFGF } from '../services/fgfService';
 import { Escudo } from '../components/Escudo';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
+import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 import { slugArquivo } from '../lib/capturaImagem';
 
 /* Regulamento Gauchão Série A2: 1º ao 8º avançam às quartas de final,
@@ -340,7 +341,10 @@ export default function Tabela() {
       )}
 
       {!emPrevia && (
-        <BotaoSalvarImagem alvo={painelRef} nome={nomeArquivo} />
+        <>
+          <BotaoAlternarTema aoLado />
+          <BotaoSalvarImagem alvo={painelRef} nome={nomeArquivo} />
+        </>
       )}
 
       <Painel ref={painelRef}>
