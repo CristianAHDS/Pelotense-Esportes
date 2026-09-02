@@ -1,5 +1,11 @@
 # Changelog
 
+## 02/09/2026
+
+### Última Rodada: passa a exibir a rodada em andamento
+- Em `fgfService.js`, `extrairUltimaRodada` retornava a rodada imediatamente anterior à mais recente com placar. Agora retorna a própria rodada mais recente que já tem pelo menos um jogo com resultado (ex.: com a FGF na 8ª rodada, exibe a 8ª em andamento em vez da 7ª).
+- Sempre que a rodada alvo for digitada no controle, ela continua tendo prioridade sobre a detecção automática.
+
 ## 01/09/2026
 
 ### Tema claro: placar de escalação sem botão de tema e fontes brancas restantes

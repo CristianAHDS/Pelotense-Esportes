@@ -355,8 +355,8 @@ function extrairUltimaRodada(html, entradas, rodadaAlvo = 0) {
   };
 
   /* Rodada alvo: se um número de rodada é informado, retorna essa
-     rodada diretamente. Caso contrário, retorna a rodada imediatamente
-     anterior à mais recente com resultados. */
+     rodada diretamente. Caso contrário, retorna a rodada mais recente
+     que já tem pelo menos um jogo com placar (a rodada em andamento). */
   const lidas = itens.map(lerItem).filter(Boolean);
   if (!lidas.length) return null;
 
@@ -374,9 +374,7 @@ function extrairUltimaRodada(html, entradas, rodadaAlvo = 0) {
   }
   if (indice === -1) return lidas[0];
 
-  const numeroAtual = lidas[indice].numero;
-  const anterior = lidas.find((r) => r.numero === numeroAtual - 1);
-  return anterior || lidas[0];
+  return lidas[indice];
 }
 
 function lerCacheUR() {
