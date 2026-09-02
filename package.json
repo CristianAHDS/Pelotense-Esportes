@@ -8,7 +8,9 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:p2p": "vitest run src/store/syncP2P.test.js",
+    "test:all": "vitest run src/store/"
   },
   "dependencies": {
     "firebase": "^12.18.0",
