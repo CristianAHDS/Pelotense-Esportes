@@ -5,7 +5,8 @@
 ### Testes automatizados (Vitest) — foco nas stores e no sync entre abas
 - Configurado **Vitest + jsdom** (`vitest.config.js`, `src/test/setup.js`) com polyfill de `BroadcastChannel` para simular abas/peers (p2p).
 - Scripts em `package.json`: `npm test` (roda todos) e `npm run test:watch`.
-- Suíte total: **108 testes passando**, cobrindo as 21 stores do projeto:
+- Suíte total: **184 testes passando**, cobrindo as 21 stores do projeto:
+  - `syncP2P.test.js` (76): teste p2p real — duas instâncias independentes da store (duas "abas") compartilhando o mesmo canal BroadcastChannel; valida propagação, bidirecionalidade, convergência last-write-wins e ausência de loop.
   - `syncContrato.test.js` (70): contrato de sync entre abas (persistência, BroadcastChannel, storage, no-loop de eco, assinatura) para as 14 stores que expõem `setEstado`.
   - `storesObjeto.test.js` (24): mesmo contrato para as 6 stores "objeto" via ações reais (artilheiros, proximasRodadas, escalacao, substituicao, tabelaCompacta, brasileiraoCompacta).
   - `ultimaRodadaStore.test.js` (14): funcionamento + sync, incluindo o novo seletor `rodadaNumero` e a migração do número do título.
