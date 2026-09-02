@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { forwardRef, useEffect, useRef, useState } from 'react';
 import { Escudo } from './Escudo';
 import { segundosAtuais, formatarTempo } from '../store/placarModelStore';
@@ -105,7 +105,9 @@ const GolNum = styled.span`
   min-width: 1.1em;
   text-align: center;
   color: #fff;
-  ${({ $a }) => $a && `animation: ${glisseScore} 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);`}
+  ${({ $a }) =>
+    $a &&
+    css`animation: ${glisseScore} 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);`}
 `;
 
 const Divisor = styled.span`

@@ -68,14 +68,14 @@ const Botao = styled.button`
   }
 `
 
-function sanitizar(valor) {
+export function sanitizar(valor) {
   return String(valor || '')
     .toLowerCase()
     .replace(/[^a-z0-9_-]/g, '')
     .slice(0, 32)
 }
 
-function montarUrl(novaSala) {
+export function montarUrl(novaSala) {
   const params = new URLSearchParams(window.location.search)
   params.delete('sala')
   const busca = params.toString()

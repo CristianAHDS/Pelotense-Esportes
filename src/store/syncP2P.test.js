@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 /* Teste p2p REAL: cria DUAS instâncias independentes da store (duas "abas"),
    importadas de novo a cada vez, compartilhando o MESMO canal BroadcastChannel.
@@ -49,10 +49,16 @@ const ESTILO_ACAO = [
 
 const CASOS = [...ESTILO_SET, ...ESTILO_ACAO];
 
-beforeEach(() => {
-  let _t = 1e12;
-  vi.spyOn(Date, 'now').mockImplementation(() => (_t += 1));
-});
+/* Carimbo estritamente crescente durante TODA a suíte (base em época real,
+   nunca reseta por teste) — garante que as stores last-write-wins considerem
+   cada escrita genuinamente mais nova, sem colisão entre peers. */
+let agora = Date.now();
+function agoraFresco() {
+  agora += 1;
+  return agora;
+}
+beforeEach(() => vi.spyOn(Date, 'now').mockImplementation(agoraFresco));
+afterEach(() => vi.restoreAllMocks());
 
 function obterApi(mod) {
   if (typeof mod.getEstado === 'function') return mod;

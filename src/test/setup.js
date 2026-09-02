@@ -1,4 +1,5 @@
 import { afterEach, beforeEach, vi } from 'vitest';
+import '@testing-library/jest-dom/vitest';
 
 /* ---------- BroadcastChannel polyfill (jsdom não implementa) ---------- */
 
@@ -48,6 +49,45 @@ if (!window.matchMedia) {
 
 window.scrollTo = () => {};
 Element.prototype.scrollTo = () => {};
+
+/* Evita a navegação real de iframes nos overlays (só registra o src),
+   silenciando "Not implemented: navigation to another Document". */
+Object.defineProperty(window.HTMLIFrameElement.prototype, 'src', {
+  configurable: true,
+  enumerable: false,
+  get() {
+    return this.getAttribute('src') || '';
+  },
+  set(v) {
+    this.setAttribute('src', String(v));
+  },
+});
+
+if (!window.IntersectionObserver) {
+  class IOStub {
+    constructor(cb) {
+      this.cb = cb;
+    }
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+    takeRecords() {
+      return [];
+    }
+  }
+  window.IntersectionObserver = IOStub;
+  global.IntersectionObserver = IOStub;
+}
+
+if (!window.ResizeObserver) {
+  class ROStub {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  window.ResizeObserver = ROStub;
+  global.ResizeObserver = ROStub;
+}
 
 beforeEach(() => {
   localStorage.clear();

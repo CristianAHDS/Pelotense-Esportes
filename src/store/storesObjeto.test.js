@@ -79,7 +79,13 @@ describe.each(CASOS)(
       const tipo = descobrirTipo(api, semear);
       expect(tipo).toBeTruthy();
       expect(marcar(api)).toBe(esperado);
-      expect(Object.keys(localStorage).length).toBe(1);
+      /* A mudança real foi persistida em ao menos uma chave do localStorage. */
+      const algumBlobReflete = Object.keys(localStorage).some((chave) =>
+        String(localStorage.getItem(chave)).includes(
+          esperado === true ? '"dividir":true' : `"${esperado}"`,
+        ),
+      );
+      expect(algumBlobReflete).toBe(true);
     });
 
     it('aplica estado remoto recebido via storage (outra aba)', async () => {

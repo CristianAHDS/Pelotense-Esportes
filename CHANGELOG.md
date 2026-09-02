@@ -2,6 +2,15 @@
 
 ## 02/09/2026
 
+### Testes aprofundados nos componentes e hooks mais críticos
+- Suíte total: **276 testes passando** (eram 184).
+- `PreJogoCartao.test.jsx` (10): `formatarTempo`, `segundosRestantes` (parado/rodando/tempo esgotado) e o countdown do cartão com `Date.now`/fake timers (tick + confronto + escudos).
+- `PlacarModelCartao.test.jsx` (13): `segundosAtuais`, `formatarTempo`, tempo/período, `INT`/`FT`, acréscimo, cartões por time, escudos (padrão/`mostrarEscudos=false`), tempo decorrido e mudança de gols.
+- **Bug corrigido na animação de gol** do `PlacarModelCartao`: a keyframe `glisseScore` era interpolada numa string template não-tagueada (`css` faltando), o que fazia o styled-components lançar erro ao marcar um gol — reproduzido por teste e corrigido com o helper `css`.
+- `CampoSala.test.jsx` (8): `sanitizar` (acentos/símbolos/maiúsculas, hífen/underline, limite 32), `montarUrl` (troca de sala, remoção da sala antiga, sem sufixo para vazia/`padrao`) e copiar link (clipboard, fallback `execCommand`, erro). Os helpers `sanitizar`/`montarUrl` foram exportados para viabilizar o teste direto.
+- `usePlacarNormal.test.jsx` (4): assinatura do padrão de consumo de loja (`getEstado`/`inscrever`) — estado inicial, atualização em tempo real, cancelamento da assinatura ao desmontar e ausência de re-render pós-unmount.
+- `storesObjeto.test.js`: afirmação de persistência deixou de contar todas as chaves do `localStorage` (frágil sob vazamento de listeners entre arquivos) e passou a verificar que a mudança semeada aparece em algum blob persistido — eliminando a flakiness ocasional da suíte.
+
 ### Testes automatizados (Vitest) — foco nas stores e no sync entre abas
 - Configurado **Vitest + jsdom** (`vitest.config.js`, `src/test/setup.js`) com polyfill de `BroadcastChannel` para simular abas/peers (p2p).
 - Scripts em `package.json`: `npm test` (roda todos) e `npm run test:watch`.
