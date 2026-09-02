@@ -43,6 +43,12 @@ export function nuvemAtiva() {
 const LIMITE_ECO = 16
 const publicacoesRecentes = new Map()
 
+/* Último texto enviado por canal nesta aba. Quando somos o controlador,
+   rejeitamos entregas da nuvem que não correspondam ao último estado que
+   enviamos — evita que ecos defasados de digitações intermediárias
+   (ex.: "RODADA " antes de "RODADA 8") revertam o campo enquanto se digita. */
+const ultimoTextoEnviado = new Map()
+
 /* Janela em que edições locais protegem o estado contra entregas defasadas */
 const JANELA_EDICAO_LOCAL_MS = 300
 const ultimaEdicaoLocal = new Map()
@@ -184,6 +190,7 @@ function esvaziarPendentes() {
   if (!db || !pendentes.size) return
   for (const [canal, texto] of pendentes.entries()) {
     marcarPublicacao(canal, texto)
+    ultimoTextoEnviado.set(canal, texto)
     try {
       set(ref(db, `salas/${salaAtual()}/${canal}`), texto).catch(() => {})
     } catch {}
@@ -209,6 +216,7 @@ export function publicarNuvem(canal, estado) {
   }
   pendentes.delete(canal)
   marcarPublicacao(canal, texto)
+  ultimoTextoEnviado.set(canal, texto)
   try {
     set(ref(db, `salas/${salaAtual()}/${canal}`), texto).catch((e) => {
       console.warn(`Pelotense: falha ao publicar "${canal}" na nuvem.`, e)
@@ -229,6 +237,10 @@ export function inscreverNuvem(canal, callback) {
       if (ehEcoProprio(canal, texto)) return
       const ultima = ultimaEdicaoLocal.get(canal) || 0
       if (Date.now() - ultima < JANELA_EDICAO_LOCAL_MS) return
+      /* Sendo o controlador, qualquer entrega que não seja o último texto
+         que enviamos é um eco defasado de uma digitação intermediária. */
+      const ultimoEnviado = ultimoTextoEnviado.get(canal)
+      if (ehControlador() && ultimoEnviado && texto !== ultimoEnviado) return
       try {
         callback(JSON.parse(texto))
       } catch {

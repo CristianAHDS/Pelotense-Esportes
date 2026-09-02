@@ -2,6 +2,11 @@
 
 ## 02/09/2026
 
+### Correção do flicker ao digitar rápido (sync entre abas)
+- Ao digitar rápido num campo (ex.: mudar o título de "RODADA 7" para "RODADA 8"), com o controle e o overlay em abas diferentes, o campo oscilava entre o valor antigo e o novo.
+- Causa: o eco da nuvem (Firebase `onValue`, assinado na própria aba) entregava as digitações intermediárias ("RODADA " antes de "RODADA 8") fora de ordem/após a janela de guarda, revertendo momentaneamente o campo.
+- Em `src/lib/sincronizacaoNuvem.js`, a aba controladora agora rejeita qualquer entrega da nuvem que não seja o último estado que ela mesma enviou (`ultimoTextoEnviado`), eliminando os ecos defasados de digitação. Viewers continuam recebendo o sync normalmente.
+
 ### Última Rodada: passa a exibir a rodada em andamento
 - Em `fgfService.js`, `extrairUltimaRodada` retornava a rodada imediatamente anterior à mais recente com placar. Agora retorna a própria rodada mais recente que já tem pelo menos um jogo com resultado (ex.: com a FGF na 8ª rodada, exibe a 8ª em andamento em vez da 7ª).
 - Sempre que a rodada alvo for digitada no controle, ela continua tendo prioridade sobre a detecção automática.
