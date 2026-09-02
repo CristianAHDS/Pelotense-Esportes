@@ -2,6 +2,11 @@
 
 ## 02/09/2026
 
+### Seletor numérico de rodada no controle da Última Rodada
+- Adicionado o campo "Rodada nº" (seletor numérico) no `PainelUltimaRodada`. Antes o número da rodada era digitado dentro do título ("RODADA 8"); agora ele é escolhido num `input type="number"`, evitando o flicker ao digitar.
+- O número escolhido é atualizado automaticamente dentro do título (substitui o dígito existente ou anexa ao final) e é usado como `rodadaAlvo` ao puxar os dados da FGF.
+- Em `ultimaRodadaStore.js`: novo campo `rodadaNumero` no estado (com migração a partir do número já presente no título salvo).
+
 ### Correção do flicker ao digitar rápido (sync entre abas)
 - Ao digitar rápido num campo (ex.: mudar o título de "RODADA 7" para "RODADA 8"), com o controle e o overlay em abas diferentes, o campo oscilava entre o valor antigo e o novo.
 - Causa: o eco da nuvem (Firebase `onValue`, assinado na própria aba) entregava as digitações intermediárias ("RODADA " antes de "RODADA 8") fora de ordem/após a janela de guarda, revertendo momentaneamente o campo.

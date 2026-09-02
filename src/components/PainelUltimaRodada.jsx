@@ -234,8 +234,12 @@ export function PainelUltimaRodada() {
     setErro('');
     setAviso('');
     try {
-      const m = (estado.titulo || '').match(/(\d+)/);
-      const rodadaAlvo = m ? Number(m[1]) : 0;
+      const rodadaAlvo = estado.rodadaNumero
+        ? Number(estado.rodadaNumero)
+        : (() => {
+            const m = (estado.titulo || '').match(/(\d+)/)
+            return m ? Number(m[1]) : 0
+          })()
       const dados = await importarUltimaRodadaFGF({ rodadaAlvo });
       if (!dados.jogos?.length) {
         setAviso('Nenhum jogo realizado encontrado na FGF.');
@@ -267,6 +271,17 @@ export function PainelUltimaRodada() {
           maxLength={32}
           onChange={(e) =>
             ultimaRodada.atualizarCampo('titulo', e.target.value)
+          }
+        />
+        <Rotulo>Rodada nº</Rotulo>
+        <EntradaNum
+          type="number"
+          min={0}
+          max={99}
+          value={estado.rodadaNumero}
+          placeholder="–"
+          onChange={(e) =>
+            ultimaRodada.atualizarCampo('rodadaNumero', e.target.value)
           }
         />
       </CampoTitulo>

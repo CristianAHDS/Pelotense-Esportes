@@ -39,6 +39,7 @@ function posicoesPadrao() {
 const estadoPadrao = {
   visivel: true,
   titulo: 'ÚLTIMA RODADA',
+  rodadaNumero: '',
   jogos: jogosPadrao(),
   posicoes: posicoesPadrao(),
   classificacaoVisivel: true
@@ -57,6 +58,11 @@ function carregar() {
         sigla: p.sigla || '',
         pos: p.pos ?? p.pontos ?? String(i + 1)
       }))
+      /* Se não havia seletor de rodada salvo, deriva do número no título */
+      if (!estado.rodadaNumero) {
+        const m = String(estado.titulo || '').match(/(\d+)/)
+        estado.rodadaNumero = m ? m[1] : ''
+      }
       return normalizarEstado(estado)
     }
   } catch (e) {
@@ -169,6 +175,16 @@ function atualizarCampo(campo, valor) {
       case 'titulo':
         estadoAtual.titulo = String(valor).slice(0, 32).toUpperCase()
         break
+      case 'rodadaNumero': {
+        const num = String(valor).replace(/[^0-9]/g, '').slice(0, 2)
+        estadoAtual.rodadaNumero = num
+        if (/\d/.test(estadoAtual.titulo)) {
+          estadoAtual.titulo = estadoAtual.titulo.replace(/\d+/, num).slice(0, 32)
+        } else if (num) {
+          estadoAtual.titulo = `${estadoAtual.titulo} ${num}`.slice(0, 32).toUpperCase()
+        }
+        break
+      }
       default:
         estadoAtual[campo] = valor
     }
@@ -205,7 +221,11 @@ function atualizarPosicao(indice, campo, valor) {
 /* Preenche tudo de uma vez com os dados da FGF */
 function preencherDaFGF({ titulo, jogos, classificacao }) {
   setEstado((estadoAtual) => {
-    if (titulo) estadoAtual.titulo = String(titulo).slice(0, 32).toUpperCase()
+    if (titulo) {
+      estadoAtual.titulo = String(titulo).slice(0, 32).toUpperCase()
+      const m = String(titulo).match(/(\d+)/)
+      estadoAtual.rodadaNumero = m ? m[1] : ''
+    }
 
     if (Array.isArray(jogos) && jogos.length) {
       estadoAtual.jogos = jogos.map((j) => ({
