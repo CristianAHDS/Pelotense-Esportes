@@ -2,6 +2,15 @@
 
 ## 02/09/2026
 
+### Testes automatizados (Vitest) — foco nas stores e no sync entre abas
+- Configurado **Vitest + jsdom** (`vitest.config.js`, `src/test/setup.js`) com polyfill de `BroadcastChannel` para simular abas/peers (p2p).
+- Scripts em `package.json`: `npm test` (roda todos) e `npm run test:watch`.
+- Suíte total: **108 testes passando**, cobrindo as 21 stores do projeto:
+  - `syncContrato.test.js` (70): contrato de sync entre abas (persistência, BroadcastChannel, storage, no-loop de eco, assinatura) para as 14 stores que expõem `setEstado`.
+  - `storesObjeto.test.js` (24): mesmo contrato para as 6 stores "objeto" via ações reais (artilheiros, proximasRodadas, escalacao, substituicao, tabelaCompacta, brasileiraoCompacta).
+  - `ultimaRodadaStore.test.js` (14): funcionamento + sync, incluindo o novo seletor `rodadaNumero` e a migração do número do título.
+- Durante os testes, confirmou-se o funcionamento da proteção **last-write-wins** (`atualizadoEm`) das stores de cronômetro (preJogo, placarBroadcastEscalacao).
+
 ### Seletor numérico de rodada no controle da Última Rodada
 - Adicionado o campo "Rodada nº" (seletor numérico) no `PainelUltimaRodada`. Antes o número da rodada era digitado dentro do título ("RODADA 8"); agora ele é escolhido num `input type="number"`, evitando o flicker ao digitar.
 - O número escolhido é atualizado automaticamente dentro do título (substitui o dígito existente ou anexa ao final) e é usado como `rodadaAlvo` ao puxar os dados da FGF.
