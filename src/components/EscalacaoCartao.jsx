@@ -152,17 +152,17 @@ const CartaoMarca = styled.span`
 `;
 
 const CapitaoMarca = styled.span`
-  flex-shrink: 0;
-  min-width: 17px;
-  height: 17px;
-  padding: 0 3px;
-  border-radius: 50%;
-  border: 1px solid ${VERDE};
-  color: ${VERDE};
-  font-size: 0.58rem;
-  font-weight: 800;
-  display: grid;
-  place-items: center;
+  display: inline-block;
+  margin-left: 5px;
+  padding: 1px 5px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  color: #fff;
+  vertical-align: middle;
 `;
 
 const BolaGol = styled.span`
@@ -259,9 +259,9 @@ export function EscalacaoCartao({ dados, lado }) {
       {jogadores.map((jogador, i) => (
         <LinhaJogador key={`${lado}-${i}`} $expulso={jogador.expulso}>
           <span className="num">{jogador.num || i + 1}</span>
-          {jogador.capitao && <CapitaoMarca>C</CapitaoMarca>}
           <span className={`nome${jogador.nome ? '' : ' vazio'}`}>
             {jogador.nome || `Jogador ${i + 1}`}
+            {jogador.capitao && <CapitaoMarca>C</CapitaoMarca>}
             {jogador.substituido?.nome && (
               <small className="sub">↔{jogador.substituido.nome}</small>
             )}
