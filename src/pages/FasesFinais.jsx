@@ -6,7 +6,7 @@ import { getEstado, inscrever } from '../store/mataMataStore';
 import { PainelChaveamento } from '../components/PainelChaveamento';
 import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
 
-const ACC = '#a5ef1c';
+const ACC = '#a5ef1c ';
 
 const Tela = styled.div`
   min-height: 100vh;
@@ -103,7 +103,11 @@ export default function FasesFinais() {
 
   return (
     <Tela $previa={emPrevia}>
-      {!emPrevia && <Voltar to="/hub" title="Voltar ao hub">←</Voltar>}
+      {!emPrevia && (
+        <Voltar to="/hub" title="Voltar ao hub">
+          ←
+        </Voltar>
+      )}
       {!emPrevia && <BotaoAlternarTema />}
 
       <CartaoCabecalho>

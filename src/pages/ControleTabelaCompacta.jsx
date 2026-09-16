@@ -82,7 +82,7 @@ const Switch = styled.span`
   width: 46px;
   height: 26px;
   border-radius: 999px;
-  background: ${({ $on }) => ($on ? '#a5ef1c' : '#262626')};
+  background: ${({ $on }) => ($on ? '#a5ef1c ' : '#262626')};
   transition: background 150ms ease;
 
   &::after {

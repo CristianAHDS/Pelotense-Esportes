@@ -143,10 +143,9 @@ const GradeTimes = styled.div`
 
 const CabecalhoGrid = styled.div`
   display: grid;
-  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 78px repeat(
-      7,
-      52px
-    ) 38px;
+  grid-template-columns:
+    34px 36px minmax(140px, 1.4fr) 78px repeat(7, 52px)
+    38px;
   gap: 6px;
   align-items: center;
   padding: 0 4px 8px;
@@ -163,10 +162,9 @@ const CabecalhoGrid = styled.div`
 
 const LinhaTime = styled.div`
   display: grid;
-  grid-template-columns: 34px 36px minmax(140px, 1.4fr) 78px repeat(
-      7,
-      52px
-    ) 38px;
+  grid-template-columns:
+    34px 36px minmax(140px, 1.4fr) 78px repeat(7, 52px)
+    38px;
   gap: 6px;
   align-items: center;
   padding: 4px;
@@ -337,7 +335,7 @@ const MiniLinha = styled.div`
   }
 `;
 
-const CORES_ZONA = { class: '#a5ef1c', reb: '#ef4444' };
+const CORES_ZONA = { class: '#a5ef1c ', reb: '#ef4444' };
 
 function zonaDa(pos, total) {
   if (pos <= Math.min(8, total)) return 'class';

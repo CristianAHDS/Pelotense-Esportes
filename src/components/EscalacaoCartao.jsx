@@ -1,5 +1,6 @@
 ﻿import styled, { keyframes } from 'styled-components';
 import { Escudo } from './Escudo';
+import { nomeDaSigla } from '../lib/elencos';
 
 const VERDE = '#a5ef1c';
 
@@ -50,13 +51,10 @@ const FaixaTopo = styled.div`
   }
 
   .nome {
-    flex: 1;
-    min-width: 0;
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #fff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -82,6 +80,7 @@ const LinhaJogador = styled.div`
   gap: 12px;
   padding: 8px 16px;
   background: #000;
+  position: relative;
 
   & + & {
     border-top: 1px solid rgba(255, 255, 255, 0.07);
@@ -107,6 +106,14 @@ const LinhaJogador = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     color: #fff;
+  }
+
+  .sub {
+    vertical-align: middle;
+    font-size: 0.68rem;
+    font-weight: 500;
+    opacity: 0.42;
+    margin-left: 5px;
   }
 
   .nome.vazio {
@@ -210,16 +217,23 @@ export function EscalacaoCartao({ dados, lado }) {
   return (
     <Cartao $cor={cor}>
       <FaixaTopo>
-        <Escudo cor={cor} sigla={sigla} url={urlEscudoTime(null, sigla)} tamanho={26} />
-        <span className="sigla">{sigla}</span>
+        <Escudo
+          cor={cor}
+          sigla={sigla}
+          url={urlEscudoTime(null, sigla)}
+          tamanho={26}
+        />
         <span className="nome">{nomeTime}</span>
-        <span className="formacao">{formacao}</span>
+        {formacao && <span className="formacao">{formacao}</span>}
       </FaixaTopo>
       {jogadores.map((jogador, i) => (
         <LinhaJogador key={`${lado}-${i}`} $expulso={jogador.expulso}>
           <span className="num">{jogador.num || i + 1}</span>
           <span className={`nome${jogador.nome ? '' : ' vazio'}`}>
             {jogador.nome || `Jogador ${i + 1}`}
+            {jogador.substituido?.nome && (
+              <small className="sub">↔{jogador.substituido.nome}</small>
+            )}
           </span>
           {(jogador.gols > 0 ||
             jogador.cartoes?.amarelo > 0 ||
@@ -236,10 +250,14 @@ export function EscalacaoCartao({ dados, lado }) {
               )}
               {Array(jogador.cartoes?.amarelo || 0)
                 .fill('amarelo')
-                .map((c, ci) => <CartaoMarca key={`am-${i}-${ci}`} $cor={c} />)}
+                .map((c, ci) => (
+                  <CartaoMarca key={`am-${i}-${ci}`} $cor={c} />
+                ))}
               {Array(jogador.cartoes?.vermelho || 0)
                 .fill('vermelho')
-                .map((c, ci) => <CartaoMarca key={`vm-${i}-${ci}`} $cor={c} />)}
+                .map((c, ci) => (
+                  <CartaoMarca key={`vm-${i}-${ci}`} $cor={c} />
+                ))}
             </span>
           )}
         </LinhaJogador>

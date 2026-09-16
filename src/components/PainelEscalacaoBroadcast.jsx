@@ -425,6 +425,7 @@ export function PainelEscalacaoBroadcast() {
                       )
                     }
                   >
+                    <option value="">Off</option>
                     {FORMACOES.map((f) => (
                       <option key={f} value={f}>
                         {f}

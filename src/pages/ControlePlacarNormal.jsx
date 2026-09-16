@@ -380,7 +380,9 @@ function PreviewLive() {
         <PreviewNeon />
         <PreviewTopo>
           <span className="p">{estado.periodo}</span>
-          <span style={{ color: aoVivo ? '#a5ef1c' : undefined }}>{tempo}</span>
+          <span style={{ color: aoVivo ? '#a5ef1c ' : undefined }}>
+            {tempo}
+          </span>
           {estado.acrescimo > 0 && (
             <span style={{ color: '#fbbf24' }}>+{estado.acrescimo}:00</span>
           )}

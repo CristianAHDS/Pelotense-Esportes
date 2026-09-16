@@ -342,13 +342,13 @@ export default function Brasileirao() {
           ←
         </Voltar>
       )}
-
       {!emPrevia && (
         <>
           <BotaoAlternarTema aoLado />
           <BotaoSalvarImagem alvo={painelRef} nome={nomeArquivo} />
         </>
-      )}      <Painel ref={painelRef}>
+      )}{' '}
+      <Painel ref={painelRef}>
         <Cabecalho>
           <div>
             <h1>{estado.competicao}</h1>

@@ -14,7 +14,7 @@ import {
 const C = {
   bg: '#060606',
   txt: '#FCFCFB',
-  acc: '#A5EF1C',
+  acc: '#a5ef1c ',
   g2: '#63A70D',
   g3: '#405113',
   mut: '#9A9996',

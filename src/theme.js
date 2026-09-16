@@ -1,4 +1,4 @@
-﻿export const LOGO_URL = 'https://i.imgur.com/zmQCbYc.png'
+﻿export const LOGO_URL = 'https://i.imgur.com/zmQCbYc.png';
 
 export const theme = {
   escuro: true,
@@ -10,7 +10,7 @@ export const theme = {
     borda: '#262626',
     texto: '#fcfcfb',
     textoSuave: '#9a9996',
-    primaria: '#a5ef1c',
+    primaria: '#a5ef1c ',
     primariaEscura: '#63a70d',
     perigo: '#ef4444',
     alerta: '#f59e0b',
@@ -18,13 +18,13 @@ export const theme = {
     barra: 'rgba(0, 0, 0, 0.7)',
     barraForte: 'rgba(0, 0, 0, 0.85)',
     textoVideo: 'rgba(255, 255, 255, 0.7)',
-    textoVideoFino: 'rgba(255, 255, 255, 0.5)'
+    textoVideoFino: 'rgba(255, 255, 255, 0.5)',
   },
   fontes: {
     titulo: "'Rajdhani', sans-serif",
-    corpo: "'Inter', sans-serif"
-  }
-}
+    corpo: "'Inter', sans-serif",
+  },
+};
 
 export const lightTheme = {
   escuro: false,
@@ -44,10 +44,10 @@ export const lightTheme = {
     barra: 'rgba(255, 255, 255, 0.85)',
     barraForte: 'rgba(255, 255, 255, 0.92)',
     textoVideo: 'rgba(26, 26, 26, 0.75)',
-    textoVideoFino: 'rgba(26, 26, 26, 0.55)'
+    textoVideoFino: 'rgba(26, 26, 26, 0.55)',
   },
   fontes: {
     titulo: "'Rajdhani', sans-serif",
-    corpo: "'Inter', sans-serif"
-  }
-}
+    corpo: "'Inter', sans-serif",
+  },
+};

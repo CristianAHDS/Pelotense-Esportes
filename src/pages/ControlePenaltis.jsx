@@ -16,7 +16,7 @@ import {
   limparCobrancas,
 } from '../store/penaltisStore';
 
-const VERDE = '#a5ef1c';
+const VERDE = '#a5ef1c ';
 const VERMELHO = '#ef4444';
 
 const Voltar = styled(Link)`
@@ -96,10 +96,10 @@ const Campo = styled.label`
 
   span {
     font-size: 0.62rem;
-  font-weight: 700;
+    font-weight: 700;
     letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.cores.textoSuave};
+    text-transform: uppercase;
+    color: ${({ theme }) => theme.cores.textoSuave};
   }
 `;
 
@@ -109,7 +109,7 @@ const InputTexto = styled.input`
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 8px;
   padding: 10px 14px;
-    color: ${({ theme }) => theme.cores.texto};
+  color: ${({ theme }) => theme.cores.texto};
   font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.92rem;
   letter-spacing: 1px;
@@ -149,7 +149,11 @@ const Botao = styled.button`
         ? 'rgba(239, 68, 68, 0.12)'
         : theme.cores.superficieHover};
   color: ${({ $variante, theme }) =>
-    $variante === 'primario' ? '#0a0f00' : $variante === 'perigo' ? '#f87171' : theme.cores.texto};
+    $variante === 'primario'
+      ? '#0a0f00'
+      : $variante === 'perigo'
+        ? '#f87171'
+        : theme.cores.texto};
   border: ${({ $variante, theme }) =>
     $variante === 'primario' ? 'none' : `1px solid ${theme.cores.borda}`};
   border-radius: 8px;
@@ -157,7 +161,7 @@ const Botao = styled.button`
   font-family: ${({ theme }) => theme.fontes.titulo};
   font-size: 0.8rem;
   font-weight: 700;
-    letter-spacing: 1.5px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   cursor: pointer;
   transition: filter 0.15s ease;
@@ -187,33 +191,33 @@ const BlocoCobrancas = styled.div`
   padding: 14px;
 
   .topo {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 12px;
+    gap: 10px;
+    margin-bottom: 12px;
 
     .placar {
-  font-family: ${({ theme }) => theme.fontes.titulo};
+      font-family: ${({ theme }) => theme.fontes.titulo};
       font-size: 1.6rem;
-  font-weight: 700;
+      font-weight: 700;
       font-variant-numeric: tabular-nums;
-    color: ${VERDE};
+      color: ${VERDE};
 
       small {
         font-size: 0.58rem;
-  letter-spacing: 2px;
+        letter-spacing: 2px;
         opacity: 0.7;
         margin-left: 6px;
-  }
-  }
+      }
+    }
   }
 
   .slots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
   }
 `;
 
@@ -253,10 +257,10 @@ const SlotBotao = styled.button`
     content: attr(data-num);
     position: absolute;
     inset: 0;
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.66rem;
     color: rgba(255, 255, 255, 0.35);
   }
@@ -300,7 +304,7 @@ function BlocoLado({ ladoNome, lado, total }) {
       <div className="slots">
         {Array.from({ length: total }, (_, i) => {
           const c = lado.cobrancas[i] ?? null;
-  return (
+          return (
             <SlotBotao
               key={i}
               data-num={i + 1}
@@ -323,8 +327,8 @@ function BlocoLado({ ladoNome, lado, total }) {
         })}
       </div>
     </BlocoCobrancas>
-          );
-  }
+  );
+}
 
 export default function ControlePenaltis() {
   const estado = usePlacarBroadcast({ getEstado, inscrever });
@@ -332,7 +336,9 @@ export default function ControlePenaltis() {
 
   return (
     <Tela>
-      <Voltar to="/hub" title="Voltar ao hub">? Voltar ao hub</Voltar>
+      <Voltar to="/hub" title="Voltar ao hub">
+        ? Voltar ao hub
+      </Voltar>
       <Header />
       <Titulo>
         Controle · <span>Pênaltis</span>
@@ -365,7 +371,11 @@ export default function ControlePenaltis() {
         <Rotulo>Cobranças (clique alterna convertido / perdido)</Rotulo>
         <GradeLados>
           <BlocoLado ladoNome="casa" lado={estado.casa} total={total} />
-          <BlocoLado ladoNome="visitante" lado={estado.visitante} total={total} />
+          <BlocoLado
+            ladoNome="visitante"
+            lado={estado.visitante}
+            total={total}
+          />
         </GradeLados>
 
         <Acoes>
@@ -381,12 +391,12 @@ export default function ControlePenaltis() {
               fontSize: '0.72rem',
               color: 'rgba(255,255,255,.45)',
             }}
-            >
-            <Escudo cor="#4b5563" sigla="---" tamanho={18} /> Prévia ao vivo na home ·
-            cobranças a partir da 6ª são morte súbita
-        </span>
+          >
+            <Escudo cor="#4b5563" sigla="---" tamanho={18} /> Prévia ao vivo na
+            home · cobranças a partir da 6ª são morte súbita
+          </span>
         </Acoes>
       </Cartao>
     </Tela>
-          );
-  }
+  );
+}

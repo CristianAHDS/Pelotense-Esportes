@@ -593,6 +593,7 @@ export function realizarSubstituicao({ lado, sairIndice, numEntra, nomeEntra, mi
     lista[sairIndice] = {
       num: entraNum,
       nome: entraNome,
+      substituido: { nome: sair.nome },
       cartoes: { amarelo: 0, vermelho: 0 },
       gols: 0
     }

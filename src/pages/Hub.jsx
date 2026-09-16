@@ -14,7 +14,7 @@ const SCOREBOARDS = [
     titulo: 'Placar Broadcast',
     descricao:
       'Design flat profissional com siglas e cores personalizáveis. Ideal para transmissões ao vivo e overlays.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.2)',
     emBreve: true,
   },
@@ -24,7 +24,7 @@ const SCOREBOARDS = [
     titulo: 'Placar Broadcast Escalação',
     descricao:
       'Placar Broadcast com escalações integradas no mesmo link: cartões por jogador aparecem no placar, na escalação e sobem notificações (cartão e troca).',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.2)',
   },
   {
@@ -33,7 +33,7 @@ const SCOREBOARDS = [
     titulo: 'Placar Premier League',
     descricao:
       'Identidade da Premier League em roxo e verde menta, com cronômetro em destaque.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
     emBreve: true,
   },
@@ -63,7 +63,7 @@ const SCOREBOARDS = [
     titulo: 'Placar Normal',
     descricao:
       'Placar tradicional horizontal ao estilo TV: times nas pontas, placar no centro, cronômetro no topo.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.2)',
     emBreve: true,
   },
@@ -73,7 +73,7 @@ const SCOREBOARDS = [
     titulo: 'Placar Model',
     descricao:
       'Placar compacto com glass morphism, barra de cor gradiente, glow neon e cronômetro ao vivo.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.2)',
     emBreve: true,
   },
@@ -86,7 +86,7 @@ const GAUCHAO_A2 = [
     descricao:
       'Tabela do Gauchão Série A2 com zonas de quartas de final e rebaixamento em tempo real.',
     rota: '/tabela',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
     preview: 'tabela',
   },
@@ -96,7 +96,7 @@ const GAUCHAO_A2 = [
     descricao:
       'Tabela otimizada para transmissões: posição, nome, escudo, P, J, V, E, D e saldo de gols.',
     rota: '/tabela-compacta',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
@@ -105,7 +105,7 @@ const GAUCHAO_A2 = [
     titulo: 'Última Rodada',
     descricao:
       'Resultados dos últimos jogos com escudos e placares, mais a classificação dos times após a rodada.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
@@ -114,7 +114,7 @@ const GAUCHAO_A2 = [
     titulo: 'Artilheiros',
     descricao:
       'Ranking de goleadores do Gauchão A2 com escudos, posição e gols marcados, sincronizado com a FGF.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
@@ -123,7 +123,7 @@ const GAUCHAO_A2 = [
     titulo: 'Próxima Rodada',
     descricao:
       'Agenda dos próximos confrontos do Gauchão A2 com escudos, sincronizada com a FGF.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
@@ -132,7 +132,7 @@ const GAUCHAO_A2 = [
     descricao:
       'Confrontos das oitavas em formato de tabela, com placares, pênaltis e vencedores destacados em tempo real.',
     rota: '/mata-mata',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
     preview: 'mata',
     emBreve: true,
@@ -144,7 +144,7 @@ const GAUCHAO_A2 = [
       'Chaveamento visual das quartas à final: vencedores avançam automaticamente e campeão ganha selo especial.',
     rota: '/fases-finais',
     controle: '/mata-mata/controle',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
     preview: 'fases',
     altura: 700,
@@ -179,7 +179,7 @@ const EXTRAS = [
     tag: 'PRÉ-JOGO',
     titulo: 'Pré-Jogo Countdown',
     descricao: 'CoontDown de cronometro de pré-jogo com os escudos dos times.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
@@ -188,7 +188,7 @@ const EXTRAS = [
     titulo: 'Escalação',
     descricao:
       'Grid 11x1 dos dois times com escudos, números, nomes e formação (4-3-3), editável lado a lado.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
     emBreve: true,
   },
@@ -198,7 +198,7 @@ const EXTRAS = [
     titulo: 'Card de Substituição',
     descricao:
       'Tarja animada com escudo e cor do time, jogador que sai (↓) e que entra (↑), com minuto da troca. Também integrada ao Placar Broadcast.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
     emBreve: true,
   },
@@ -208,7 +208,7 @@ const EXTRAS = [
     titulo: 'Disputa de Pênaltis',
     descricao:
       'Quadro detalhado de cobranças ✓/✕ por lado, placar em tempo real e indicação de morte súbita.',
-    accent: '#a5ef1c',
+    accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
   },
 ];
@@ -876,7 +876,7 @@ const BotaoCopiar = styled.button`
 
   &:hover {
     color: ${({ $copiado, theme }) =>
-      $copiado ? '#a5ef1c' : theme.cores.texto};
+      $copiado ? '#a5ef1c ' : theme.cores.texto};
     background: ${({ theme }) => theme.cores.superficieHover};
   }
 

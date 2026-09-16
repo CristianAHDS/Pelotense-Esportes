@@ -3,6 +3,7 @@
 ## 02/09/2026
 
 ### Testes aprofundados nos componentes e hooks mais críticos
+
 - Suíte total: **276 testes passando** (eram 184).
 - `PreJogoCartao.test.jsx` (10): `formatarTempo`, `segundosRestantes` (parado/rodando/tempo esgotado) e o countdown do cartão com `Date.now`/fake timers (tick + confronto + escudos).
 - `PlacarModelCartao.test.jsx` (13): `segundosAtuais`, `formatarTempo`, tempo/período, `INT`/`FT`, acréscimo, cartões por time, escudos (padrão/`mostrarEscudos=false`), tempo decorrido e mudança de gols.
@@ -12,6 +13,7 @@
 - `storesObjeto.test.js`: afirmação de persistência deixou de contar todas as chaves do `localStorage` (frágil sob vazamento de listeners entre arquivos) e passou a verificar que a mudança semeada aparece em algum blob persistido — eliminando a flakiness ocasional da suíte.
 
 ### Testes automatizados (Vitest) — foco nas stores e no sync entre abas
+
 - Configurado **Vitest + jsdom** (`vitest.config.js`, `src/test/setup.js`) com polyfill de `BroadcastChannel` para simular abas/peers (p2p).
 - Scripts em `package.json`: `npm test` (roda todos) e `npm run test:watch`.
 - Suíte total: **184 testes passando**, cobrindo as 21 stores do projeto:
@@ -22,40 +24,47 @@
 - Durante os testes, confirmou-se o funcionamento da proteção **last-write-wins** (`atualizadoEm`) das stores de cronômetro (preJogo, placarBroadcastEscalacao).
 
 ### Seletor numérico de rodada no controle da Última Rodada
+
 - Adicionado o campo "Rodada nº" (seletor numérico) no `PainelUltimaRodada`. Antes o número da rodada era digitado dentro do título ("RODADA 8"); agora ele é escolhido num `input type="number"`, evitando o flicker ao digitar.
 - O número escolhido é atualizado automaticamente dentro do título (substitui o dígito existente ou anexa ao final) e é usado como `rodadaAlvo` ao puxar os dados da FGF.
 - Em `ultimaRodadaStore.js`: novo campo `rodadaNumero` no estado (com migração a partir do número já presente no título salvo).
 
 ### Correção do flicker ao digitar rápido (sync entre abas)
+
 - Ao digitar rápido num campo (ex.: mudar o título de "RODADA 7" para "RODADA 8"), com o controle e o overlay em abas diferentes, o campo oscilava entre o valor antigo e o novo.
 - Causa: o eco da nuvem (Firebase `onValue`, assinado na própria aba) entregava as digitações intermediárias ("RODADA " antes de "RODADA 8") fora de ordem/após a janela de guarda, revertendo momentaneamente o campo.
 - Em `src/lib/sincronizacaoNuvem.js`, a aba controladora agora rejeita qualquer entrega da nuvem que não seja o último estado que ela mesma enviou (`ultimoTextoEnviado`), eliminando os ecos defasados de digitação. Viewers continuam recebendo o sync normalmente.
 
 ### Última Rodada: passa a exibir a rodada em andamento
+
 - Em `fgfService.js`, `extrairUltimaRodada` retornava a rodada imediatamente anterior à mais recente com placar. Agora retorna a própria rodada mais recente que já tem pelo menos um jogo com resultado (ex.: com a FGF na 8ª rodada, exibe a 8ª em andamento em vez da 7ª).
 - Sempre que a rodada alvo for digitada no controle, ela continua tendo prioridade sobre a detecção automática.
 
 ## 01/09/2026
 
 ### Tema claro: placar de escalação sem botão de tema e fontes brancas restantes
+
 - Removido o `BotaoAlternarTema` do overlay placar-broadcast-escalacao (`PlacarBroadcastEscalacao.jsx`); as demais páginas de placar mantêm o botão.
 - Corrigidas as fontes que ainda ficavam brancas no tema claro, trocando `#fff`/`rgba(255,255,255,…)` fixos por `theme.cores` em: ArtilheirosCartao (nome, clube, legenda, vazio e bordas), UltimaRodadaCartao (siglas, legenda de classificação, vazio e bordas), ProximasRodadasCartao (siglas, "×", vazio e bordas), PreJogoCartao (rótulo e "×") e Penaltis (placar, slots e rodapé).
-- Acentos verdes em texto sobre os painéis (placares, posições, gols) passam a usar `theme.cores.primaria`, mantendo o `#a5ef1c` no tema escuro e ganhando um verde mais escuro legível no claro.
+- Acentos verdes em texto sobre os painéis (placares, posições, gols) passam a usar `theme.cores.primaria`, mantendo o `#a5ef1c ` no tema escuro e ganhando um verde mais escuro legível no claro.
 - Componentes propositalmente escuros (PlacarModelCartao, EscalacaoCartao, SubstituicaoCartao, cartões de jogo do chaveamento, Placar/PlacarPro legado) seguem com texto claro.
 
 ### Tema claro: correção dos títulos e textos que ficavam brancos
+
 - Títulos (`h1`/`h2`) dos cartões e painéis que usavam `color: #fff`/`#fcfcfb` fixo passam a usar `theme.cores.texto`, respeitando o tema claro/escuro (UltimaRodadaCartao, ArtilheirosCartao, ProximasRodadasCartao, PreJogoCartao, FasesFinais, MataMata, PainelOitavas, PainelChaveamento).
 - ListaOitavas (mata-mata) teve textos, bordas e separadores ajustados para `theme.cores` (texto/textoSuave/borda), ficando legível no tema claro.
 - Bordas e sombras dos painéis de mata-mata passam a usar `theme.cores.borda`.
 - Componentes com fundo propositalmente escuro (placares broadcast, cartões de jogo do chaveamento, pênaltis) mantêm texto claro, preservando o contraste nos dois temas.
 
 ### Tema claro para os overlays e botão de alternar tema
+
 - Novo `lightTheme` em `src/theme.js` com paleta clara equivalente (fundo claro, texto escuro, acento verde mais escuro).
 - Novo hook `useTema` (`src/hooks/useTema.jsx`) com `TemaProvider` e `BotaoAlternarTema` (`src/components/BotaoAlternarTema.jsx`), persiste a escolha em `localStorage` e alimenta o `ThemeProvider` dinamicamente no `App.jsx`.
 - Botão de alternar tema adicionado aos 20 overlays. Nos que têm "Salvar imagem", fica ao lado do botão de salvar; nos demais, fica no mesmo local (topo à direita).
 - Escolha valida em todos os componentes via `theme.cores`; a sincronização se aplica globalmente sem necessidade de recompilar por overlay.
 
 ### Brasileirão 26: nova aba com Classificação e Tabela Compacta · Live
+
 - Nova aba "Brasileirão 26" no hub com dois cards: Classificação (`/brasileirao`) e Tabela Compacta · Live (`/brasileirao-compacta`), iniciando com o dropdown fechado.
 - Dados sincronizados com o GE Globo (`ge.globo.com/futebol/brasileirao-serie-a/`) via novo serviço `brasileiraoService.js`, que extrai a variável `const classificacao` embutida na página, com cache de 3 min. Proxy `/ge/*` adicionado no `vite.config.js` (dev) e `netlify.toml` (produção).
 - Novos stores `brasileiraoStore.js` e `brasileiraoCompactaStore.js` (dividir colunas) seguindo o padrão de sync local + BroadcastChannel + Firebase RTDB.
@@ -63,18 +72,21 @@
 - Zonas da tabela adaptadas para o Brasileirão: Libertadores (1–6), Pré-Libertadores (7–8) e Rebaixamento (17–20).
 
 ### Brasileirão 26: fonte de dados via Google (sem extração do GE)
+
 - Removida a sincronização automática com o GE Globo: deletado `brasileiraoService.js`, o proxy `/ge/*` no `vite.config.js` e `netlify.toml`, e o botão "Atualizar do GE" do controle.
 - Dados congelados no padrão da tabela do Google (pós-25ª rodada, 31/08): corrigida a ordem das posições 7–9 (Atlético-MG, Bragantino, Coritiba) e os números do Coritiba.
 - Controle passa a ter o botão "Abrir tabela no Google" (abre a busca da classificação no Google para conferir/atualizar manualmente).
 - Selos dos overlays atualizados de "Sincronizado em tempo real" para "Referência: Google".
 
 ### Brasileirão 26: fonte oficial CBF com regras de classificação (G-4, G-8, Z-4)
+
 - Fonte de dados trocada para o site oficial da CBF (`cbf.com.br/.../serie-a/2026`): novo `cbfService.js` que lê a classificação embutida no HTML (JSON) com cache de 3 min, e novo proxy `/cbf/*` no `vite.config.js` (com `secure: false` por causa da cadeia de certificados da máquina) e `netlify.toml`.
 - Tabela ao vivo atualizada ao abrir os overlays e via botão "⟳ Atualizar da CBF" no controle, com link "Abrir tabela no site da CBF".
 - Regras do Brasileirão aplicadas nas duas tabelas: G-4 (1º–4º, Libertadores), G-8 (5º–8º, Sul-Americana) e Z-4 (17º–20º, rebaixamento), com legenda colorida, no mesmo mecanismo das demais tabelas.
 - Dados padrão corrigidos pela CBF: Coritiba 7º com 37pts/25j, Atlético-MG 8º, Bragantino 9º; escudos dos clubes passam a usar os da CBF; selo dos overlays: "Referência: CBF".
 
 ### Brasileirão 26: correção da importação CBF e escudos ausentes
+
 - Corrigido o parser do `cbfService` que nunca extraía a classificação (o HTML da CBF vem com aspas escapadas `\"`, e o leitor que ignorava strings fazia o `JSON.parse` sempre falhar). Agora usa contador simples de colchetes, validado contra a página real: 20/20 clubes com `escudo` e `sigla` corretos.
 - Corrigido o mapeamento de siglas (o `normalizar` removia espaços, mas as chaves de `SIGLAS_CBF` têm espaços → todas viriam `---` e cinza). Mantém espaços e garante a cor de cada clube após atualizar.
 - Store agora "cura" estados antigos salvos sem escudo: no carregamento, clubes conhecidos pela sigla recebem o escudo padrão da CBF (`carregar()`).
@@ -82,69 +94,89 @@
 ## 31/08/2026
 
 ### Placar Broadcast Escalação: proporção do timer, acréscimo, cartões e escudo
+
 - Timer (`FaixaTempo`): relógio `1→1.3rem`, período `0.85→1.05rem`, padding maior; acréscimo `1→1.3rem` com padding maior — mantendo a proporção com o placar maior.
 - Traços de cartões: `14×4px → 18×5px`, com container com altura ajustada.
 - `Escudo`: fallback SVG agora é limitado pela **altura** (`height: tamanho`) como a versão com imagem, corrigindo o escudo do away que ficava mais alto (fora de proporção) quando caía no fallback.
 
 ### Placar Broadcast Escalação: placar com maior proporção
+
 - Aumentadas as proporções do placar (escudo, sigla, gols e separador ×): escudo `30→38`, sigla `1.2→1.5rem`, gols `2→2.6rem`, separador `1.6→1.9rem`, com gap e padding maiores no `BlocoTime`. A escalação permanece com o tamanho atual.
 
 ### Placar Broadcast Escalação: fix flicker do acréscimo (last-write-wins)
+
 - Adicionado carimbo `atualizadoEm` e guard de last-write-wins em `aplicarEstadoRemoto`: estados defasados que chegam atrasados pela nuvem (latência) já não revertem edições mais novas. Isso elimina o "piscar"/ir e voltar do bloco de acréscimo (e de qualquer outro campo) ao editar — mais evidente no localhost, onde a prévia (iframe same-origin) entrega por BroadcastChannel + `storage` + nuvem.
 
 ### Placar Broadcast Escalação: acréscimo sem border-radius no topo
+
 - O bloco de acréscimo (`+X:00`) perdeu o arredondamento dos cantos superiores (`border-radius: 6px 6px 0 0` → `0 0 6px 6px`), ficando com o topo reto.
 
 ### Pré-Jogo: tempo livre com campos separados de horas e minutos
+
 - No controle de pré-jogo (`PainelPreJogo`), adicionado campo de "Tempo livre" com dois inputs numéricos separados (horas e minutos), além dos chips de duração fixa. Aplica a duração somando `horas*3600 + minutos*60` e zera os campos.
 
 ### Hub: componentes Escalação e Card de Substituição desabilitados (em breve)
+
 - Marcados como `emBreve` (chip "Em breve", sem prévia nem ações) os cards "Escalação" e "Card de Substituição" no segmento "Extras da Transmissão"; a renderização do `EXTRAS` foi adaptada para tratar `emBreve`.
 
 ### Hub: placares desabilitados (em breve)
+
 - Marcados como `emBreve` (exibidos com chip "Em breve", sem prévia nem ações) os cards: Placar Broadcast, Placar Premier League, Placar Bundesliga, Placar LaLiga, Placar Normal e Placar Model. Placar Broadcast Escalação permanece ativo.
 
 ### Placar Broadcast Escalação: rótulos CASA/VISITANTE → HOME/AWAY
+
 - Textos exibidos como sigla padrão dos times alterados de `CASA`/`VISITANTE` para `HOME`/`AWAY` no `placarBroadcastEscalacaoStore.js` (estado padrão e fallback de `aplicarTimeSelecionado`).
 
 ### Placar Broadcast Escalação: traços de cartões abaixo do placar
+
 - Os contadores de cartões (traços amarelos e vermelhos) foram movidos do topo (entre o relógio e o placar) para abaixo do `CorpoPlacar`.
 
 ### EscalacaoCartao: remoção dos box-shadow
+
 - Removidos os `box-shadow` do `EscalacaoCartao`: sombra externa do cartão e o `inset` do quadradinho de cartão (`CartaoMarca`).
 
 ### EscalacaoCartao: expulso sem transparência
-- Jogador expulso mantém a posição, o fundo escuro `#161616` e o nome riscado, mas remove-se toda a transparência: linha sem `opacity: 0.72`, número em verde sólido `#a5ef1c` e nome em cinza sólido `#9a9a9a` (sem alphas).
+
+- Jogador expulso mantém a posição, o fundo escuro `#161616` e o nome riscado, mas remove-se toda a transparência: linha sem `opacity: 0.72`, número em verde sólido `#a5ef1c ` e nome em cinza sólido `#9a9a9a` (sem alphas).
 
 ### Placar Broadcast Escalação: simetria do conteúdo em relação ao separador ×
+
 - O conteúdo de cada `BlocoTime` passou a ser ancorado contra o separador central (`×`): lado casa usa `flex-end` (conteúdo à direita) e lado fora usa `flex-start` (conteúdo à esquerda), com o mesmo padding fixo nos dois lados. Assim o espaço entre o `×` e cada lado fica idêntico, eliminando o vão a mais no lado do visitante.
 
 ### Placar Broadcast Escalação: lados casa/fora com mesma largura
+
 - No overlay do scoreboard, os dois `BlocoTime` (casa e fora) agora usam `flex: 1` (com `min-width: 0`) no `CorpoPlacar`, garantindo que ambos os lados tenham a mesma largura independentemente do tamanho da sigla/escudo.
 
 ### Placar Broadcast Escalação: play do cronômetro seta estado para AO VIVO
+
 - Ao dar play no cronômetro, `estadoPartida` vai automaticamente para `AO VIVO` caso não esteja (ex.: INTERVALO/ENCERRADO). Ao pausar, o estado da partida permanece como está.
 
 ### Sincronização nuvem: reduzir latência entre dispositivos
+
 - Batimento de controle do claim reduzido de 8s para 3s (`setInterval`), mantendo a conexão/claim Firebase mais quente e reduzindo o atraso percebido (~8–10s antes) ao propagar estados, ex.: start do cronômetro, para overlays em outros dispositivos.
 - `JANELA_EDICAO_LOCAL_MS` reduzida de 1200ms para 300ms, encurtando a janela em que entregas da nuvem são ignoradas após edição local.
 
 ### Placar Broadcast Escalação: desfazer/refazer gols
+
 - Novo undo/redo **exclusivo para gols do placar** (opção 9), no painel "Times e Placar": botões `↩ Desfazer gol` e `↪ Refazer gol`.
 - O histórico registra um snapshot dos gols (`timeCasa.gols`/`timeVisitante.gols`) **e dos gols de cada jogador** a cada alteração vinda de `gol()` (botões +/-) ou `marcarGol` (⚽ do jogador). `desfazerGol`/`refazerGol` restauram o placar dos dois times e também a contagem de gols dos atletas — ao desfazer, a bolinha ⚽ some (ou diminui) ao lado do jogador.
 - As pilhas de histórico são locais ao operador (não persistidas nem sincronizadas); a restauração do placar em si sincroniza normalmente (BroadcastChannel + nuvem).
 
 ### PainelEscalacaoBroadcast: espaçamento abaixo do dropdown de cores
+
 - O bloco colapsável de cores (`▸/▾ Cores`) ganhou `margin-bottom` (`BlocoCores`), criando um respiro entre o dropdown e a lista de jogadores da escalação no controle.
 
 ### PainelEscalacaoBroadcast: configuração de cor do time em dropdown escondido
+
 - A cor da escalação (`Cor do time`, via `CoresFixas`) deixou de ficar sempre visível ao lado da sigla e passou para um **dropdown colapsável** (`▸/▾ Cores`) por time, no mesmo padrão do painel "Times e Placar". O botão abre o seletor de cores da paleta fixa quando necessário, deixando o cabeçalho do time mais limpo (sigla, nome, formação e técnico sempre visíveis).
 
 ### Placar Broadcast Escalação: escudo no placar e cartão vermelho = expulsão
+
 - **Escudo no placar** (`PlacarBroadcastEscalacao.jsx`): os blocos do time (`BlocoTime`) agora exibem o escudo do time (`Escudo`, com fallback `/escudos/SIGLA.png`) junto da cor do time. O escudo da casa fica à esquerda, o do visitante à direita. O escudo desaparece junto da sigla/gols durante o flash de gol.
 - **Cartão vermelho = expulsão**: ao dar cartão vermelho (`darCartaoJogador`), o jogador é marcado `expulso: true`; removendo o cartão (`removerCartaoJogador`) volta a `false`. No `EscalacaoCartao`, o jogador expulso **permanece na mesma posição da lista**, com aparência desabilitada (fundo levemente mais claro que `#000`, opacidade reduzida, nome riscado e num apagado) — sem ser movido para o fim.
 
 ### Placar Broadcast Escalação: sigla do time interligada entre placar e escalação
+
 - **Antes**: a escolha da sigla do time era independente entre o seletor do placar (`renomearTime`) e o das escalações (`preencherDeSigla`). Mudar um não refletia no outro.
 - **Agora**: ambos os seletores compartilham o mesmo helper `aplicarTimeSelecionado`, mantendo placar e escalação sincronizados nos dois sentidos. Ao escolher a sigla:
   - no **placar** (`ControlePlacarBroadcastEscalacao`), a escalação também atualiza `siglaCasa/siglaFora`, o nome completo (quando conhecido) e carrega o elenco.
@@ -152,28 +184,33 @@
 - Siglas inválidas/desconhecidas mantêm o placar sincronizado com a sigla digitada; o elenco só é carregado para siglas conhecidas. Fallback `CASA`/`VISITANTE` quando a sigla é limpa.
 
 ### Placar Broadcast Escalação: nome do jogador que sai no card de troca
+
 - **Sintoma**: no card de substituição, a linha "Sai" exibia o **nome do time** (ex.: `PELOTAS`) junto da indicação `Sai`, em vez do nome do jogador que está saindo (o "Entra" mostrava o jogador corretamente).
 - **Causa**: `PlacarEscalacaoNotificacao` montava o `dados` do cartão com `saiNum: atual.num` / `saiNome: atual.nome`. Para o evento `troca` o store popula `saiNum`/`saiNome` (jogador que sai), enquanto `nome` guarda o **time**; os campos `num`/`nome` só existem para cartão/gol.
 - **Correção**: o cartão agora lê `saiNum: atual.saiNum ?? atual.num` e `saiNome: atual.saiNome ?? atual.nome` — usa o jogador que sai na troca e mantém o fallback para cartão/gol.
 
 ### Correção: toggles e remoções não refletiam no overlay até dar refresh
+
 - **Sintoma**: no controle, mudanças de estado que retornavam a um valor já visto (ex.: ocultar e reexibir a escalação, remover o acréscimo do cronômetro) não atualizavam ao vivo no overlay — só sumiam/apareciam após recarregar a página.
 - **Causa**: `aplicarEstadoRemoto` suprimia qualquer pacote cuja serialização já estivesse em `ultimosSync`. Ao alternar uma flag para um estado anterior (escalação `true→false→true`, acréscimo `null→X→null`), o pacote novo serializava idêntico a um já registrado e era **descartado**, mesmo o overlay estando num estado diferente.
 - **Correção**: removida a checagem `ultimosSync.includes(...)` (eco redundante, já tratado na camada de nuvem via `ehEcoProprio`). O guard agora compara apenas `JSON.stringify(novoEstado) === JSON.stringify(estado)` — idempotente, corrige a dupla entrega (BroadcastChannel + nuvem) sem descartar estados legítimos.
 - Aplicado em todos os stores com o padrão de sincronização: `placarBroadcastEscalacaoStore`, `placarBroadcastStore`, `placarBroadcastPLStore`, `placarBroadcastBLStore`, `placarBroadcastLLStore`, `placarNormalStore`, `placarModelStore`, `placarProStore`, `placarStore`, `artilheirosStore`, `escalacaoStore`, `mataMataStore`, `penaltisStore`, `preJogoStore`, `proximasRodadasStore`, `substituicaoStore`, `tabelaStore`, `tabelaCompactaStore` e `ultimaRodadaStore`.
 
 ### Placar Broadcast Escalação: notificação de cartão sem linha no nome + padrões de reset
+
 - **Cartão sem riscado**: o nome do jogador no card de cartão amarelo/vermelho não é mais exibido com `line-through`. A decoração só permanece na troca (linha "Sai") — `SubstituicaoCartao` agora usa prop `$riscado` no lugar do `text-decoration` baseado apenas no `$tipo`.
 - **Cor padrão do placar**: a cor padrão do scoreboard agora é preta (`#1f1f1f`/`#0a0a0a`), igual ao quadradinho "Preto" da paleta — aplicada a `corCasa`/`corVisitante` e bordas.
 - **Reset padrão CASA × VISITANTE**: ao resetar a partida inteira (e no estado inicial), os times iniciam como `CASA` (escalação: `siglaCasa CAS`) e `VISITANTE` — substituindo `BRA`/`PEL`/`PELOTAS`.
 
 ### Correção: relógio pulava/voltava ao mudar qualquer informação no controle
+
 - **Sintoma**: no overlay (ex.: `/placar-broadcast-escalacao`), o cronômetro do jogo voltava/pulava sempre que outra informação era alterada no controle (escalação, cartão, nome, etc.).
 - **Causa**: `aplicarEstadoRemoto` re-baseara o cronômetro a partir do snapshot `segundos` enviado no pacote de sincronização. Como esse snapshot é gerado no momento da publicação e chega defasado pela latência da nuvem (BroadcastChannel + Firebase), o `diff` excedia o limite e o relógio era reiniciado para o valor **antigo** do snapshot.
 - **Correção**: agora o lado remoto **confia no `iniciadoEm`** (carimbo de época, imune à latência) para recomputar o tempo, descartando o `segundos` do pacote — mesmo comportamento já adotado no `preJogoStore`. O `segundos` só é usado para re-basear quando não há referência de tempo confiável (estado antigo/corrompido).
 - Aplicado em todos os stores de placar: `placarBroadcastEscalacaoStore`, `placarBroadcastStore`, `placarBroadcastPLStore`, `placarBroadcastBLStore`, `placarBroadcastLLStore`, `placarNormalStore`, `placarModelStore`, `placarProStore` e `placarStore`.
 
 ### Documentação de componentes para agentes (`.agent.md`)
+
 - Criado um arquivo `.agent.md` ao lado de cada um dos 28 componentes em `src/components/` (ex.: `Escudo.agent.md`, `PainelPlacarModel.agent.md`, `Chaveamento.agent.md`).
 - Cada arquivo documenta para agentes de IA: propósito, props/API, dependências (stores/hooks/services), animações/keyframes, armadilhas e convenções específicas do componente (padrão `Entrada`, `CoresFixas`, `SeletorSigla`, `useFundoTransparente`, `forwardRef` para `BotaoSalvarImagem`, sincronização relógio/`iniciadoEm`, etc.).
 - Sem impacto no build (apenas documentação; `npm run build` passa com 147 módulos).
@@ -181,6 +218,7 @@
 ## 28/08/2026
 
 ### Placar Broadcast Escalação: gol por jogador, tempo congelado e notificações unificadas
+
 - **Gol pelo jogador**: novo botão ⚽ em cada jogador marca gol — muda o placar automaticamente, incrementa os gols do jogador, aciona o flash de gol no scoreboard e sobe um **card de gol**.
 - **Badge de gols na escalação**: ao lado do nome do jogador aparece uma **bolinha de futebol com contador** (badge verde com o total de gols acima da bola, quando >1) — mesmo estilo dos quadradinhos de cartão.
 - **Notificações unificadas (mesmo design do Substituição)**: cartão, gol e troca agora usam o mesmo `SubstituicaoCartao` (faixa do time com escudo/sigla/nome/minuto + linha do jogador). Centralizadas no **meio inferior** da tela.
@@ -191,12 +229,14 @@
 - Ações `marcarGol(lado, indice)` e `notificarGol` no store.
 
 ### Placar Broadcast Escalação: auto-preenchimento e ajustes
+
 - **Auto-preenchimento da escalação pela sigla**: novo `src/lib/elencos.js` com elencos-titulares por sigla (16 clubes da Série A2). No painel de escalação, escolher um time no seletor de sigla preenche automaticamente os 11 jogadores (número + nome) e o nome do time daquele lado. Ação `preencherDeSigla` no store.
 - **Card de troca com o design do Substituição**: a notificação de troca da escalação agora reutiliza o `SubstituicaoCartao` existente (faixa do time + linhas "↓ sai" e "↑ entra" com números/nomes), em vez do layout antigo.
 - **Remover cartões do jogador**: os botões de cartão amarelo/vermelho agora alternam — dar se o jogador não tem, remover se já tem.
 - **Layout do controle**: seções com até 3 quadros por linha (responsivo: 3→2→1); na seção de escalação o painel de controles fica mais largo (2fr) que a prévia (1fr); escalação mostra a lista toda sem corte.
 
 ### Novo módulo: Placar Broadcast Escalação (`/placar-broadcast-escalacao`)
+
 - Cópia do `/placar-broadcast` com as escalações centralizadas no mesmo link (controle e overlay).
 - Controle integrado em uma única página: placar (times/gols, cronômetro, partida) + escalação completa dos dois times + substituição, tudo no mesmo `/controle`.
 - Escalações integradas ao placar:
@@ -208,6 +248,7 @@
 - `EscalacaoCartao` agora renderiza marcas de cartão por jogador (retrocompatível — sem cartão não exibe nada).
 
 ### Pré-Jogo: countdown não reseta mais ao pausar (correção definitiva)
+
 - Corrigido bug em que pausar o countdown do Pré-Jogo ainda o reiniciava (no controle e na visualização), mesmo após tentativas anteriores.
 - Causa real: enquanto o countdown roda, fontes de sincronização (tick periódico e/ou snapshots "rodando" defasados já em trânsito na nuvem/BroadcastChannel/localStorage) entregavam um estado "rodando" antigo após o pause. Esse snapshot re-baseava o contador a partir do `segundos` obsoleto (ou registrava um novo `iniciadoEm`) e religava o cronômetro, desfazendo o pause e parecendo um reset.
 - Correções aplicadas em `preJogoStore`:
@@ -217,10 +258,12 @@
   - Guarda reforçada: um estado "rodando" sem `atualizadoEm` (cliente legado) só é aceito se o local ainda não tiver um estado com carimbo — assim um snapshot legado não desfaz um pause já gravado.
 
 ### Seletor de siglas nos controles
+
 - Novos campos de sigla agora usam um seletor (`SeletorSigla`) com as siglas padrão da competição em vez de digitação manual, em todos os painéis de controle (Placar Broadcast e variantes, Placar Normal, Placar Model, Pré-Jogo, Tabela, Mata-Mata, Pênaltis, Escalação, Substituição, Artilheiros e Última Rodada).
 - Valores já salvos fora da lista são preservados como opção extra no seletor.
 
 ### Pré-Jogo: countdown não reseta mais ao abrir a visualização
+
 - Corrigido bug em que abrir o overlay de Pré-Jogo fazia o countdown em andamento voltar (reset) na tela de controle.
 - Causa: o módulo só publicava o snapshot do countdown uma vez (no início), deixando o valor `segundos` defasado na nuvem/localStorage. Ao abrir a visualização, ela rebaseava o contador para esse valor antigo e o re-gravava no `localStorage` compartilhado, que propagava o reset ao controle via evento `storage`.
 - Correção: `preJogoStore` agora mantém um tick periódico de sincronização (a cada 2s) enquanto o cronômetro está rodando (padrão já usado por `placarStore`), mantendo os snapshots atualizados. O tick é interrompido ao pausar, zerar, definir duração ou resetar.
@@ -242,11 +285,13 @@
 ## 27/08/2026
 
 ### Tabela Compacta: opção dividir em 2 e aba Programas
+
 - Nova aba "Programas" no Hub, para onde a Tabela Compacta foi movida (saiu de Gauchão A2).
 - Novo controle da Tabela Compacta (`/tabela-compacta/controle`) com toggle "Separar em 2 colunas": à esquerda os 8 primeiros e à direita os 8 últimos.
 - Store próprio `tabelaCompactaStore` guardando a opção de divisão, sincronizado (localStorage + BroadcastChannel + nuvem).
 
 ### Tabela Compacta · Live
+
 - Nova tabela de classificação otimizada para livestreams (`/tabela-compacta`), com o mesmo estilo visual da tabela padrão porém mais estreita (max-width 460px).
 - Removeu as colunas %, GP, GC, SG; mantém apenas #, Time, J e P, com colunas de Time/P reduzidas.
 - Reusa os dados da `tabelaStore`; card adicionado ao Hub na seção Gauchão A2.
@@ -430,7 +475,7 @@
 - **Landing** em `/` com seções Sync, Classificação ao vivo, OBS, Fluxo, CTA e Rodapé; sistema passa para `/hub`.
 - **Demonstração animada na landing**: mockup de navegador que alterna automaticamente entre Placar Broadcast (cronômetro correndo), Classificação (linhas entrando em cascata) e Fases Finais (bracket com pulso neon e faixa CAMPEÃO), com chips flutuantes, pontos de navegação e links para todos os módulos — substituindo a grade de miniaturas.
 - **Roteamento limpo**: migração de HashRouter para BrowserRouter (URLs sem `#`); links "Voltar ao hub" e copiar-link corrigidos.
-- **Identidade visual unificada**: paleta neon `#a5ef1c` sobre fundo escuro no hub, controles e overlays.
+- **Identidade visual unificada**: paleta neon `#a5ef1c ` sobre fundo escuro no hub, controles e overlays.
 - **Sorteio dos jogos da home** refeito a cada visita (confrontos VER × PAS no hero e nos painéis).
 - **Mata-mata reformulado**, dividido em duas páginas:
   - `/mata-mata` — tabela das **oitavas** (`PainelOitavas` + `ListaOitavas`).

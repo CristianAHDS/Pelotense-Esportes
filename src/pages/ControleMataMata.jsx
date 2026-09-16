@@ -14,7 +14,10 @@ import {
   limparPlacares,
   limparFase,
 } from '../store/mataMataStore';
-import { getEstado as getTabela, ordenarClassificacao } from '../store/tabelaStore';
+import {
+  getEstado as getTabela,
+  ordenarClassificacao,
+} from '../store/tabelaStore';
 
 const ABAS_FASES = [
   { chave: 'confrontos', rotulo: 'OITAVAS' },
@@ -37,9 +40,11 @@ const Aba = styled.button`
   padding: 7px 16px;
   border-radius: 999px;
   cursor: pointer;
-  color: ${({ $ativa, theme }) => ($ativa ? '#0a0f00' : theme.cores.textoSuave)};
-  background: ${({ $ativa }) => ($ativa ? '#a5ef1c' : 'transparent')};
-  border: 1px solid ${({ $ativa }) => ($ativa ? 'transparent' : 'rgba(165, 239, 28, 0.3)')};
+  color: ${({ $ativa, theme }) =>
+    $ativa ? '#0a0f00' : theme.cores.textoSuave};
+  background: ${({ $ativa }) => ($ativa ? '#a5ef1c ' : 'transparent')};
+  border: 1px solid
+    ${({ $ativa }) => ($ativa ? 'transparent' : 'rgba(165, 239, 28, 0.3)')};
 
   &:hover {
     border-color: rgba(165, 239, 28, 0.6);
@@ -172,28 +177,28 @@ const CartaoConfronto = styled.div`
   background: ${({ theme }) => theme.cores.fundo};
 
   .jogo {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 9px 14px;
     border-bottom: 1px solid ${({ theme }) => theme.cores.borda};
     background: rgba(255, 255, 255, 0.03);
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.66rem;
-  font-weight: 700;
+    font-weight: 700;
     letter-spacing: 2.5px;
-  color: ${({ theme }) => theme.cores.textoSuave};
+    color: ${({ theme }) => theme.cores.textoSuave};
   }
 
   .ladoRotulo {
     width: 58px;
     flex-shrink: 0;
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  color: ${({ theme }) => theme.cores.textoSuave};
-  text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: ${({ theme }) => theme.cores.textoSuave};
+    text-transform: uppercase;
   }
 `;
 
@@ -211,7 +216,7 @@ const LinhaLado = styled.div`
 const InputCor = styled.input`
   width: 30px;
   height: 32px;
-    flex-shrink: 0;
+  flex-shrink: 0;
   padding: 0;
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 6px;
@@ -220,7 +225,7 @@ const InputCor = styled.input`
 `;
 
 const InputNome = styled.input`
-    flex: 1;
+  flex: 1;
   min-width: 90px;
   background: ${({ theme }) => theme.cores.superficie};
   border: 1px solid ${({ theme }) => theme.cores.borda};
@@ -237,7 +242,7 @@ const InputNome = styled.input`
 
 const InputNum = styled.input`
   width: 52px;
-    flex-shrink: 0;
+  flex-shrink: 0;
   background: ${({ theme }) => theme.cores.superficie};
   border: 1px solid ${({ theme }) => theme.cores.borda};
   border-radius: 6px;
@@ -256,7 +261,7 @@ const InputNum = styled.input`
 
   &::placeholder {
     font-size: 0.62rem;
-  letter-spacing: 1px;
+    letter-spacing: 1px;
   }
 
   &:focus {
@@ -283,39 +288,39 @@ const MiniJogo = styled.div`
   padding: 7px 12px;
   border-left: 3px solid #f59e0b;
   margin-bottom: 4px;
-    background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.03);
 
   .time {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     min-width: 0;
 
-  &:last-child {
+    &:last-child {
       justify-content: flex-end;
-  }
+    }
   }
 
   .sigla {
-  font-family: ${({ theme }) => theme.fontes.titulo};
+    font-family: ${({ theme }) => theme.fontes.titulo};
     font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  overflow: hidden;
+    font-weight: 700;
+    letter-spacing: 1px;
+    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .gol {
     font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  font-size: 0.78rem;
+    font-weight: 700;
+    font-size: 0.78rem;
     color: #f59e0b;
   }
 
   .vs {
     font-size: 0.6rem;
-  font-weight: 700;
+    font-weight: 700;
     opacity: 0.5;
   }
 `;
@@ -325,33 +330,42 @@ function PreviewMataMata({ estado }) {
     <PreviaClicavel
       title="Abrir visualização em nova guia"
       onClick={() =>
-        window.open(
-          `${window.location.origin}/mata-mata`,
-          '_blank'
-        )
-  }
+        window.open(`${window.location.origin}/mata-mata`, '_blank')
+      }
     >
       <Cartao style={{ marginBottom: 0 }}>
         <Rotulo>Prévia · clique para abrir em nova guia</Rotulo>
         {estado.confrontos.slice(0, 4).map((c, i) => (
           <MiniJogo key={i}>
             <span className="time">
-              <Escudo cor={c.casa.cor} sigla={c.casa.sigla} url={c.casa.escudo} tamanho={16} />
+              <Escudo
+                cor={c.casa.cor}
+                sigla={c.casa.sigla}
+                url={c.casa.escudo}
+                tamanho={16}
+              />
               <span className="sigla">{c.casa.nome || c.casa.sigla}</span>
               <span className="gol">{c.casa.gols ?? '-'}</span>
             </span>
             <span className="vs">VS</span>
             <span className="time">
               <span className="gol">{c.visitante.gols ?? '-'}</span>
-              <span className="sigla">{c.visitante.nome || c.visitante.sigla}</span>
-              <Escudo cor={c.visitante.cor} sigla={c.visitante.sigla} url={c.visitante.escudo} tamanho={16} />
+              <span className="sigla">
+                {c.visitante.nome || c.visitante.sigla}
+              </span>
+              <Escudo
+                cor={c.visitante.cor}
+                sigla={c.visitante.sigla}
+                url={c.visitante.escudo}
+                tamanho={16}
+              />
             </span>
           </MiniJogo>
         ))}
       </Cartao>
     </PreviaClicavel>
   );
-  }
+}
 
 /* ---------- Página ---------- */
 
@@ -367,14 +381,14 @@ export default function ControleMataMata() {
         casa: times[i],
         visitante: times[15 - i],
       }));
-  }
+    }
     const g8 = times.slice(0, 8);
     return [
       { casa: g8[0], visitante: g8[7] },
       { casa: g8[1], visitante: g8[6] },
       { casa: g8[2], visitante: g8[5] },
       { casa: g8[3], visitante: g8[4] },
-];
+    ];
   }
 
   return (
@@ -394,17 +408,17 @@ export default function ControleMataMata() {
             onChange={(e) => definirCompeticao(e.target.value)}
           />
           <div style={{ width: 260 }}>
-          <CampoTexto
+            <CampoTexto
               list="lista-fases"
               value={estado.fase}
               maxLength={40}
               title="Fase (escolha ou digite)"
               onChange={(e) => definirFase(e.target.value)}
-          />
+            />
             <datalist id="lista-fases">
               {FASES.map((f) => (
                 <option key={f} value={f} />
-        ))}
+              ))}
             </datalist>
           </div>
         </LinhaConfig>
@@ -429,7 +443,8 @@ export default function ControleMataMata() {
         </BarraAbas>
 
         <Rotulo style={{ marginTop: 14 }}>
-          Confrontos · {ABAS_FASES.find((f) => f.chave === faseAtiva)?.rotulo} ({listaFase.length})
+          Confrontos · {ABAS_FASES.find((f) => f.chave === faseAtiva)?.rotulo} (
+          {listaFase.length})
         </Rotulo>
         <GradeConfrontos>
           {listaFase.map((c, ci) => (
@@ -437,22 +452,32 @@ export default function ControleMataMata() {
               <div className="jogo">
                 JOGO {ci + 1}
                 <span>{`GOLS · PÊN`}</span>
-          </div>
+              </div>
               {['casa', 'visitante'].map((ladoNome) => {
                 const lado = c[ladoNome];
-  return (
+                return (
                   <LinhaLado key={ladoNome}>
                     <span className="ladoRotulo">{ladoNome}</span>
                     <InputNome
                       value={lado.nome}
                       placeholder="NOME DO TIME"
                       maxLength={24}
-                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'nome', e.target.value)}
-          />
+                      onChange={(e) =>
+                        atualizarLado(
+                          faseAtiva,
+                          ci,
+                          ladoNome,
+                          'nome',
+                          e.target.value,
+                        )
+                      }
+                    />
                     <span style={{ width: 60, flexShrink: 0 }}>
                       <SeletorSigla
                         value={lado.sigla}
-                        onChange={(v) => atualizarLado(faseAtiva, ci, ladoNome, 'sigla', v)}
+                        onChange={(v) =>
+                          atualizarLado(faseAtiva, ci, ladoNome, 'sigla', v)
+                        }
                       />
                     </span>
                     <InputNum
@@ -461,21 +486,37 @@ export default function ControleMataMata() {
                       placeholder="GOL"
                       value={lado.gols ?? ''}
                       title="Gols"
-                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'gols', e.target.value)}
-          />
+                      onChange={(e) =>
+                        atualizarLado(
+                          faseAtiva,
+                          ci,
+                          ladoNome,
+                          'gols',
+                          e.target.value,
+                        )
+                      }
+                    />
                     <InputNum
                       type="number"
                       min={0}
                       placeholder="PÊN"
                       value={lado.pen ?? ''}
                       title="Pênaltis (opcional)"
-                      onChange={(e) => atualizarLado(faseAtiva, ci, ladoNome, 'pen', e.target.value)}
-          />
+                      onChange={(e) =>
+                        atualizarLado(
+                          faseAtiva,
+                          ci,
+                          ladoNome,
+                          'pen',
+                          e.target.value,
+                        )
+                      }
+                    />
                   </LinhaLado>
-  );
+                );
               })}
             </CartaoConfronto>
-        ))}
+          ))}
         </GradeConfrontos>
 
         <Acoes>
@@ -502,4 +543,4 @@ export default function ControleMataMata() {
       <PreviewMataMata estado={estado} />
     </Tela>
   );
-  }
+}

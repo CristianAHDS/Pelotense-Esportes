@@ -14,7 +14,7 @@ import { useFundoTransparente } from '../components/useFundoTransparente';
 
 const compacto = new URLSearchParams(window.location.search).has('compacto');
 
-const VERDE = '#a5ef1c';
+const VERDE = '#a5ef1c ';
 
 function corContraste(hex) {
   const r = parseInt(hex.slice(1, 3), 16) / 255;
