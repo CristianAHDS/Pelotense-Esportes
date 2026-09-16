@@ -10,7 +10,7 @@ export const ESTADOS_PARTIDA = ['AO VIVO', 'INTERVALO', 'ENCERRADO']
 export const FORMACOES = ['4-3-3', '4-4-2', '4-2-3-1', '4-1-4-1', '3-5-2', '3-4-3', '5-3-2', '4-3-1-2']
 
 function jogadorPadrao() {
-  return { num: '', nome: '', cartoes: { amarelo: 0, vermelho: 0 }, gols: 0, expulso: false }
+  return { num: '', nome: '', cartoes: { amarelo: 0, vermelho: 0 }, gols: 0, expulso: false, capitao: false }
 }
 
 function timePadrao() {
@@ -34,12 +34,14 @@ const estadoPadrao = {
     siglaCasa: 'CAS',
     formacaoCasa: '4-3-3',
     tecnicoCasa: '',
+    tecnicoCasaCartoes: { amarelo: 0, vermelho: 0 },
     corCasa: '#008F3D',
     corFora: '#1d4ed8',
     nomeFora: 'AWAY',
     siglaFora: 'VIS',
     formacaoFora: '4-3-3',
     tecnicoFora: '',
+    tecnicoForaCartoes: { amarelo: 0, vermelho: 0 },
     jogadores: { casa: timePadrao(), fora: timePadrao() }
   },
   escalacaoVisivel: true,
@@ -62,6 +64,8 @@ function carregar() {
           ? salvo.escalacao.jogadores.fora.map(normalizarJogador)
           : timePadrao()
       }
+      esc.tecnicoCasaCartoes = normalizarCartoes(salvo.escalacao?.tecnicoCasaCartoes)
+      esc.tecnicoForaCartoes = normalizarCartoes(salvo.escalacao?.tecnicoForaCartoes)
       estado.escalacao = esc
       return estado
     }
@@ -81,7 +85,15 @@ function normalizarJogador(j) {
     nome: String(j?.nome || ''),
     cartoes,
     gols: Math.max(0, Number(j?.gols) || 0),
-    expulso: Boolean(j?.expulso)
+    expulso: Boolean(j?.expulso),
+    capitao: Boolean(j?.capitao)
+  }
+}
+
+function normalizarCartoes(c) {
+  return {
+    amarelo: Math.max(0, Number(c?.amarelo) || 0),
+    vermelho: Math.max(0, Number(c?.vermelho) || 0)
   }
 }
 
@@ -116,6 +128,70 @@ function registrarDesfazerGol(estado) {
   pilhaDesfazerGols.push(snapshotGols(estado))
   if (pilhaDesfazerGols.length > 50) pilhaDesfazerGols.shift()
   pilhaRefazerGols = []
+}
+
+let pilhaDesfazerCartoes = []
+let pilhaRefazerCartoes = []
+
+function snapshotCartoes(estado) {
+  return {
+    casa: (estado.escalacao.jogadores.casa || []).map((j) => ({
+      amarelo: j.cartoes?.amarelo || 0,
+      vermelho: j.cartoes?.vermelho || 0
+    })),
+    fora: (estado.escalacao.jogadores.fora || []).map((j) => ({
+      amarelo: j.cartoes?.amarelo || 0,
+      vermelho: j.cartoes?.vermelho || 0
+    })),
+    tecnicoCasa: { ...(estado.escalacao.tecnicoCasaCartoes || {}) },
+    tecnicoFora: { ...(estado.escalacao.tecnicoForaCartoes || {}) }
+  }
+}
+
+function aplicarSnapshotCartoes(estado, snap) {
+  ;(estado.escalacao.jogadores.casa || []).forEach((j, i) => {
+    j.cartoes = {
+      amarelo: snap.casa[i]?.amarelo || 0,
+      vermelho: snap.casa[i]?.vermelho || 0
+    }
+    j.expulso = j.cartoes.vermelho > 0
+  })
+  ;(estado.escalacao.jogadores.fora || []).forEach((j, i) => {
+    j.cartoes = {
+      amarelo: snap.fora[i]?.amarelo || 0,
+      vermelho: snap.fora[i]?.vermelho || 0
+    }
+    j.expulso = j.cartoes.vermelho > 0
+  })
+  estado.escalacao.tecnicoCasaCartoes = { ...snap.tecnicoCasa }
+  estado.escalacao.tecnicoForaCartoes = { ...snap.tecnicoFora }
+}
+
+function registrarDesfazerCartao(estado) {
+  pilhaDesfazerCartoes.push(snapshotCartoes(estado))
+  if (pilhaDesfazerCartoes.length > 50) pilhaDesfazerCartoes.shift()
+  pilhaRefazerCartoes = []
+}
+
+let pilhaDesfazerSubstituicoes = []
+let pilhaRefazerSubstituicoes = []
+
+function snapshotSubstituicoes(estado) {
+  return {
+    jogadores: structuredClone(estado.escalacao.jogadores),
+    notificacao: estado.notificacao
+  }
+}
+
+function aplicarSnapshotSubstituicoes(estado, snap) {
+  estado.escalacao.jogadores = snap.jogadores
+  estado.notificacao = snap.notificacao
+}
+
+function registrarDesfazerSubstituicao(estado) {
+  pilhaDesfazerSubstituicoes.push(snapshotSubstituicoes(estado))
+  if (pilhaDesfazerSubstituicoes.length > 50) pilhaDesfazerSubstituicoes.shift()
+  pilhaRefazerSubstituicoes = []
 }
 
 const canal =
@@ -282,6 +358,26 @@ export function refazerGol() {
     if (!snap) return estado
     pilhaDesfazerGols.push(snapshotGols(estado))
     aplicarSnapshotGols(estado, snap)
+    return estado
+  })
+}
+
+export function desfazerCartao() {
+  setEstado((estado) => {
+    const snap = pilhaDesfazerCartoes.pop()
+    if (!snap) return estado
+    pilhaRefazerCartoes.push(snapshotCartoes(estado))
+    aplicarSnapshotCartoes(estado, snap)
+    return estado
+  })
+}
+
+export function refazerCartao() {
+  setEstado((estado) => {
+    const snap = pilhaRefazerCartoes.pop()
+    if (!snap) return estado
+    pilhaDesfazerCartoes.push(snapshotCartoes(estado))
+    aplicarSnapshotCartoes(estado, snap)
     return estado
   })
 }
@@ -473,6 +569,18 @@ export function atualizarJogador(lado, indice, campo, valor) {
   })
 }
 
+export function definirCapitao(lado, indice) {
+  setEstado((estado) => {
+    const lista = estado.escalacao.jogadores[lado]
+    if (!lista || !lista[indice]) return estado
+    const jaEra = lista[indice].capitao
+    lista.forEach((j, i) => {
+      j.capitao = i === indice && !jaEra
+    })
+    return estado
+  })
+}
+
 function notificarCartao(lado, indice, cor, estadoAtual) {
   const lista = estadoAtual.escalacao.jogadores[lado]
   const jogador = lista?.[indice] || {}
@@ -532,6 +640,7 @@ export function darCartaoJogador(lado, indice, cor) {
     if (!lista || !lista[indice]) return estado
     if (cor === 'amarelo' && lista[indice].cartoes.amarelo >= 1) return estado
     if (cor === 'vermelho' && lista[indice].cartoes.vermelho >= 1) return estado
+    registrarDesfazerCartao(estado)
     lista[indice].cartoes[cor]++
     if (cor === 'vermelho') lista[indice].expulso = true
     estado.notificacao = notificarCartao(lado, indice, cor, estado)
@@ -543,10 +652,57 @@ export function removerCartaoJogador(lado, indice, cor) {
   setEstado((estado) => {
     const lista = estado.escalacao.jogadores[lado]
     if (!lista || !lista[indice]) return estado
+    if (lista[indice].cartoes[cor] <= 0) return estado
+    registrarDesfazerCartao(estado)
     lista[indice].cartoes[cor] = Math.max(0, lista[indice].cartoes[cor] - 1)
     if (cor === 'vermelho' && lista[indice].cartoes.vermelho === 0) {
       lista[indice].expulso = false
     }
+    return estado
+  })
+}
+
+function notificarCartaoTecnico(lado, cor, estadoAtual) {
+  const esc = estadoAtual.escalacao
+  const campoNome = lado === 'casa' ? 'tecnicoCasa' : 'tecnicoFora'
+  const campoCartoes = lado === 'casa' ? 'tecnicoCasaCartoes' : 'tecnicoForaCartoes'
+  const chave = lado === 'casa' ? 'siglaCasa' : 'siglaFora'
+  return {
+    tipo: 'cartao',
+    lado,
+    cor,
+    corTime: lado === 'casa' ? esc.corCasa : esc.corFora,
+    indice: null,
+    num: 'TEC',
+    nome: esc[campoNome],
+    sigla: esc[chave],
+    minuto: minutoDeJogo(estadoAtual.cronometro),
+    em: Date.now(),
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`
+  }
+}
+
+export function darCartaoTecnico(lado, cor) {
+  setEstado((estado) => {
+    const campo = lado === 'casa' ? 'tecnicoCasaCartoes' : 'tecnicoForaCartoes'
+    const cartoes = estado.escalacao[campo]
+    if (!cartoes) return estado
+    if (cor === 'amarelo' && cartoes.amarelo >= 1) return estado
+    if (cor === 'vermelho' && cartoes.vermelho >= 1) return estado
+    registrarDesfazerCartao(estado)
+    cartoes[cor]++
+    estado.notificacao = notificarCartaoTecnico(lado, cor, estado)
+    return estado
+  })
+}
+
+export function removerCartaoTecnico(lado, cor) {
+  setEstado((estado) => {
+    const campo = lado === 'casa' ? 'tecnicoCasaCartoes' : 'tecnicoForaCartoes'
+    const cartoes = estado.escalacao[campo]
+    if (!cartoes || cartoes[cor] <= 0) return estado
+    registrarDesfazerCartao(estado)
+    cartoes[cor] = Math.max(0, cartoes[cor] - 1)
     return estado
   })
 }
@@ -571,6 +727,7 @@ export function realizarSubstituicao({ lado, sairIndice, numEntra, nomeEntra, mi
   setEstado((estado) => {
     const lista = estado.escalacao.jogadores[lado]
     if (!lista || !lista[sairIndice]) return estado
+    registrarDesfazerSubstituicao(estado)
     const esc = estado.escalacao
     const sair = lista[sairIndice]
     const m = String(minuto || `${minutoDeJogo(estado.cronometro)}'`).slice(0, 6) || `'`
@@ -595,8 +752,29 @@ export function realizarSubstituicao({ lado, sairIndice, numEntra, nomeEntra, mi
       nome: entraNome,
       substituido: { nome: sair.nome },
       cartoes: { amarelo: 0, vermelho: 0 },
-      gols: 0
+      gols: 0,
+      capitao: false
     }
+    return estado
+  })
+}
+
+export function desfazerSubstituicao() {
+  setEstado((estado) => {
+    const snap = pilhaDesfazerSubstituicoes.pop()
+    if (!snap) return estado
+    pilhaRefazerSubstituicoes.push(snapshotSubstituicoes(estado))
+    aplicarSnapshotSubstituicoes(estado, snap)
+    return estado
+  })
+}
+
+export function refazerSubstituicao() {
+  setEstado((estado) => {
+    const snap = pilhaRefazerSubstituicoes.pop()
+    if (!snap) return estado
+    pilhaDesfazerSubstituicoes.push(snapshotSubstituicoes(estado))
+    aplicarSnapshotSubstituicoes(estado, snap)
     return estado
   })
 }

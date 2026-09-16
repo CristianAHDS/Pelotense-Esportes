@@ -2,6 +2,21 @@
 
 ## 16/09/2026
 
+### Cartões para o técnico + desfazer cartão na escalação integrada
+
+- `placarBroadcastEscalacaoStore`: técnico agora tem cartões próprios — novos campos `tecnicoCasaCartoes`/`tecnicoForaCartoes` (`{ amarelo, vermelho }`) com migração automática de estados salvos. Novas ações `darCartaoTecnico`/`removerCartaoTecnico` (com notificação de cartão do técnico no overlay) e pilha própria de desfazer/refazer: `desfazerCartao`/`refazerCartao` (mesmo padrão do gol). `darCartaoJogador`/`removerCartaoJogador` agora registram snapshot na pilha de cartões.
+
+### Capitão na escalação integrada
+
+- `placarBroadcastEscalacaoStore`: novo campo `capitao` por jogador (migração automática) + ação `definirCapitao(lado, indice)` que marca um único capitão por time (clique de novo remove). Novo jogador de substituição entra sem faixa de capitão.
+- `PainelEscalacaoBroadcast`: botão circular "C" em cada linha de jogador (toggle marcar/remover capitão, verde quando ativo).
+- `EscalacaoCartao`: jogador capitão exibe o distintivo "C" ao lado do número.
+- `PainelEscalacaoBroadcast`: linha do técnico ganhou botões de cartão amarelo/vermelho (toggle dar/remover, igual aos jogadores). Campo do técnico com largura fixa (320px) para não mudar de tamanho com o layout.
+- `ControlePlacarBroadcastEscalacao`: novos botões "↩ Desfazer cartão / ↪ Refazer cartão" ao lado dos de gol, e "↩ Desfazer substituição / ↪ Refazer substituição" (pilha própria que restaura jogadores e notificação da troca).
+- `EscalacaoCartao`: linha do técnico exibe os cartões recebidos.
+
+## 16/09/2026
+
 ### Pré-Jogo: countdown por data/hora de início em vez de duração
 
 - O timer do Pré-Jogo não recebe mais uma duração (ex.: chips de 30–150 min). Agora o usuário escolhe a **data e hora do início do jogo** e o tempo restante é **calculado automaticamente** até esse momento.

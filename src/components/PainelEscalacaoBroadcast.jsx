@@ -6,8 +6,11 @@ import {
   atualizarEscalacaoCampo,
   preencherDeSigla,
   atualizarJogador,
+  definirCapitao,
   darCartaoJogador,
   removerCartaoJogador,
+  darCartaoTecnico,
+  removerCartaoTecnico,
   realizarSubstituicao,
   marcarGol,
   mostrarEscalacao,
@@ -247,6 +250,32 @@ const TrocarBotao = styled.button`
   }
 `;
 
+const BotaoCapitao = styled.button`
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid ${({ theme }) => theme.cores.borda};
+  background: transparent;
+  color: ${({ theme }) => theme.cores.textoSuave};
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover {
+    color: ${VERDE};
+    border-color: rgba(165, 239, 28, 0.45);
+  }
+
+  &.ativo {
+    color: #0a0f00;
+    background: ${VERDE};
+    border-color: ${VERDE};
+  }
+`;
+
 const Acoes = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -362,6 +391,8 @@ export function PainelEscalacaoBroadcast() {
     campoSigla: lado === 'casa' ? 'siglaCasa' : 'siglaFora',
     campoFormacao: lado === 'casa' ? 'formacaoCasa' : 'formacaoFora',
     campoTecnico: lado === 'casa' ? 'tecnicoCasa' : 'tecnicoFora',
+    campoCartoesTecnico:
+      lado === 'casa' ? 'tecnicoCasaCartoes' : 'tecnicoForaCartoes',
   });
 
   const confirmarTroca = (lado) => {
@@ -435,7 +466,7 @@ export function PainelEscalacaoBroadcast() {
                 </Campo>
               </Linha>
               <Linha>
-                <Campo className="cresce">
+                <Campo style={{ width: 320, maxWidth: '100%' }}>
                   <Rotulo>Técnico</Rotulo>
                   <Entrada
                     value={esc[conf.campoTecnico]}
@@ -445,6 +476,45 @@ export function PainelEscalacaoBroadcast() {
                       atualizarEscalacaoCampo(conf.campoTecnico, e.target.value)
                     }
                   />
+                </Campo>
+                <Campo>
+                  <Rotulo>Cartões</Rotulo>
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    <BotaoCartao
+                      className="amarelo"
+                      title={
+                        esc[conf.campoCartoesTecnico]?.amarelo > 0
+                          ? 'Remover cartão amarelo'
+                          : 'Dar cartão amarelo'
+                      }
+                      onClick={() =>
+                        esc[conf.campoCartoesTecnico]?.amarelo > 0
+                          ? removerCartaoTecnico(lado, 'amarelo')
+                          : darCartaoTecnico(lado, 'amarelo')
+                      }
+                    >
+                      {esc[conf.campoCartoesTecnico]?.amarelo > 0
+                        ? esc[conf.campoCartoesTecnico].amarelo
+                        : 'A'}
+                    </BotaoCartao>
+                    <BotaoCartao
+                      className="vermelho"
+                      title={
+                        esc[conf.campoCartoesTecnico]?.vermelho > 0
+                          ? 'Remover cartão vermelho'
+                          : 'Dar cartão vermelho'
+                      }
+                      onClick={() =>
+                        esc[conf.campoCartoesTecnico]?.vermelho > 0
+                          ? removerCartaoTecnico(lado, 'vermelho')
+                          : darCartaoTecnico(lado, 'vermelho')
+                      }
+                    >
+                      {esc[conf.campoCartoesTecnico]?.vermelho > 0
+                        ? esc[conf.campoCartoesTecnico].vermelho
+                        : 'V'}
+                    </BotaoCartao>
+                  </div>
                 </Campo>
               </Linha>
 
@@ -521,6 +591,17 @@ export function PainelEscalacaoBroadcast() {
                         ? jogador.cartoes.vermelho
                         : 'V'}
                     </BotaoCartao>
+                    <BotaoCapitao
+                      className={jogador.capitao ? 'ativo' : ''}
+                      title={
+                        jogador.capitao
+                          ? 'Remover capitão'
+                          : 'Marcar como capitão'
+                      }
+                      onClick={() => definirCapitao(lado, i)}
+                    >
+                      C
+                    </BotaoCapitao>
                     <BotaoGol title="Gol" onClick={() => marcarGol(lado, i)}>
                       ⚽
                     </BotaoGol>

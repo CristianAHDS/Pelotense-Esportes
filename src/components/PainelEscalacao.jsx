@@ -259,7 +259,7 @@ function ColunaTime({ estado, config, atualizarCampo, atualizarJogador }) {
         </Campo>
       </Linha>
       <Linha>
-        <Campo className="cresce">
+        <Campo style={{ width: 320, maxWidth: '100%' }}>
           <Rotulo>Técnico</Rotulo>
           <Entrada
             value={estado[config.campoTecnico]}

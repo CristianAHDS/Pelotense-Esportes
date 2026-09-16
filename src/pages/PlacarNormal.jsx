@@ -280,7 +280,7 @@ const FaixaGol = styled.div`
   background: linear-gradient(
     90deg,
     rgba(165, 239, 28, 0.12),
-    rgba(255, 215, 0, 0.18),
+    rgba(165, 239, 28, 0.18),
     rgba(165, 239, 28, 0.12)
   );
   animation: ${fadeGol} 4s ease-in-out forwards;
@@ -293,8 +293,8 @@ const FaixaGol = styled.div`
     font-weight: 700;
     letter-spacing: 5px;
     text-transform: uppercase;
-    color: #ffd700;
-    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.55));
+    color: #a5ef1c;
+    filter: drop-shadow(0 0 6px rgba(165, 239, 28, 0.55));
     animation: ${rolagemGol} 3s linear infinite;
   }
 `;

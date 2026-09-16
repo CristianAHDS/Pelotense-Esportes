@@ -7,6 +7,10 @@ import {
   gol,
   desfazerGol,
   refazerGol,
+  desfazerCartao,
+  refazerCartao,
+  desfazerSubstituicao,
+  refazerSubstituicao,
   renomearTime,
   alternarCronometro,
   zerarCronometro,
@@ -166,6 +170,7 @@ const Botao = styled.button`
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
+  white-space: nowrap;
   transition:
     filter 0.15s ease,
     background 0.15s ease;
@@ -403,6 +408,22 @@ function PainelTimes() {
         </Botao>
         <Botao className="neutro" onClick={refazerGol}>
           ↪ Refazer gol
+        </Botao>
+      </div>
+      <div style={{ display: 'flex', gap: 10, marginTop: 10 }}>
+        <Botao className="neutro" onClick={desfazerCartao}>
+          ↩ Desfazer cartão
+        </Botao>
+        <Botao className="neutro" onClick={refazerCartao}>
+          ↪ Refazer cartão
+        </Botao>
+      </div>
+      <div style={{ display: 'flex', gap: 10, marginTop: 10 }}>
+        <Botao className="neutro" onClick={desfazerSubstituicao}>
+          ↩ Desfazer substituição
+        </Botao>
+        <Botao className="neutro" onClick={refazerSubstituicao}>
+          ↪ Refazer substituição
         </Botao>
       </div>
     </Painel>

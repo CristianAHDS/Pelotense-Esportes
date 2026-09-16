@@ -250,8 +250,8 @@ const FaixaGol = styled.span`
     font-style: italic;
     letter-spacing: 3px;
     text-transform: uppercase;
-    color: #ffd700;
-    filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.7));
+    color: #a5ef1c;
+    filter: drop-shadow(0 0 6px rgba(165, 239, 28, 0.7));
     animation: ${rolagemGol} 2s linear infinite;
   }
 `;

@@ -61,6 +61,7 @@ const FaixaTopo = styled.div`
   }
 
   .formacao {
+    margin-left: auto;
     flex-shrink: 0;
     padding: 3px 12px;
     border-radius: 999px;
@@ -150,6 +151,20 @@ const CartaoMarca = styled.span`
   background: ${({ $cor }) => ($cor === 'amarelo' ? '#eab308' : '#dc2626')};
 `;
 
+const CapitaoMarca = styled.span`
+  flex-shrink: 0;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 3px;
+  border-radius: 50%;
+  border: 1px solid ${VERDE};
+  color: ${VERDE};
+  font-size: 0.58rem;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+`;
+
 const BolaGol = styled.span`
   display: inline-block;
   width: 15px;
@@ -195,6 +210,18 @@ const LinhaTecnico = styled.div`
     text-overflow: ellipsis;
     color: rgba(255, 255, 255, 0.85);
   }
+
+  .nome.vazio {
+    color: rgba(255, 255, 255, 0.28);
+    font-weight: 500;
+  }
+
+  .marcas {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
 `;
 
 function corContraste(hex) {
@@ -212,6 +239,9 @@ export function EscalacaoCartao({ dados, lado }) {
   const nomeTime = casa ? dados.nomeCasa : dados.nomeFora;
   const formacao = casa ? dados.formacaoCasa : dados.formacaoFora;
   const tecnico = casa ? dados.tecnicoCasa : dados.tecnicoFora;
+  const cartoesTecnico = casa
+    ? dados.tecnicoCasaCartoes
+    : dados.tecnicoForaCartoes;
   const jogadores = (dados.jogadores?.[lado] || []).slice(0, 11);
 
   return (
@@ -229,6 +259,7 @@ export function EscalacaoCartao({ dados, lado }) {
       {jogadores.map((jogador, i) => (
         <LinhaJogador key={`${lado}-${i}`} $expulso={jogador.expulso}>
           <span className="num">{jogador.num || i + 1}</span>
+          {jogador.capitao && <CapitaoMarca>C</CapitaoMarca>}
           <span className={`nome${jogador.nome ? '' : ' vazio'}`}>
             {jogador.nome || `Jogador ${i + 1}`}
             {jogador.substituido?.nome && (
@@ -262,10 +293,28 @@ export function EscalacaoCartao({ dados, lado }) {
           )}
         </LinhaJogador>
       ))}
-      {tecnico && (
+      {(tecnico ||
+        cartoesTecnico?.amarelo > 0 ||
+        cartoesTecnico?.vermelho > 0) && (
         <LinhaTecnico>
-          <span className="rotulo">TÃ‰C</span>
-          <span className="nome">{tecnico}</span>
+          <span className="rotulo">TÉC</span>
+          <span className={`nome${tecnico ? '' : ' vazio'}`}>
+            {tecnico || '—'}
+          </span>
+          {(cartoesTecnico?.amarelo > 0 || cartoesTecnico?.vermelho > 0) && (
+            <span className="marcas">
+              {Array(cartoesTecnico?.amarelo || 0)
+                .fill('amarelo')
+                .map((c, ci) => (
+                  <CartaoMarca key={`am-tec-${ci}`} $cor={c} />
+                ))}
+              {Array(cartoesTecnico?.vermelho || 0)
+                .fill('vermelho')
+                .map((c, ci) => (
+                  <CartaoMarca key={`vm-tec-${ci}`} $cor={c} />
+                ))}
+            </span>
+          )}
         </LinhaTecnico>
       )}
     </Cartao>
