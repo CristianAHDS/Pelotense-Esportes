@@ -4,12 +4,12 @@ Control form (painel) for the "Pré-Jogo" module — a countdown timer plus whic
 
 ## Store / Hook
 - Builds `LOJA = { getEstado, inscrever }` locally and passes it to `usePlacarBroadcast(LOJA)` (does NOT import the store object directly).
-- Actions imported from `../store/preJogoStore`: `definirTime`, `definirDuracao`, `alternarCronometro`, `zerarCronometro`, `mostrar`, `ocultar`, `resetar`, `segundosRestantes`, `formatarTempo`.
+- Actions imported from `../store/preJogoStore`: `definirTime`, `definirInicio`, `zerarCronometro`, `mostrar`, `ocultar`, `resetar`, `segundosRestantes`, `estaRodando`, `formatarTempo`, `formatarHorario`.
 
 ## Layout
 - Dark card, Rajdhani title "Pré-Jogo" with green `●`.
 - Two-column grade.
-- **Timer**: big live display (`formatarTempo(segundosRestantes(cronometro))`, green when running), duration chips (`DURACOES_MIN` = 30..150 min), ▶/⏸ Iniciar/Pausar + ⟲ Zerar (Zerar disabled while running).
+- **Timer**: big live display (`formatarTempo(segundosRestantes(cronometro))`, green when running), date + time pickers (`EntradaDataHora`, native `input[type=date]`/`input[type=time]`) with a ▶ Definir button that calls `definirInicio(timestamp)`; shows "Agendado para ..." (`formatarHorario`) and ⟲ Limpar (`zerarCronometro`).
 - **Times e escudos**: a `SeletorSigla` per side (casa / visitante) calling `definirTime(lado, sigla)`.
 
 ## Actions bar
@@ -17,7 +17,8 @@ Control form (painel) for the "Pré-Jogo" module — a countdown timer plus whic
 
 ## Gotchas
 - Local `tick` state re-renders every 500ms (live countdown preview).
-- `definirDuracao(m * 60)` stores seconds.
+- `definirInicio(ts)` stores an absolute timestamp (ms); the countdown is computed automatically from it.
+- Date/time inputs are prefilled from `cronometro.inicio` via `paraInputData`/`paraInputHora`.
 - All local UI state lives inside the component, not module scope.
 
 ## Used by

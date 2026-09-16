@@ -18,10 +18,12 @@ function vazio(lado) {
 function vencedorDe(c) {
   const gc = c.casa?.gols;
   const gv = c.visitante?.gols;
-  if (gc != null && gv != null && gc !== gv) return gc > gv ? 'casa' : 'visitante';
+  if (gc != null && gv != null && gc !== gv)
+    return gc > gv ? 'casa' : 'visitante';
   const pc = c.casa?.pen;
   const pv = c.visitante?.pen;
-  if (pc != null && pv != null && pc !== pv) return pc > pv ? 'casa' : 'visitante';
+  if (pc != null && pv != null && pc !== pv)
+    return pc > pv ? 'casa' : 'visitante';
   return null;
 }
 
@@ -164,7 +166,11 @@ const Separador = styled.div`
 function Gol({ lado, destaque }) {
   return (
     <Placar $destaque={destaque}>
-      {lado.gols != null ? <span className="gol">{lado.gols}</span> : <span className="traco" />}
+      {lado.gols != null ? (
+        <span className="gol">{lado.gols}</span>
+      ) : (
+        <span className="traco" />
+      )}
       {lado.pen != null && <span className="pen">({lado.pen})</span>}
     </Placar>
   );
@@ -192,16 +198,32 @@ export function ListaOitavas({ confrontos }) {
               <i />
               {String(i + 1).padStart(2, '0')}
             </span>
-            <TimeCasa className={vazio(c.casa) ? 'vazio' : ''} $destaque={dest('casa')}>
+            <TimeCasa
+              className={vazio(c.casa) ? 'vazio' : ''}
+              $destaque={dest('casa')}
+            >
               <span className="nome">{c.casa.nome}</span>
               <span className="sigla">{c.casa.sigla}</span>
-              <Escudo cor={c.casa.cor} sigla={c.casa.sigla} url={urlEscudo(c.casa)} tamanho={26} />
+              <Escudo
+                cor={c.casa.cor}
+                sigla={c.casa.sigla}
+                url={urlEscudo(c.casa)}
+                tamanho={26}
+              />
             </TimeCasa>
             <Gol lado={c.casa} destaque={dest('casa')} />
             <Separador>×</Separador>
             <Gol lado={c.visitante} destaque={dest('visitante')} />
-            <TimeVisitante className={vazio(c.visitante) ? 'vazio' : ''} $destaque={dest('visitante')}>
-              <Escudo cor={c.visitante.cor} sigla={c.visitante.sigla} url={urlEscudo(c.visitante)} tamanho={26} />
+            <TimeVisitante
+              className={vazio(c.visitante) ? 'vazio' : ''}
+              $destaque={dest('visitante')}
+            >
+              <Escudo
+                cor={c.visitante.cor}
+                sigla={c.visitante.sigla}
+                url={urlEscudo(c.visitante)}
+                tamanho={26}
+              />
               <span className="sigla">{c.visitante.sigla}</span>
               <span className="nome">{c.visitante.nome}</span>
             </TimeVisitante>

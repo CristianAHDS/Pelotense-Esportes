@@ -380,11 +380,17 @@ function PainelTimes() {
           <LinhaGols>
             <BotaoPasso
               onClick={() => gol(lado, -1)}
-              disabled={lado === 'casa' ? estado.golsCasa === 0 : estado.golsVisitante === 0}
+              disabled={
+                lado === 'casa'
+                  ? estado.golsCasa === 0
+                  : estado.golsVisitante === 0
+              }
             >
               −
             </BotaoPasso>
-            <Numero>{lado === 'casa' ? estado.golsCasa : estado.golsVisitante}</Numero>
+            <Numero>
+              {lado === 'casa' ? estado.golsCasa : estado.golsVisitante}
+            </Numero>
             <BotaoPasso onClick={() => gol(lado, 1)}>+</BotaoPasso>
           </LinhaGols>
 
@@ -399,7 +405,11 @@ function PainelTimes() {
               −
             </BotaoCartao>
             <ContagemCartao>{cartoes.amarelo}</ContagemCartao>
-            <BotaoCartao $cor="#eab308" onClick={() => darCartao(lado, 'amarelo')} title="Amarelo">
+            <BotaoCartao
+              $cor="#eab308"
+              onClick={() => darCartao(lado, 'amarelo')}
+              title="Amarelo"
+            >
               +
             </BotaoCartao>
             <BotaoCartao
@@ -411,7 +421,11 @@ function PainelTimes() {
               −
             </BotaoCartao>
             <ContagemCartao>{cartoes.vermelho}</ContagemCartao>
-            <BotaoCartao $cor="#ef4444" onClick={() => darCartao(lado, 'vermelho')} title="Vermelho">
+            <BotaoCartao
+              $cor="#ef4444"
+              onClick={() => darCartao(lado, 'vermelho')}
+              title="Vermelho"
+            >
               +
             </BotaoCartao>
           </LinhaCartoes>
@@ -481,14 +495,20 @@ function PainelPartida() {
       <SecaoTitulo>Período</SecaoTitulo>
       <ListaChips>
         {PERIODOS.map((p) => (
-          <Chip key={p} $ativo={estado.periodo === p} onClick={() => definirPeriodo(p)}>
+          <Chip
+            key={p}
+            $ativo={estado.periodo === p}
+            onClick={() => definirPeriodo(p)}
+          >
             {p}
           </Chip>
         ))}
       </ListaChips>
       <SecaoTitulo>Acréscimo</SecaoTitulo>
       <GrupoAcrescimo>
-        <BotaoPassoAcr onClick={() => definirAcrescimo((estado.acrescimo || 0) - 1)}>
+        <BotaoPassoAcr
+          onClick={() => definirAcrescimo((estado.acrescimo || 0) - 1)}
+        >
           −
         </BotaoPassoAcr>
         <EntradaNum
@@ -499,10 +519,15 @@ function PainelPartida() {
           value={estado.acrescimo ?? ''}
           onChange={(e) => definirAcrescimo(e.target.value)}
         />
-        <BotaoPassoAcr onClick={() => definirAcrescimo((estado.acrescimo || 0) + 1)}>
+        <BotaoPassoAcr
+          onClick={() => definirAcrescimo((estado.acrescimo || 0) + 1)}
+        >
           +
         </BotaoPassoAcr>
-        <Chip $ativo={!(estado.acrescimo > 0)} onClick={() => definirAcrescimo(0)}>
+        <Chip
+          $ativo={!(estado.acrescimo > 0)}
+          onClick={() => definirAcrescimo(0)}
+        >
           Sem
         </Chip>
       </GrupoAcrescimo>
@@ -520,14 +545,23 @@ function PainelPartida() {
       </ListaChips>
       <SecaoTitulo>Exibição</SecaoTitulo>
       <ListaChips>
-        <Chip $ativo={estado.mostrarEscudos !== false} onClick={alternarEscudos}>
-          {estado.mostrarEscudos !== false ? 'Escudos visíveis' : 'Ocultar escudos'}
+        <Chip
+          $ativo={estado.mostrarEscudos !== false}
+          onClick={alternarEscudos}
+        >
+          {estado.mostrarEscudos !== false
+            ? 'Escudos visíveis'
+            : 'Ocultar escudos'}
         </Chip>
       </ListaChips>
       <ResetBotao onClick={handleReset}>
-        {confirmar ? '⚠ Clique novamente para confirmar' : '🗑 Resetar partida inteira'}
+        {confirmar
+          ? '⚠ Clique novamente para confirmar'
+          : '🗑 Resetar partida inteira'}
       </ResetBotao>
-      <Aviso>Zera gols, cronômetro e período. Os nomes e cores voltam ao padrão.</Aviso>
+      <Aviso>
+        Zera gols, cronômetro e período. Os nomes e cores voltam ao padrão.
+      </Aviso>
     </div>
   );
 }

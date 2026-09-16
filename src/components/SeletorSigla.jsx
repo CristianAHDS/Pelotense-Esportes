@@ -54,10 +54,7 @@ export function SeletorSigla({ value = '', onChange, placeholder = 'SIGLA' }) {
   if (atual && !opcoes.includes(atual)) opcoes.unshift(atual);
 
   return (
-    <Seletor
-      value={atual}
-      onChange={(e) => onChange?.(e.target.value)}
-    >
+    <Seletor value={atual} onChange={(e) => onChange?.(e.target.value)}>
       <option value="">{placeholder}</option>
       {opcoes.map((s) => (
         <option key={s} value={s}>

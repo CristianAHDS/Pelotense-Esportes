@@ -107,7 +107,9 @@ const GolNum = styled.span`
   color: #fff;
   ${({ $a }) =>
     $a &&
-    css`animation: ${glisseScore} 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);`}
+    css`
+      animation: ${glisseScore} 0.32s cubic-bezier(0.34, 1.56, 0.64, 1);
+    `}
 `;
 
 const Divisor = styled.span`
@@ -196,7 +198,11 @@ function rotuloStatus(estadoPartida, periodo) {
   if (estadoPartida === 'INÍCIO' || estadoPartida === 'AO VIVO') {
     return periodo;
   }
-  return estadoPartida === 'INTERVALO' ? 'INT' : estadoPartida === 'ENCERRADO' ? 'FT' : periodo;
+  return estadoPartida === 'INTERVALO'
+    ? 'INT'
+    : estadoPartida === 'ENCERRADO'
+      ? 'FT'
+      : periodo;
 }
 
 /* Componente parametrizado: dados espera
@@ -204,7 +210,7 @@ function rotuloStatus(estadoPartida, periodo) {
      periodo, estadoPartida, corCasa, corVisitante, mostrarEscudos } */
 export const PlacarModelCartao = forwardRef(function PlacarModelCartao(
   { dados },
-  ref
+  ref,
 ) {
   const { timeCasa, timeVisitante } = dados;
   const [animC, setAnimC] = useState(false);
@@ -301,7 +307,9 @@ export const PlacarModelCartao = forwardRef(function PlacarModelCartao(
         <Meta>
           <PontoVivo $r={aoVivo} />
           <Crono $r={aoVivo}>{tempo}</Crono>
-          {dados.acrescimo > 0 && <AcrescimoTag>+{dados.acrescimo}'</AcrescimoTag>}
+          {dados.acrescimo > 0 && (
+            <AcrescimoTag>+{dados.acrescimo}'</AcrescimoTag>
+          )}
           <PeriodoTag>{rotulo}</PeriodoTag>
         </Meta>
       </Corpo>

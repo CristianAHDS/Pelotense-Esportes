@@ -5,7 +5,7 @@ Cartão for the "Pré-Jogo" overlay — pre-match countdown with the two opposin
 ## Props
 
 - `dados` — state from `preJogoStore`:
-  - `cronometro` — the countdown object consumed by `segundosRestantes(dados.cronometro)`.
+  - `cronometro` — the countdown object consumed by `segundosRestantes(dados.cronometro)`. Shape: `{ inicio: <timestamp ms | null> }`.
   - `timeCasa` — `{ nome, escudo }`
   - `timeVisitante` — `{ nome, escudo }`
 

@@ -17,7 +17,7 @@ function emoldura(el) {
 const dadosBase = {
   timeCasa: { nome: 'PELOTAS', escudo: '/escudos/PEL.png' },
   timeVisitante: { nome: 'BRASIL', escudo: '/escudos/BRA.png' },
-  cronometro: { base: 90, rodando: false, iniciadoEm: 0 },
+  cronometro: { inicio: null },
 };
 
 describe('preJogoStore — formatarTempo', () => {
@@ -32,31 +32,31 @@ describe('preJogoStore — formatarTempo', () => {
     expect(formatarTempo(3661)).toBe('1:01:01');
   });
 
-  it('não deixa segundosRestantes ir abaixo de zero em contagem regressiva', () => {
-    expect(segundosRestantes({ base: 0 })).toBe(0);
+  it('não deixa segundosRestantes ir abaixo de zero', () => {
+    expect(segundosRestantes({ inicio: Date.now() - 5000 })).toBe(0);
   });
 });
 
 describe('preJogoStore — segundosRestantes', () => {
-  it('retorna a base quando parado', () => {
-    expect(segundosRestantes({ base: 120, rodando: false })).toBe(120);
+  it('retorna 0 sem horário de início', () => {
+    expect(segundosRestantes({ inicio: null })).toBe(0);
   });
 
-  it('decresce quando rodando, baseado em Date.now', () => {
+  it('calcula automaticamente o tempo até o início', () => {
     let agora = 1_000_000;
     vi.spyOn(Date, 'now').mockImplementation(() => agora);
 
-    const cron = { base: 100, rodando: true, iniciadoEm: agora };
-    expect(segundosRestantes(cron)).toBe(100);
+    const cron = { inicio: agora + 120_000 };
+    expect(segundosRestantes(cron)).toBe(120);
 
     agora += 30_000; // 30s depois
-    expect(segundosRestantes(cron)).toBe(70);
+    expect(segundosRestantes(cron)).toBe(90);
   });
 
-  it('prende em 0 quando estoura o tempo', () => {
+  it('prende em 0 quando o horário de início já passou', () => {
     let agora = 1_000_000;
     vi.spyOn(Date, 'now').mockImplementation(() => agora);
-    const cron = { base: 5, rodando: true, iniciadoEm: agora };
+    const cron = { inicio: agora + 5_000 };
     agora += 60_000;
     expect(segundosRestantes(cron)).toBe(0);
   });
@@ -72,7 +72,7 @@ describe('PreJogoCartao', () => {
     vi.spyOn(Date, 'now').mockReturnValue(1_000_000);
     const dados = {
       ...dadosBase,
-      cronometro: { base: 90, rodando: false, iniciadoEm: 0 },
+      cronometro: { inicio: 1_000_000 + 90_000 },
     };
     render(emoldura(<PreJogoCartao dados={dados} />));
     expect(screen.getByText(/pré-jogo/i)).toBeInTheDocument();
@@ -94,7 +94,7 @@ describe('PreJogoCartao', () => {
 
     const dados = {
       ...dadosBase,
-      cronometro: { base: 90, rodando: true, iniciadoEm: agora },
+      cronometro: { inicio: agora + 90_000 },
     };
     render(emoldura(<PreJogoCartao dados={dados} />));
     expect(document.body.textContent).toContain('01:30');

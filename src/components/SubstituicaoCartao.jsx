@@ -59,7 +59,7 @@ const Cartao = styled.div`
 
   @media (max-width: 520px) {
     min-width: 300px;
-}
+  }
 `;
 
 const FaixaTopo = styled.div`
@@ -74,7 +74,7 @@ const FaixaTopo = styled.div`
     font-weight: 700;
     letter-spacing: 1px;
     color: #fff;
-}
+  }
 
   .nome {
     flex: 1;
@@ -85,9 +85,9 @@ const FaixaTopo = styled.div`
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.55);
     white-space: nowrap;
-  overflow: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
-}
+  }
 
   .minuto {
     flex-shrink: 0;
@@ -99,17 +99,17 @@ const FaixaTopo = styled.div`
     font-weight: 700;
     letter-spacing: 1px;
     font-variant-numeric: tabular-nums;
-}
+  }
 `;
 
 const RotuloAcao = styled.span`
-    flex-shrink: 0;
+  flex-shrink: 0;
   margin-left: auto;
   padding-left: 14px;
   font-size: 0.58rem;
-    font-weight: 700;
+  font-weight: 700;
   letter-spacing: 2.5px;
-    text-transform: uppercase;
+  text-transform: uppercase;
   color: ${({ $tipo }) => ($tipo === 'sai' ? VERMELHO : VERDE)};
 `;
 
@@ -134,14 +134,14 @@ const LinhaJogador = styled.div`
       $destaque
         ? 'linear-gradient(90deg, rgba(165, 239, 28, 0.22), rgba(165, 239, 28, 0.06)), #000'
         : '#000'};
-}
+  }
 
   .seta {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
     border-radius: 6px;
     font-size: 0.82rem;
@@ -150,12 +150,12 @@ const LinhaJogador = styled.div`
 
     &.sai {
       background: ${VERMELHO};
-}
+    }
 
     &.entra {
       background: ${VERDE};
-}
-}
+    }
+  }
 
   .num {
     min-width: 26px;
@@ -164,7 +164,7 @@ const LinhaJogador = styled.div`
     font-size: 1.05rem;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.9);
-}
+  }
 
   .nome {
     flex: 1;
@@ -174,11 +174,12 @@ const LinhaJogador = styled.div`
     letter-spacing: 1.5px;
     text-transform: uppercase;
     white-space: nowrap;
-  overflow: hidden;
+    overflow: hidden;
     text-overflow: ellipsis;
-    color: ${({ $tipo }) => ($tipo === 'sai' ? 'rgba(255,255,255,.42)' : '#fff')};
+    color: ${({ $tipo }) =>
+      $tipo === 'sai' ? 'rgba(255,255,255,.42)' : '#fff'};
     text-decoration: ${({ $riscado }) => ($riscado ? 'line-through' : 'none')};
-}
+  }
 `;
 
 function corContraste(hex) {
@@ -196,7 +197,9 @@ export function SubstituicaoCartao({ dados }) {
 
   if (evento === 'gol' || evento === 'cartao') {
     const isGol = evento === 'gol';
-    const rotulo = isGol ? null : `Cartão ${dados.cartaoCor === 'amarelo' ? 'Amarelo' : 'Vermelho'}`;
+    const rotulo = isGol
+      ? null
+      : `Cartão ${dados.cartaoCor === 'amarelo' ? 'Amarelo' : 'Vermelho'}`;
     return (
       <Cartao $cor={cor}>
         <FaixaTopo $cor={cor} $corTexto={corContraste(cor)}>

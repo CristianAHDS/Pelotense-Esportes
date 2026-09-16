@@ -1,5 +1,14 @@
 # Changelog
 
+## 16/09/2026
+
+### Pré-Jogo: countdown por data/hora de início em vez de duração
+
+- O timer do Pré-Jogo não recebe mais uma duração (ex.: chips de 30–150 min). Agora o usuário escolhe a **data e hora do início do jogo** e o tempo restante é **calculado automaticamente** até esse momento.
+- `preJogoStore`: `cronometro` passou de `{ base, rodando, iniciadoEm }` para `{ inicio }` (timestamp absoluto em ms). Nova ação `definirInicio(timestamp)` substitui `definirDuracao`; removida `alternarCronometro`; `segundosRestantes` agora é `max(0, ceil((inicio - Date.now())/1000))`. Novos helpers `estaRodando` e `formatarHorario`. Migração automática do formato salvo em `localStorage`.
+- `PainelPreJogo`: novos **date picker** (`input[type=date]`) + **time picker** (`input[type=time]`) com botão ▶ Definir e exibição "Agendado para ...". Campos são pré-preenchidos com o horário já agendado. Botão ⟲ Limpar zera o agendamento.
+- `PreJogoCartao.test.jsx` atualizado para a nova lógica (tempo até o início, prende em 0 quando passa, countdown vivo no cartão).
+
 ## 02/09/2026
 
 ### Testes aprofundados nos componentes e hooks mais críticos

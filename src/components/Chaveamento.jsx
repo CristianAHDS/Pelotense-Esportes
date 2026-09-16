@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Escudo } from './Escudo';
 
 /* Chaveamento das fases finais — visual de bracket com conectores em cotovelo,
-   chips de placar e selo de campeão. Paleta da landing: fundo escuro + acento #A5EF1C. */
+   chips de placar e selo de campeão. Paleta da landing: fundo escuro + acento #a5ef1c. */
 
 const ACC = '#a5ef1c';
 const NEUTRO = 'rgba(252, 252, 251, 0.08)';
@@ -21,10 +21,12 @@ function vazio(lado) {
 function vencedorDe(c) {
   const gc = c.casa?.gols;
   const gv = c.visitante?.gols;
-  if (gc != null && gv != null && gc !== gv) return gc > gv ? 'casa' : 'visitante';
+  if (gc != null && gv != null && gc !== gv)
+    return gc > gv ? 'casa' : 'visitante';
   const pc = c.casa?.pen;
   const pv = c.visitante?.pen;
-  if (pc != null && pv != null && pc !== pv) return pc > pv ? 'casa' : 'visitante';
+  if (pc != null && pv != null && pc !== pv)
+    return pc > pv ? 'casa' : 'visitante';
   return null;
 }
 
@@ -301,7 +303,12 @@ function LinhoLado({ indice, lado, estado }) {
   return (
     <Lado $venceu={estado === 'venceu'} $perdeu={estado === 'perdeu'}>
       <ChipEscudo $cor={lado.cor}>
-        <Escudo cor={lado.cor} sigla={lado.sigla} url={urlEscudo(lado)} tamanho={20} />
+        <Escudo
+          cor={lado.cor}
+          sigla={lado.sigla}
+          url={urlEscudo(lado)}
+          tamanho={20}
+        />
       </ChipEscudo>
       <Info>
         <Sigla $venceu={estado === 'venceu'}>
@@ -324,13 +331,18 @@ function LinhoLado({ indice, lado, estado }) {
 
 function Jogo({ confronto, destaque }) {
   const venc = vencedorDe(confronto);
-  const est = (nomeLado) => (venc == null ? '' : venc === nomeLado ? 'venceu' : 'perdeu');
+  const est = (nomeLado) =>
+    venc == null ? '' : venc === nomeLado ? 'venceu' : 'perdeu';
   const campeao = destaque && venc != null ? confronto[venc] : null;
 
   return (
     <CartaoJogo $destaque={!!campeao}>
       <LinhoLado indice={0} lado={confronto.casa} estado={est('casa')} />
-      <LinhoLado indice={1} lado={confronto.visitante} estado={est('visitante')} />
+      <LinhoLado
+        indice={1}
+        lado={confronto.visitante}
+        estado={est('visitante')}
+      />
       {campeao && <FaixaCampeao>CAMPEÃO · {campeao.sigla}</FaixaCampeao>}
     </CartaoJogo>
   );

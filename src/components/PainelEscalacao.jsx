@@ -6,7 +6,16 @@ import { SeletorSigla } from './SeletorSigla';
 
 const VERDE = '#a5ef1c';
 
-const FORMACOES = ['4-3-3', '4-4-2', '4-2-3-1', '4-1-4-1', '3-5-2', '3-4-3', '5-3-2', '4-3-1-2'];
+const FORMACOES = [
+  '4-3-3',
+  '4-4-2',
+  '4-2-3-1',
+  '4-1-4-1',
+  '3-5-2',
+  '3-4-3',
+  '5-3-2',
+  '4-3-1-2',
+];
 
 const LADOS = [
   {
@@ -16,7 +25,7 @@ const LADOS = [
     campoNome: 'nomeCasa',
     campoSigla: 'siglaCasa',
     campoFormacao: 'formacaoCasa',
-    campoTecnico: 'tecnicoCasa'
+    campoTecnico: 'tecnicoCasa',
   },
   {
     lado: 'fora',
@@ -25,8 +34,8 @@ const LADOS = [
     campoNome: 'nomeFora',
     campoSigla: 'siglaFora',
     campoFormacao: 'formacaoFora',
-    campoTecnico: 'tecnicoFora'
-  }
+    campoTecnico: 'tecnicoFora',
+  },
 ];
 
 const Painel = styled.section`
@@ -237,7 +246,9 @@ function ColunaTime({ estado, config, atualizarCampo, atualizarJogador }) {
           <Rotulo>Formação</Rotulo>
           <Selecao
             value={estado[config.campoFormacao]}
-            onChange={(e) => atualizarCampo(config.campoFormacao, e.target.value)}
+            onChange={(e) =>
+              atualizarCampo(config.campoFormacao, e.target.value)
+            }
           >
             {FORMACOES.map((f) => (
               <option key={f} value={f}>
@@ -254,7 +265,9 @@ function ColunaTime({ estado, config, atualizarCampo, atualizarJogador }) {
             value={estado[config.campoTecnico]}
             maxLength={28}
             placeholder="Nome do técnico"
-            onChange={(e) => atualizarCampo(config.campoTecnico, e.target.value)}
+            onChange={(e) =>
+              atualizarCampo(config.campoTecnico, e.target.value)
+            }
           />
         </Campo>
       </Linha>
@@ -266,14 +279,18 @@ function ColunaTime({ estado, config, atualizarCampo, atualizarJogador }) {
             max={99}
             value={jogador.num}
             title="Número"
-            onChange={(e) => atualizarJogador(config.lado, i, 'num', e.target.value)}
+            onChange={(e) =>
+              atualizarJogador(config.lado, i, 'num', e.target.value)
+            }
           />
           <Campo className="cresce">
             <Entrada
               value={jogador.nome}
               maxLength={22}
               placeholder={`Jogador ${i + 1}`}
-              onChange={(e) => atualizarJogador(config.lado, i, 'nome', e.target.value)}
+              onChange={(e) =>
+                atualizarJogador(config.lado, i, 'nome', e.target.value)
+              }
             />
           </Campo>
         </Linha>

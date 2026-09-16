@@ -8,7 +8,7 @@ const CANAL_NUVEM = 'pre-jogo'
 const estadoPadrao = {
   timeCasa: { nome: 'PEL', escudo: '/escudos/PEL.png' },
   timeVisitante: { nome: 'GLO', escudo: '/escudos/GLO.png' },
-  cronometro: { base: 0, rodando: false, iniciadoEm: null },
+  cronometro: { inicio: null },
   atualizadoEm: 0,
   mostrar: true,
 }
@@ -19,6 +19,11 @@ function carregar() {
     if (bruto) {
       const salvo = JSON.parse(bruto)
       if (typeof salvo.atualizadoEm !== 'number') salvo.atualizadoEm = 0
+      /* Migração do formato antigo (duração por base/iniciadoEm) para o
+         horário absoluto de início (timestamp em ms). */
+      const cron = salvo.cronometro || {}
+      if (typeof cron.inicio !== 'number') cron.inicio = null
+      salvo.cronometro = { inicio: cron.inicio }
       return { ...structuredClone(estadoPadrao), ...salvo }
     }
   } catch (e) {
@@ -50,22 +55,23 @@ export function getEstado() {
   return estado
 }
 
-/* Segundos restantes do countdown */
+/* Segundos restantes até o horário de início (calculado automaticamente) */
 export function segundosRestantes(cron) {
   if (!cron) return 0
-  const { base, rodando, iniciadoEm } = cron
-  if (rodando && iniciadoEm) {
-    return Math.max(0, base - Math.floor((Date.now() - iniciadoEm) / 1000))
-  }
-  return Math.max(0, base)
+  const { inicio } = cron
+  if (typeof inicio !== 'number' || inicio <= 0) return 0
+  return Math.max(0, Math.ceil((inicio - Date.now()) / 1000))
+}
+
+/* Indica se o countdown está em andamento (horário de início no futuro) */
+export function estaRodando(cron) {
+  if (!cron) return false
+  const { inicio } = cron
+  return typeof inicio === 'number' && inicio > Date.now()
 }
 
 function pacoteSincronizacao() {
-  const pacote = structuredClone(estado)
-  if (pacote.cronometro?.rodando) {
-    pacote.cronometro.segundos = segundosRestantes(pacote.cronometro)
-  }
-  return pacote
+  return structuredClone(estado)
 }
 
 export function setEstado(atualizador, { remoto = false } = {}) {
@@ -122,18 +128,7 @@ function aplicarEstadoRemoto(novoEstado) {
 
   if (!processandoRemoto) {
     const cron = novoEstado.cronometro
-    if (cron?.rodando) {
-      /* Com `iniciadoEm` válido o tempo é recomputado a partir dele (referência
-         absoluta), então nunca re-basear pelo snapshot `segundos` — isso causava
-         reset do countdown ao recarregar a página. Só re-baseamos quando não há
-         referência de tempo (estado antigo/corrompido). */
-      if (typeof cron.iniciadoEm !== 'number') {
-        const seg = typeof cron.segundos === 'number' ? cron.segundos : segundosRestantes(cron)
-        cron.base = Math.max(0, Math.floor(seg))
-        cron.iniciadoEm = Date.now()
-      }
-    }
-    delete novoEstado.cronometro?.segundos
+    if (cron && typeof cron.inicio !== 'number') cron.inicio = null
     setEstado(novoEstado, { remoto: true })
   }
 }
@@ -188,33 +183,19 @@ export function definirTime(lado, nome) {
   })
 }
 
-/* Define a duração total (em segundos) e zera o contador para o valor completo */
-export function definirDuracao(segundos) {
+/* Define o horário de início (timestamp em ms). O tempo restante é calculado
+   automaticamente a partir dele. */
+export function definirInicio(timestamp) {
   setEstado((estado) => {
-    const s = Math.max(0, Math.floor(Number(segundos) || 0))
-    estado.cronometro = { base: s, rodando: false, iniciadoEm: null }
-    return estado
-  })
-}
-
-export function alternarCronometro() {
-  setEstado((estado) => {
-    const cron = estado.cronometro
-    if (cron.rodando) {
-      cron.rodando = false
-      cron.base = Math.max(0, segundosRestantes(cron))
-      cron.iniciadoEm = null
-    } else {
-      cron.iniciadoEm = Date.now()
-      cron.rodando = true
-    }
+    const t = Math.floor(Number(timestamp) || 0)
+    estado.cronometro = { inicio: t > 0 ? t : null }
     return estado
   })
 }
 
 export function zerarCronometro() {
   setEstado((estado) => {
-    estado.cronometro = { base: 0, rodando: false, iniciadoEm: null }
+    estado.cronometro = { inicio: null }
     return estado
   })
 }
@@ -244,4 +225,14 @@ export function formatarTempo(totalSegundos) {
   const mm = String(minutos).padStart(2, '0')
   const ss = String(segundos).padStart(2, '0')
   return horas > 0 ? `${horas}:${mm}:${ss}` : `${mm}:${ss}`
+}
+
+export function formatarHorario(timestamp) {
+  if (typeof timestamp !== 'number' || timestamp <= 0) return '—'
+  const d = new Date(timestamp)
+  const dd = String(d.getDate()).padStart(2, '0')
+  const mm = String(d.getMonth() + 1).padStart(2, '0')
+  const hh = String(d.getHours()).padStart(2, '0')
+  const mi = String(d.getMinutes()).padStart(2, '0')
+  return `${dd}/${mm}/${d.getFullYear()} ${hh}:${mi}`
 }

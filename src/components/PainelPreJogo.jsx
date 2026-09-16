@@ -5,20 +5,32 @@ import {
   getEstado,
   inscrever,
   definirTime,
-  definirDuracao,
-  alternarCronometro,
+  definirInicio,
   zerarCronometro,
   mostrar,
   ocultar,
   resetar,
   segundosRestantes,
+  estaRodando,
   formatarTempo,
+  formatarHorario,
 } from '../store/preJogoStore';
 import { SeletorSigla } from './SeletorSigla';
 
 const LOJA = { getEstado, inscrever };
 
-const DURACOES_MIN = [30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150];
+function paraInputData(d) {
+  const yyyy = d.getFullYear();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${yyyy}-${mm}-${dd}`;
+}
+
+function paraInputHora(d) {
+  const hh = String(d.getHours()).padStart(2, '0');
+  const mi = String(d.getMinutes()).padStart(2, '0');
+  return `${hh}:${mi}`;
+}
 
 const Cartao = styled.section`
   background: #0d0d0d;
@@ -92,6 +104,16 @@ const Entrada = styled.input`
   }
 `;
 
+const EntradaDataHora = styled(Entrada)`
+  text-transform: none;
+  min-height: 40px;
+
+  &::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.55);
+  }
+`;
+
 const BlocoTime = styled.div`
   background: #000;
   border: 1px solid #262626;
@@ -117,31 +139,6 @@ const DisplayTempo = styled.div`
   border-radius: 10px;
   padding: 12px;
   margin-bottom: 14px;
-`;
-
-const ListaChips = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
-`;
-
-const Chip = styled.button`
-  background: ${({ $ativo }) => ($ativo ? '#a5ef1c' : '#000')};
-  border: 1px solid ${({ $ativo }) => ($ativo ? '#a5ef1c' : '#333')};
-  color: ${({ $ativo }) => ($ativo ? '#0a0f00' : '#94a3b8')};
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  transition: all 120ms ease;
-
-  &:hover {
-    border-color: #a5ef1c;
-    color: ${({ $ativo }) => ($ativo ? '#0a0f00' : '#a5ef1c')};
-  }
 `;
 
 const GradeBotoes = styled.div`
@@ -185,18 +182,25 @@ export function PainelPreJogo() {
     const i = setInterval(() => tick((t) => t + 1), 500);
     return () => clearInterval(i);
   }, []);
-  const rodando = Boolean(estado.cronometro?.rodando);
+  const rodando = estaRodando(estado.cronometro);
   const restante = segundosRestantes(estado.cronometro);
-  const [duracaoHoras, setDuracaoHoras] = useState('');
-  const [duracaoMinutos, setDuracaoMinutos] = useState('');
-  const aplicarDuracao = () => {
-    const h = Math.max(0, Math.floor(Number(duracaoHoras) || 0));
-    const min = Math.max(0, Math.floor(Number(duracaoMinutos) || 0));
-    const totalSeg = h * 3600 + min * 60;
-    if (totalSeg > 0) {
-      definirDuracao(totalSeg);
-      setDuracaoHoras('');
-      setDuracaoMinutos('');
+  const cronInicio = estado.cronometro?.inicio;
+  const [data, setData] = useState('');
+  const [hora, setHora] = useState('');
+
+  useEffect(() => {
+    if (typeof cronInicio === 'number' && cronInicio > 0) {
+      const d = new Date(cronInicio);
+      setData(paraInputData(d));
+      setHora(paraInputHora(d));
+    }
+  }, [cronInicio]);
+
+  const aplicarInicio = () => {
+    if (!data || !hora) return;
+    const ts = new Date(`${data}T${hora}`).getTime();
+    if (Number.isFinite(ts) && ts > 0) {
+      definirInicio(ts);
     }
   };
 
@@ -211,49 +215,27 @@ export function PainelPreJogo() {
           <DisplayTempo $rodando={rodando}>
             {formatarTempo(restante)}
           </DisplayTempo>
-          <Rotulo>Duração (minutos)</Rotulo>
-          <ListaChips>
-            {DURACOES_MIN.map((m) => (
-              <Chip key={m} onClick={() => definirDuracao(m * 60)}>
-                {m} min
-              </Chip>
-            ))}
-          </ListaChips>
-          <Rotulo>Tempo livre</Rotulo>
+          <Rotulo>Início do jogo</Rotulo>
           <div style={{ display: 'flex', gap: 8, marginBottom: 14 }}>
-            <Entrada
-              type="number"
-              min="0"
-              step="1"
-              placeholder="Horas"
+            <EntradaDataHora
+              type="date"
               style={{ width: 'auto', flex: 1 }}
-              value={duracaoHoras}
-              onChange={(e) => setDuracaoHoras(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') aplicarDuracao();
-              }}
+              value={data}
+              onChange={(e) => setData(e.target.value)}
             />
-            <Entrada
-              type="number"
-              min="0"
-              step="1"
-              placeholder="Minutos"
+            <EntradaDataHora
+              type="time"
               style={{ width: 'auto', flex: 1 }}
-              value={duracaoMinutos}
-              onChange={(e) => setDuracaoMinutos(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') aplicarDuracao();
-              }}
+              value={hora}
+              onChange={(e) => setHora(e.target.value)}
             />
-            <Botao onClick={aplicarDuracao}>Definir</Botao>
+            <Botao $primario onClick={aplicarInicio}>
+              ▶ Definir
+            </Botao>
           </div>
-          <GradeBotoes>
-            <Botao $primario onClick={alternarCronometro}>
-              {rodando ? '⏸ Pausar' : '▶ Iniciar'}
-            </Botao>
-            <Botao onClick={zerarCronometro} disabled={rodando}>
-              ⟲ Zerar
-            </Botao>
+          <Rotulo>Agendado para {formatarHorario(cronInicio)}</Rotulo>
+          <GradeBotoes style={{ marginTop: 14 }}>
+            <Botao onClick={zerarCronometro}>⟲ Limpar</Botao>
           </GradeBotoes>
         </div>
 
