@@ -102,6 +102,12 @@ const Vs = styled.span`
   opacity: 0.9;
 `;
 
+function ehBrasilPelotas(time) {
+  const nome = String(time.nome || '').toUpperCase();
+  const url = String(time.escudo || '');
+  return nome === 'BRA' || nome === 'BRASIL' || url.indexOf('/BRA.png') !== -1;
+}
+
 export const PreJogoCartao = forwardRef(function PreJogoCartao({ dados }, ref) {
   const [, tick] = useState(0);
   useEffect(() => {
@@ -128,7 +134,7 @@ export const PreJogoCartao = forwardRef(function PreJogoCartao({ dados }, ref) {
             cor="#a5ef1c"
             sigla={dados.timeCasa.nome}
             url={dados.timeCasa.escudo}
-            tamanho={100}
+            tamanho={ehBrasilPelotas(dados.timeCasa) ? 82 : 100}
           />
         </EscudoWrapper>
         <Vs>×</Vs>
@@ -137,7 +143,7 @@ export const PreJogoCartao = forwardRef(function PreJogoCartao({ dados }, ref) {
             cor="#a5ef1c"
             sigla={dados.timeVisitante.nome}
             url={dados.timeVisitante.escudo}
-            tamanho={100}
+            tamanho={ehBrasilPelotas(dados.timeVisitante) ? 82 : 100}
           />
         </EscudoWrapper>
       </Confronto>
