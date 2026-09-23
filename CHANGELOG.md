@@ -2,6 +2,15 @@
 
 ## 23/09/2026
 
+### Novo módulo: Placar Broadcast Escalação 3 (jogo triplo isolado)
+
+- Cópia totalmente independente do Placar Broadcast + Escalação 2 (`/placar-broadcast-escalacao-3` e `/controle`) para jogo triplo ao vivo, sem nenhum cruzamento de dados com os módulos anteriores.
+- `placarBroadcastEscalacao3Store`: store próprio com chaves exclusivas — `STORAGE_KEY` (`pelotense:broadcast-escalacao-3:v1`), `BroadcastChannel`, `MSG_TIPO` e canal de nuvem (`placar-broadcast-escalacao-3`). Mesma API e ações do módulo 2, porém estado, localStorage, sincronização p2p e nuvem 100% separados.
+- Overlay `PlacarBroadcastEscalacao3`, painel `PainelEscalacaoBroadcast3` e controle `ControlePlacarBroadcastEscalacao3` (clones com a store 3).
+- Rotas registradas no `App.jsx` e card no `Hub.jsx` (Scoreboards).
+- Novas stores adicionadas à cobertura dos testes de sync (`syncContrato` e `syncP2P`).
+- Para jogo triplo remoto, usar salas diferentes (`?sala=jogoX`) em cada controle, pois o controle exclusivo (`salas/{sala}/controle`) é por sala.
+
 ### Novo módulo: Placar Broadcast Escalação 2 (jogo duplo isolado)
 
 - Cópia totalmente independente do Placar Broadcast + Escalação (`/placar-broadcast-escalacao-2` e `/controle`) para jogo duplo ao vivo, sem nenhum cruzamento de dados com o módulo original.

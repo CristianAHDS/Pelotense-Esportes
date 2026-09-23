@@ -36,6 +36,15 @@ const SCOREBOARDS = [
     accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.2)',
   },
+  {
+    rota: '/placar-broadcast-escalacao-3',
+    tag: 'BROADCAST + ESCALAÇÃO 3',
+    titulo: 'Placar Broadcast Escalação 3',
+    descricao:
+      'Terceiro Placar Broadcast com escalações integradas, totalmente independente dos demais (estado, sincronização e nuvem próprios). Ideal para jogo triplo ao vivo.',
+    accent: '#a5ef1c ',
+    glow: 'rgba(165, 239, 28, 0.2)',
+  },
   /*
   {
     rota: '/placar-pl',

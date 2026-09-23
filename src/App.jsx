@@ -10,6 +10,8 @@ import PlacarBroadcastEscalacao from './pages/PlacarBroadcastEscalacao';
 import ControlePlacarBroadcastEscalacao from './pages/ControlePlacarBroadcastEscalacao';
 import PlacarBroadcastEscalacao2 from './pages/PlacarBroadcastEscalacao2';
 import ControlePlacarBroadcastEscalacao2 from './pages/ControlePlacarBroadcastEscalacao2';
+import PlacarBroadcastEscalacao3 from './pages/PlacarBroadcastEscalacao3';
+import ControlePlacarBroadcastEscalacao3 from './pages/ControlePlacarBroadcastEscalacao3';
 import PlacarBroadcastPL from './pages/PlacarBroadcastPL';
 import ControlePlacarBroadcastPL from './pages/ControlePlacarBroadcastPL';
 import PlacarBroadcastBL from './pages/PlacarBroadcastBL';
@@ -82,6 +84,14 @@ export default function App() {
           <Route
             path="/placar-broadcast-escalacao-2/controle"
             element={<ControlePlacarBroadcastEscalacao2 />}
+          />
+          <Route
+            path="/placar-broadcast-escalacao-3"
+            element={<PlacarBroadcastEscalacao3 />}
+          />
+          <Route
+            path="/placar-broadcast-escalacao-3/controle"
+            element={<ControlePlacarBroadcastEscalacao3 />}
           />
           <Route path="/placar-pl" element={<PlacarBroadcastPL />} />
           <Route
