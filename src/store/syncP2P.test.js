@@ -12,6 +12,7 @@ const ESTILO_SET = [
   'penaltisStore.js',
   'placarBroadcastBLStore.js',
   'placarBroadcastEscalacaoStore.js',
+  'placarBroadcastEscalacao2Store.js',
   'placarBroadcastLLStore.js',
   'placarBroadcastPLStore.js',
   'placarBroadcastStore.js',

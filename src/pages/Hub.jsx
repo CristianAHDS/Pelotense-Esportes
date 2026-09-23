@@ -8,7 +8,7 @@ import { salaAtual } from '../lib/sincronizacaoNuvem';
 /* ---------- Dados dos segmentos ---------- */
 
 const SCOREBOARDS = [
-  {
+  /*{
     rota: '/placar-broadcast',
     tag: 'BROADCAST',
     titulo: 'Placar Broadcast',
@@ -17,7 +17,7 @@ const SCOREBOARDS = [
     accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.2)',
     emBreve: true,
-  },
+  },*/
   {
     rota: '/placar-broadcast-escalacao',
     tag: 'BROADCAST + ESCALAÇÃO',
@@ -27,6 +27,16 @@ const SCOREBOARDS = [
     accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.2)',
   },
+  {
+    rota: '/placar-broadcast-escalacao-2',
+    tag: 'BROADCAST + ESCALAÇÃO 2',
+    titulo: 'Placar Broadcast Escalação 2',
+    descricao:
+      'Segundo Placar Broadcast com escalações integradas, totalmente independente do primeiro (estado, sincronização e nuvem próprios). Ideal para jogo duplo ao vivo.',
+    accent: '#a5ef1c ',
+    glow: 'rgba(165, 239, 28, 0.2)',
+  },
+  /*
   {
     rota: '/placar-pl',
     tag: 'PREMIER LEAGUE',
@@ -77,6 +87,7 @@ const SCOREBOARDS = [
     glow: 'rgba(165, 239, 28, 0.2)',
     emBreve: true,
   },
+  */
 ];
 
 const GAUCHAO_A2 = [
@@ -1128,7 +1139,7 @@ const RodapeCopy = styled.p`
 export default function Hub() {
   const [tv, setTv] = useState(null);
   const [aberto, setAberto] = useState({
-    scoreboards: false,
+    scoreboards: true,
     gauchao: true,
     programa: false,
     brasileirao: false,

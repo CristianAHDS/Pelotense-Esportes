@@ -21,6 +21,7 @@ const ARQUIVOS = [
   'penaltisStore.js',
   'placarBroadcastBLStore.js',
   'placarBroadcastEscalacaoStore.js',
+  'placarBroadcastEscalacao2Store.js',
   'placarBroadcastLLStore.js',
   'placarBroadcastPLStore.js',
   'placarBroadcastStore.js',

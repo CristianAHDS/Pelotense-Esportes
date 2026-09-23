@@ -1,5 +1,16 @@
 # Changelog
 
+## 23/09/2026
+
+### Novo módulo: Placar Broadcast Escalação 2 (jogo duplo isolado)
+
+- Cópia totalmente independente do Placar Broadcast + Escalação (`/placar-broadcast-escalacao-2` e `/controle`) para jogo duplo ao vivo, sem nenhum cruzamento de dados com o módulo original.
+- `placarBroadcastEscalacao2Store`: store próprio com chaves exclusivas — `STORAGE_KEY` (`pelotense:broadcast-escalacao-2:v1`), `BroadcastChannel`, `MSG_TIPO` e canal de nuvem (`placar-broadcast-escalacao-2`). Mesma API e ações do módulo 1, porém estado, localStorage, sincronização p2p e nuvem 100% separados.
+- Overlay `PlacarBroadcastEscalacao2`, painel `PainelEscalacaoBroadcast2` e controle `ControlePlacarBroadcastEscalacao2` (clones com a store 2).
+- Rotas registradas no `App.jsx` e card no `Hub.jsx` (Scoreboards).
+- Novas stores adicionadas à cobertura dos testes de sync (`syncContrato` e `syncP2P`).
+- Para jogo duplo remoto, usar salas diferentes (`?sala=jogo1` / `?sala=jogo2`) em cada controle, pois o controle exclusivo (`salas/{sala}/controle`) é por sala.
+
 ## 16/09/2026
 
 ### Cartões para o técnico + desfazer cartão na escalação integrada
