@@ -63,6 +63,54 @@ Sem as variáveis do Firebase, o site funciona normalmente, mas a sincronizaçã
 - **Exclusividade de controle**: em cada sala, apenas um dispositivo publica por vez (indicador "● Você controla" no cabeçalho). Ao interagir com um controle livre, ele assume automaticamente; se outro dispositivo estiver no comando, aparece um aviso âmbar com o botão **Assumir**. Quem não tem o controle continua recebendo todas as atualizações normalmente — assim os estados nunca "brigam" nem piscam na tela.
 - Se quem controla fechar a aba ou perder a conexão, o controle é liberado sozinho em segundos (heartbeat + `onDisconnect` do Firebase).
 
+## Plugin OBS (`obs-pelotense-controle`)
+
+Plugin em **C++/Qt** para OBS Studio que embute os controles do Pelotense Esportes como **docks destacáveis** dentro do próprio OBS. Ao ser carregado, adiciona os botões **Jogo 1**/**Jogo 2** no fim da aba **Controles** (bloco com a marca "PELOTENSE ESPORTES"), que abrem/fecham dois painéis de navegador (1700×900) apontando para `/placar-broadcast-escalacao/controle` e `/placar-broadcast-escalacao-2/controle`.
+
+Recursos do plugin:
+
+- **Título dinâmico do dock**: o painel acompanha o `document.title` da página (ex.: `Jogo 1 · BRA 2×1 PEL` — os controles atualizam o título com o placar ao vivo).
+- **Indicador pulsante**: enquanto um painel está aberto, o botão correspondente pulsa em verde; fecha/abre sincronizado com a visibilidade do dock (inclusive pelo menu Docks).
+- **Recriação do widget CEF** ao reabrir: evita a tela branca depois de ocultar o painel.
+- Painéis **iniciam fechados** e só carregam a página na primeira abertura.
+
+### Pré-requisitos
+
+- Windows + Visual Studio (MSVC) e CMake ≥ 3.16
+- Qt6 (`Qt6::Widgets`, ex.: a pasta de deps `obs-deps-qt6` do obs-studio)
+- Fonte e build do obs-studio (fornecem `obs.lib` e `obs-frontend-api.lib`)
+
+### Compilar
+
+```bash
+cd obs-pelotense-controle
+
+# configurar (uma única vez)
+cmake -S . -B build -A x64 ^
+  -DOBS_STUDIO_SRC="C:\caminho\obs-studio" ^
+  -DOBS_STUDIO_BUILD="C:\caminho\obs-build" ^
+  -DCMAKE_PREFIX_PATH="C:\caminho\obs-deps-qt6"
+
+# compilar (Release)
+cmake --build build --config Release --target obs-pelotense-controle
+```
+
+O binário sai em `obs-pelotense-controle/build/obs-plugins/64bit/Release/obs-pelotense-controle.dll`.
+
+### Instalar no OBS
+
+1. Copie `obs-pelotense-controle.dll` para `obs-plugins/64bit/` dentro da pasta de instalação do OBS
+2. Copie o conteúdo de `obs-pelotense-controle/dist/obs-plugins/data/obs-pelotense-controle/` para `data/obs-plugins/obs-pelotense-controle/` (o `dist/` é a distribuição pronta, com a DLL e o locale)
+3. Reinicie o OBS — os botões **Jogo 1/Jogo 2** aparecem no fim da aba **Controles** e os painéis no menu **Docks**
+
+### Configurar as URLs dos painéis
+
+A URL de cada dock segue 3 níveis (menor → maior precedência):
+
+1. **Padrão embutido** — `https://pelotense-esportes.netlify.app/placar-broadcast-escalacao/controle` (Jogo 1) e `/placar-broadcast-escalacao-2/controle` (Jogo 2)
+2. **Arquivo `url.txt`** — `plugin_config/obs-pelotense-controle/url.txt` no diretório de config do OBS (linha 1 = Jogo 1, linha 2 = Jogo 2)
+3. **Variáveis de ambiente** — `PELOTENSE_CONTROLE_URL_JOGO1` / `PELOTENSE_CONTROLE_URL_JOGO2`
+
 ## Build
 
 ```bash

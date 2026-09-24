@@ -2,6 +2,10 @@
 
 ## 24/09/2026
 
+### README: instruções de compilação e instalação do plugin OBS
+
+- Adicionada seção "Plugin OBS (`obs-pelotense-controle`)" no `README.md` com o funcionamento (docks Jogo 1/Jogo 2, título dinâmico, pulso), pré-requisitos (MSVC, CMake, Qt6/`obs-deps-qt6`, fonte+build do obs-studio), como configurar/compilar (`cmake -S . -B build -A x64` com `OBS_STUDIO_SRC`/`OBS_STUDIO_BUILD`/`CMAKE_PREFIX_PATH`), como instalar a DLL no OBS (`obs-plugins/64bit` + `data/obs-plugins/obs-pelotense-controle`) e os 3 níveis de URL dos painéis (padrão, `url.txt`, variáveis `PELOTENSE_CONTROLE_URL_JOGO1`/`_JOGO2`).
+
 ### Plugin OBS: visual novo na aba Controles e título dinâmico nos painéis
 
 - **Agrupamento + rótulo**: botões "Jogo 1"/"Jogo 2" ganharam um bloco próprio no fim da aba Controles, com cabeçalho estilo do site (barra verde `#a5ef1c` à esquerda + "PELOTENSE ESPORTES" em rich text).
