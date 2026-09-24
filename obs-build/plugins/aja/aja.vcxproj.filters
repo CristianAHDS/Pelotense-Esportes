@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-output.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\audio-repack.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-output.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-source.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\audio-repack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\audio-repack.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-card-manager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-enums.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-presets.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-props.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-routing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-ui-props.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-vpid-data.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-widget-io.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\w32-pthreads\w32-pthreads_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\af-ZA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ar-SA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\az-AZ.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\be-BY.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\bg-BG.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\bn-BD.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ca-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\cs-CZ.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\da-DK.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\de-DE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\el-GR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\en-GB.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\en-US.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\es-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\et-EE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\eu-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\fa-IR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\fi-FI.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\fil-PH.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\fr-FR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\gl-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\he-IL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\hi-IN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\hr-HR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\hu-HU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\hy-AM.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\id-ID.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\is-IS.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\it-IT.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ja-JP.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ka-GE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\kaa.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\kab-KAB.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\kmr-TR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ko-KR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\lo-LA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ms-MY.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\nb-NO.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\nl-NL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\nn-NO.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\pl-PL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\pt-BR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\pt-PT.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ro-RO.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ru-RU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\si-LK.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\sk-SK.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\sl-SI.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\sq-AL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\sr-SP.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\sv-SE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\th-TH.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\tr-TR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\tt-RU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ug-CN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\uk-UA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\ur-PK.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\vi-VN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\zh-CN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\data\locale\zh-TW.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\aja-support.dir\$(Configuration)\aja-card-manager.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\aja-support.dir\$(Configuration)\aja-common.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\aja-support.dir\$(Configuration)\aja-presets.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\aja-support.dir\$(Configuration)\aja-props.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\aja-support.dir\$(Configuration)\aja-routing.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\aja-support.dir\$(Configuration)\aja-vpid-data.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+    <Object Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\aja-support.dir\$(Configuration)\aja-widget-io.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\win-aja.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{72937B53-55F5-3642-B1B3-CE4AE2B3440A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object Libraries">
+      <UniqueIdentifier>{DA3CEE35-6FAA-3069-9731-EFB19ADE115F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{31E54B00-6D9C-3A65-BC29-F75519784263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\locale">
+      <UniqueIdentifier>{571951D7-4D02-34CA-875A-1604CFF8C658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2B5B5F7C-1801-36DC-8AB1-827BDA9CD738}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

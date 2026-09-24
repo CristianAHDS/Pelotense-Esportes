@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-card-manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-presets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-props.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-routing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-vpid-data.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-widget-io.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-card-manager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-common.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-enums.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-presets.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-props.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-routing.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-ui-props.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-vpid-data.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\aja-widget-io.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\w32-pthreads\w32-pthreads_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\aja\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{72937B53-55F5-3642-B1B3-CE4AE2B3440A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2B5B5F7C-1801-36DC-8AB1-827BDA9CD738}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

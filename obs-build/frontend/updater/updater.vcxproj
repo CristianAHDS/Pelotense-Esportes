@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{D844ABEE-02FD-378D-8744-30D4683DFF44}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>updater</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">updater.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">updater</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">updater.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">updater</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">updater.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">updater</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">updater.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">updater</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /utf-8 /Brepro /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;PSAPI_VERSION=2;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;DEBUG;_DEBUG;CMAKE_INTDIR="Debug"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;PSAPI_VERSION=2;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;DEBUG;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\zstd_static.lib;comctl32.lib;shell32.lib;version.lib;winhttp.lib;wintrust.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /Brepro</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>LIBCMT;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/Debug/updater.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/Debug/updater.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Manifest>
+      <AdditionalManifestFiles>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\updater.manifest;</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /utf-8 /Brepro /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PSAPI_VERSION=2;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PSAPI_VERSION=2;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\zstd_static.lib;comctl32.lib;shell32.lib;version.lib;winhttp.lib;wintrust.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /EMITTOOLVERSIONINFO:NO /Brepro /PDBALTPATH:updater.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/Release/updater.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/Release/updater.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <StripPrivateSymbols>updater.pdb</StripPrivateSymbols>
+      <SubSystem>Windows</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Manifest>
+      <AdditionalManifestFiles>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\updater.manifest;</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /utf-8 /Brepro /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PSAPI_VERSION=2;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PSAPI_VERSION=2;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\zstd_static.lib;comctl32.lib;shell32.lib;version.lib;winhttp.lib;wintrust.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /EMITTOOLVERSIONINFO:NO /Brepro /PDBALTPATH:updater.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/MinSizeRel/updater.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/MinSizeRel/updater.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <StripPrivateSymbols>updater.pdb</StripPrivateSymbols>
+      <SubSystem>Windows</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Manifest>
+      <AdditionalManifestFiles>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\updater.manifest;</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /utf-8 /Brepro /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PSAPI_VERSION=2;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;PSAPI_VERSION=2;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\utility;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\zstd_static.lib;comctl32.lib;shell32.lib;version.lib;winhttp.lib;wintrust.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /Brepro</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/RelWithDebInfo/updater.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/RelWithDebInfo/updater.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Windows</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <Manifest>
+      <AdditionalManifestFiles>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\updater.manifest;</AdditionalManifestFiles>
+    </Manifest>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/frontend/updater/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdTargets-release.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\share\cmake\nlohmann_json\nlohmann_jsonConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\share\cmake\nlohmann_json\nlohmann_jsonConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/frontend/updater/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdTargets-release.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\share\cmake\nlohmann_json\nlohmann_jsonConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\share\cmake\nlohmann_json\nlohmann_jsonConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/frontend/updater/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdTargets-release.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\share\cmake\nlohmann_json\nlohmann_jsonConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\share\cmake\nlohmann_json\nlohmann_jsonConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/frontend/updater/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/frontend/updater/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdTargets-release.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\cmake\zstd\zstdTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\share\cmake\nlohmann_json\nlohmann_jsonConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\share\cmake\nlohmann_json\nlohmann_jsonConfigVersion.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\hash.cpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\helpers.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\helpers.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\http.cpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\init-hook-files.c" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\manifest.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\patch.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\resource.h" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\updater.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\updater.hpp" />
+    <ResourceCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\updater\updater.rc" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\blake2\src\blake2.h" />
+    <Natvis Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\nlohmann_json.natvis">
+    </Natvis>
+    <Object Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\blake2\blake2_static.dir\$(Configuration)\blake2b-ref.obj" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\ZERO_CHECK.vcxproj">
+      <Project>{B1BE7672-3BEA-3CD1-B0AC-B90E9D64EEFB}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\blake2\blake2_static.vcxproj">
+      <Project>{0CC11B9C-7ED3-3E41-B179-933EC922D352}</Project>
+      <Name>blake2_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\decklink-captions\decklink-captions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\decklink-captions\decklink-captions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\include_Debug\forms\ui_captions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\api\obs-frontend-api_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\w32-pthreads\w32-pthreads_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\include_Release\forms\ui_captions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\include_MinSizeRel\forms\ui_captions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\include_RelWithDebInfo\forms\ui_captions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\59aa8ae3ca7e1d030f7c38d69693e3c6\autouic_(CONFIG).stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\decklink-captions\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\decklink-captions\forms\captions.ui">
+      <Filter>UI Files\forms</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\decklink-captions\data\.keepme">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\autouic_Debug.stamp" />
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\autouic_Release.stamp" />
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\autouic_MinSizeRel.stamp" />
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions_autogen\autouic_RelWithDebInfo.stamp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{3468A2B1-C483-3C89-96F9-C010E76E0493}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{72937B53-55F5-3642-B1B3-CE4AE2B3440A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{31E54B00-6D9C-3A65-BC29-F75519784263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2B5B5F7C-1801-36DC-8AB1-827BDA9CD738}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI Files">
+      <UniqueIdentifier>{E7E2E1F5-3AE5-317D-9358-F5358612AB17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI Files\forms">
+      <UniqueIdentifier>{2C5120C1-3E7F-382D-88BD-A53F46020B8A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

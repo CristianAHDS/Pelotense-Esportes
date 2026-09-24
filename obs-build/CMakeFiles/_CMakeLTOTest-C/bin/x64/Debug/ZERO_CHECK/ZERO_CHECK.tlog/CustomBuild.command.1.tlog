@@ -1,0 +1,10 @@
+^C:\USERS\TSICR\ONEDRIVE\ÁREA DE TRABALHO\PELOTENSE-ESPORTES\OBS-BUILD\CMAKEFILES\_CMAKELTOTEST-C\BIN\CMAKEFILES\D40BA834EC1D28D02995B1B207A01D70\GENERATE.STAMP.RULE
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/_CMakeLTOTest-C/src" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/_CMakeLTOTest-C/bin" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/_CMakeLTOTest-C/bin/lto-test.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\nvenc-d3d11.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\cuda-helpers.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\nvenc-compat.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\nvenc-cuda.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\nvenc-helpers.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\nvenc-opts-parser.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\nvenc-properties.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\nvenc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\obs-nvenc.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\cuda-helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\nvenc-helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\nvenc-internal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\obs-nvenc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\w32-pthreads\w32-pthreads_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\opts-parser\opts-parser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\ar-SA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\az-AZ.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\be-BY.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\bg-BG.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\ca-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\cs-CZ.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\da-DK.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\de-DE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\el-GR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\en-GB.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\en-US.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\es-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\et-EE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\fa-IR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\fi-FI.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\fr-FR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\gl-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\he-IL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\hi-IN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\hr-HR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\hu-HU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\id-ID.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\is-IS.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\it-IT.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\ja-JP.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\ka-GE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\kaa.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\kab-KAB.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\kmr-TR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\ko-KR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\lo-LA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\ms-MY.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\nb-NO.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\nl-NL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\nn-NO.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\pl-PL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\pt-BR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\pt-PT.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\ro-RO.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\ru-RU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\sk-SK.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\sr-SP.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\sv-SE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\th-TH.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\tr-TR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\tt-RU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\ug-CN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\uk-UA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\vi-VN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\zh-CN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-nvenc\data\locale\zh-TW.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\shared\opts-parser\opts-parser.dir\$(Configuration)\opts-parser.obj">
+      <Filter>Object Libraries</Filter>
+    </Object>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-nvenc\obs-nvenc.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{72937B53-55F5-3642-B1B3-CE4AE2B3440A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object Libraries">
+      <UniqueIdentifier>{DA3CEE35-6FAA-3069-9731-EFB19ADE115F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{31E54B00-6D9C-3A65-BC29-F75519784263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\locale">
+      <UniqueIdentifier>{571951D7-4D02-34CA-875A-1604CFF8C658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2B5B5F7C-1801-36DC-8AB1-827BDA9CD738}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

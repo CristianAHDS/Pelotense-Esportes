@@ -1,0 +1,157 @@
+# CMake generation dependency list for this directory.
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakePackageConfigHelpers.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckCSourceCompiles.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckCXXCompilerFlag.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckIncludeFile.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckLibraryExists.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FeatureSummary.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPkgConfig.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindThreads.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/qrcodegencpp/qrcodegencpp-config-version.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/qrcodegencpp/qrcodegencpp-config.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/qrcodegencpp/qrcodegencpp-targets-debug.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/qrcodegencpp/qrcodegencpp-targets-release.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/qrcodegencpp/qrcodegencpp-targets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/share/cmake/nlohmann_json/nlohmann_jsonTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/FindWrapAtomic.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6Config.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6ConfigExtras.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6ConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6Dependencies.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6TargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtFeature.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtFeatureCommon.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtInstallPaths.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicAndroidHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicAppleHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicCMakeEarlyPolicyHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicExternalProjectHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicGitHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicPluginHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicPluginHelpers_v2.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomAttributionHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomBuildToolHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomCommonGenerationHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomCpeHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomCycloneDXHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomDepHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomDocumentNamespaceHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomExternalReferenceHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomFileHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomGenerationCycloneDXHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomGenerationHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomLicenseHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomOpsHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomPurlHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomPythonHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomQtEntityHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomRelationshipHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomSystemDepHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicTargetHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicTestHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicToolHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicWindowsHelpers.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreVersionlessAliasTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateVersionlessAliasTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiPlugins.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiVersionlessAliasTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkAdditionalTargetInfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkDependencies.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkPlugins.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkTargets-debug.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkTargets-relwithdebinfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkVersionlessAliasTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QNLMNIPluginAdditionalTargetInfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QNLMNIPluginConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QNLMNIPluginTargets-debug.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QNLMNIPluginTargets-relwithdebinfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QNLMNIPluginTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QNLMNIPluginTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginAdditionalTargetInfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginTargets-debug.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginTargets-relwithdebinfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QSchannelBackendPluginTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginAdditionalTargetInfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginTargets-debug.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginTargets-relwithdebinfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6QTlsBackendCertOnlyPluginTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgAdditionalTargetInfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgDependencies.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgTargets-debug.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgTargets-relwithdebinfo.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgVersionlessAliasTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsPlugins.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessAliasTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargetsPrecheck.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/cmake/finders/FindAsio.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/cmake/finders/FindWebsocketpp.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/obs-websocket/CMakeLists.txt
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/obs-websocket/cmake/obs-websocket-api.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/obs-websocket/cmake/obs-websocket-apiConfig.cmake.in
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/obs-websocket/src/forms/resources.qrc
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/obs-websocket/src/plugin-macros.h.in

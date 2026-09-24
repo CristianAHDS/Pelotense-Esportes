@@ -1,0 +1,733 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{47CB8466-AA1C-3F9D-946A-8DA4EC6C68B3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>graphics-hook</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">graphics-hook.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">graphics-hook64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">graphics-hook.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">graphics-hook64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">graphics-hook.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">graphics-hook64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">graphics-hook.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">graphics-hook64</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /utf-8 /Brepro /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;COMPILE_D3D12_HOOK;COMPILE_VULKAN_HOOK;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;DEBUG;_DEBUG;CMAKE_INTDIR="Debug";graphics_hook_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <AdditionalUsingDirectories>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib</AdditionalUsingDirectories>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;COMPILE_D3D12_HOOK;COMPILE_VULKAN_HOOK;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;DEBUG;CMAKE_INTDIR=\"Debug\";graphics_hook_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Build x86 graphics-hook				</Message>
+      <Command>setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe --build "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86" --config Debug -t graphics-hook
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook resource C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan64.json to library directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan64.json" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook resource C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan32.json to library directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan32.json" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook (x86) to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86/plugins/win-capture/graphics-hook/Debug/graphics-hook32.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86/plugins/win-capture/graphics-hook/Debug/graphics-hook32.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/Debug/graphics-hook64.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/Debug/graphics-hook64.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\detours.lib;dxguid.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /Brepro /IGNORE:4099 /PDBALTPATH:graphics-hook64.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/Debug/graphics-hook64.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/Debug/graphics-hook64.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /utf-8 /Brepro /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;COMPILE_D3D12_HOOK;COMPILE_VULKAN_HOOK;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="Release";graphics_hook_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <AdditionalUsingDirectories>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib</AdditionalUsingDirectories>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;COMPILE_D3D12_HOOK;COMPILE_VULKAN_HOOK;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"Release\";graphics_hook_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Build x86 graphics-hook				</Message>
+      <Command>setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe --build "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86" --config Release -t graphics-hook
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook resource C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan64.json to library directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan64.json" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook resource C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan32.json to library directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan32.json" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook (x86) to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86/plugins/win-capture/graphics-hook/Release/graphics-hook32.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86/plugins/win-capture/graphics-hook/Release/graphics-hook32.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/Release/graphics-hook64.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/Release/graphics-hook64.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\detours.lib;dxguid.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /EMITTOOLVERSIONINFO:NO /Brepro /IGNORE:4099 /PDBALTPATH:graphics-hook64.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/Release/graphics-hook64.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/Release/graphics-hook64.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /utf-8 /Brepro /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;COMPILE_D3D12_HOOK;COMPILE_VULKAN_HOOK;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="MinSizeRel";graphics_hook_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <AdditionalUsingDirectories>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib</AdditionalUsingDirectories>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;COMPILE_D3D12_HOOK;COMPILE_VULKAN_HOOK;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"MinSizeRel\";graphics_hook_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Build x86 graphics-hook				</Message>
+      <Command>setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe --build "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86" --config MinSizeRel -t graphics-hook
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook resource C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan64.json to library directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan64.json" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook resource C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan32.json to library directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan32.json" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook (x86) to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86/plugins/win-capture/graphics-hook/MinSizeRel/graphics-hook32.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E true "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86/plugins/win-capture/graphics-hook/MinSizeRel/graphics-hook32.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/MinSizeRel/graphics-hook64.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E true "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/MinSizeRel/graphics-hook64.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\detours.lib;dxguid.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /EMITTOOLVERSIONINFO:NO /Brepro /IGNORE:4099 /PDBALTPATH:graphics-hook64.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/MinSizeRel/graphics-hook64.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/MinSizeRel/graphics-hook64.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /utf-8 /Brepro /Zc:__cplusplus</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;COMPILE_D3D12_HOOK;COMPILE_VULKAN_HOOK;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR="RelWithDebInfo";graphics_hook_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <AdditionalUsingDirectories>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib</AdditionalUsingDirectories>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;COMPILE_D3D12_HOOK;COMPILE_VULKAN_HOOK;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;CMAKE_INTDIR=\"RelWithDebInfo\";graphics_hook_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>Build x86 graphics-hook				</Message>
+      <Command>setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe --build "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86" --config RelWithDebInfo -t graphics-hook
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook resource C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan64.json to library directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan64.json" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook resource C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan32.json to library directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/obs-vulkan32.json" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook (x86) to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86/plugins/win-capture/graphics-hook/RelWithDebInfo/graphics-hook32.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/build_x86/plugins/win-capture/graphics-hook/RelWithDebInfo/graphics-hook32.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy graphics-hook to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/RelWithDebInfo/graphics-hook64.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/RelWithDebInfo/graphics-hook64.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/win-capture/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\detours.lib;dxguid.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\lib\vulkan-1.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /Brepro /IGNORE:4099 /PDBALTPATH:graphics-hook64.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/RelWithDebInfo/graphics-hook64.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/RelWithDebInfo/graphics-hook64.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FeatureSummary.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPkgConfig.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindVulkan.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\finders\FindDetours.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FeatureSummary.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPkgConfig.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindVulkan.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\finders\FindDetours.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FeatureSummary.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPkgConfig.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindVulkan.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\finders\FindDetours.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/win-capture/graphics-hook/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/win-capture/graphics-hook/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FeatureSummary.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPkgConfig.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindVulkan.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\finders\FindDetours.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\d3d10-capture.cpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\d3d11-capture.cpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\d3d12-capture.cpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\d3d8-capture.cpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\d3d9-capture.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\d3d9-patches.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\dxgi-capture.cpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\gl-capture.c" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\gl-decs.h" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\graphics-hook.c" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\graphics-hook.h" />
+    <ResourceCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\graphics-hook.rc" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\vulkan-capture.c" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\win-capture\graphics-hook\vulkan-capture.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api\d3d8.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api\d3d8caps.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-d3d8-api\d3d8types.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config\graphics-hook-ver.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config\graphics-hook-info.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\obs-hook-config\hook-helpers.h" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util\ipc-util\pipe-windows.c" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util\ipc-util\pipe.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\ipc-util\ipc-util\pipe-windows.h" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs\util\windows\obfuscate.c" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs\util\windows\obfuscate.h" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\ZERO_CHECK.vcxproj">
+      <Project>{B1BE7672-3BEA-3CD1-B0AC-B90E9D64EEFB}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

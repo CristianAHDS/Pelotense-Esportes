@@ -1,0 +1,220 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/src",
+	"CMAKE_EXECUTABLE" : "C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/src/CMakeLists.txt"
+	],
+	"CMAKE_SOURCE_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/src/painel-ponte.hpp",
+			"Mu",
+			"EWIEGA46WW/moc_painel-ponte.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/include",
+	"INCLUDE_DIR_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/include_Debug",
+	"INCLUDE_DIR_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/include_MinSizeRel",
+	"INCLUDE_DIR_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/include_RelWithDebInfo",
+	"INCLUDE_DIR_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/include_Release",
+	"MOC_COMPILATION_FILE" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/mocs_compilation.cpp",
+	"MOC_COMPILATION_FILE_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/mocs_compilation_Debug.cpp",
+	"MOC_COMPILATION_FILE_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/mocs_compilation_MinSizeRel.cpp",
+	"MOC_COMPILATION_FILE_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/mocs_compilation_RelWithDebInfo.cpp",
+	"MOC_COMPILATION_FILE_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/obs-pelotense-controle_autogen/mocs_compilation_Release.cpp",
+	"MOC_DEFINITIONS" : [],
+	"MOC_DEFINITIONS_Debug" : 
+	[
+		"HAVE_OBSCONFIG_H",
+		"MODULE_ID=\"pelotense-controle\"",
+		"MODULE_NAME=\"obs-pelotense-controle\"",
+		"MODULE_VERSION=\"1.0.0\"",
+		"NOMINMAX",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_WIDGETS_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN32_LEAN_AND_MEAN",
+		"WIN64",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64",
+		"obs_pelotense_controle_EXPORTS"
+	],
+	"MOC_DEFINITIONS_MinSizeRel" : 
+	[
+		"HAVE_OBSCONFIG_H",
+		"MODULE_ID=\"pelotense-controle\"",
+		"MODULE_NAME=\"obs-pelotense-controle\"",
+		"MODULE_VERSION=\"1.0.0\"",
+		"NOMINMAX",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_NO_DEBUG",
+		"QT_WIDGETS_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN32_LEAN_AND_MEAN",
+		"WIN64",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64",
+		"obs_pelotense_controle_EXPORTS"
+	],
+	"MOC_DEFINITIONS_RelWithDebInfo" : 
+	[
+		"HAVE_OBSCONFIG_H",
+		"MODULE_ID=\"pelotense-controle\"",
+		"MODULE_NAME=\"obs-pelotense-controle\"",
+		"MODULE_VERSION=\"1.0.0\"",
+		"NOMINMAX",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_NO_DEBUG",
+		"QT_WIDGETS_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN32_LEAN_AND_MEAN",
+		"WIN64",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64",
+		"obs_pelotense_controle_EXPORTS"
+	],
+	"MOC_DEFINITIONS_Release" : 
+	[
+		"HAVE_OBSCONFIG_H",
+		"MODULE_ID=\"pelotense-controle\"",
+		"MODULE_NAME=\"obs-pelotense-controle\"",
+		"MODULE_VERSION=\"1.0.0\"",
+		"NOMINMAX",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_NO_DEBUG",
+		"QT_WIDGETS_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN32_LEAN_AND_MEAN",
+		"WIN64",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64",
+		"obs_pelotense_controle_EXPORTS"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : [],
+	"MOC_INCLUDES_Debug" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/src",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/libobs",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/api",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/config",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui"
+	],
+	"MOC_INCLUDES_MinSizeRel" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/src",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/libobs",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/api",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/config",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui"
+	],
+	"MOC_INCLUDES_RelWithDebInfo" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/src",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/libobs",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/api",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/config",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui"
+	],
+	"MOC_INCLUDES_Release" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/src",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/libobs",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/api",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/config",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : [],
+	"MOC_PREDEFS_FILE" : "",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/src/browser-panel.hpp"
+	],
+	"MULTI_CONFIG" : true,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/ParseCache_Debug.txt",
+	"PARSE_CACHE_FILE_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/ParseCache_MinSizeRel.txt",
+	"PARSE_CACHE_FILE_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/ParseCache_RelWithDebInfo.txt",
+	"PARSE_CACHE_FILE_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/ParseCache_Release.txt",
+	"QT_MOC_EXECUTABLE" : "",
+	"QT_MOC_EXECUTABLE_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/moc.exe",
+	"QT_MOC_EXECUTABLE_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/moc.exe",
+	"QT_MOC_EXECUTABLE_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/moc.exe",
+	"QT_MOC_EXECUTABLE_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 11,
+	"SETTINGS_FILE" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/AutogenUsed_Debug.txt",
+	"SETTINGS_FILE_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/AutogenUsed_MinSizeRel.txt",
+	"SETTINGS_FILE_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/AutogenUsed_RelWithDebInfo.txt",
+	"SETTINGS_FILE_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/build/src/CMakeFiles/obs-pelotense-controle_autogen.dir/AutogenUsed_Release.txt",
+	"SOURCES" : 
+	[
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-pelotense-controle/src/pelotense-controle.cpp",
+			"Mu",
+			null
+		]
+	],
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\async-delay-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\chroma-key-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\color-correction-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\color-grade-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\color-key-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\compressor-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\crop-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\eq-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\expander-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\gain-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\gpu-delay.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\hdr-tonemap-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\invert-audio-polarity.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\limiter-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\luma-key-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\mask-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\noise-gate-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\obs-filters.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\scale-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\scroll-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\sdr-on-hdr-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\sharpness-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\noise-suppress-filter.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\w32-pthreads\w32-pthreads_EXPORT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\LUTs\black_and_white.png">
+      <Filter>Resources\LUTs</Filter>
+    </Image>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\LUTs\grayscale.png">
+      <Filter>Resources\LUTs</Filter>
+    </Image>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\LUTs\invert.png">
+      <Filter>Resources\LUTs</Filter>
+    </Image>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\LUTs\original.png">
+      <Filter>Resources\LUTs</Filter>
+    </Image>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\LUTs\posterize.png">
+      <Filter>Resources\LUTs</Filter>
+    </Image>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\LUTs\red_isolated.png">
+      <Filter>Resources\LUTs</Filter>
+    </Image>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\LUTs\teal_lows_orange_highs.png">
+      <Filter>Resources\LUTs</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\LUTs\grayscale.cube">
+      <Filter>Resources\LUTs</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\LUTs\original.cube">
+      <Filter>Resources\LUTs</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\blend_add_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\blend_mul_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\blend_sub_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\chroma_key_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\chroma_key_filter_v2.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\color.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\color_correction_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\color_grade_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\color_key_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\color_key_filter_v2.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\crop_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\hdr_tonemap_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\af-ZA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ar-SA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\az-AZ.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ba-RU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\be-BY.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\bg-BG.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\bn-BD.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ca-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\cs-CZ.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\da-DK.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\de-DE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\el-GR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\en-GB.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\en-US.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\eo-UY.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\es-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\et-EE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\eu-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\fa-IR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\fi-FI.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\fil-PH.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\fr-FR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\gd-GB.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\gl-ES.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\he-IL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\hi-IN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\hr-HR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\hu-HU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\hy-AM.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\id-ID.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\it-IT.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ja-JP.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ka-GE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\kaa.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\kab-KAB.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\kmr-TR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ko-KR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\lo-LA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ms-MY.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\nb-NO.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\nl-NL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\nn-NO.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\pl-PL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\pt-BR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\pt-PT.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ro-RO.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ru-RU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\si-LK.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\sk-SK.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\sl-SI.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\sr-CS.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\sr-SP.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\sv-SE.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\szl-PL.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ta-IN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\th-TH.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\tl-PH.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\tr-TR.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\tt-RU.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\ug-CN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\uk-UA.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\vi-VN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\zh-CN.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\locale\zh-TW.ini">
+      <Filter>Resources\locale</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\luma_key_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\luma_key_filter_v2.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\mask_alpha_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\mask_color_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\sdr_on_hdr_filter.effect">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\obs-filters\data\sharpness.effect">
+      <Filter>Resources</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-filters\obs-filters.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{72937B53-55F5-3642-B1B3-CE4AE2B3440A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{31E54B00-6D9C-3A65-BC29-F75519784263}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\LUTs">
+      <UniqueIdentifier>{579656C4-F6B6-30B5-9692-CD45F6FCFBAF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\locale">
+      <UniqueIdentifier>{571951D7-4D02-34CA-875A-1604CFF8C658}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{2B5B5F7C-1801-36DC-8AB1-827BDA9CD738}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

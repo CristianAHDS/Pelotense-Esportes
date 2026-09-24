@@ -1,0 +1,899 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{90C2E504-ADC7-362E-8CA7-FE03BA1ECDA1}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>frontend-tools</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">frontend-tools.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">frontend-tools</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">frontend-tools.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">frontend-tools</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">frontend-tools.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">frontend-tools</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">frontend-tools.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">frontend-tools</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/frontend-tools_autogen/include_Debug" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui" /utf-8 /Brepro /Zc:__cplusplus -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;DEBUG;_DEBUG;ENABLE_HEVC;QT_CORE_LIB;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR="Debug";frontend_tools_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;DEBUG;ENABLE_HEVC;QT_CORE_LIB;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR=\"Debug\";frontend_tools_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Debug;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtCore;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\mkspecs\win32-msvc;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtWidgets;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Debug;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtCore;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\mkspecs\win32-msvc;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtWidgets;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target frontend-tools</Message>
+      <Command>setlocal
+cd "C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E cmake_autogen "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/CMakeFiles/frontend-tools_autogen.dir/AutogenInfo.json" Debug
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E touch "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/frontend-tools_autogen/autouic_Debug.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>	</Message>
+      <Command>setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy frontend-tools to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/Debug/frontend-tools.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/Debug/frontend-tools.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy frontend-tools resources to data directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/frontend-tools/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/frontend-tools/data" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Debug/core/frontend-tools/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\frontend\api\Debug\obs-frontend-api.lib;..\..\libobs\Debug\obs.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Widgetsd.lib;..\..\deps\w32-pthreads\Debug\w32-pthreads.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Guid.lib;d3d11.lib;dxgi.lib;dxguid.lib;d3d12.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Cored.lib;mpr.lib;userenv.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /Brepro /PDBALTPATH:frontend-tools.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/Debug/frontend-tools.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/Debug/frontend-tools.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/frontend-tools_autogen/include_Release" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui" /utf-8 /Brepro /Zc:__cplusplus -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ENABLE_HEVC;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR="Release";frontend_tools_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ENABLE_HEVC;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR=\"Release\";frontend_tools_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Release;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtCore;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\mkspecs\win32-msvc;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtWidgets;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Release;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtCore;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\mkspecs\win32-msvc;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtWidgets;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target frontend-tools</Message>
+      <Command>setlocal
+cd "C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E cmake_autogen "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/CMakeFiles/frontend-tools_autogen.dir/AutogenInfo.json" Release
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E touch "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/frontend-tools_autogen/autouic_Release.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>	</Message>
+      <Command>setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy frontend-tools to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/Release/frontend-tools.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/Release/frontend-tools.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy frontend-tools resources to data directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/frontend-tools/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/frontend-tools/data" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/Release/core/frontend-tools/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\frontend\api\Release\obs-frontend-api.lib;..\..\libobs\Release\obs.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Widgets.lib;..\..\deps\w32-pthreads\Release\w32-pthreads.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Gui.lib;d3d11.lib;dxgi.lib;dxguid.lib;d3d12.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Core.lib;mpr.lib;userenv.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /EMITTOOLVERSIONINFO:NO /Brepro /PDBALTPATH:frontend-tools.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/Release/frontend-tools.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/Release/frontend-tools.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/frontend-tools_autogen/include_MinSizeRel" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui" /utf-8 /Brepro /Zc:__cplusplus -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ENABLE_HEVC;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR="MinSizeRel";frontend_tools_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ENABLE_HEVC;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR=\"MinSizeRel\";frontend_tools_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_MinSizeRel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtCore;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\mkspecs\win32-msvc;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtWidgets;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_MinSizeRel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtCore;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\mkspecs\win32-msvc;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtWidgets;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target frontend-tools</Message>
+      <Command>setlocal
+cd "C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E cmake_autogen "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/CMakeFiles/frontend-tools_autogen.dir/AutogenInfo.json" MinSizeRel
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E touch "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/frontend-tools_autogen/autouic_MinSizeRel.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>	</Message>
+      <Command>setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy frontend-tools to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/MinSizeRel/frontend-tools.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E true "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/MinSizeRel/frontend-tools.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy frontend-tools resources to data directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/frontend-tools/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/frontend-tools/data" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/MinSizeRel/core/frontend-tools/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\frontend\api\MinSizeRel\obs-frontend-api.lib;..\..\libobs\MinSizeRel\obs.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Widgets.lib;..\..\deps\w32-pthreads\MinSizeRel\w32-pthreads.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Gui.lib;d3d11.lib;dxgi.lib;dxguid.lib;d3d12.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Core.lib;mpr.lib;userenv.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /EMITTOOLVERSIONINFO:NO /Brepro /PDBALTPATH:frontend-tools.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/MinSizeRel/frontend-tools.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/MinSizeRel/frontend-tools.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/frontend-tools_autogen/include_RelWithDebInfo" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets" /external:I "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui" /utf-8 /Brepro /Zc:__cplusplus -Zc:__cplusplus -utf-8</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <BufferSecurityCheck></BufferSecurityCheck>
+      <CallingConvention></CallingConvention>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <FloatingPointModel></FloatingPointModel>
+      <ForceConformanceInForLoopScope></ForceConformanceInForLoopScope>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <MinimalRebuild></MinimalRebuild>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RemoveUnreferencedCodeData></RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <SupportJustMyCode></SupportJustMyCode>
+      <TreatWChar_tAsBuiltInType></TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ENABLE_HEVC;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR="RelWithDebInfo";frontend_tools_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;NOMINMAX;UNICODE;_UNICODE;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_WARNINGS;ENABLE_HEVC;QT_CORE_LIB;QT_NO_DEBUG;_ENABLE_EXTENDED_ALIGNED_STORAGE;WIN64;_WIN64;QT_WIDGETS_LIB;QT_GUI_LIB;CMAKE_INTDIR=\"RelWithDebInfo\";frontend_tools_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_RelWithDebInfo;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtCore;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\mkspecs\win32-msvc;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtWidgets;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\frontend\api;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\config;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\libobs;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\deps\w32-pthreads;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_RelWithDebInfo;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtCore;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\mkspecs\win32-msvc;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtWidgets;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\include\QtGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PreBuildEvent>
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message>Automatic MOC and UIC for target frontend-tools</Message>
+      <Command>setlocal
+cd "C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E cmake_autogen "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/CMakeFiles/frontend-tools_autogen.dir/AutogenInfo.json" RelWithDebInfo
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E touch "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/frontend-tools_autogen/autouic_RelWithDebInfo.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PreBuildEvent>
+    <PostBuildEvent>
+      <Message>	</Message>
+      <Command>setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy frontend-tools to destination"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/RelWithDebInfo/frontend-tools.dll" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/RelWithDebInfo/frontend-tools.pdb" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E echo "Copy frontend-tools resources to data directory"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E make_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/frontend-tools/data"
+if %errorlevel% neq 0 goto :cmEnd
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe -E copy_directory "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/frontend-tools/data" "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/rundir/RelWithDebInfo/core/frontend-tools/data"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>..\..\frontend\api\RelWithDebInfo\obs-frontend-api.lib;..\..\libobs\RelWithDebInfo\obs.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Widgets.lib;..\..\deps\w32-pthreads\RelWithDebInfo\w32-pthreads.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Gui.lib;d3d11.lib;dxgi.lib;dxguid.lib;d3d12.lib;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\Qt6Core.lib;mpr.lib;userenv.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64 /Brepro /PDBALTPATH:frontend-tools.pdb</AdditionalOptions>
+      <DataExecutionPrevention></DataExecutionPrevention>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImageHasSafeExceptionHandlers></ImageHasSafeExceptionHandlers>
+      <ImportLibrary>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/RelWithDebInfo/frontend-tools.lib</ImportLibrary>
+      <LinkErrorReporting></LinkErrorReporting>
+      <ProgramDataBaseFile>C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/RelWithDebInfo/frontend-tools.pdb</ProgramDataBaseFile>
+      <RandomizedBaseAddress></RandomizedBaseAddress>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\8127f7921e468ed44753ed9b818957c5\autouic_(CONFIG).stamp.rule">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+cd "C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\auto-scene-switcher.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\captions.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\output-timer.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\scripts.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\autouic_Debug.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+cd "C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\auto-scene-switcher.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\captions.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\output-timer.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\scripts.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\autouic_Release.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+cd "C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\auto-scene-switcher.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\captions.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\output-timer.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\scripts.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\autouic_MinSizeRel.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <BuildInParallel Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</BuildInParallel>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+cd "C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools"
+if %errorlevel% neq 0 goto :cmEnd
+C:
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\auto-scene-switcher.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\captions.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\output-timer.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\scripts.ui;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\autouic_RelWithDebInfo.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/frontend-tools/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckCSourceCompiles.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckCXXCompilerFlag.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckIncludeFile.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckLibraryExists.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindThreads.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\FindWrapAtomic.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6Config.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigExtras.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6Dependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6TargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtFeature.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtFeatureCommon.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtInstallPaths.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicAndroidHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicAppleHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeEarlyPolicyHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeVersionHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicDependencyHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicExternalProjectHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicFinalizerHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicFindPackageHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicGitHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicPluginHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicPluginHelpers_v2.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomAttributionHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomBuildToolHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCommonGenerationHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCpeHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCycloneDXHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomDepHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomDocumentNamespaceHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomExternalReferenceHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomFileHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomGenerationCycloneDXHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomGenerationHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomLicenseHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomOpsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomPurlHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomPythonHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomQtEntityHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomRelationshipHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomSystemDepHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicTargetHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicTestHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicToolHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicWalkLibsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicWindowsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigExtras.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreMacros.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiPlugins.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsMacros.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsPlugins.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\cmake\windows\obs-module.rc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/frontend-tools/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckCSourceCompiles.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckCXXCompilerFlag.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckIncludeFile.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckLibraryExists.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindThreads.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\FindWrapAtomic.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6Config.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigExtras.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6Dependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6TargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtFeature.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtFeatureCommon.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtInstallPaths.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicAndroidHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicAppleHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeEarlyPolicyHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeVersionHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicDependencyHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicExternalProjectHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicFinalizerHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicFindPackageHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicGitHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicPluginHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicPluginHelpers_v2.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomAttributionHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomBuildToolHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCommonGenerationHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCpeHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCycloneDXHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomDepHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomDocumentNamespaceHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomExternalReferenceHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomFileHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomGenerationCycloneDXHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomGenerationHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomLicenseHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomOpsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomPurlHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomPythonHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomQtEntityHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomRelationshipHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomSystemDepHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicTargetHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicTestHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicToolHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicWalkLibsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicWindowsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigExtras.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreMacros.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiPlugins.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsMacros.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsPlugins.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\cmake\windows\obs-module.rc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/frontend-tools/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckCSourceCompiles.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckCXXCompilerFlag.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckIncludeFile.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckLibraryExists.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindThreads.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\FindWrapAtomic.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6Config.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigExtras.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6Dependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6TargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtFeature.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtFeatureCommon.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtInstallPaths.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicAndroidHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicAppleHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeEarlyPolicyHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeVersionHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicDependencyHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicExternalProjectHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicFinalizerHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicFindPackageHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicGitHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicPluginHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicPluginHelpers_v2.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomAttributionHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomBuildToolHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCommonGenerationHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCpeHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCycloneDXHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomDepHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomDocumentNamespaceHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomExternalReferenceHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomFileHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomGenerationCycloneDXHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomGenerationHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomLicenseHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomOpsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomPurlHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomPythonHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomQtEntityHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomRelationshipHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomSystemDepHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicTargetHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicTestHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicToolHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicWalkLibsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicWindowsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigExtras.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreMacros.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiPlugins.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsMacros.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsPlugins.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\cmake\windows\obs-module.rc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/plugins/frontend-tools/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/plugins/frontend-tools/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeFindDependencyMacro.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckCSourceCompiles.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckCXXCompilerFlag.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckIncludeFile.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CheckLibraryExists.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindPackageMessage.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FindThreads.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\FindWrapAtomic.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6Config.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigExtras.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6ConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6Dependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\Qt6TargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtFeature.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtFeatureCommon.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtInstallPaths.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicAndroidHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicAppleHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeEarlyPolicyHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicCMakeVersionHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicDependencyHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicExternalProjectHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicFinalizerHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicFindPackageHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicGitHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicPluginHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicPluginHelpers_v2.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomAttributionHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomBuildToolHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCommonGenerationHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCpeHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomCycloneDXHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomDepHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomDocumentNamespaceHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomExternalReferenceHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomFileHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomGenerationCycloneDXHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomGenerationHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomLicenseHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomOpsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomPurlHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomPythonHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomQtEntityHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomRelationshipHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicSbomSystemDepHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicTargetHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicTestHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicToolHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicWalkLibsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6\QtPublicWindowsHelpers.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigExtras.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreMacros.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Core\Qt6CoreVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6CoreTools\Qt6CoreToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6EntryPointPrivate\Qt6EntryPointPrivateVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiPlugins.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Gui\Qt6GuiVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6GuiTools\Qt6GuiToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsMacros.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsPlugins.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6Widgets\Qt6WidgetsVersionlessAliasTargets.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfigVersion.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsConfigVersionImpl.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsDependencies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\.deps\obs-deps-qt6-2026-08-26-x64\lib\cmake\Qt6WidgetsTools\Qt6WidgetsToolsTargetsPrecheck.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\cmake\windows\obs-module.rc.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\mocs_compilation_Debug.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\auto-scene-switcher-win.cpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\captions-handler.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\captions-handler.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\captions-mssapi-stream.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\captions-mssapi-stream.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\captions-mssapi.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\captions-mssapi.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\captions.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\captions.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\auto-scene-switcher.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\auto-scene-switcher.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\frontend-tools.c" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\output-timer.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\output-timer.hpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\tool-helpers.hpp" />
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\auto-scene-switcher.ui">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\captions.ui">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\output-timer.ui">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\forms\scripts.ui">
+    </None>
+    <ResourceCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools.rc" />
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\ar-SA.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\az-AZ.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\be-BY.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\ca-ES.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\cs-CZ.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\da-DK.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\de-DE.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\en-GB.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\en-US.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\es-ES.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\et-EE.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\fa-IR.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\fi-FI.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\fr-FR.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\gl-ES.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\hu-HU.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\id-ID.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\it-IT.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\ja-JP.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\ka-GE.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\kab-KAB.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\ko-KR.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\ms-MY.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\nl-NL.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\pl-PL.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\pt-BR.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\pt-PT.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\ru-RU.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\sk-SK.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\sv-SE.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\th-TH.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\tr-TR.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\tt-RU.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\ug-CN.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\vi-VN.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\zh-CN.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\locale\zh-TW.ini">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\scripts\clock-source.lua">
+    </None>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\scripts\clock-source\dial.png">
+    </Image>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\scripts\clock-source\hour.png">
+    </Image>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\scripts\clock-source\minute.png">
+    </Image>
+    <Image Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\scripts\clock-source\second.png">
+    </Image>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\scripts\countdown.lua">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\scripts\instant-replay.lua">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\scripts\pause-scene.lua">
+    </None>
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\plugins\frontend-tools\data\scripts\url-text.py">
+    </None>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Debug\forms\ui_auto-scene-switcher.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Debug\forms\ui_captions.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Debug\forms\ui_output-timer.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Debug\forms\ui_scripts.h" />
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\autouic_Debug.stamp">
+    </None>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\api\obs-frontend-api_EXPORT.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs_EXPORT.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\w32-pthreads\w32-pthreads_EXPORT.h" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view\double-slider.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view\double-slider.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view\properties-view.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view\properties-view.hpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view\properties-view.moc.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view\spinbox-ignorewheel.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\properties-view\spinbox-ignorewheel.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers\qt-wrappers.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\wrappers\qt-wrappers.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit\plain-text-edit.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\plain-text-edit\plain-text-edit.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox\AutoSelectLineEdit.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox\AutoSelectLineEdit.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox\DoubleSpinBox.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox\DoubleSpinBox.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox\SpinBox.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\obs-spinbox\SpinBox.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area\vertical-scroll-area.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\vertical-scroll-area\vertical-scroll-area.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel\slider-ignorewheel.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\slider-ignorewheel\slider-ignorewheel.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label\IconLabel.cpp" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\shared\qt\icon-label\IconLabel.hpp" />
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\mocs_compilation_Release.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Release\forms\ui_auto-scene-switcher.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Release\forms\ui_captions.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Release\forms\ui_output-timer.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_Release\forms\ui_scripts.h" />
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\autouic_Release.stamp">
+    </None>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\mocs_compilation_MinSizeRel.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_MinSizeRel\forms\ui_auto-scene-switcher.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_MinSizeRel\forms\ui_captions.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_MinSizeRel\forms\ui_output-timer.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_MinSizeRel\forms\ui_scripts.h" />
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\autouic_MinSizeRel.stamp">
+    </None>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_RelWithDebInfo\forms\ui_auto-scene-switcher.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_RelWithDebInfo\forms\ui_captions.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_RelWithDebInfo\forms\ui_output-timer.h" />
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\include_RelWithDebInfo\forms\ui_scripts.h" />
+    <None Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools_autogen\autouic_RelWithDebInfo.stamp">
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\ZERO_CHECK.vcxproj">
+      <Project>{B1BE7672-3BEA-3CD1-B0AC-B90E9D64EEFB}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs.vcxproj">
+      <Project>{A9FF3262-C32C-38FA-8991-5FF84D1CE08B}</Project>
+      <Name>libobs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\api\obs-frontend-api.vcxproj">
+      <Project>{1E2E81DD-7717-3FE2-BB66-4C23951A21B9}</Project>
+      <Name>obs-frontend-api</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\w32-pthreads\w32-pthreads.vcxproj">
+      <Project>{09E150E7-8CA2-3F54-A0A8-8A920BE9DA39}</Project>
+      <Name>w32-pthreads</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

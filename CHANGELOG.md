@@ -1,6 +1,39 @@
 # Changelog
 
+## 24/09/2026
+
+### Plugin OBS: visual novo na aba Controles e título dinâmico nos painéis
+
+- **Agrupamento + rótulo**: botões "Jogo 1"/"Jogo 2" ganharam um bloco próprio no fim da aba Controles, com cabeçalho estilo do site (barra verde `#a5ef1c` à esquerda + "PELOTENSE ESPORTES" em rich text).
+- **Ícones**: cada botão passou a exibir uma bola de futebol verde desenhada via `QPainter` (círculo + pentágono) ao lado do texto.
+- **Indicador pulsante de aberto**: quando o painel está visível, o botão pulsa (animação `QVariantAnimation` interpolando o fundo para claro e voltando, loop InOutSine); ao fechar, para e restaura o estático.
+- **Título do dock dinâmico**: novo `PainelPonte` (adapter `Q_OBJECT`, moc habilitado via `CMAKE_AUTOMOC`) escuta `titleChanged` do widget CEF e renomeia o dock para "Jogo 1 · <título>"; reconectado automaticamente ao recriar o widget após ocultar. No site, os controles Jogo 1/2/3 (`useDocumentoJogo`, novo `src/hooks/usoDocumentoJogo.js`) atualizam `document.title` com o confronto (ex.: `BRA 2×1 PEL`), então o dock mostra "Jogo 1 · BRA 2×1 PEL".
+
+### Plugin OBS: portado para a API atual (OBS 32) e compilado
+
+- `obs_frontend_add_browser_dock` foi removida no OBS 32; plugin reescrito em C++ (`pelotense-controle.cpp` + `browser-panel.hpp` venicular) usando `QCef` via `obs_browser_create_qcef` (dlsym) + `obs_frontend_add_dock_by_id`, criando o widget do navegador com `QCef::create_widget` e colado ao OBS como dock flutuante visível.
+- CMake sem `find_package(OBS)` (pacote ternário de build não publica os "finders" de SIMDe): liga direto em `obs.lib` + `obs-frontend-api.lib` do build do obs-studio, Qt6::Widgets do `obs-deps-qt6`.
+- Compilado com sucesso (MSVC/Release) contra `obs-build`; distribuição gerada em `obs-pelotense-controle/dist/obs-plugins/{64bit/obs-pelotense-controle.dll, data/obs-pelotense-controle/locale/pt-BR.ini}`.
+- Comportamento: cria o dock em `OBS_FRONTEND_EVENT_FINISHED_LOADING`, com retry não-bloqueante até o CEF inicializar; URL continuam os 3 níveis (URL_PADRAO, `plugin_config/obs-pelotense-controle/url.txt`, `PELOTENSE_CONTROLE_URL`).
+- URL padrão do dock alterada para o `/hub` (`https://pelotense-esportes.netlify.app/hub`); acesso a mais módulos via `?previa=1` ainda é possível com `url.txt`/variável de ambiente.
+- Dock destacável (flutuante, controles de janela para maximizar em outro monitor): abre em 1200×900 com mínimo 400×300.
+- Corrigido aparecimento do dock: `init_browser()` retorna falso porque o CEF inicia assíncrono — o plugin agora aguarda `initialized()` com retry em vez de desistir.
+- Corrigido tela branca ao reabrir o dock: ao voltar a ficar visível, o painel executa `reloadPage()` (CEF para de desenhar depois de ocultado).
+- Plugin agora cria 2 painéis destacáveis: "Jogo 1" (`/placar-broadcast-escalacao/controle`) e "Jogo 2" (`/placar-broadcast-escalacao-2/controle`), ambos 1200×900 com deslocamento em cascata ao abrir. URL sobrescrevível por `url.txt` (linha 1 = Jogo 1, linha 2 = Jogo 2) ou env `PELOTENSE_CONTROLE_URL_JOGO1`/`_JOGO2`.
+- Botões "Jogo 1"/"Jogo 2" adicionados à aba **Controles** do OBS (fim do `controlsFrame`): são toggles que abrem/fecham cada painel, sincronizados com a visibilidade dos docks, estilizados em verde (`#a5ef1c`).
+- Corrigido reabrir após fechar: ao voltar a ficar visível após ter sido ocultado, o widget CEF do painel é **recriado** (`setWidget` substitui e elimina o anterior), eliminando tela branca/irreversível ao reabrir.
+- Corrigido página em branco ao abrir: URLs padrão voltam a ser aplicadas ao painel (bug: `char url[]` do `Painel` estático nascia zerado e o plugin abria URL vazia; defaults agora definidos antes de ler `url.txt`/env).
+- Painéis abrem com **1700px de largura**, centralizados na tela do OBS (limitado à área disponível do monitor), com cascata de 40px para o 2º.
+- Painéis **iniciam fechados**: só são criados/registrados (mantêm geometria 1700×900 centralizada), e abrem ao clicar nos botões verdes "Jogo 1"/"Jogo 2" da aba Controles ou no menu Docks. A página só é carregada na primeira abertura.
+- Botões "Jogo 1"/"Jogo 2" da aba Controles agora ficam **na mesma linha** (lado a lado) e usam a fonte do sistema (**Inter**, negrito, 10px).
+
 ## 23/09/2026
+
+### Plugin OBS: controle embutido (browser dock)
+
+- Novo diretório `obs-pelotense-controle/`: plugin para OBS Studio 28+ que abre um dock de navegação com o controlador do site (padrão `https://pelotense-esportes.netlify.app/placar-broadcast/controle?sala=padrao`) direto na interface do OBS. (API final em 24/09: `obs_frontend_add_dock_by_id` + `QCef`.)
+- URL configurável em 3 níveis (menor precedência → maior): constante `DEFAULT_URL`, arquivo `plugin_config/obs-pelotense-controle/url.txt` no config do OBS e variável de ambiente `PELOTENSE_CONTROLE_URL`.
+- Por rodar no mesmo perfil CEF do OBS, o dock sincroniza com os browser sources por BroadcastChannel + localStorage (sem depender de Firebase/claim), eliminando o travamento de estado ao operar direto do OBS.
 
 ### Novo módulo: Placar Broadcast Escalação 3 (jogo triplo isolado)
 

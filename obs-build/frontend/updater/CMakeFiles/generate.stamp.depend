@@ -1,0 +1,11 @@
+# CMake generation dependency list for this directory.
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/zstd/zstdConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/zstd/zstdConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/zstd/zstdTargets-release.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/zstd/zstdTargets.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/frontend/updater/CMakeLists.txt

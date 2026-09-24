@@ -1,0 +1,2494 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend",
+	"CMAKE_EXECUTABLE" : "C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/CMakeLists.txt",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/cmake/finders/FindFFmpeg.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FeatureSummary.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindCURL.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/CURL/CURLConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/CURL/CURLConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/CURL/CURLTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-components.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-dialogs.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-docks.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/feature-importers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/feature-plugin-manager.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-models.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-oauth.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/feature-browserpanels.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-qt.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6ConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6Config.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicCMakeEarlyPolicyHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6ConfigExtras.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtInstallPaths.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6TargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtFeature.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckCXXCompilerFlag.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtFeatureCommon.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicAndroidHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicAppleHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicExternalProjectHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicGitHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicPluginHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicPluginHelpers_v2.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomAttributionHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomBuildToolHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomCommonGenerationHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomCpeHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomCycloneDXHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomDocumentNamespaceHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomDepHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomExternalReferenceHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomFileHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomGenerationHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomGenerationCycloneDXHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomLicenseHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomOpsHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomPurlHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomPythonHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomQtEntityHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomRelationshipHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicSbomSystemDepHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicTargetHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicTestHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicToolHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/QtPublicWindowsHelpers.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/Qt6Dependencies.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindThreads.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckLibraryExists.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckIncludeFile.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckCSourceCompiles.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6/FindWrapAtomic.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateVersionlessAliasTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Core/Qt6CoreVersionlessAliasTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiPlugins.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Gui/Qt6GuiVersionlessAliasTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsPlugins.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessAliasTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkPlugins.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Network/Qt6NetworkVersionlessAliasTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Svg/Qt6SvgVersionlessAliasTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlConfigVersionImpl.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakeFindDependencyMacro.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlDependencies.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlTargetsPrecheck.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlTargets-debug.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlTargets-relwithdebinfo.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlAdditionalTargetInfo.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/lib/cmake/Qt6Xml/Qt6XmlVersionlessAliasTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-settings.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-utility.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-widgets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/ui-wizards.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/feature-twitch.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/feature-restream.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/feature-youtube.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/feature-whatsnew.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/feature-idian-playground.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/templates/ui-config.h.in",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/os-windows.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/MbedTLS/MbedTLSConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/MbedTLS/MbedTLSConfig.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/lib/cmake/MbedTLS/MbedTLSTargets.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/cmake/finders/FindDetours.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPkgConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FeatureSummary.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/share/cmake/nlohmann_json/nlohmann_jsonConfigVersion.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake",
+		"C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/cmake/windows/obs.rc.in",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/forms/obs.qrc"
+	],
+	"CMAKE_SOURCE_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : 
+	[
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/deps/w32-pthreads/w32-pthreads_EXPORT.h",
+			"MU",
+			"ZME3NPVUOK/moc_w32-pthreads_EXPORT.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/api/obs-frontend-api_EXPORT.h",
+			"MU",
+			"AWDDR3B3PI/moc_obs-frontend-api_EXPORT.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/ui-config.h",
+			"MU",
+			"EJRQKI7XPS/moc_ui-config.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/libobs/libobs_EXPORT.h",
+			"MU",
+			"HKLEOCEHOF/moc_libobs_EXPORT.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/blake2/src/blake2.h",
+			"MU",
+			"PMRBE6ZZBS/moc_blake2.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/json11/json11.hpp",
+			"MU",
+			"4I57ZF74CN/moc_json11.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/libcaption/caption/caption.h",
+			"MU",
+			"CNUS3TY4UG/moc_caption.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/OBSApp.hpp",
+			"MU",
+			"EWIEGA46WW/moc_OBSApp.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/OBSStudioAPI.hpp",
+			"MU",
+			"EWIEGA46WW/moc_OBSStudioAPI.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AbsoluteSlider.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_AbsoluteSlider.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AccessibleAlignmentCell.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_AccessibleAlignmentCell.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AccessibleAlignmentSelector.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_AccessibleAlignmentSelector.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AlignmentSelector.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_AlignmentSelector.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/ApplicationAudioCaptureToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_ApplicationAudioCaptureToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AudioCaptureToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_AudioCaptureToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/BalanceSlider.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_BalanceSlider.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/BrowserToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_BrowserToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/ClickableLabel.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_ClickableLabel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/ColorSourceToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_ColorSourceToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/ComboSelectToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_ComboSelectToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/DelButton.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_DelButton.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/DeviceCaptureToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_DeviceCaptureToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/DisplayCaptureToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_DisplayCaptureToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/EditWidget.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_EditWidget.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/FlowFrame.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_FlowFrame.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/FlowLayout.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_FlowLayout.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/FocusList.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_FocusList.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/GameCaptureToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_GameCaptureToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/ImageSourceToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_ImageSourceToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/InfoChip.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_InfoChip.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/MediaControls.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_MediaControls.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/MenuButton.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_MenuButton.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/MenuCheckBox.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_MenuCheckBox.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/Multiview.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_Multiview.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/MuteCheckBox.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_MuteCheckBox.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/OBSAdvAudioCtrl.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_OBSAdvAudioCtrl.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/OBSPreviewScalingComboBox.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_OBSPreviewScalingComboBox.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/OBSPreviewScalingLabel.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_OBSPreviewScalingLabel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/OBSSourceLabel.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_OBSSourceLabel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SceneTree.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_SceneTree.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SilentUpdateCheckBox.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_SilentUpdateCheckBox.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SilentUpdateSpinBox.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_SilentUpdateSpinBox.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceSelectButton.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_SourceSelectButton.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_SourceToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceTree.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_SourceTree.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceTreeDelegate.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_SourceTreeDelegate.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceTreeItem.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_SourceTreeItem.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceTreeModel.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_SourceTreeModel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/TextSourceToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_TextSourceToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/UIValidation.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_UIValidation.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/UrlPushButton.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_UrlPushButton.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VisibilityItemDelegate.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_VisibilityItemDelegate.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VisibilityItemWidget.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_VisibilityItemWidget.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeAccessibleInterface.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_VolumeAccessibleInterface.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeControl.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_VolumeControl.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeMeter.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_VolumeMeter.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeName.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_VolumeName.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeSlider.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_VolumeSlider.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/WindowCaptureToolbar.hpp",
+			"MU",
+			"XDQFSXMG3O/moc_WindowCaptureToolbar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/LogUploadDialog.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_LogUploadDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/NameDialog.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_NameDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OAuthLogin.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OAuthLogin.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSAbout.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSAbout.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicAdvAudio.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSBasicAdvAudio.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicFilters.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSBasicFilters.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicInteraction.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSBasicInteraction.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicProperties.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSBasicProperties.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicSourceSelect.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSBasicSourceSelect.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicTransform.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSBasicTransform.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicVCamConfig.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSBasicVCamConfig.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSLogViewer.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSLogViewer.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSMissingFiles.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSMissingFiles.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSRemux.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSRemux.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSUpdate.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSUpdate.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSWhatsNew.hpp",
+			"MU",
+			"2NRMJ5X7RK/moc_OBSWhatsNew.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/docks/OBSDock.hpp",
+			"MU",
+			"SVAOMNV2MZ/moc_OBSDock.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importer/ImporterEntryPathItemDelegate.hpp",
+			"MU",
+			"NVAZ64UHGW/moc_ImporterEntryPathItemDelegate.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importer/ImporterModel.hpp",
+			"MU",
+			"NVAZ64UHGW/moc_ImporterModel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importer/OBSImporter.hpp",
+			"MU",
+			"NVAZ64UHGW/moc_OBSImporter.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importers/importers.hpp",
+			"MU",
+			"MKXHPDFLPP/moc_importers.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/models/Rect.hpp",
+			"MU",
+			"IVK4DJNV27/moc_Rect.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/models/SceneCollection.hpp",
+			"MU",
+			"IVK4DJNV27/moc_SceneCollection.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/oauth/Auth.hpp",
+			"MU",
+			"MNKCHGDCZP/moc_Auth.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/oauth/AuthListener.hpp",
+			"MU",
+			"MNKCHGDCZP/moc_AuthListener.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/oauth/OAuth.hpp",
+			"MU",
+			"MNKCHGDCZP/moc_OAuth.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/plugin-manager/InstalledPluginRow.hpp",
+			"MU",
+			"ZUOAAVK4CT/moc_InstalledPluginRow.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/plugin-manager/PluginManager.hpp",
+			"MU",
+			"ZUOAAVK4CT/moc_PluginManager.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/plugin-manager/PluginManagerWindow.hpp",
+			"MU",
+			"ZUOAAVK4CT/moc_PluginManagerWindow.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/plugin-manager/PluginModuleLoader.hpp",
+			"MU",
+			"ZUOAAVK4CT/moc_PluginModuleLoader.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSBasicSettings.hpp",
+			"MU",
+			"YPB6MEUM2W/moc_OBSBasicSettings.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSHotkeyEdit.hpp",
+			"MU",
+			"YPB6MEUM2W/moc_OBSHotkeyEdit.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSHotkeyLabel.hpp",
+			"MU",
+			"YPB6MEUM2W/moc_OBSHotkeyLabel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSHotkeyWidget.hpp",
+			"MU",
+			"YPB6MEUM2W/moc_OBSHotkeyWidget.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/updater/manifest.hpp",
+			"MU",
+			"KVXHJ3PMW4/moc_manifest.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/AdvancedOutput.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_AdvancedOutput.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/AutoUpdateThread.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_AutoUpdateThread.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/BaseLexer.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_BaseLexer.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/BasicOutputHandler.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_BasicOutputHandler.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/CrashHandler.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_CrashHandler.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/FFmpegCodec.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_FFmpegCodec.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/FFmpegFormat.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_FFmpegFormat.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/FFmpegShared.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_FFmpegShared.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/GoLiveAPI_CensoredJson.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_GoLiveAPI_CensoredJson.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/GoLiveAPI_Network.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_GoLiveAPI_Network.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/GoLiveAPI_PostData.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_GoLiveAPI_PostData.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/MissingFilesModel.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_MissingFilesModel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/MissingFilesPathItemDelegate.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_MissingFilesPathItemDelegate.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/MultitrackVideoError.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_MultitrackVideoError.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/MultitrackVideoOutput.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_MultitrackVideoOutput.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/NativeEventFilter.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_NativeEventFilter.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/OBSCanvas.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_OBSCanvas.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/OBSEventFilter.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_OBSEventFilter.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/OBSProxyStyle.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_OBSProxyStyle.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/OBSTheme.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_OBSTheme.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/OBSThemeVariable.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_OBSThemeVariable.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/OBSTranslator.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_OBSTranslator.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/PreviewProgramSizeObserver.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_PreviewProgramSizeObserver.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/QuickTransition.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_QuickTransition.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/RemoteTextThread.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_RemoteTextThread.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/RemuxEntryPathItemDelegate.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_RemuxEntryPathItemDelegate.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/RemuxQueueModel.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_RemuxQueueModel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/RemuxWorker.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_RemuxWorker.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/ResizeSignaler.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_ResizeSignaler.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/SceneRenameDelegate.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_SceneRenameDelegate.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/ScreenshotObj.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_ScreenshotObj.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/SettingsEventFilter.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_SettingsEventFilter.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/SimpleOutput.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_SimpleOutput.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/StartMultiTrackVideoStreamingGuard.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_StartMultiTrackVideoStreamingGuard.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/SurfaceEventFilter.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_SurfaceEventFilter.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/ThumbnailItem.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_ThumbnailItem.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/ThumbnailManager.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_ThumbnailManager.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/ThumbnailView.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_ThumbnailView.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/VCamConfig.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_VCamConfig.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/WhatsNewBrowserInitThread.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_WhatsNewBrowserInitThread.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/WhatsNewInfoThread.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_WhatsNewInfoThread.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/audio-encoders.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_audio-encoders.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/crypto-helpers.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_crypto-helpers.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/display-helpers.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_display-helpers.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/item-widget-helpers.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_item-widget-helpers.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/models/branches.hpp",
+			"MU",
+			"TRRYN4LOZ4/moc_branches.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/models/multitrack-video.hpp",
+			"MU",
+			"TRRYN4LOZ4/moc_multitrack-video.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/models/whatsnew.hpp",
+			"MU",
+			"TRRYN4LOZ4/moc_whatsnew.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/obf.h",
+			"MU",
+			"HPF2NUMOCS/moc_obf.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/platform.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_platform.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/system-info.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_system-info.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/undo_stack.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_undo_stack.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/update-helpers.hpp",
+			"MU",
+			"HPF2NUMOCS/moc_update-helpers.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/AudioMixer.hpp",
+			"MU",
+			"IMAN36LHMA/moc_AudioMixer.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/ColorSelect.hpp",
+			"MU",
+			"IMAN36LHMA/moc_ColorSelect.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic.hpp",
+			"MU",
+			"IMAN36LHMA/moc_OBSBasic.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasicControls.hpp",
+			"MU",
+			"IMAN36LHMA/moc_OBSBasicControls.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasicPreview.hpp",
+			"MU",
+			"IMAN36LHMA/moc_OBSBasicPreview.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasicStats.hpp",
+			"MU",
+			"IMAN36LHMA/moc_OBSBasicStats.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasicStatusBar.hpp",
+			"MU",
+			"IMAN36LHMA/moc_OBSBasicStatusBar.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSMainWindow.hpp",
+			"MU",
+			"IMAN36LHMA/moc_OBSMainWindow.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSProjector.hpp",
+			"MU",
+			"IMAN36LHMA/moc_OBSProjector.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSQTDisplay.hpp",
+			"MU",
+			"IMAN36LHMA/moc_OBSQTDisplay.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/StatusBarWidget.hpp",
+			"MU",
+			"IMAN36LHMA/moc_StatusBarWidget.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfig.hpp",
+			"MU",
+			"JPSPC6ERR5/moc_AutoConfig.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfigStartPage.hpp",
+			"MU",
+			"JPSPC6ERR5/moc_AutoConfigStartPage.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfigStreamPage.hpp",
+			"MU",
+			"JPSPC6ERR5/moc_AutoConfigStreamPage.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfigTestPage.hpp",
+			"MU",
+			"JPSPC6ERR5/moc_AutoConfigTestPage.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfigVideoPage.hpp",
+			"MU",
+			"JPSPC6ERR5/moc_AutoConfigVideoPage.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/TestMode.hpp",
+			"MU",
+			"JPSPC6ERR5/moc_TestMode.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/bpm/bpm.h",
+			"MU",
+			"EW574LFNBP/moc_bpm.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view/double-slider.hpp",
+			"MU",
+			"MQQRCOXJBG/moc_double-slider.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view/properties-view.hpp",
+			"MU",
+			"MQQRCOXJBG/moc_properties-view.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view/properties-view.moc.hpp",
+			"MU",
+			"MQQRCOXJBG/moc_properties-view.moc.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view/spinbox-ignorewheel.hpp",
+			"MU",
+			"MQQRCOXJBG/moc_spinbox-ignorewheel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/icon-label/IconLabel.hpp",
+			"MU",
+			"P4W7YBUBWD/moc_IconLabel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/idian/include/Idian/Idian.hpp",
+			"MU",
+			"JJMKPTSBUR/moc_Idian.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox/AutoSelectLineEdit.hpp",
+			"MU",
+			"M62TPLXGOF/moc_AutoSelectLineEdit.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox/DoubleSpinBox.hpp",
+			"MU",
+			"M62TPLXGOF/moc_DoubleSpinBox.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox/SpinBox.hpp",
+			"MU",
+			"M62TPLXGOF/moc_SpinBox.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/plain-text-edit/plain-text-edit.hpp",
+			"MU",
+			"KPALHEAFHV/moc_plain-text-edit.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/slider-ignorewheel/slider-ignorewheel.hpp",
+			"MU",
+			"W35SSZMTVF/moc_slider-ignorewheel.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/vertical-scroll-area/vertical-scroll-area.hpp",
+			"MU",
+			"3DMOISO7MT/moc_vertical-scroll-area.cpp",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/wrappers/qt-wrappers.hpp",
+			"MU",
+			"EE3AJLVOAT/moc_qt-wrappers.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/include",
+	"INCLUDE_DIR_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/include_Debug",
+	"INCLUDE_DIR_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/include_MinSizeRel",
+	"INCLUDE_DIR_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/include_RelWithDebInfo",
+	"INCLUDE_DIR_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/include_Release",
+	"MOC_COMPILATION_FILE" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/mocs_compilation.cpp",
+	"MOC_COMPILATION_FILE_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/mocs_compilation_Debug.cpp",
+	"MOC_COMPILATION_FILE_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/mocs_compilation_MinSizeRel.cpp",
+	"MOC_COMPILATION_FILE_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/mocs_compilation_RelWithDebInfo.cpp",
+	"MOC_COMPILATION_FILE_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/obs-studio_autogen/mocs_compilation_Release.cpp",
+	"MOC_DEFINITIONS" : [],
+	"MOC_DEFINITIONS_Debug" : 
+	[
+		"DEBUG",
+		"DL_D3D11=\"libobs-d3d11.dll\"",
+		"DL_METAL=\"\"",
+		"DL_OPENGL=\"libobs-opengl.dll\"",
+		"ENABLE_HEVC",
+		"NOMINMAX",
+		"PSAPI_VERSION=2",
+		"QT_CORE_LIB",
+		"QT_ENABLE_STRICT_MODE_UP_TO=0xFF0000",
+		"QT_GUI_LIB",
+		"QT_NETWORK_LIB",
+		"QT_SVG_LIB",
+		"QT_WIDGETS_LIB",
+		"QT_XML_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN64",
+		"_CRT_NONSTDC_NO_WARNINGS",
+		"_CRT_SECURE_NO_WARNINGS",
+		"_DEBUG",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64"
+	],
+	"MOC_DEFINITIONS_MinSizeRel" : 
+	[
+		"DL_D3D11=\"libobs-d3d11.dll\"",
+		"DL_METAL=\"\"",
+		"DL_OPENGL=\"libobs-opengl.dll\"",
+		"ENABLE_HEVC",
+		"NOMINMAX",
+		"PSAPI_VERSION=2",
+		"QT_CORE_LIB",
+		"QT_ENABLE_STRICT_MODE_UP_TO=0xFF0000",
+		"QT_GUI_LIB",
+		"QT_NETWORK_LIB",
+		"QT_NO_DEBUG",
+		"QT_SVG_LIB",
+		"QT_WIDGETS_LIB",
+		"QT_XML_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN64",
+		"_CRT_NONSTDC_NO_WARNINGS",
+		"_CRT_SECURE_NO_WARNINGS",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64"
+	],
+	"MOC_DEFINITIONS_RelWithDebInfo" : 
+	[
+		"DL_D3D11=\"libobs-d3d11.dll\"",
+		"DL_METAL=\"\"",
+		"DL_OPENGL=\"libobs-opengl.dll\"",
+		"ENABLE_HEVC",
+		"NOMINMAX",
+		"PSAPI_VERSION=2",
+		"QT_CORE_LIB",
+		"QT_ENABLE_STRICT_MODE_UP_TO=0xFF0000",
+		"QT_GUI_LIB",
+		"QT_NETWORK_LIB",
+		"QT_NO_DEBUG",
+		"QT_SVG_LIB",
+		"QT_WIDGETS_LIB",
+		"QT_XML_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN64",
+		"_CRT_NONSTDC_NO_WARNINGS",
+		"_CRT_SECURE_NO_WARNINGS",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64"
+	],
+	"MOC_DEFINITIONS_Release" : 
+	[
+		"DL_D3D11=\"libobs-d3d11.dll\"",
+		"DL_METAL=\"\"",
+		"DL_OPENGL=\"libobs-opengl.dll\"",
+		"ENABLE_HEVC",
+		"NOMINMAX",
+		"PSAPI_VERSION=2",
+		"QT_CORE_LIB",
+		"QT_ENABLE_STRICT_MODE_UP_TO=0xFF0000",
+		"QT_GUI_LIB",
+		"QT_NETWORK_LIB",
+		"QT_NO_DEBUG",
+		"QT_SVG_LIB",
+		"QT_WIDGETS_LIB",
+		"QT_XML_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN64",
+		"_CRT_NONSTDC_NO_WARNINGS",
+		"_CRT_SECURE_NO_WARNINGS",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : [],
+	"MOC_INCLUDES_Debug" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/config",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/libobs",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/w32-pthreads",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/api",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/json11",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/bpm",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/libcaption",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/slider-ignorewheel",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/idian/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/wrappers",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/plain-text-edit",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/vertical-scroll-area",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/icon-label",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/blake2/src",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtSvg",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtXml",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtNetwork"
+	],
+	"MOC_INCLUDES_MinSizeRel" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/config",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/libobs",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/w32-pthreads",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/api",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/json11",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/bpm",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/libcaption",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/slider-ignorewheel",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/idian/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/wrappers",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/plain-text-edit",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/vertical-scroll-area",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/icon-label",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/blake2/src",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtSvg",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtXml",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtNetwork"
+	],
+	"MOC_INCLUDES_RelWithDebInfo" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/config",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/libobs",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/w32-pthreads",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/api",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/json11",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/bpm",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/libcaption",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/slider-ignorewheel",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/idian/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/wrappers",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/plain-text-edit",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/vertical-scroll-area",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/icon-label",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/blake2/src",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtSvg",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtXml",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtNetwork"
+	],
+	"MOC_INCLUDES_Release" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/config",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/libobs",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/w32-pthreads",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/api",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/json11",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/bpm",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/libcaption",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/slider-ignorewheel",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/idian/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/wrappers",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/plain-text-edit",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/vertical-scroll-area",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/icon-label",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/deps/blake2/src",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtCore",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/mkspecs/win32-msvc",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtWidgets",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtGui",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtSvg",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtXml",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/include/QtNetwork"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : [],
+	"MOC_PREDEFS_FILE" : "",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : true,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/ParseCache.txt",
+	"PARSE_CACHE_FILE_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/ParseCache_Debug.txt",
+	"PARSE_CACHE_FILE_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/ParseCache_MinSizeRel.txt",
+	"PARSE_CACHE_FILE_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/ParseCache_RelWithDebInfo.txt",
+	"PARSE_CACHE_FILE_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/ParseCache_Release.txt",
+	"QT_MOC_EXECUTABLE" : "",
+	"QT_MOC_EXECUTABLE_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/moc.exe",
+	"QT_MOC_EXECUTABLE_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/moc.exe",
+	"QT_MOC_EXECUTABLE_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/moc.exe",
+	"QT_MOC_EXECUTABLE_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_UIC_EXECUTABLE_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/uic.exe",
+	"QT_UIC_EXECUTABLE_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/uic.exe",
+	"QT_UIC_EXECUTABLE_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/uic.exe",
+	"QT_UIC_EXECUTABLE_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/.deps/obs-deps-qt6-2026-08-26-x64/bin/uic.exe",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 11,
+	"SETTINGS_FILE" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/AutogenUsed.txt",
+	"SETTINGS_FILE_Debug" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/AutogenUsed_Debug.txt",
+	"SETTINGS_FILE_MinSizeRel" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/AutogenUsed_MinSizeRel.txt",
+	"SETTINGS_FILE_RelWithDebInfo" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/AutogenUsed_RelWithDebInfo.txt",
+	"SETTINGS_FILE_Release" : "C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-build/frontend/CMakeFiles/obs-studio_autogen.dir/AutogenUsed_Release.txt",
+	"SOURCES" : 
+	[
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/OBSApp.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/OBSApp_Themes.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/OBSStudioAPI.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AbsoluteSlider.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AccessibleAlignmentCell.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AccessibleAlignmentSelector.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AlignmentSelector.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/ApplicationAudioCaptureToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/AudioCaptureToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/BrowserToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/ColorSourceToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/ComboSelectToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/DeviceCaptureToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/DisplayCaptureToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/FlowFrame.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/FlowLayout.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/FocusList.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/GameCaptureToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/ImageSourceToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/InfoChip.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/MediaControls.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/MenuButton.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/MenuCheckBox.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/Multiview.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/OBSAdvAudioCtrl.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/OBSPreviewScalingComboBox.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/OBSPreviewScalingLabel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/OBSSourceLabel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SceneTree.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceSelectButton.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceTree.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceTreeDelegate.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceTreeItem.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/SourceTreeModel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/TextSourceToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/UIValidation.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/UrlPushButton.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VisibilityItemDelegate.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VisibilityItemWidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeAccessibleInterface.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeControl.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeMeter.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeName.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/VolumeSlider.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/components/WindowCaptureToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/LogUploadDialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/NameDialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OAuthLogin.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSAbout.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicAdvAudio.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicFilters.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicInteraction.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicProperties.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicSourceSelect.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicTransform.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSBasicVCamConfig.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSLogViewer.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSMissingFiles.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSRemux.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSUpdate.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/dialogs/OBSWhatsNew.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/docks/OBSDock.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importer/ImporterEntryPathItemDelegate.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importer/ImporterModel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importer/OBSImporter.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importers/classic.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importers/importers.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importers/sl.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importers/studio.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/importers/xsplit.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/models/Rect.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/models/SceneCollection.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/oauth/Auth.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/oauth/AuthListener.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/oauth/OAuth.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/obs-main.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/plugin-manager/InstalledPluginRow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/plugin-manager/PluginManager.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/plugin-manager/PluginManagerWindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/plugin-manager/PluginModuleLoader_Windows.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSBasicSettings.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSBasicSettings_A11y.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSBasicSettings_Appearance.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSBasicSettings_Stream.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSHotkeyEdit.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSHotkeyLabel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/settings/OBSHotkeyWidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/AdvancedOutput.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/AutoUpdateThread.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/BasicOutputHandler.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/CrashHandler.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/CrashHandler_Windows.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/FFmpegCodec.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/FFmpegFormat.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/GoLiveAPI_CensoredJson.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/GoLiveAPI_Network.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/GoLiveAPI_PostData.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/MissingFilesModel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/MissingFilesPathItemDelegate.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/MultitrackVideoError.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/MultitrackVideoOutput.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/NativeEventFilter_Windows.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/OBSCanvas.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/OBSProxyStyle.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/OBSTranslator.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/PreviewProgramSizeObserver.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/QuickTransition.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/RemoteTextThread.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/RemuxEntryPathItemDelegate.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/RemuxQueueModel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/RemuxWorker.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/SceneRenameDelegate.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/ScreenshotObj.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/SimpleOutput.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/ThumbnailItem.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/ThumbnailManager.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/ThumbnailView.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/WhatsNewBrowserInitThread.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/WhatsNewInfoThread.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/audio-encoders.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/crypto-helpers-mbedtls.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/item-widget-helpers.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/obf.c",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/platform-windows.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/system-info-windows.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/undo_stack.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/update-helpers.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/utility/win-dll-blocklist.c",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/AudioMixer.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/ColorSelect.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasicControls.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasicPreview.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasicStats.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasicStatusBar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Browser.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Canvases.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Clipboard.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_ContextToolbar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Docks.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Dropfiles.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Hotkeys.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Icons.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_MainControls.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_OutputHandler.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Preview.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Profiles.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Projectors.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Recording.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_ReplayBuffer.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_SceneCollections.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_SceneItems.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Scenes.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Screenshots.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Service.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_StatusBar.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Streaming.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_StudioMode.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_SysTray.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Transitions.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_Updater.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_VirtualCam.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSBasic_YouTube.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSProjector.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/OBSQTDisplay.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/widgets/StatusBarWidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfig.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfigStartPage.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfigStreamPage.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfigTestPage.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/wizards/AutoConfigVideoPage.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view/double-slider.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view/properties-view.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/properties-view/spinbox-ignorewheel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/icon-label/IconLabel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox/AutoSelectLineEdit.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox/DoubleSpinBox.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/obs-spinbox/SpinBox.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/plain-text-edit/plain-text-edit.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/slider-ignorewheel/slider-ignorewheel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/vertical-scroll-area/vertical-scroll-area.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/shared/qt/wrappers/qt-wrappers.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : 
+	[
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/forms",
+		"C:/Users/tsicr/OneDrive/\u00c1rea de Trabalho/Pelotense-Esportes/obs-studio/frontend/forms/source-toolbar"
+	],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

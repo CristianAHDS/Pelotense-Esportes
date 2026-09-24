@@ -1,0 +1,4 @@
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/foo.dir
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/boo.dir
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/ALL_BUILD.dir
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/_CMakeLTOTest-CXX/bin/CMakeFiles/ZERO_CHECK.dir

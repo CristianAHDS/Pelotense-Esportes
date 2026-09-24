@@ -1,0 +1,33 @@
+# CMake generation dependency list for this directory.
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CMakePackageConfigHelpers.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckCCompilerFlag.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckCSourceCompiles.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckCXXCompilerFlag.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckCompilerFlag.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckIncludeFile.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckLibraryExists.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/CheckSourceCompiles.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FeatureSummary.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageHandleStandardArgs.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPackageMessage.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindPkgConfig.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindThreads.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/FindZLIB.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/GenerateExportHeader.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/Internal/CheckSourceCompiles.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/SelectLibraryConfigurations.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/WriteBasicConfigVersionFile.cmake
+C:/Users/tsicr/AppData/Local/Microsoft/WinGet/Packages/BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe/mingw64/share/cmake-4.3/Modules/exportheader.cmake.in
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/cmake/finders/FindFFmpeg.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/cmake/finders/FindSIMDe.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/cmake/finders/FindUthash.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/cmake/finders/Findjansson.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/libobs/CMakeLists.txt
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/libobs/cmake/libobsConfig.cmake.in
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/libobs/cmake/obs-core-modules.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/libobs/cmake/obs-version.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/libobs/cmake/os-windows.cmake
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/libobs/cmake/windows/obs-module.rc.in
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/libobs/obsconfig.h.in
+C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/libobs/obsversion.c.in

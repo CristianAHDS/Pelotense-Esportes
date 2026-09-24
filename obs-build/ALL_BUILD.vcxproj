@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1813D372-295D-35EB-A635-A18A87E813BF}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CPack.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CPackComponent.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FeatureSummary.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Templates\CPackConfig.cmake.in;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeCCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeCXXCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeRCCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeSystem.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\bootstrap.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\buildnumber.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\buildspec_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\ccache.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\compiler_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\cpackconfig_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\helpers_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\osconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\policies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\versionconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\architecture.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\buildspec.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\compilerconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\cpackconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\defaults.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\helpers.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CPack.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CPackComponent.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FeatureSummary.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Templates\CPackConfig.cmake.in;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeCCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeCXXCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeRCCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeSystem.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\bootstrap.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\buildnumber.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\buildspec_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\ccache.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\compiler_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\cpackconfig_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\helpers_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\osconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\policies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\versionconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\architecture.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\buildspec.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\compilerconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\cpackconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\defaults.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\helpers.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CPack.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CPackComponent.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FeatureSummary.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Templates\CPackConfig.cmake.in;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeCCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeCXXCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeRCCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeSystem.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\bootstrap.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\buildnumber.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\buildspec_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\ccache.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\compiler_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\cpackconfig_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\helpers_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\osconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\policies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\versionconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\architecture.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\buildspec.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\compilerconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\cpackconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\defaults.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\helpers.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-studio" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build" --check-stamp-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCXXInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeCommonLanguageInclude.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeGenericSystem.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeInitializeConfigs.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeLanguageInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeRCInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeSystemSpecificInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CMakeSystemSpecificInitialize.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CPack.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\CPackComponent.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Compiler\MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\FeatureSummary.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCXXLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Internal\CMakeCommonLinkerInformation.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Linker\MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Linker\Windows-MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-Initialize.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC-C.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows-MSVC.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\Windows.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Modules\Platform\WindowsPaths.cmake;C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\share\cmake-4.3\Templates\CPackConfig.cmake.in;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeCCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeCXXCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeRCCompiler.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\4.3.3\CMakeSystem.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\bootstrap.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\buildnumber.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\buildspec_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\ccache.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\compiler_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\cpackconfig_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\helpers_common.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\osconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\policies.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\common\versionconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\architecture.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\buildspec.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\compilerconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\cpackconfig.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\defaults.cmake;C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-studio\cmake\windows\helpers.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\ZERO_CHECK.vcxproj">
+      <Project>{B1BE7672-3BEA-3CD1-B0AC-B90E9D64EEFB}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\aja.vcxproj">
+      <Project>{16672361-B066-38C4-ADD5-F27677603D6F}</Project>
+      <Name>aja</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja-output-ui\aja-output-ui.vcxproj">
+      <Project>{4D7FB4BF-49E6-37C4-AA86-8E8DE8AE451B}</Project>
+      <Name>aja-output-ui</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\aja\aja-support.vcxproj">
+      <Project>{23C1F0BB-247B-34FE-B630-F7EEECAAEEB5}</Project>
+      <Name>aja-support</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\blake2\blake2.vcxproj">
+      <Project>{19A20FC5-1F22-38AF-8DB5-EFF3FA0467E5}</Project>
+      <Name>blake2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\blake2\blake2_static.vcxproj">
+      <Project>{0CC11B9C-7ED3-3E41-B179-933EC922D352}</Project>
+      <Name>blake2_static</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-outputs\bpm\bpm.vcxproj">
+      <Project>{84C3C5F9-2FF6-3D3F-A460-242C1E87D487}</Project>
+      <Name>bpm</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\coreaudio-encoder\coreaudio-encoder.vcxproj">
+      <Project>{AF13F851-A435-3277-B404-1793795A4B15}</Project>
+      <Name>coreaudio-encoder</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink\decklink.vcxproj">
+      <Project>{F71321B7-1844-307B-BDE1-F3C678FADC80}</Project>
+      <Name>decklink</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-captions\decklink-captions.vcxproj">
+      <Project>{8BC9AD50-8780-3C90-8206-9A7E9E182E07}</Project>
+      <Name>decklink-captions</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\decklink-output-ui\decklink-output-ui.vcxproj">
+      <Project>{C3A40137-A3D9-32EE-9040-2264AE5FA65C}</Project>
+      <Name>decklink-output-ui</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\frontend-tools\frontend-tools.vcxproj">
+      <Project>{90C2E504-ADC7-362E-8CA7-FE03BA1ECDA1}</Project>
+      <Name>frontend-tools</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\get-graphics-offsets\get-graphics-offsets.vcxproj">
+      <Project>{2C5E21DC-B47B-3A28-B870-78FA41D10143}</Project>
+      <Name>get-graphics-offsets</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\graphics-hook\graphics-hook.vcxproj">
+      <Project>{47CB8466-AA1C-3F9D-946A-8DA4EC6C68B3}</Project>
+      <Name>graphics-hook</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\shared\happy-eyeballs\happy-eyeballs.vcxproj">
+      <Project>{EAAB7EF7-F485-34B9-944D-7835BF3B2130}</Project>
+      <Name>happy-eyeballs</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\shared\qt\idian\idian.vcxproj">
+      <Project>{ED5A2E93-9C50-30C6-A8D5-FD1102F8D609}</Project>
+      <Name>idian</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\image-source\image-source.vcxproj">
+      <Project>{43A41497-56BC-3064-BE69-5E4A020460A5}</Project>
+      <Name>image-source</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\inject-helper\inject-helper.vcxproj">
+      <Project>{09CA3A5D-787F-3CE1-BA9E-285150752017}</Project>
+      <Name>inject-helper</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\json11\json11.vcxproj">
+      <Project>{D581A053-8AB7-3836-A788-45F542A4F0F0}</Project>
+      <Name>json11</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs.vcxproj">
+      <Project>{A9FF3262-C32C-38FA-8991-5FF84D1CE08B}</Project>
+      <Name>libobs</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs-core-modules.vcxproj">
+      <Project>{5156BA94-1950-3040-92AC-933F43C804B6}</Project>
+      <Name>libobs-core-modules</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs-d3d11\libobs-d3d11.vcxproj">
+      <Project>{4C3C342B-D9CF-3CFC-B9E7-29994180EEA8}</Project>
+      <Name>libobs-d3d11</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs-opengl\libobs-opengl.vcxproj">
+      <Project>{33323B98-1958-35B1-83D4-1E9BF48E215C}</Project>
+      <Name>libobs-opengl</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs\libobs-version.vcxproj">
+      <Project>{0C43BBBF-9A56-37E1-9213-EA5614644800}</Project>
+      <Name>libobs-version</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\libobs-winrt\libobs-winrt.vcxproj">
+      <Project>{F963A3B4-7407-3354-9979-87A55891B7E2}</Project>
+      <Name>libobs-winrt</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\nv-filters\nv-filters.vcxproj">
+      <Project>{980BE1D8-4BC0-3B96-ABB6-D3D436582873}</Project>
+      <Name>nv-filters</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-ffmpeg\obs-amf-test\obs-amf-test.vcxproj">
+      <Project>{69B34BD9-197B-3EE2-AB86-2E41EAC9D989}</Project>
+      <Name>obs-amf-test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-ffmpeg\obs-ffmpeg.vcxproj">
+      <Project>{2354BACD-0F7C-32AB-B413-74D9952ADF86}</Project>
+      <Name>obs-ffmpeg</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-ffmpeg\ffmpeg-mux\obs-ffmpeg-mux.vcxproj">
+      <Project>{6EA05E4D-A4B5-3500-B7BD-5E2A520F1108}</Project>
+      <Name>obs-ffmpeg-mux</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-filters\obs-filters.vcxproj">
+      <Project>{0B981428-9A01-3694-9F54-B7772CD17AD9}</Project>
+      <Name>obs-filters</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\api\obs-frontend-api.vcxproj">
+      <Project>{1E2E81DD-7717-3FE2-BB66-4C23951A21B9}</Project>
+      <Name>obs-frontend-api</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-nvenc\obs-nvenc.vcxproj">
+      <Project>{B35E7405-DA55-3169-8EA6-3F6692BA2A37}</Project>
+      <Name>obs-nvenc</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-nvenc\obs-nvenc-test\obs-nvenc-test.vcxproj">
+      <Project>{13BBB571-4736-38A5-A131-8A573CCE2C30}</Project>
+      <Name>obs-nvenc-test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-outputs\obs-outputs.vcxproj">
+      <Project>{A65D8723-2D60-3E79-B3D0-BC087863A12D}</Project>
+      <Name>obs-outputs</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-qsv11\obs-qsv-test\obs-qsv-test.vcxproj">
+      <Project>{A0D59217-83F1-328E-BCCB-0C1C077D105D}</Project>
+      <Name>obs-qsv-test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-qsv11\obs-qsv11.vcxproj">
+      <Project>{74B52376-9F7D-357F-ABA7-97977C8548C9}</Project>
+      <Name>obs-qsv11</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\obs-studio.vcxproj">
+      <Project>{243B7E67-BA10-3058-AA77-7CD916F1DD89}</Project>
+      <Name>obs-studio</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-text\obs-text.vcxproj">
+      <Project>{F95EED28-1702-3814-B8AF-ED4FFE753CE5}</Project>
+      <Name>obs-text</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-transitions\obs-transitions.vcxproj">
+      <Project>{76D5CDEA-77AC-3141-8D6F-F7A04EE5D7A7}</Project>
+      <Name>obs-transitions</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-vst\obs-vst.vcxproj">
+      <Project>{2C66D781-25BB-371B-A283-A7D5F32A3A8F}</Project>
+      <Name>obs-vst</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-webrtc\obs-webrtc.vcxproj">
+      <Project>{FCDE8466-3834-3EF4-A243-C5B66DFB28A8}</Project>
+      <Name>obs-webrtc</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-websocket\obs-websocket.vcxproj">
+      <Project>{9D347E6D-AA23-32A9-A0B6-5450DE30EC1F}</Project>
+      <Name>obs-websocket</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-x264\obs-x264.vcxproj">
+      <Project>{B3D11593-C328-3582-AB03-D0D8AD2DB7BD}</Project>
+      <Name>obs-x264</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\obs-x264\obs-x264-test.vcxproj">
+      <Project>{37748CF4-C76D-34C7-87BC-1657BDF35B7B}</Project>
+      <Name>obs-x264-test</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\deps\glad\obsglad.vcxproj">
+      <Project>{EAACC21D-AD7E-3660-BEE5-374688D9E23D}</Project>
+      <Name>obsglad</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\shared\opts-parser\opts-parser.vcxproj">
+      <Project>{A9A4143B-9FC5-3CB5-A21C-F0C2272BAC08}</Project>
+      <Name>opts-parser</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\rtmp-services\rtmp-services.vcxproj">
+      <Project>{E9043B4E-2BFB-3619-BFAD-9F47CF927D0F}</Project>
+      <Name>rtmp-services</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\text-freetype2\text-freetype2.vcxproj">
+      <Project>{A748FA0A-ACF1-3417-866C-7604C50B5094}</Project>
+      <Name>text-freetype2</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\frontend\updater\updater.vcxproj">
+      <Project>{D844ABEE-02FD-378D-8744-30D4683DFF44}</Project>
+      <Name>updater</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\vlc-video\vlc-video.vcxproj">
+      <Project>{8F7E3CBF-BABF-3930-B524-2A8D03FF3998}</Project>
+      <Name>vlc-video</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-capture\win-capture.vcxproj">
+      <Project>{5E4B984B-2A13-373F-B792-BC7B3472507A}</Project>
+      <Name>win-capture</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-dshow\win-dshow.vcxproj">
+      <Project>{DE70981D-A504-3B4B-9133-181CA58A26E3}</Project>
+      <Name>win-dshow</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-build\plugins\win-wasapi\win-wasapi.vcxproj">
+      <Project>{D03BA2E8-9F8C-3CDA-8FC0-DB7A733F058A}</Project>
+      <Name>win-wasapi</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

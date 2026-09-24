@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Header } from '../components/Header'
 import { SeletorSigla } from '../components/SeletorSigla'
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast'
+import { useDocumentoJogo } from '../hooks/usoDocumentoJogo'
 import {
   gol,
   desfazerGol,
@@ -554,6 +555,7 @@ function PreviaOverlayCompleta() {
 }
 
 export default function ControleplacarBroadcastEscalacao3() {
+  useDocumentoJogo(placarBroadcastEscalacao3)
   return (
     <Container>
       <Header subtitulo="Controle · Placar Broadcast + Escalação 3" />
