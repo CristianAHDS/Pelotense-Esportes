@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotense-controle\build-32.1.2\src\obs-pelotense-controle_autogen\mocs_compilation_Debug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotense-controle\src\pelotense-controle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotense-controle\build-32.1.2\src\obs-pelotense-controle_autogen\mocs_compilation_Release.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotense-controle\build-32.1.2\src\obs-pelotense-controle_autogen\mocs_compilation_MinSizeRel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotense-controle\build-32.1.2\src\obs-pelotense-controle_autogen\mocs_compilation_RelWithDebInfo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotense-controle\src\browser-panel.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotense-controle\src\painel-ponte.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotense-controle\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{D25E5AAF-B4F1-3BA9-AB9C-721D8EA4E80A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{AE0D34CD-684A-3814-9F9C-FDDA732F9164}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

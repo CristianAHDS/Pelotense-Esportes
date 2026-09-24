@@ -28,6 +28,7 @@ import Tabela from './pages/Tabela';
 import ControleTabela from './pages/ControleTabela';
 import TabelaCompacta from './pages/TabelaCompacta';
 import ControleTabelaCompacta from './pages/ControleTabelaCompacta';
+import TabelaTop9 from './pages/TabelaTop9';
 import MataMata from './pages/MataMata';
 import ControleMataMata from './pages/ControleMataMata';
 import FasesFinais from './pages/FasesFinais';
@@ -125,6 +126,7 @@ export default function App() {
             path="/tabela-compacta/controle"
             element={<ControleTabelaCompacta />}
           />
+          <Route path="/tabela-top9" element={<TabelaTop9 />} />
           <Route path="/mata-mata" element={<MataMata />} />
           <Route path="/mata-mata/controle" element={<ControleMataMata />} />
           <Route path="/fases-finais" element={<FasesFinais />} />

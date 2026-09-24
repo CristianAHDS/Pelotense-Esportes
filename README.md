@@ -97,6 +97,8 @@ cmake --build build --config Release --target obs-pelotense-controle
 
 O binário sai em `obs-pelotense-controle/build/obs-plugins/64bit/Release/obs-pelotense-controle.dll`.
 
+> **Versões pareadas:** a DLL compilada só carrega no OBS cujo Qt seja **≥** o usado no build (símbolos importados). O repositório tem dois builds: `build/` para o OBS master (32.2.x, Qt 6.11, deps `obs-deps-qt6-2026-08-26`) e `build-32.1.2/` para o **OBS 32.1.2** (headers no tag `32.1.2` + deps `obs-deps-qt6-2025-08-23`, Qt 6.8.3). Configure com o mesmo formato apontando os caminhos certos de cada versão.
+
 ### Instalar no OBS
 
 1. Copie `obs-pelotense-controle.dll` para `obs-plugins/64bit/` dentro da pasta de instalação do OBS

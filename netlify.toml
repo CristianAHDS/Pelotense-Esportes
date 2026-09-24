@@ -16,6 +16,13 @@
   status = 200
   force = true
 
+# Proxy para o SuperPlacar (evita CORS na busca da classificação do Gauchão A2)
+[[redirects]]
+  from = "/superplacar/*"
+  to = "https://superplacar.com.br/:splat"
+  status = 200
+  force = true
+
 # SPA fallback
 [[redirects]]
   from = "/*"

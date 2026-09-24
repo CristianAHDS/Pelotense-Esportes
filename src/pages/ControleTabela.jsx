@@ -5,7 +5,7 @@ import { Header } from '../components/Header';
 import { Escudo } from '../components/Escudo';
 import { SeletorSigla } from '../components/SeletorSigla';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
-import { importarClassificacaoFGF } from '../services/fgfService';
+import { importarClassificacaoSuperPlacar } from '../services/superPlacarService';
 import {
   getEstado,
   inscrever,
@@ -398,11 +398,11 @@ function mensagemFgf(resultado) {
     { hour: '2-digit', minute: '2-digit' },
   );
   if (resultado.mudou) {
-    return `Classificação da FGF atualizada às ${hora}`;
+    return `Classificação do SuperPlacar atualizada às ${hora}`;
   }
   return resultado.origem === 'cache'
-    ? `Em dia com a FGF (cache de ${hora})`
-    : `Em dia com a FGF · verificado às ${hora}`;
+    ? `Em dia com o SuperPlacar (cache de ${hora})`
+    : `Em dia com o SuperPlacar · verificado às ${hora}`;
 }
 
 export default function ControleTabela() {
@@ -410,31 +410,35 @@ export default function ControleTabela() {
 
   useEffect(() => {
     recarregar();
-    importarClassificacaoFGF()
-      .then((resultado) =>
-        setStatusFgf({ tipo: 'ok', texto: mensagemFgf(resultado) }),
-      )
-      .catch((e) => {
-        console.warn('Tabela: falha ao atualizar da FGF.', e);
-        setStatusFgf({
-          tipo: 'erro',
-          texto: 'Não foi possível buscar os dados da FGF agora.',
+    const atualizar = () =>
+      importarClassificacaoSuperPlacar()
+        .then((resultado) =>
+          setStatusFgf({ tipo: 'ok', texto: mensagemFgf(resultado) }),
+        )
+        .catch((e) => {
+          console.warn('Tabela: falha ao atualizar do SuperPlacar.', e);
+          setStatusFgf({
+            tipo: 'erro',
+            texto: 'Não foi possível buscar os dados do SuperPlacar agora.',
+          });
         });
-      });
+    atualizar();
+    const intervalo = setInterval(atualizar, 30_000);
+    return () => clearInterval(intervalo);
   }, []);
   const estado = usePlacarBroadcast({ getEstado, inscrever });
 
   async function atualizarDaFgf() {
-    setStatusFgf({ tipo: 'carregando', texto: 'Buscando dados da FGF...' });
+    setStatusFgf({ tipo: 'carregando', texto: 'Buscando dados do SuperPlacar...' });
     try {
-      const resultado = await importarClassificacaoFGF({ forcar: true });
+      const resultado = await importarClassificacaoSuperPlacar({ forcar: true });
       setStatusFgf({ tipo: 'ok', texto: mensagemFgf(resultado) });
     } catch (e) {
-      console.warn('Tabela: falha ao atualizar da FGF.', e);
+      console.warn('Tabela: falha ao atualizar do SuperPlacar.', e);
       setStatusFgf({
         tipo: 'erro',
         texto:
-          'Não foi possível buscar os dados da FGF. Verifique a conexão ou o servidor dev.',
+          'Não foi possível buscar os dados do SuperPlacar. Verifique a conexão ou o servidor dev.',
       });
     }
   }
@@ -524,10 +528,10 @@ export default function ControleTabela() {
           <Botao
             $variante="primario"
             disabled={statusFgf?.tipo === 'carregando'}
-            title="Busca a classificação atual no site da FGF"
+            title="Busca a classificação atual no SuperPlacar"
             onClick={atualizarDaFgf}
           >
-            ⟳ Atualizar da FGF
+            ⟳ Atualizar do SuperPlacar
           </Botao>
           {statusFgf && (
             <StatusFgf $tipo={statusFgf.tipo}>{statusFgf.texto}</StatusFgf>

@@ -19,14 +19,23 @@ const proxyUOL = {
   },
 };
 
+const proxySuperPlacar = {
+  '/superplacar': {
+    target: 'https://superplacar.com.br',
+    changeOrigin: true,
+    secure: true,
+    rewrite: (path) => path.replace(/^\/superplacar/, ''),
+  },
+};
+
 export default defineConfig({
   plugins: [react()],
   server: {
     port: 5174,
     open: false,
-    proxy: { ...proxyFGF, ...proxyUOL },
+    proxy: { ...proxyFGF, ...proxyUOL, ...proxySuperPlacar },
   },
   preview: {
-    proxy: { ...proxyFGF, ...proxyUOL },
+    proxy: { ...proxyFGF, ...proxyUOL, ...proxySuperPlacar },
   },
 });

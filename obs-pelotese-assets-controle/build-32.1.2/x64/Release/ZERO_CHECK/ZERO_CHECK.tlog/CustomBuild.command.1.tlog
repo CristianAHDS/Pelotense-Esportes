@@ -1,0 +1,10 @@
+^C:\USERS\TSICR\ONEDRIVE\ÁREA DE TRABALHO\PELOTENSE-ESPORTES\OBS-PELOTESE-ASSETS-CONTROLE\BUILD-32.1.2\CMAKEFILES\E1F56250B910E4EC17F559586D90F0A0\GENERATE.STAMP.RULE
+setlocal
+C:\Users\tsicr\AppData\Local\Microsoft\WinGet\Packages\BrechtSanders.WinLibs.POSIX.UCRT_Microsoft.Winget.Source_8wekyb3d8bbwe\mingw64\bin\cmake.exe "-SC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-pelotese-assets-controle" "-BC:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-pelotese-assets-controle/build-32.1.2" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/tsicr/OneDrive/Área de Trabalho/Pelotense-Esportes/obs-pelotese-assets-controle/build-32.1.2/obs-pelotese-assets-controle.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotese-assets-controle\build-32.1.2\CMakeFiles\e1f56250b910e4ec17f559586d90f0a0\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{68D01734-86FC-3D79-9879-1867D3A9461D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

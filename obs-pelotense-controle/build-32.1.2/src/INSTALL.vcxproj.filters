@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\tsicr\OneDrive\Área de Trabalho\Pelotense-Esportes\obs-pelotense-controle\build-32.1.2\CMakeFiles\1c9857ff027720ecfbebb2a5a988e71b\INSTALL_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{8106B4FD-099F-305F-AF21-B673CCEF37E6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

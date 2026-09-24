@@ -2,6 +2,44 @@
 
 ## 24/09/2026
 
+### Tabela: dados agora vêm do SuperPlacar
+
+- Nova fonte de dados da classificação: **`https://superplacar.com.br/campeonato/55/gaucho-serie-a2/`** (substitui a FGF para a tabela).
+- Novo `src/services/superPlacarService.js`: busca via proxy local `/superplacar...` (com fallback para a URL direta), parseia as linhas `.linha.classificacao` (posição, nome, P, J, V, E, D, GP, GC), normaliza nomes (`nomeCanonico`) e casa com os times locais via `resolverCasamentos` → `aplicarEstatisticas`.
+- `vite.config.js`: proxy `/superplacar` adicionado a `server` e `preview`.
+- `Tabela`, `TabelaTop9`, `TabelaCompacta` e `ControleTabela` passam a usar `importarClassificacaoSuperPlacar` (mantida a atualização automática a cada 30s; botão/status do controle renomeados para SuperPlacar).
+- Testes `src/services/superPlacarService.test.js`: parser e casamento dos 16 times validados.
+
+### Tabela: atualização automática a cada 30s
+
+- Overlays `Tabela`, `TabelaCompacta` e `TabelaTop9` agora buscam a classificação da FGF a cada **30 segundos** (`setInterval` com `forcar: true`), mantendo os dados atualizados em tempo real. O intervalo é limpo no desmonte do componente.
+
+### Tabela: classificação atualizada (SuperPlacar, 13ª rodada)
+
+- Atualizados os dados padrão da tabela com a classificação do site **SuperPlacar** (13ª rodada): Passo Fundo 29 pts (líder), Veranópolis 25, União Frederiquense e Esportivo 24, Brasil-FAR 23, Santa Cruz 22, Brasil e Apafut 21, Aimoré 20...
+- Reordenados os times no estado padrão conforme a classificação e rodada ajustada para 13.
+- STORAGE_KEY/BroadcastChannel/`MSG_TIPO` da tabela versionados para `v4`, garantindo que os dispositivos já abertos recarreguem o estado atualizado.
+
+### Tabela Top 9 (novo overlay)
+
+- Novo overlay `src/pages/TabelaTop9.jsx` idêntico à tabela principal, exibindo somente os **9 primeiros colocados**.
+- Reutiliza o `tabelaStore`/`ControleTabela` existentes (mesmos dados, sincronização local/nuvem e edição pelo controle da Tabela); calcula as zonas (G-8/rebaixamento) considerando o total de times, não apenas os exibidos.
+- Rota `/tabela-top9` em `App.jsx` e card "Tabela Top 9 · Live" na seção Gauchão A2 do `Hub.jsx`.
+
+### Plugin OBS novo: obs-pelotese-assets-controle (1 botão, accent #6366f1)
+
+- Novo plugin OBS derivado do `obs-pelotense-controle` com **um único painel/botão "ASSETS"** que abre o link `https://pelotense-assets.netlify.app/testes`.
+- **Identidade**: cor de destaque `#6366f1` (indigo) em todos os elementos (barra lateral + cabeçalho "Pelotense ***Assets***" do bloco na aba Controles, ícone, hover/precionado, pulso), DLL `obs-pelotese-assets-controle.dll`.
+- Mantém o mesmo motor do plugin original: dock destacável criado via `obs_browser_init_panel`, inicia fechado (1700×900) e centralizado na tela, recriação do widget CEF ao reabrir, título do dock dinâmico via `PainelPonte`, pulso no botão enquanto aberto.
+- URLs sobrescrevíveis por `obs_module_config_path("url.txt")` (1ª linha) ou variável `PELOTESE_ASSETS_CONTROLE_URL`.
+- Compilado com a cadeia do OBS 32.1.2 (headers tag 32.1.2 + deps Qt 6.8.3 `2025-08-23`) → `build-32.1.2/obs-plugins/64bit/Release/obs-pelotese-assets-controle.dll` (51712 bytes), `LoadLibraryEx` contra o OBS 32.1.2 instalado: `CARREGOU OK`. DLL copiada para `dist/`.
+
+### Plugin OBS: compatibilidade com OBS 32.1.2 (Qt 6.8.3)
+
+- **Problema**: a DLL era compilada contra o obs-studio master (32.2.1) + deps `obs-deps-qt6-2026-08-26` (Qt 6.11.1). No OBS 32.1.2 instalado (Qt 6.8.3), `LoadLibrary` falhava com **erro 127** (símbolo Qt importado inexistente no 6.8.3) → OBS mostrava "Não foi possível carregar os seguintes plugins do OBS: obs-pelotense-controle" e o log registrava `Module '../../obs-plugins/64bit/obs-pelotense-controle.dll' not loaded`.
+- **Solução**: novo diretório de build `obs-pelotense-controle/build-32.1.2` com headers do obs-studio no **tag 32.1.2** (worktree local `obs-studio@32.1.2`) + deps `windows-deps-qt6-2025-08-23` (**Qt 6.8.3**, mesmo do OBS instalado), reutilizando `obs-build` (obs.lib/obs-frontend-api.lib, simbologia estável).
+- **Validação**: carga testada via `LoadLibraryEx` contra o OBS 32.1.2 instalado → `CARREGOU OK`; DLL de 56320 bytes gerada em `build-32.1.2/obs-plugins/64bit/Release/` e copiada para `dist/`.
+
 ### README: instruções de compilação e instalação do plugin OBS
 
 - Adicionada seção "Plugin OBS (`obs-pelotense-controle`)" no `README.md` com o funcionamento (docks Jogo 1/Jogo 2, título dinâmico, pulso), pré-requisitos (MSVC, CMake, Qt6/`obs-deps-qt6`, fonte+build do obs-studio), como configurar/compilar (`cmake -S . -B build -A x64` com `OBS_STUDIO_SRC`/`OBS_STUDIO_BUILD`/`CMAKE_PREFIX_PATH`), como instalar a DLL no OBS (`obs-plugins/64bit` + `data/obs-plugins/obs-pelotense-controle`) e os 3 níveis de URL dos painéis (padrão, `url.txt`, variáveis `PELOTENSE_CONTROLE_URL_JOGO1`/`_JOGO2`).

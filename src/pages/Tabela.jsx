@@ -9,7 +9,7 @@ import {
   ordenarClassificacao,
   recarregar,
 } from '../store/tabelaStore';
-import { importarClassificacaoFGF } from '../services/fgfService';
+import { importarClassificacaoSuperPlacar } from '../services/superPlacarService';
 import { Escudo } from '../components/Escudo';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
 import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
@@ -314,9 +314,13 @@ export default function Tabela() {
   const painelRef = useRef(null);
   useEffect(() => {
     recarregar();
-    importarClassificacaoFGF().catch((e) =>
-      console.warn('Tabela: falha ao atualizar da FGF.', e),
-    );
+    const atualizar = () =>
+      importarClassificacaoSuperPlacar({ forcar: true }).catch((e) =>
+        console.warn('Tabela: falha ao atualizar do SuperPlacar.', e),
+      );
+    atualizar();
+    const intervalo = setInterval(atualizar, 30_000);
+    return () => clearInterval(intervalo);
   }, []);
   const estado = usePlacarBroadcast({ getEstado, inscrever });
   const emPrevia = new URLSearchParams(window.location.search).has('previa');

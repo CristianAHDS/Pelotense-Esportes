@@ -120,6 +120,15 @@ const GAUCHAO_A2 = [
     glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
+    titulo: 'Tabela Top 9 · Live',
+    tag: 'LIVE',
+    descricao:
+      'Classificação completa como a tabela principal, exibindo somente os 9 primeiros colocados.',
+    rota: '/tabela-top9',
+    accent: '#a5ef1c ',
+    glow: 'rgba(165, 239, 28, 0.16)',
+  },
+  {
     rota: '/ultima-rodada',
     tag: 'ÚLTIMA RODADA',
     titulo: 'Última Rodada',
