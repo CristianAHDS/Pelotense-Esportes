@@ -42,8 +42,8 @@ import UltimaRodada from './pages/UltimaRodada';
 import ControleUltimaRodada from './pages/ControleUltimaRodada';
 import Artilheiros from './pages/Artilheiros';
 import ControleArtilheiros from './pages/ControleArtilheiros';
-import ProximasRodadas from './pages/ProximasRodadas';
-import ControleProximasRodadas from './pages/ControleProximasRodadas';
+import RodadaAtual from './pages/RodadaAtual';
+import ControleRodadaAtual from './pages/ControleRodadaAtual';
 import Brasileirao from './pages/Brasileirao';
 import ControleBrasileirao from './pages/ControleBrasileirao';
 import BrasileiraoCompacta from './pages/BrasileiraoCompacta';
@@ -149,10 +149,10 @@ export default function App() {
             path="/artilheiros/controle"
             element={<ControleArtilheiros />}
           />
-          <Route path="/proximas-rodadas" element={<ProximasRodadas />} />
+          <Route path="/rodada-atual" element={<RodadaAtual />} />
           <Route
-            path="/proximas-rodadas/controle"
-            element={<ControleProximasRodadas />}
+            path="/rodada-atual/controle"
+            element={<ControleRodadaAtual />}
           />
           <Route path="/pre-jogo" element={<PreJogo />} />
           <Route path="/pre-jogo/controle" element={<ControlePreJogo />} />

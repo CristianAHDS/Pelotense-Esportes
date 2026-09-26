@@ -11,7 +11,7 @@ import { describe, it, expect, vi } from 'vitest';
    estilos de export; o setEstado direto só existe em alguns. */
 
 /* Cobre as stores que expõem setEstado diretamente. As stores "objeto"
-   (artilheiros, brasileiraoCompacta, escalacao, proximasRodadas,
+   (artilheiros, brasileiraoCompacta, escalacao, rodadaAtual,
    substituicao, tabelaCompacta, ultimaRodada) que não expõem setEstado no
    módulo são cobertas por testes dedicados (ex.: ultimaRodadaStore.test.js),
    pois sem setEstado não dá para semear uma mudança genérica. */

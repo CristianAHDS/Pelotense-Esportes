@@ -35,8 +35,8 @@ const ESTILO_ACAO = [
   { arquivo: 'ultimaRodadaStore.js', chave: 'ultimaRodada', campo: 'titulo' },
   { arquivo: 'artilheirosStore.js', chave: 'artilheiros', campo: 'titulo' },
   {
-    arquivo: 'proximasRodadasStore.js',
-    chave: 'proximasRodadas',
+    arquivo: 'rodadaAtualStore.js',
+    chave: 'rodadaAtual',
     campo: 'titulo',
   },
   { arquivo: 'escalacaoStore.js', chave: 'escalacao', campo: 'nomeCasa' },

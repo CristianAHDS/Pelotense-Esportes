@@ -1,9 +1,9 @@
 import { inscreverNuvem, publicarNuvem } from '../lib/sincronizacaoNuvem.js';
 
-const STORAGE_KEY = 'pelotense:proximas-rodadas:v1';
-const CHANNEL_NAME = 'broadcast:sync-proximas-rodadas-v1';
-const MSG_TIPO = 'estado:proximas-rodadas:v1';
-const CANAL_NUVEM = 'proximas-rodadas';
+const STORAGE_KEY = 'pelotense:rodada-atual:v1';
+const CHANNEL_NAME = 'broadcast:sync-rodada-atual-v1';
+const MSG_TIPO = 'estado:rodada-atual:v1';
+const CANAL_NUVEM = 'rodada-atual';
 
 const RENOME_SIGLAS = { GVA: 'GUA', '*': 'BRA' };
 
@@ -17,18 +17,23 @@ function normalizarEstado(estadoAtual) {
     for (const jogo of rodada.jogos || []) {
       jogo.casaSigla = normalizarSigla(jogo.casaSigla);
       jogo.foraSigla = normalizarSigla(jogo.foraSigla);
+      jogo.casaGols = String(jogo.casaGols ?? '').replace(/[^0-9]/g, '').slice(0, 2);
+      jogo.foraGols = String(jogo.foraGols ?? '').replace(/[^0-9]/g, '').slice(0, 2);
     }
   }
   return estadoAtual;
 }
 
 function rodadaPadrao() {
-  return { titulo: '', jogos: [{ casaSigla: '', foraSigla: '' }] };
+  return {
+    titulo: '',
+    jogos: [{ casaSigla: '', casaGols: '', foraGols: '', foraSigla: '' }],
+  };
 }
 
 const estadoPadrao = {
   visivel: true,
-  titulo: 'Próxima Rodada',
+  titulo: 'Rodada Atual',
   rodadas: [rodadaPadrao()],
 };
 
@@ -44,7 +49,7 @@ function carregar() {
       return normalizarEstado(estado);
     }
   } catch (e) {
-    console.warn('Próxima Rodada: falha ao carregar estado.', e);
+    console.warn('Rodada Atual: falha ao carregar estado.', e);
   }
   return structuredClone(estadoPadrao);
 }
@@ -66,7 +71,7 @@ function persistir() {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(estado));
   } catch (e) {
-    console.warn('Próxima Rodada: falha ao persistir estado.', e);
+    console.warn('Rodada Atual: falha ao persistir estado.', e);
   }
 }
 
@@ -137,7 +142,7 @@ window.addEventListener('storage', (evento) => {
     try {
       aplicarEstadoRemoto(JSON.parse(evento.newValue));
     } catch (e) {
-      console.warn('Próxima Rodada: falha ao sincronizar via storage.', e);
+      console.warn('Rodada Atual: falha ao sincronizar via storage.', e);
     }
   }
 });
@@ -179,32 +184,33 @@ function atualizarJogo(indiceRodada, indiceJogo, campo, valor) {
   setEstado((estadoAtual) => {
     const jogo = estadoAtual.rodadas[indiceRodada]?.jogos[indiceJogo];
     if (!jogo) return estadoAtual;
-    jogo[campo] = String(valor).slice(0, 4).toUpperCase();
+    if (campo === 'casaGols' || campo === 'foraGols') {
+      jogo[campo] = String(valor).replace(/[^0-9]/g, '').slice(0, 2);
+    } else {
+      jogo[campo] = normalizarSigla(valor).slice(0, 4);
+    }
     return estadoAtual;
   });
 }
 
-/* Preenche de uma vez com os dados da FGF */
-function preencherDaFGF({ titulo, rodadas }) {
+/* Preenche a rodada atual com os dados do SuperPlacar */
+function preencherDaRodada({ titulo, jogos }) {
+  if (!Array.isArray(jogos) || !jogos.length) return;
+
+  const novaRodada = {
+    titulo: String(titulo || '').slice(0, 24).toUpperCase(),
+    jogos: jogos.map((j) => ({
+      casaSigla: normalizarSigla(j.casaSigla).slice(0, 4),
+      casaGols: String(j.casaGols ?? '').replace(/[^0-9]/g, '').slice(0, 2),
+      foraGols: String(j.foraGols ?? '').replace(/[^0-9]/g, '').slice(0, 2),
+      foraSigla: normalizarSigla(j.foraSigla).slice(0, 4),
+    })),
+  };
+
+  if (JSON.stringify(estado.rodadas) === JSON.stringify([novaRodada])) return;
+
   setEstado((estadoAtual) => {
-    if (titulo) estadoAtual.titulo = String(titulo).slice(0, 32).toUpperCase();
-
-    if (Array.isArray(rodadas) && rodadas.length) {
-      estadoAtual.rodadas = rodadas.map((r) => ({
-        titulo: String(r.titulo || '')
-          .slice(0, 24)
-          .toUpperCase(),
-        jogos: (r.jogos || []).map((j) => ({
-          casaSigla: String(j.casaSigla || '')
-            .slice(0, 4)
-            .toUpperCase(),
-          foraSigla: String(j.foraSigla || '')
-            .slice(0, 4)
-            .toUpperCase(),
-        })),
-      }));
-    }
-
+    estadoAtual.rodadas = [novaRodada];
     return estadoAtual;
   });
 }
@@ -218,7 +224,7 @@ function adicionarRodada() {
       }, 0) + 1;
     estadoAtual.rodadas.push({
       titulo: `RODADA ${proximo}`,
-      jogos: [{ casaSigla: '', foraSigla: '' }],
+      jogos: [{ casaSigla: '', casaGols: '', foraGols: '', foraSigla: '' }],
     });
     return estadoAtual;
   });
@@ -236,6 +242,8 @@ function adicionarJogo(indiceRodada) {
   setEstado((estadoAtual) => {
     estadoAtual.rodadas[indiceRodada]?.jogos.push({
       casaSigla: '',
+      casaGols: '',
+      foraGols: '',
       foraSigla: '',
     });
     return estadoAtual;
@@ -265,13 +273,13 @@ function ocultar() {
   });
 }
 
-export const proximasRodadas = {
+export const rodadaAtual = {
   getEstado,
   inscrever,
   atualizarCampo,
   atualizarRodada,
   atualizarJogo,
-  preencherDaFGF,
+  preencherDaRodada,
   adicionarRodada,
   removerRodada,
   adicionarJogo,

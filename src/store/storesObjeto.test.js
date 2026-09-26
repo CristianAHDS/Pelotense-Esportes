@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 
 /* Dedicada às stores "objeto" que NÃO expõem setEstado no módulo, apenas ações
-   (artilheiros, proximasRodadas, escalacao, substituicao, tabelaCompacta,
+   (artilheiros, rodadaAtual, escalacao, substituicao, tabelaCompacta,
    brasileiraoCompacta, ultimaRodada). Valida o mesmo contrato de sync entre
    abas usando cada ação real como gatilho de mudança. */
 
@@ -13,7 +13,7 @@ const CASOS = [
     esperado: 'TESTE',
   },
   {
-    arquivo: 'proximasRodadasStore.js',
+    arquivo: 'rodadaAtualStore.js',
     semear: (a) => a.atualizarCampo('titulo', 'TESTE'),
     marcar: (a) => a.getEstado().titulo,
     esperado: 'TESTE',

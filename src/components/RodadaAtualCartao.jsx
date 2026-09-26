@@ -19,6 +19,16 @@ const Entrada = keyframes`
   }
 `;
 
+const Piscar = keyframes`
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+`;
+
 const Quadro = styled.div`
   display: flex;
   flex-direction: column;
@@ -84,6 +94,7 @@ const Topo = styled.header`
     padding: 7px 16px;
     border-radius: 999px;
     white-space: nowrap;
+    animation: ${Piscar} 1.8s ease-in-out infinite;
   }
 `;
 
@@ -144,11 +155,27 @@ const BlocoTime = styled.div`
   }
 `;
 
-const Vs = styled.span`
+const Placar = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: ${({ theme }) => theme.fontes.titulo};
-  font-size: 0.78rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.cores.textoVideoFino};
+  letter-spacing: 1px;
+  color: ${({ theme }) => theme.cores.texto};
+  min-width: 64px;
+  justify-content: center;
+
+  .x {
+    font-size: 0.78rem;
+    color: ${({ theme }) => theme.cores.textoVideoFino};
+  }
+
+  .vazio {
+    font-size: 0.78rem;
+    color: ${({ theme }) => theme.cores.textoVideoFino};
+  }
 `;
 
 const Vazio = styled.span`
@@ -158,8 +185,8 @@ const Vazio = styled.span`
   color: ${({ theme }) => theme.cores.textoVideoFino};
 `;
 
-/* dados: estado do proximasRodadasStore */
-export const ProximasRodadasCartao = forwardRef(function ProximasRodadasCartao(
+/* dados: estado do rodadaAtualStore */
+export const RodadaAtualCartao = forwardRef(function RodadaAtualCartao(
   { dados },
   ref,
 ) {
@@ -181,44 +208,57 @@ export const ProximasRodadasCartao = forwardRef(function ProximasRodadasCartao(
     <Quadro ref={ref}>
       <Topo>
         <div>
-          <h1>{dados.titulo || 'Próxima Rodada'}</h1>
+          <h1>{dados.titulo || 'Rodada Atual'}</h1>
           <span className="sub">
-            Jogos · Temporada {new Date().getFullYear()}
+            Jogos ao vivo · Temporada {new Date().getFullYear()}
           </span>
         </div>
-        <span className="selo">AGENDA</span>
+        <span className="selo">AO VIVO</span>
       </Topo>
 
       <Corpo>
-        {(dados.rodadas || []).slice(0, 1).map((rodada, ri) => (
+        {(dados.rodadas || []).map((rodada, ri) => (
           <Rodada key={`rodada-${ri}`}>
             <RodadaTitulo>{rodada.titulo || `RODADA ${ri + 1}`}</RodadaTitulo>
-            {(rodada.jogos || []).map((jogo, ji) => (
-              <LinhaJogo key={`jogo-${ri}-${ji}`}>
-                <BlocoTime $lado="casa">
-                  <Escudo
-                    cor="#1f1f1f"
-                    sigla={jogo.casaSigla}
-                    url={urlEscudo(jogo.casaSigla)}
-                    tamanho={26}
-                  />
-                  <span className="sigla">{nomeTime(jogo.casaSigla)}</span>
-                </BlocoTime>
-                <Vs>×</Vs>
-                <BlocoTime $lado="fora">
-                  <span className="sigla">{nomeTime(jogo.foraSigla)}</span>
-                  <Escudo
-                    cor="#1f1f1f"
-                    sigla={jogo.foraSigla}
-                    url={urlEscudo(jogo.foraSigla)}
-                    tamanho={26}
-                  />
-                </BlocoTime>
-              </LinhaJogo>
-            ))}
+            {(rodada.jogos || []).map((jogo, ji) => {
+              const temPlacar = jogo.casaGols !== '' || jogo.foraGols !== '';
+              return (
+                <LinhaJogo key={`jogo-${ri}-${ji}`}>
+                  <BlocoTime $lado="casa">
+                    <Escudo
+                      cor="#1f1f1f"
+                      sigla={jogo.casaSigla}
+                      url={urlEscudo(jogo.casaSigla)}
+                      tamanho={26}
+                    />
+                    <span className="sigla">{nomeTime(jogo.casaSigla)}</span>
+                  </BlocoTime>
+                  <Placar>
+                    {temPlacar ? (
+                      <>
+                        <span>{jogo.casaGols || 0}</span>
+                        <span className="x">×</span>
+                        <span>{jogo.foraGols || 0}</span>
+                      </>
+                    ) : (
+                      <span className="vazio">×</span>
+                    )}
+                  </Placar>
+                  <BlocoTime $lado="fora">
+                    <span className="sigla">{nomeTime(jogo.foraSigla)}</span>
+                    <Escudo
+                      cor="#1f1f1f"
+                      sigla={jogo.foraSigla}
+                      url={urlEscudo(jogo.foraSigla)}
+                      tamanho={26}
+                    />
+                  </BlocoTime>
+                </LinhaJogo>
+              );
+            })}
           </Rodada>
         ))}
-        {!temJogos && <Vazio>Sem jogos agendados</Vazio>}
+        {!temJogos && <Vazio>Sem jogos na rodada atual</Vazio>}
       </Corpo>
     </Quadro>
   );

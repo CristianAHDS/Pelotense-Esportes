@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Header } from '../components/Header';
-import { PainelProximasRodadas } from '../components/PainelProximasRodadas';
+import { PainelRodadaAtual } from '../components/PainelRodadaAtual';
 import { PreviaOverlay } from '../components/PreviaOverlay';
 
 const Container = styled.main`
@@ -14,13 +14,13 @@ const Conteudo = styled.div`
   margin-top: 40px;
 `;
 
-export default function ControleProximasRodadas() {
+export default function ControleRodadaAtual() {
   return (
     <Container>
-      <Header subtitulo="Controle · Próxima Rodada" />
+      <Header subtitulo="Controle · Rodada Atual" />
       <Conteudo>
-        <PainelProximasRodadas />
-        <PreviaOverlay rota="/proximas-rodadas" altura={420} />
+        <PainelRodadaAtual />
+        <PreviaOverlay rota="/rodada-atual" altura={420} />
       </Conteudo>
     </Container>
   );

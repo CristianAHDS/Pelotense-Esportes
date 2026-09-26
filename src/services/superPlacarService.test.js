@@ -1,5 +1,11 @@
-import { describe, it, expect } from 'vitest';
-import { extrairClassificacao } from './superPlacarService';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import {
+  extrairClassificacao,
+  extrairRodadaDaPagina,
+  extrairRodadaDoJson,
+  importarUltimaRodadaSuperPlacar,
+  importarRodadaAtualSuperPlacar,
+} from './superPlacarService';
 import { resolverCasamentos } from './fgfService';
 import { getEstado } from '../store/tabelaStore';
 
@@ -87,5 +93,193 @@ describe('superPlacarService — integração com o store da tabela', () => {
       timesLocais.map((_, i) => i),
     );
     expect(pares.find((p) => p.indice === 0).stats.p).toBe(29);
+  });
+});
+
+const HTML_RODADA = `
+<div class="rodada">
+  <div class="navegacao">
+    <a href="#" class="nav-prev-rodada" data-partida="69980"></a>
+    <div class="titulo-rodada"><h2>15ª rodada</h2></div>
+    <a href="#" class="nav-prox-rodada" data-partida="69980"></a>
+  </div>
+  <div class="lista-jogos">
+    <div class="jogo em-breve" data-id="69980">
+      <div class="resultado partida">
+        <div class="time time-1"><img alt="Aimoré"><a href="equipe/1769/aimore/" class="nome-time">Aimoré</a></div>
+        <div class="placar"> - </div>
+        <div class="time time-2"><img alt="Esportivo"><a href="equipe/2242/esportivo/" class="nome-time">Esportivo</a></div>
+      </div>
+    </div>
+    <div class="jogo encerrado" data-id="69973">
+      <div class="resultado partida">
+        <div class="time time-1"><a href="equipe/36/brasil/" class="nome-time">Brasil</a></div>
+        <div class="placar">2 - 0</div>
+        <div class="time time-2"><a href="equipe/2339/gloria/" class="nome-time">Glória</a></div>
+      </div>
+    </div>
+  </div>
+</div>`;
+
+const JSON_RODADA = {
+  rodada: '14ª rodada',
+  partidas: [
+    {
+      id: 69973,
+      status: 'encerrado',
+      nmMand: 'Brasil',
+      nmAdv: 'Glória',
+      qtdGolsMand: 2,
+      qtdGolsAdv: 0,
+    },
+    {
+      id: 69980,
+      status: 'em-breve',
+      nmMand: 'Aimoré',
+      nmAdv: 'Esportivo',
+      qtdGolsMand: 0,
+      qtdGolsAdv: 0,
+    },
+  ],
+};
+
+describe('superPlacarService — extrairRodadaDaPagina', () => {
+  it('lê título, id da primeira partida e placares', () => {
+    const rodada = extrairRodadaDaPagina(HTML_RODADA);
+    expect(rodada.titulo).toBe('15ª rodada');
+    expect(rodada.numero).toBe(15);
+    expect(rodada.primeiraPartida).toBe('69980');
+    expect(rodada.jogos.length).toBe(2);
+    expect(rodada.realizados).toBe(1);
+    expect(rodada.jogos[1]).toMatchObject({
+      casaNome: 'Brasil',
+      foraNome: 'Glória',
+      casaGols: '2',
+      foraGols: '0',
+    });
+    expect(rodada.jogos[0].casaGols).toBe('');
+  });
+});
+
+describe('superPlacarService — extrairRodadaDoJson', () => {
+  it('lê a rodada e zera o placar de jogos não realizados', () => {
+    const rodada = extrairRodadaDoJson(JSON_RODADA);
+    expect(rodada.titulo).toBe('14ª rodada');
+    expect(rodada.numero).toBe(14);
+    expect(rodada.primeiraPartida).toBe('69973');
+    expect(rodada.realizados).toBe(1);
+    expect(rodada.jogos[0]).toMatchObject({
+      casaNome: 'Brasil',
+      foraNome: 'Glória',
+      casaGols: '2',
+      foraGols: '0',
+    });
+    expect(rodada.jogos[1].casaGols).toBe('');
+  });
+});
+
+const HTML_RODADA_SEM_PLACAR = `
+<div class="rodada">
+  <div class="navegacao">
+    <a href="#" class="nav-prev-rodada" data-partida="69980"></a>
+    <div class="titulo-rodada"><h2>15ª rodada</h2></div>
+  </div>
+  <div class="lista-jogos">
+    <div class="jogo em-breve" data-id="69980">
+      <div class="resultado partida">
+        <div class="time time-1"><a href="equipe/1769/aimore/" class="nome-time">Aimoré</a></div>
+        <div class="placar"> - </div>
+        <div class="time time-2"><a href="equipe/2242/esportivo/" class="nome-time">Esportivo</a></div>
+      </div>
+    </div>
+  </div>
+</div>`;
+
+const HTML_PAGINA = `${HTML_CLASSIFICACAO}${HTML_RODADA_SEM_PLACAR}`;
+
+const JSON_ANTERIOR = {
+  status: true,
+  rodada: '14ª rodada',
+  partidas: [
+    {
+      id: 69973,
+      status: 'encerrado',
+      nmMand: 'Brasil',
+      nmAdv: 'Glória',
+      qtdGolsMand: 2,
+      qtdGolsAdv: 0,
+    },
+    {
+      id: 69977,
+      status: 'encerrado',
+      nmMand: 'Passo Fundo',
+      nmAdv: 'Guarani-VA',
+      qtdGolsMand: 2,
+      qtdGolsAdv: 1,
+    },
+  ],
+};
+
+describe('superPlacarService — importarUltimaRodadaSuperPlacar', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('pega automaticamente a última rodada com jogos e atualiza o título', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url) => {
+        if (String(url).includes('rodada/anterior/69980')) {
+          return { ok: true, json: async () => JSON_ANTERIOR };
+        }
+        return { ok: true, text: async () => HTML_PAGINA };
+      }),
+    );
+
+    const dados = await importarUltimaRodadaSuperPlacar();
+    expect(dados.titulo).toBe('14ª rodada');
+    expect(dados.origem).toBe('rede');
+    expect(dados.jogos.length).toBe(2);
+    expect(dados.jogos[0]).toMatchObject({
+      casaSigla: 'BRA',
+      foraSigla: 'GLO',
+      casaGols: '2',
+      foraGols: '0',
+    });
+    expect(dados.jogos[1]).toMatchObject({
+      casaSigla: 'PAS',
+      foraSigla: 'GUA',
+    });
+  });
+});
+
+describe('superPlacarService — importarRodadaAtualSuperPlacar', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('usa a rodada exibida no site (sem voltar) com placares ao vivo', async () => {
+    const chamadas = [];
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url) => {
+        chamadas.push(String(url));
+        return { ok: true, text: async () => `${HTML_CLASSIFICACAO}${HTML_RODADA}` };
+      }),
+    );
+
+    const dados = await importarRodadaAtualSuperPlacar({ forcar: true });
+    expect(dados.titulo).toBe('15ª rodada');
+    expect(dados.origem).toBe('rede');
+    expect(dados.jogos.length).toBe(2);
+    expect(dados.jogos[0]).toMatchObject({ casaSigla: 'AIM', foraSigla: 'ESP' });
+    expect(dados.jogos[0].casaGols).toBe('');
+    expect(dados.jogos[1]).toMatchObject({
+      casaSigla: 'BRA',
+      foraSigla: 'GLO',
+      casaGols: '2',
+      foraGols: '0',
+    });
+    expect(chamadas.some((u) => u.includes('rodada/anterior'))).toBe(false);
   });
 });

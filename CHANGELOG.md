@@ -2,6 +2,22 @@
 
 ## 26/09/2026
 
+### "Próxima Rodada" vira "Rodada Atual" com dados ao vivo do SuperPlacar
+
+- Módulo renomeado por completo: `proximasRodadasStore` → `rodadaAtualStore` (export `rodadaAtual`), `ProximasRodadas*` → `RodadaAtual*` (overlay, cartão, painel e controle). Rotas `/proximas-rodadas` → `/rodada-atual` (+ `/rodada-atual/controle`); card do Hub atualizado.
+- Fonte de dados 100% SuperPlacar: nova `importarRodadaAtualSuperPlacar` em `superPlacarService.js` lê a rodada exibida no site (sem voltar para rodadas anteriores) com os placares em tempo real. **Sem nenhuma chamada à FGF** neste módulo.
+- Overlay atualiza sozinho a cada **30s** (`setInterval`, `forcar: true`) e grava no `rodadaAtualStore`; o painel tem o botão manual "Puxar Rodada Atual do SuperPlacar".
+- Store agora guarda `casaGols`/`foraGols` por jogo e a ação `preencherDaRodada({ titulo, jogos })`; cartão exibe o placar ao vivo (selo "AO VIVO") com fallback `×` para jogos sem placar.
+- Testes: `superPlacarService.test.js` cobre a rodada atual; `storesObjeto`/`syncP2P`/`syncContrato` apontam para `rodadaAtualStore`.
+
+### Última Rodada: dados agora vêm do SuperPlacar
+
+- `PainelUltimaRodada` deixou de puxar da FGF e passa a usar o SuperPlacar (mesma fonte já usada pela Tabela). Botão renomeado para "Puxar dados do Super Placar".
+- A rodada é detectada **automaticamente** (não depende mais do número digitado): o serviço navega para trás até a última rodada com jogos realizados, e o `preencherDaFGF` atualiza **título e número da rodada** sozinho.
+- `superPlacarService.js`: novas funções `importarUltimaRodadaSuperPlacar`, `extrairRodadaDaPagina` (lista de jogos do HTML) e `extrairRodadaDoJson` (resposta de `/rodada/anterior/{id}`). A rodada exibida costuma ser a próxima (sem placares), então o serviço navega para trás até a última com jogos realizados.
+- Nomes/placares são convertidos para siglas locais via `variantesNome`/`nomeCanonico` (`resolverSigla`), e a classificação usa o mesmo parser `.linha.classificacao`. Cache próprio `pelotense:ultima-rodada:superplacar:v1`.
+- Testes novos em `superPlacarService.test.js` (parser de rodada HTML + JSON + importação automática).
+
 ### FGF: "Brasil SAF *" (marcador de rodapé) quebrando as tabelas
 
 - **Problema**: a FGF passou a marcar o clube com `*` no `title` e na célula de sigla (`Brasil SAF *` / `3º BRA *`). O parser pegava o **último token** da célula como sigla, que passou a ser `"*"` — o Brasil de Pelotas não era mais reconhecido em nenhum módulo (Última Rodada, Próxima Rodada, Artilheiros mostravam `*` no lugar do escudo/`BRA`, e a classificação não casava por sigla).

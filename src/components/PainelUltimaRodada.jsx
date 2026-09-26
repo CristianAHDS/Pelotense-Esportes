@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { ultimaRodada } from '../store/ultimaRodadaStore';
-import { importarUltimaRodadaFGF } from '../services/fgfService';
+import { importarUltimaRodadaSuperPlacar } from '../services/superPlacarService';
 import { SeletorSigla } from './SeletorSigla';
 
 const Cartao = styled.section`
@@ -229,20 +229,14 @@ export function PainelUltimaRodada() {
   const [erro, setErro] = useState('');
   const [aviso, setAviso] = useState('');
 
-  async function puxarFGF() {
+  async function puxarSuperPlacar() {
     setCarregando(true);
     setErro('');
     setAviso('');
     try {
-      const rodadaAlvo = estado.rodadaNumero
-        ? Number(estado.rodadaNumero)
-        : (() => {
-            const m = (estado.titulo || '').match(/(\d+)/);
-            return m ? Number(m[1]) : 0;
-          })();
-      const dados = await importarUltimaRodadaFGF({ rodadaAlvo });
+      const dados = await importarUltimaRodadaSuperPlacar();
       if (!dados.jogos?.length) {
-        setAviso('Nenhum jogo realizado encontrado na FGF.');
+        setAviso('Nenhum jogo realizado encontrado no SuperPlacar.');
       } else {
         ultimaRodada.preencherDaFGF(dados);
         setAviso(
@@ -250,8 +244,8 @@ export function PainelUltimaRodada() {
         );
       }
     } catch (e) {
-      console.warn('Última rodada: falha ao buscar FGF.', e);
-      setErro('Não foi possível acessar a FGF agora. Tente novamente.');
+      console.warn('Última rodada: falha ao buscar SuperPlacar.', e);
+      setErro('Não foi possível acessar o SuperPlacar agora. Tente novamente.');
     } finally {
       setCarregando(false);
     }
@@ -364,8 +358,8 @@ export function PainelUltimaRodada() {
       </Grade>
 
       <Acoes>
-        <Botao $primario onClick={puxarFGF} disabled={carregando}>
-          {carregando ? 'Buscando…' : 'Puxar dados da FGF'}
+        <Botao $primario onClick={puxarSuperPlacar} disabled={carregando}>
+          {carregando ? 'Buscando…' : 'Puxar dados do Super Placar'}
         </Botao>
         {estado.classificacaoVisivel === false ? (
           <Botao onClick={() => ultimaRodada.mostrarClassificacao()}>

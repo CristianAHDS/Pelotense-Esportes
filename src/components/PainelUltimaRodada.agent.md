@@ -1,11 +1,11 @@
 # PainelUltimaRodada (agent docs)
 
-Control form (painel) for the "Última Rodada" module. Edits the `ultimaRodada` store with results of the latest round and post-round classification, plus a "Puxar dados da FGF" importer.
+Control form (painel) for the "Última Rodada" module. Edits the `ultimaRodada` store with results of the latest round and post-round classification, plus a "Puxar dados do Super Placar" importer.
 
 ## Store / Hook
 - `usePlacarBroadcast(ultimaRodada)` from `../store/ultimaRodadaStore`.
 - Uses actions: `atualizarCampo`, `atualizarJogo`, `removerJogo`, `adicionarJogo`, `atualizarPosicao`, `removerPosicao`, `adicionarPosicao`, `mostrarClassificacao`, `ocultarClassificacao`, mostrar/`ocultar`, `preencherDaFGF`.
-- FGF: `importarUltimaRodadaFGF({ rodadaAlvo })` from `../services/fgfService`.
+- Dados: `importarUltimaRodadaSuperPlacar({ rodadaAlvo })` from `../services/superPlacarService`.
 
 ## Layout
 - Dark card (`#0d0d0d`, `#1f1f1f` border, `margin-top:40px`), Rajdhani title with green `●`.
@@ -16,7 +16,7 @@ Control form (painel) for the "Última Rodada" module. Edits the `ultimaRodada` 
 - Buttons: "+ Adicionar jogo", "+ Adicionar time".
 
 ## Actions bar
-- "Puxar dados da FGF" (primary) with loading/error/aviso feedback — parses `estado.titulo` for a rodada number to fetch that round.
+- "Puxar dados do Super Placar" (primary) with loading/error/aviso feedback — busca automaticamente a última rodada com jogos (navega para trás via `/rodada/anterior/{id}`). Não depende mais do número digitado: título e `rodadaNumero` são atualizados sozinhos.
 - Toggle "Mostrar/Ocultar classificação" (controls `classificacaoVisivel`).
 - "Mostrar overlay" / "Ocultar overlay".
 

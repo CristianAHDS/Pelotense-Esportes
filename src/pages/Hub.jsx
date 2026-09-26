@@ -147,11 +147,11 @@ const GAUCHAO_A2 = [
     glow: 'rgba(165, 239, 28, 0.16)',
   },
   {
-    rota: '/proximas-rodadas',
-    tag: 'Próxima Rodada',
-    titulo: 'Próxima Rodada',
+    rota: '/rodada-atual',
+    tag: 'Rodada Atual',
+    titulo: 'Rodada Atual',
     descricao:
-      'Agenda dos próximos confrontos do Gauchão A2 com escudos, sincronizada com a FGF.',
+      'Jogos da rodada corrente do Gauchão A2 com placares ao vivo do SuperPlacar, atualizados a cada 30s.',
     accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
   },

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
-import { proximasRodadas } from '../store/proximasRodadasStore';
-import { importarProximasRodadasFGF } from '../services/fgfService';
+import { rodadaAtual } from '../store/rodadaAtualStore';
+import { importarRodadaAtualSuperPlacar } from '../services/superPlacarService';
 
 const Cartao = styled.section`
   background: #0d0d0d;
@@ -90,9 +90,17 @@ const Entrada = styled.input`
   }
 `;
 
+const EntradaNum = styled(Entrada)`
+  padding: 9px 4px;
+  text-align: center;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+`;
+
 const LinhaJogo = styled.div`
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 44px minmax(0, 1fr) 26px;
+  grid-template-columns: minmax(0, 1fr) 46px 20px 46px minmax(0, 1fr) 26px;
   gap: 8px;
   align-items: center;
 
@@ -194,29 +202,29 @@ const Aviso = styled.p`
   color: #f59e0b;
 `;
 
-export function PainelProximasRodadas() {
-  const estado = usePlacarBroadcast(proximasRodadas);
+export function PainelRodadaAtual() {
+  const estado = usePlacarBroadcast(rodadaAtual);
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState('');
   const [aviso, setAviso] = useState('');
 
-  async function puxarFGF() {
+  async function puxarSuperPlacar() {
     setCarregando(true);
     setErro('');
     setAviso('');
     try {
-      const dados = await importarProximasRodadasFGF();
-      if (!dados.rodadas?.length) {
-        setAviso('Nenhuma próxima rodada encontrada na FGF.');
+      const dados = await importarRodadaAtualSuperPlacar({ forcar: true });
+      if (!dados.jogos?.length) {
+        setAviso('Nenhum jogo encontrado na rodada atual do SuperPlacar.');
       } else {
-        proximasRodadas.preencherDaFGF(dados);
+        rodadaAtual.preencherDaRodada(dados);
         setAviso(
-          `Próxima Rodada da FGF carregadas (${dados.rodadas.length} rodadas).`,
+          `${dados.titulo || 'Rodada atual'} carregada (${dados.jogos.length} jogos).`,
         );
       }
     } catch (e) {
-      console.warn('Próxima Rodada: falha ao buscar FGF.', e);
-      setErro('Não foi possível acessar a FGF agora. Tente novamente.');
+      console.warn('Rodada Atual: falha ao buscar SuperPlacar.', e);
+      setErro('Não foi possível acessar o SuperPlacar agora. Tente novamente.');
     } finally {
       setCarregando(false);
     }
@@ -225,17 +233,17 @@ export function PainelProximasRodadas() {
   return (
     <Cartao>
       <Titulo>
-        <span>●</span> Próxima Rodada
+        <span>●</span> Rodada Atual
       </Titulo>
 
       <CampoTitulo>
         <Rotulo>Título</Rotulo>
         <Entrada
           value={estado.titulo}
-          placeholder="Próxima Rodada"
+          placeholder="Rodada Atual"
           maxLength={32}
           onChange={(e) =>
-            proximasRodadas.atualizarCampo('titulo', e.target.value)
+            rodadaAtual.atualizarCampo('titulo', e.target.value)
           }
         />
       </CampoTitulo>
@@ -248,17 +256,17 @@ export function PainelProximasRodadas() {
               placeholder={`RODADA ${ri + 1}`}
               maxLength={24}
               onChange={(e) =>
-                proximasRodadas.atualizarRodada(ri, 'titulo', e.target.value)
+                rodadaAtual.atualizarRodada(ri, 'titulo', e.target.value)
               }
             />
             <BotaoAdicionar
               style={{ width: 'auto', margin: 0 }}
-              onClick={() => proximasRodadas.adicionarJogo(ri)}
+              onClick={() => rodadaAtual.adicionarJogo(ri)}
             >
               + Jogo
             </BotaoAdicionar>
             <BotaoLinha
-              onClick={() => proximasRodadas.removerRodada(ri)}
+              onClick={() => rodadaAtual.removerRodada(ri)}
               title="Remover rodada"
             >
               ✕
@@ -272,30 +280,38 @@ export function PainelProximasRodadas() {
                 placeholder="CASA"
                 maxLength={4}
                 onChange={(e) =>
-                  proximasRodadas.atualizarJogo(
-                    ri,
-                    ji,
-                    'casaSigla',
-                    e.target.value,
-                  )
+                  rodadaAtual.atualizarJogo(ri, ji, 'casaSigla', e.target.value)
+                }
+              />
+              <EntradaNum
+                type="number"
+                min={0}
+                max={99}
+                value={jogo.casaGols}
+                onChange={(e) =>
+                  rodadaAtual.atualizarJogo(ri, ji, 'casaGols', e.target.value)
                 }
               />
               <Vs>×</Vs>
+              <EntradaNum
+                type="number"
+                min={0}
+                max={99}
+                value={jogo.foraGols}
+                onChange={(e) =>
+                  rodadaAtual.atualizarJogo(ri, ji, 'foraGols', e.target.value)
+                }
+              />
               <Entrada
                 value={jogo.foraSigla}
                 placeholder="FORA"
                 maxLength={4}
                 onChange={(e) =>
-                  proximasRodadas.atualizarJogo(
-                    ri,
-                    ji,
-                    'foraSigla',
-                    e.target.value,
-                  )
+                  rodadaAtual.atualizarJogo(ri, ji, 'foraSigla', e.target.value)
                 }
               />
               <BotaoLinha
-                onClick={() => proximasRodadas.removerJogo(ri, ji)}
+                onClick={() => rodadaAtual.removerJogo(ri, ji)}
                 title="Remover jogo"
               >
                 ✕
@@ -304,18 +320,18 @@ export function PainelProximasRodadas() {
           ))}
         </SecaoRodada>
       ))}
-      <BotaoAdicionar onClick={() => proximasRodadas.adicionarRodada()}>
+      <BotaoAdicionar onClick={() => rodadaAtual.adicionarRodada()}>
         + Adicionar rodada
       </BotaoAdicionar>
 
       <Acoes>
-        <Botao $primario onClick={puxarFGF} disabled={carregando}>
-          {carregando ? 'Buscando…' : 'Puxar Próxima Rodada da FGF'}
+        <Botao $primario onClick={puxarSuperPlacar} disabled={carregando}>
+          {carregando ? 'Buscando…' : 'Puxar Rodada Atual do SuperPlacar'}
         </Botao>
-        <Botao $primario onClick={() => proximasRodadas.mostrar()}>
+        <Botao $primario onClick={() => rodadaAtual.mostrar()}>
           Mostrar overlay
         </Botao>
-        <Botao onClick={() => proximasRodadas.ocultar()}>Ocultar overlay</Botao>
+        <Botao onClick={() => rodadaAtual.ocultar()}>Ocultar overlay</Botao>
       </Acoes>
 
       {(erro || aviso) && <Aviso>{erro || aviso}</Aviso>}
