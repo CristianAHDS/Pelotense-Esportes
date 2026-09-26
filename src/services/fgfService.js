@@ -6,7 +6,7 @@ import { nomeCanonico, variantesNome } from '../lib/nomesClubes.js';
 const CAMINHO_CLASSIFICACAO = '/competicoes/profissional/24/2026/4218';
 
 /* Enquanto o cache estiver fresco, nenhum acesso à rede é feito. */
-const CHAVE_CACHE = 'pelotense:tabela:fgf:v1';
+const CHAVE_CACHE = 'pelotense:tabela:fgf:v2';
 const TTL_CACHE_MS = 3 * 60 * 1000;
 
 /* Siglas usadas pela FGF -> siglas padrão da nossa tabela */
@@ -37,6 +37,26 @@ function normalizar(texto) {
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
     .replace(/[^a-z0-9]/g, '');
+}
+
+/* A FGF acrescenta marcadores de rodapé aos clubes ("Brasil SAF *",
+   "BRA *", "3º BRA *"). Esses marcadores são removidos antes de qualquer
+   casamento — sem isso a sigla virava "*" e nenhum time era reconhecido. */
+function limparMarcadores(texto) {
+  return String(texto || '')
+    .replace(/[*†‡•]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/* Sigla da célula "3ºBRA *" / "3º BRA *" — a posição vem grudada no texto
+   (o <b> e o <img> não têm espaço), então o ordinal é removido antes. */
+function extrairSigla(texto) {
+  const sigla = limparMarcadores(texto)
+    .replace(/^[\s\dº°ª.]+/, '')
+    .replace(/[^A-Za-z]+/g, ' ')
+    .trim();
+  return sigla ? sigla.split(/\s+/)[0].toUpperCase() : '';
 }
 
 function hashDe(dados) {
@@ -92,7 +112,7 @@ function numeroDe(texto) {
   return Number.isFinite(n) && n >= 0 ? n : 0;
 }
 
-function extrairClassificacao(html) {
+export function extrairClassificacao(html) {
   const doc = new DOMParser().parseFromString(html, 'text/html');
   const porChave = new Map();
 
@@ -106,18 +126,15 @@ function extrairClassificacao(html) {
       const imgNome = tr.querySelector(
         'td.posicao-time img[title], td.posicao-time2 img[title]',
       );
-      const nome = (imgNome?.getAttribute('title') || '').trim();
+      const nome = limparMarcadores(imgNome?.getAttribute('title') || '');
 
-      /* A célula da sigla vem como "5º BRA" (posição + sigla) */
-      const celulaSigla = (
-        tr.querySelector('td.posicao-time2')?.textContent || ''
-      ).trim();
-      const tokensSigla = celulaSigla.split(/\s+/).filter(Boolean);
-      const sigla = (tokensSigla[tokensSigla.length - 1] || '').toUpperCase();
+      /* A célula da sigla vem como "5º BRA" (posição + sigla) e pode trazer
+         marcadores de rodapé ("3º BRA *") */
+      const celulaSigla = tr.querySelector('td.posicao-time2')?.textContent || '';
+      const sigla = extrairSigla(celulaSigla);
 
       /* Posição vem junto na célula ("5º BRA") */
-      const posTexto = String(tokensSigla[0] || '').replace(/\D/g, '');
-      const pos = posTexto ? numeroDe(posTexto) : 0;
+      const pos = numeroDe(celulaSigla);
 
       if (!nome && !sigla) continue;
 
@@ -264,7 +281,7 @@ export async function importarClassificacaoFGF({ forcar = false } = {}) {
 
 /* ---------- Última rodada (jogos realizados + posições) ---------- */
 
-const CHAVE_CACHE_UR = 'pelotense:ultima-rodada:fgf:v3';
+const CHAVE_CACHE_UR = 'pelotense:ultima-rodada:fgf:v4';
 
 function mapaNomeParaSigla(dados) {
   const entradas = [];
@@ -320,10 +337,12 @@ function extrairUltimaRodada(html, entradas, rodadaAlvo = 0) {
     const jogos = [];
     let realizados = 0;
     for (const bloco of item.querySelectorAll('.carousel-conteudo')) {
-      const nomeCasa =
-        bloco.querySelector('.mandante img')?.getAttribute('title') || '';
-      const nomeFora =
-        bloco.querySelector('.visitante img')?.getAttribute('title') || '';
+      const nomeCasa = limparMarcadores(
+        bloco.querySelector('.mandante img')?.getAttribute('title') || '',
+      );
+      const nomeFora = limparMarcadores(
+        bloco.querySelector('.visitante img')?.getAttribute('title') || '',
+      );
       if (!nomeCasa && !nomeFora) continue;
 
       const mSlug = (
@@ -402,7 +421,7 @@ function gravarCacheUR(pacote) {
 
 /* ---------- Artilheiros (ranking de gols) ---------- */
 
-const CHAVE_CACHE_AR = 'pelotense:artilheiros:fgf:v1';
+const CHAVE_CACHE_AR = 'pelotense:artilheiros:fgf:v2';
 
 function extrairArtilheiros(html, entradas) {
   const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -416,9 +435,9 @@ function extrairArtilheiros(html, entradas) {
     const nome = (
       tds[2]?.querySelector('.uk-text-bold')?.textContent || ''
     ).trim();
-    const clube = (
-      tds[2]?.querySelector('.uk-text-muted')?.textContent || ''
-    ).trim();
+    const clube = limparMarcadores(
+      tds[2]?.querySelector('.uk-text-muted')?.textContent || '',
+    );
     const golsTexto = (tds[3]?.textContent || '').match(/(\d+)/);
 
     if (!nome) continue;
@@ -485,7 +504,7 @@ export async function importarArtilheirosFGF({ forcar = false } = {}) {
 
 /* ---------- Próxima Rodada (jogos agendados) ---------- */
 
-const CHAVE_CACHE_PR = 'pelotense:proximas-rodadas:fgf:v1';
+const CHAVE_CACHE_PR = 'pelotense:proximas-rodadas:fgf:v2';
 
 function extrairProximasRodadas(html, entradas, limite = 3) {
   const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -503,10 +522,12 @@ function extrairProximasRodadas(html, entradas, limite = 3) {
     const jogos = [];
     let realizados = 0;
     for (const bloco of item.querySelectorAll('.carousel-conteudo')) {
-      const nomeCasa =
-        bloco.querySelector('.mandante img')?.getAttribute('title') || '';
-      const nomeFora =
-        bloco.querySelector('.visitante img')?.getAttribute('title') || '';
+      const nomeCasa = limparMarcadores(
+        bloco.querySelector('.mandante img')?.getAttribute('title') || '',
+      );
+      const nomeFora = limparMarcadores(
+        bloco.querySelector('.visitante img')?.getAttribute('title') || '',
+      );
       if (!nomeCasa && !nomeFora) continue;
 
       const mSlug = (

@@ -5,7 +5,20 @@ const CHANNEL_NAME = 'broadcast:sync-proximas-rodadas-v1';
 const MSG_TIPO = 'estado:proximas-rodadas:v1';
 const CANAL_NUVEM = 'proximas-rodadas';
 
+const RENOME_SIGLAS = { GVA: 'GUA', '*': 'BRA' };
+
+function normalizarSigla(sigla) {
+  const s = String(sigla || '').toUpperCase();
+  return RENOME_SIGLAS[s] || s;
+}
+
 function normalizarEstado(estadoAtual) {
+  for (const rodada of estadoAtual.rodadas || []) {
+    for (const jogo of rodada.jogos || []) {
+      jogo.casaSigla = normalizarSigla(jogo.casaSigla);
+      jogo.foraSigla = normalizarSigla(jogo.foraSigla);
+    }
+  }
   return estadoAtual;
 }
 

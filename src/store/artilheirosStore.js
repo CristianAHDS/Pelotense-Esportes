@@ -5,7 +5,17 @@ const CHANNEL_NAME = 'broadcast:sync-artilheiros-v1'
 const MSG_TIPO = 'estado:artilheiros:v1'
 const CANAL_NUVEM = 'artilheiros'
 
+const RENOME_SIGLAS = { GVA: 'GUA', '*': 'BRA' }
+
+function normalizarSigla(sigla) {
+  const s = String(sigla || '').toUpperCase()
+  return RENOME_SIGLAS[s] || s
+}
+
 function normalizarEstado(estadoAtual) {
+  for (const jogador of estadoAtual.jogadores || []) {
+    jogador.sigla = normalizarSigla(jogador.sigla)
+  }
   return estadoAtual
 }
 

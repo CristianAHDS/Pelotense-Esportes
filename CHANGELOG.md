@@ -1,5 +1,22 @@
 # Changelog
 
+## 26/09/2026
+
+### FGF: "Brasil SAF *" (marcador de rodapé) quebrando as tabelas
+
+- **Problema**: a FGF passou a marcar o clube com `*` no `title` e na célula de sigla (`Brasil SAF *` / `3º BRA *`). O parser pegava o **último token** da célula como sigla, que passou a ser `"*"` — o Brasil de Pelotas não era mais reconhecido em nenhum módulo (Última Rodada, Próxima Rodada, Artilheiros mostravam `*` no lugar do escudo/`BRA`, e a classificação não casava por sigla).
+- `fgfService.js`: novos `limparMarcadores()` (remove `*`, `†`, `‡`, `•`) e `extrairSigla()` (descarta o ordinal grudado no texto — `3ºBRA *` — e devolve só a sigla). Aplicados no nome, na sigla, no mandante/visitante dos jogos e no clube dos artilheiros.
+- `nomesClubes.js`: `Brasil SAF *` e `Grêmio Esportivo Brasil SAF` entram como variantes de `Brasil`.
+- Stores saneiam a sigla `*` já salva no navegador (`ultimaRodadaStore`, `artilheirosStore`, `proximasRodadasStore`): `RENOME_SIGLAS` ganhou `'*': 'BRA'` e `normalizarEstado` dos artilheiros/próximas rodadas deixou de ser no-op.
+- Caches da FGF versionados para descartar o dado quebrado: `tabela:fgf:v2`, `ultima-rodada:fgf:v4`, `artilheiros:fgf:v2`, `proximas-rodadas:fgf:v2`.
+- Validação contra a página real da FGF: 16 linhas extraídas com sigla válida, todas casadas com o store, jogos da 14ª rodada e artilheiros com `BRA` correto.
+- Testes `src/services/fgfService.test.js` novos (parser + casamento dos dois "Brasil").
+
+### Tabela Top 9 · Live: sem dados externos
+
+- `TabelaTop9.jsx` não busca mais nada: removed `importarClassificacaoSuperPlacar` e o `setInterval` de 30s. A cena do OBS passa a exibir **somente** o estado do `tabelaStore` (editado no Controle da Tabela, sincronizado por BroadcastChannel/nuvem) — nunca sobrescreve mais os dados com a classificação do SuperPlacar, que estava defasada (Brasil 21 pts / 13 jogos em vez de 24 pts / 14 jogos).
+- `Tabela`, `TabelaCompacta` e o botão "Atualizar do SuperPlacar" do `ControleTabela` mantêm a fonte externa (atualização manual).
+
 ## 24/09/2026
 
 ### Tabela: dados agora vêm do SuperPlacar

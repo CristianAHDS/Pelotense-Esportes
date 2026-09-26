@@ -5,7 +5,7 @@ const CHANNEL_NAME = 'broadcast:sync-ultima-rodada-v1'
 const MSG_TIPO = 'estado:ultima-rodada:v1'
 const CANAL_NUVEM = 'ultima-rodada'
 
-const RENOME_SIGLAS = { GVA: 'GUA' }
+const RENOME_SIGLAS = { GVA: 'GUA', '*': 'BRA' }
 
 function normalizarSigla(sigla) {
   const s = String(sigla || '').toUpperCase()

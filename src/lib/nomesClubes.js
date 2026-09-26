@@ -8,10 +8,12 @@ const CLUBES_CANONICOS = [
     variantes: [
       'Brasil - SAF',
       'Brasil SAF',
+      'Brasil SAF *',
       'Brasil-SAF',
       'Brasil de Pelotas',
       'Brasil-PE',
       'Brasil Pelotas',
+      'Grêmio Esportivo Brasil SAF',
     ],
   },
   {

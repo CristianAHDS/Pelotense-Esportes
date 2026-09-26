@@ -16,6 +16,11 @@ describe('nomesClubes — nomeCanonico', () => {
     expect(nomeCanonico('Brasil-PE')).toBe('Brasil');
   });
 
+  it('ignora o marcador de rodapé que a FGF adicionou ao nome', () => {
+    expect(nomeCanonico('Brasil SAF *')).toBe('Brasil');
+    expect(nomeCanonico('Gremio Esportivo Brasil SAF')).toBe('Brasil');
+  });
+
   it('normaliza Guarani - VA', () => {
     expect(nomeCanonico('Guarani VA')).toBe('Guarani - VA');
     expect(nomeCanonico('Guarani-RS')).toBe('Guarani - VA');

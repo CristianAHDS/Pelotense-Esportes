@@ -9,7 +9,6 @@ import {
   ordenarClassificacao,
   recarregar,
 } from '../store/tabelaStore';
-import { importarClassificacaoSuperPlacar } from '../services/superPlacarService';
 import { Escudo } from '../components/Escudo';
 import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
 import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
@@ -311,18 +310,14 @@ const SeloAoVivo = styled.span`
   }
 `;
 
+/* Tabela Top 9 · Live — overlay somente de leitura: exibe o estado do
+   store (editado no Controle da Tabela), sem buscar classificação em
+   FGF/SuperPlacar. Assim a cena do OBS nunca sobrescreve os dados. */
 export default function TabelaTop9() {
   useFundoTransparente();
   const painelRef = useRef(null);
   useEffect(() => {
     recarregar();
-    const atualizar = () =>
-      importarClassificacaoSuperPlacar({ forcar: true }).catch((e) =>
-        console.warn('TabelaTop9: falha ao atualizar do SuperPlacar.', e),
-      );
-    atualizar();
-    const intervalo = setInterval(atualizar, 30_000);
-    return () => clearInterval(intervalo);
   }, []);
   const estado = usePlacarBroadcast({ getEstado, inscrever });
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
