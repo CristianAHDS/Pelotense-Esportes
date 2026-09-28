@@ -11,9 +11,11 @@ import {
   definirFase,
   atualizarLado,
   preencherConfrontos,
+  preencherDoSuperPlacar,
   limparPlacares,
   limparFase,
 } from '../store/mataMataStore';
+import { importarMataMataSuperPlacar } from '../services/superPlacarService';
 import {
   getEstado as getTabela,
   ordenarClassificacao,
@@ -155,6 +157,21 @@ const Botao = styled.button`
   &:hover {
     filter: brightness(1.12);
   }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: wait;
+    filter: none;
+  }
+`;
+
+const Aviso = styled.p`
+  margin: 12px 0 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: ${({ $erro, theme }) =>
+    $erro ? theme.cores.perigo : theme.cores.textoSuave};
 `;
 
 const Acoes = styled.div`
@@ -369,27 +386,50 @@ function PreviewMataMata({ estado }) {
 
 /* ---------- Página ---------- */
 
+/* Monta os confrontos de uma fase a partir da classificação da tabela:
+   1º vs último da faixa, 2º vs penúltimo, e assim por diante. */
+function gerarParesDaClassificacao(quantidade) {
+  const classificados = ordenarClassificacao(getTabela().times).slice(
+    0,
+    quantidade * 2,
+  );
+  const total = classificados.length;
+  return Array.from({ length: Math.floor(total / 2) }, (_, i) => ({
+    casa: classificados[i],
+    visitante: classificados[total - 1 - i],
+  }));
+}
+
 export default function ControleMataMata() {
   const estado = usePlacarBroadcast({ getEstado, inscrever });
   const [faseAtiva, definirFaseAtiva] = useState('confrontos');
+  const [carregando, definirCarregando] = useState(false);
+  const [aviso, definirAviso] = useState(null);
   const listaFase = estado[faseAtiva] || estado.confrontos;
 
-  function gerarParesDaClassificacao() {
-    const times = ordenarClassificacao(getTabela().times);
-    if (estado.fase.includes('OITAV') && times.length >= 16) {
-      return Array.from({ length: 8 }, (_, i) => ({
-        casa: times[i],
-        visitante: times[15 - i],
-      }));
+  const puxarSuperPlacar = async () => {
+    if (carregando) return;
+    definirCarregando(true);
+    definirAviso(null);
+    try {
+      const dados = await importarMataMataSuperPlacar({ forcar: true });
+      const chaveFase = preencherDoSuperPlacar(dados);
+      const rotulo = ABAS_FASES.find((f) => f.chave === chaveFase)?.rotulo;
+      const origem = dados.origem === 'cache' ? ' (cache local)' : '';
+      definirFaseAtiva(chaveFase);
+      definirAviso({
+        erro: false,
+        texto: `${dados.confrontos.length} confrontos em ${rotulo} importados do SuperPlacar${origem}.`,
+      });
+    } catch (e) {
+      definirAviso({
+        erro: true,
+        texto: `Não foi possível ler o SuperPlacar: ${e.message}`,
+      });
+    } finally {
+      definirCarregando(false);
     }
-    const g8 = times.slice(0, 8);
-    return [
-      { casa: g8[0], visitante: g8[7] },
-      { casa: g8[1], visitante: g8[6] },
-      { casa: g8[2], visitante: g8[5] },
-      { casa: g8[3], visitante: g8[4] },
-    ];
-  }
+  };
 
   return (
     <Tela>
@@ -522,13 +562,24 @@ export default function ControleMataMata() {
         <Acoes>
           <Botao
             $variante="primario"
-            onClick={() => {
-              preencherConfrontos(gerarParesDaClassificacao());
-              definirFaseAtiva('confrontos');
-            }}
-            title="Preenche as oitavas com os times da tabela de classificação"
+            onClick={() =>
+              preencherConfrontos(
+                faseAtiva,
+                gerarParesDaClassificacao(listaFase.length),
+              )
+            }
+            title={`Preenche os confrontos de ${
+              ABAS_FASES.find((f) => f.chave === faseAtiva)?.rotulo
+            } com os classificados da tabela`}
           >
             Preencher classificados
+          </Botao>
+          <Botao
+            onClick={puxarSuperPlacar}
+            disabled={carregando}
+            title="Lê os confrontos da fase eliminatória direto do SuperPlacar"
+          >
+            {carregando ? 'Buscando…' : 'Puxar do SuperPlacar'}
           </Botao>
           <Botao
             onClick={() => limparFase(faseAtiva)}
@@ -538,6 +589,7 @@ export default function ControleMataMata() {
           </Botao>
           <Botao onClick={() => limparPlacares()}>Limpar placares</Botao>
         </Acoes>
+        {aviso && <Aviso $erro={aviso.erro}>{aviso.texto}</Aviso>}
       </Cartao>
 
       <PreviewMataMata estado={estado} />

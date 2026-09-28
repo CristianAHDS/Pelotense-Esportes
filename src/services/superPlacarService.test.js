@@ -3,8 +3,12 @@ import {
   extrairClassificacao,
   extrairRodadaDaPagina,
   extrairRodadaDoJson,
+  extrairFase,
+  buscarClassificacaoSuperPlacar,
+  importarClassificacaoSuperPlacar,
   importarUltimaRodadaSuperPlacar,
   importarRodadaAtualSuperPlacar,
+  importarMataMataSuperPlacar,
 } from './superPlacarService';
 import { resolverCasamentos } from './fgfService';
 import { getEstado } from '../store/tabelaStore';
@@ -93,6 +97,60 @@ describe('superPlacarService — integração com o store da tabela', () => {
       timesLocais.map((_, i) => i),
     );
     expect(pares.find((p) => p.indice === 0).stats.p).toBe(29);
+  });
+});
+
+describe('superPlacarService — classificação', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('cai para a página da primeira fase quando a raiz não tem tabela', async () => {
+    const chamadas = [];
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url) => {
+        chamadas.push(String(url));
+        return { ok: true, text: async () => HTML_CLASSIFICACAO };
+      }),
+    );
+
+    const dados = await buscarClassificacaoSuperPlacar();
+    expect(dados.length).toBe(3);
+    expect(chamadas[0]).toContain('/campeonato/55/gaucho-serie-a2/');
+    expect(chamadas[0]).not.toContain('2803');
+  });
+
+  it('usa a primeira fase quando a raiz responde sem classificação', async () => {
+    const chamadas = [];
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url) => {
+        const u = String(url);
+        chamadas.push(u);
+        // A raiz passou a servir a fase de mata-mata: sem tabela.
+        if (!u.includes('2803')) {
+          return { ok: true, text: async () => '<div class="grupos"></div>' };
+        }
+        return { ok: true, text: async () => HTML_CLASSIFICACAO };
+      }),
+    );
+
+    const dados = await buscarClassificacaoSuperPlacar();
+    expect(dados.length).toBe(3);
+    expect(chamadas.some((u) => u.includes('2803/primeira-fase'))).toBe(true);
+  });
+
+  it('aplica os pontos no store da tabela', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => ({ ok: true, text: async () => HTML_CLASSIFICACAO })),
+    );
+    const resultado = await importarClassificacaoSuperPlacar({ forcar: true });
+    expect(resultado.total).toBe(3);
+    expect(resultado.atualizados).toBe(3);
+    const passoFundo = getEstado().times.find((t) => t.sigla === 'PAS');
+    expect(passoFundo.p).toBe(29);
   });
 });
 
@@ -281,5 +339,151 @@ describe('superPlacarService — importarRodadaAtualSuperPlacar', () => {
       foraGols: '0',
     });
     expect(chamadas.some((u) => u.includes('rodada/anterior'))).toBe(false);
+  });
+});
+
+/* Fragmento real da página de fase
+   https://superplacar.com.br/campeonato/55/gaucho-serie-a2/2949/quartas-de-final/
+   Cada .chave traz a perna de ida, o .titulo-chave e a perna de volta. */
+const jogoChave = (id, casa, fora, placar = ' - ', data = '03/10/2026 - 15:00') => `
+  <div class="lista-jogos">
+    <div class='jogo em-breve' data-id='${id}'>
+      <div class="topo"><div class="programacao"><span class='status'>Em breve</span> <span class='data-horario'>${data}</span></div></div>
+      <div class="resultado partida">
+        <div class="time time-1"><a href="equipe/x/${casa}/" class=' nome-time'>${casa}</a></div>
+        <div class="placar">${placar}</div>
+        <div class="time time-2"><a href="equipe/y/${fora}/" class=' nome-time'>${fora}</a></div>
+      </div>
+    </div>
+  </div>`;
+
+const chaveReal = (nome, jogo1, jogo2) => `
+  <div class="chave">
+    ${jogo1}
+    <div class="titulo-chave">${nome}</div>
+    ${jogo2}
+  </div>`;
+
+const HTML_MATA_MATA = `
+<div class="titulo-rodada"><h2>Quartas de Final</h2></div>
+<div class="grupos">
+  ${chaveReal(
+    'Chave 1',
+    jogoChave(72996, 'Apafut', 'Santa Cruz-RS'),
+    jogoChave(73002, 'Santa Cruz-RS', 'Apafut', ' - ', '11/10/2026 - 15:00'),
+  )}
+  ${chaveReal(
+    'Chave 2',
+    jogoChave(72997, 'Brasil-Far', 'Passo Fundo'),
+    jogoChave(73001, 'Passo Fundo', 'Brasil-Far', ' - ', '11/10/2026 - 15:00'),
+  )}
+  ${chaveReal(
+    'Chave 3',
+    jogoChave(72998, 'Brasil', 'Esportivo'),
+    jogoChave(73000, 'Esportivo', 'Brasil', ' - ', '10/10/2026 - 17:00'),
+  )}
+  ${chaveReal(
+    'Chave 4',
+    jogoChave(72999, 'União Frederiquense', 'Veranópolis'),
+    jogoChave(73003, 'Veranópolis', 'União Frederiquense', ' - ', '11/10/2026 - 15:00'),
+  )}
+</div>`;
+
+describe('superPlacarService — extrairFase', () => {
+  it('lê o título da fase e as quatro chaves', () => {
+    const { titulo, chaves } = extrairFase(HTML_MATA_MATA);
+    expect(titulo).toBe('Quartas de Final');
+    expect(chaves.length).toBe(4);
+    expect(chaves.map((c) => c.nome)).toEqual([
+      'Chave 1',
+      'Chave 2',
+      'Chave 3',
+      'Chave 4',
+    ]);
+  });
+
+  it('lê as duas pernas de cada chave', () => {
+    const { chaves } = extrairFase(HTML_MATA_MATA);
+    expect(chaves[0].jogos.length).toBe(2);
+    expect(chaves[0].jogos[0]).toMatchObject({
+      casaNome: 'Apafut',
+      foraNome: 'Santa Cruz-RS',
+    });
+    expect(chaves[0].jogos[1]).toMatchObject({
+      casaNome: 'Santa Cruz-RS',
+      foraNome: 'Apafut',
+    });
+    expect(chaves[0].jogos[0].data).toBe('03/10/2026 - 15:00');
+  });
+
+  it('lê o placar quando a partida já foi disputada', () => {
+    const { chaves } = extrairFase(HTML_MATA_MATA);
+    const comPlacar = extrairFase(
+      `<div class="grupos">${chaveReal(
+        'Chave 1',
+        jogoChave(1, 'Brasil', 'Esportivo', '2 - 0'),
+        jogoChave(2, 'Esportivo', 'Brasil'),
+      )}</div>`,
+    );
+    expect(comPlacar.chaves[0].jogos[0]).toMatchObject({
+      casaGols: '2',
+      foraGols: '0',
+    });
+    expect(chaves[0].jogos[0].casaGols).toBe('');
+  });
+});
+
+describe('superPlacarService — importarMataMataSuperPlacar', () => {
+  beforeEach(() => {
+    localStorage.clear();
+  });
+
+  it('manda uma confrontos por chave, com a sigla, cor e escudo locais', async () => {
+    const chamadas = [];
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (url) => {
+        chamadas.push(String(url));
+        return { ok: true, text: async () => HTML_MATA_MATA };
+      }),
+    );
+
+    const dados = await importarMataMataSuperPlacar({ forcar: true });
+    expect(dados.origem).toBe('rede');
+    expect(dados.fase).toBe('Quartas de Final');
+    expect(dados.confrontos.length).toBe(4);
+
+    expect(dados.confrontos[0].casa.sigla).toBe('APA');
+    expect(dados.confrontos[0].casa.nome).toBe('Apafut');
+    expect(dados.confrontos[0].visitante.sigla).toBe('SCR');
+    expect(dados.confrontos[0].casa.escudo).toBe('/escudos/APA.png');
+    expect(dados.confrontos[0].casa.gols).toBeNull();
+
+    expect(dados.confrontos[1].casa.sigla).toBe('BFR');
+    expect(dados.confrontos[1].visitante.sigla).toBe('PAS');
+    expect(dados.confrontos[2].casa.sigla).toBe('BRA');
+    expect(dados.confrontos[2].visitante.sigla).toBe('ESP');
+    expect(dados.confrontos[3].casa.sigla).toBe('UFR');
+    expect(dados.confrontos[3].visitante.sigla).toBe('VER');
+
+    expect(chamadas.some((u) => u.includes('2949/quartas-de-final'))).toBe(true);
+  });
+
+  it('usa o cache quando a rede falha', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => ({ ok: true, text: async () => HTML_MATA_MATA })),
+    );
+    await importarMataMataSuperPlacar();
+
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async () => {
+        throw new Error('offline');
+      }),
+    );
+    const dados = await importarMataMataSuperPlacar();
+    expect(dados.origem).toBe('cache');
+    expect(dados.confrontos.length).toBe(4);
   });
 });

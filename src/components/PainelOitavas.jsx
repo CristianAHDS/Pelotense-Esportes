@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import styled from 'styled-components';
 import { ListaOitavas } from './ListaOitavas';
 
@@ -62,9 +63,12 @@ const Rolagem = styled.div`
   overflow-x: auto;
 `;
 
-export function PainelOitavas({ estado }) {
+export const PainelOitavas = forwardRef(function PainelOitavas(
+  { estado },
+  ref,
+) {
   return (
-    <Cartao>
+    <Cartao ref={ref}>
       <TituloSecao>
         <h2>Oitavas de final</h2>
         <span>{(estado.confrontos || []).length} CONFRONTOS</span>
@@ -74,4 +78,4 @@ export function PainelOitavas({ estado }) {
       </Rolagem>
     </Cartao>
   );
-}
+});

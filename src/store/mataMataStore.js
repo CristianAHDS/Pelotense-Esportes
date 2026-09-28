@@ -250,25 +250,115 @@ export function atualizarLado(chaveFase, indice, ladoNome, campo, valor) {
   });
 }
 
-/* Preenche os confrontos a partir de pares prontos
-   [{ casa:{nome,sigla,cor,escudo}, visitante:{...} }] */
-export function preencherConfrontos(pares) {
+/* Os dois lados do slot são exatamente os mesmos que chegaram do
+   exterior? (sigla vazia normalizada para '---') */
+function mesmosLados(confronto, par) {
+  return (
+    confronto.casa.sigla === (par?.casa?.sigla ?? '---') &&
+    confronto.visitante.sigla === (par?.visitante?.sigla ?? '---')
+  );
+}
+
+/* Preenche uma fase a partir de pares prontos
+   [{ casa:{nome,sigla,cor,escudo,gols}, visitante:{...} }].
+   Confrontos sem par correspondente são zerados, evitando sobras de
+   preenchimentos anteriores, e as fases seguintes também são zeradas
+   porque dependem dos vencedores desta.
+   Com `preservarPlacar`, o placar já digitado no controle é mantido
+   enquanto o exterior ainda não tiver resultado. */
+export function preencherConfrontos(chaveFase, pares, opcoes = {}) {
+  const preservarPlacar = !!opcoes.preservarPlacar;
+
   setEstado((estado) => {
-    pares.forEach((par, i) => {
-      if (!estado.confrontos[i]) return;
+    const lista = estado[chaveFase] || estado.confrontos;
+    lista.forEach((confronto, i) => {
+      const par = pares?.[i] || null;
+      const manterPlacar = preservarPlacar && mesmosLados(confronto, par);
+
       for (const ladoNome of ['casa', 'visitante']) {
-        const origem = par[ladoNome];
-        const destino = estado.confrontos[i][ladoNome];
-        destino.nome = origem.nome;
-        destino.sigla = origem.sigla;
-        destino.cor = origem.cor;
-        destino.escudo = origem.escudo || `/escudos/${origem.sigla}.png`;
-        destino.gols = null;
-        destino.pen = null;
+        const destino = confronto[ladoNome];
+        const origem = par?.[ladoNome];
+        if (!origem) {
+          destino.nome = '';
+          destino.sigla = '---';
+          destino.cor = '#4b5563';
+          destino.escudo = null;
+        } else {
+          destino.nome = origem.nome;
+          destino.sigla = origem.sigla;
+          destino.cor = origem.cor;
+          destino.escudo = origem.escudo || `/escudos/${origem.sigla}.png`;
+        }
+
+        if (manterPlacar && origem && origem.gols == null) continue;
+
+        destino.gols =
+          par && origem?.gols != null
+            ? Math.max(0, Math.floor(Number(origem.gols) || 0))
+            : null;
+        destino.pen =
+          par && origem?.pen != null
+            ? Math.max(0, Math.floor(Number(origem.pen) || 0))
+            : null;
       }
     });
+
+    const proximas = CHAVES_FASES.slice(CHAVES_FASES.indexOf(chaveFase) + 1);
+    for (const chave of proximas) {
+      if (Array.isArray(estado[chave])) {
+        estado[chave] = Array.from(
+          { length: estado[chave].length },
+          criarConfronto,
+        );
+      }
+    }
+
     return estado;
   });
+}
+
+/* Fases por quantidade de confrontos: 8 -> OITAVAS, 4 -> QUARTAS,
+   2 -> SEMI, 1 -> FINAL. */
+const FASE_POR_QUANTIDADE = {
+  8: 'confrontos',
+  4: 'quartas',
+  2: 'semi',
+  1: 'final',
+};
+
+/* Preenche a fase correspondente à quantidade de confrontos recebidos
+   (ex.: dados do SuperPlacar) e devolve a chave da fase usada. */
+export function preencherDoSuperPlacar({ fase = '', confrontos = [] } = {}) {
+  const chaveFase = FASE_POR_QUANTIDADE[confrontos.length] || 'quartas';
+  if (fase) definirFase(fase);
+  preencherConfrontos(chaveFase, confrontos);
+  return chaveFase;
+}
+
+/* Sincronização automática (usada pelos overlays a cada 30s): só escreve
+   quando o chaveamento mudou de times ou quando o exterior traz um
+   resultado para um confronto que ainda está sem placar. Assim o placar
+   digitado no controle não é apagado a cada rodada de atualização. */
+export function sincronizarDoSuperPlacar({ fase = '', confrontos = [] } = {}) {
+  const chaveFase = FASE_POR_QUANTIDADE[confrontos.length];
+  if (!chaveFase) return null;
+
+  const lista = getEstado()[chaveFase] || [];
+  const mesmoChaveamento =
+    confrontos.length === lista.length &&
+    lista.every((c, i) => mesmosLados(c, confrontos[i]));
+
+  if (mesmoChaveamento) {
+    const resultadoNovo = confrontos.some((par, i) =>
+      ['casa', 'visitante'].some(
+        (lado) => par?.[lado]?.gols != null && lista[i]?.[lado]?.gols == null,
+      ),
+    );
+    if (!resultadoNovo) return { chaveFase, aplicado: false };
+  }
+
+  const chaveUsada = preencherDoSuperPlacar({ fase, confrontos });
+  return { chaveFase: chaveUsada, aplicado: true, mesmoChaveamento };
 }
 
 export function limparPlacares() {

@@ -1,7 +1,8 @@
+import { forwardRef } from 'react';
 import styled from 'styled-components';
 import { Chaveamento } from './Chaveamento';
 
-/* Painel independente com o chaveamento das fases finais (quartas -> final) */
+/* Painel independente com o chaveamento completo (oitavas -> final) */
 
 const ACC = '#a5ef1c';
 
@@ -121,9 +122,12 @@ const SeloAoVivo = styled.span`
   }
 `;
 
-export function PainelChaveamento({ estado }) {
+export const PainelChaveamento = forwardRef(function PainelChaveamento(
+  { estado },
+  ref,
+) {
   return (
-    <Cartao>
+    <Cartao ref={ref}>
       <TituloSecao>
         <h2>Fases finais</h2>
         <span>QUARTAS · SEMIFINAL · FINAL</span>
@@ -140,4 +144,4 @@ export function PainelChaveamento({ estado }) {
       </Rodape>
     </Cartao>
   );
-}
+});

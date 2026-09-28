@@ -2,16 +2,33 @@ import { getEstado, aplicarEstatisticas } from '../store/tabelaStore';
 import { resolverCasamentos } from './fgfService';
 import { nomeCanonico, variantesNome } from '../lib/nomesClubes.js';
 
-const URL_CLASSIFICACAO = '/superplacar/campeonato/55/gaucho-serie-a2/';
-const URL_CLASSIFICACAO_DIRETA =
-  'https://superplacar.com.br/campeonato/55/gaucho-serie-a2/';
+/* Caminhos no site do SuperPlacar. A origem é tentada pelo proxy do Vite
+   (dev/preview) e direto quando não há proxy (build em produção). */
+const ORIGEM = 'https://superplacar.com.br';
+const PROXY = '/superplacar';
 
-const URL_RODADA = '/superplacar/rodada/anterior/';
+/* A página raiz do campeonato passou a servir a fase corrente (as Quartas de
+   Final), que não tem tabela. A classificação continua na página da fase de
+   grupo; tentamos a raiz primeiro e caímos para a Primeira Fase. */
+const CAMINHOS_CLASSIFICACAO = [
+  '/campeonato/55/gaucho-serie-a2/',
+  '/campeonato/55/gaucho-serie-a2/2803/primeira-fase/',
+];
+
+const CAMINHO_CLASSIFICACAO = CAMINHOS_CLASSIFICACAO[0];
+
+/* Fase eliminatória publicada pelo SuperPlacar (o id muda a cada
+   competição/temporada — atualize aqui se a fase for recriada). */
+const CAMINHO_MATA_MATA =
+  '/campeonato/55/gaucho-serie-a2/2949/quartas-de-final/';
+
+const URL_RODADA = '/rodada/anterior/';
 const URL_RODADA_DIRETA = 'https://superplacar.com.br/rodada/anterior/';
 
 const CHAVE_CACHE = 'pelotense:tabela:superplacar:v1';
 const CHAVE_CACHE_UR = 'pelotense:ultima-rodada:superplacar:v1';
 const CHAVE_CACHE_RA = 'pelotense:rodada-atual:superplacar:v1';
+const CHAVE_CACHE_MM = 'pelotense:mata-mata:superplacar:v1';
 const TTL_CACHE_MS = 3 * 60 * 1000;
 
 let buscaEmVoo = null;
@@ -25,9 +42,13 @@ function hashDe(dados) {
   return dados.map((t) => [t.pos, t.sigla, t.p, t.j, t.v, t.e, t.d, t.gp, t.gc].join(':')).join('|');
 }
 
-async function obterHtml() {
+async function obterHtml(caminho = CAMINHO_CLASSIFICACAO) {
+  const candidatos = caminho.startsWith('http')
+    ? [caminho]
+    : [PROXY + caminho, ORIGEM + caminho];
+
   let ultimoErro = null;
-  for (const url of [URL_CLASSIFICACAO, URL_CLASSIFICACAO_DIRETA]) {
+  for (const url of candidatos) {
     try {
       const resposta = await fetch(url, { headers: { Accept: 'text/html' } });
       if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
@@ -96,13 +117,22 @@ export async function buscarClassificacaoSuperPlacar({ forcar = false } = {}) {
 
   buscaEmVoo = (async () => {
     try {
-      const html = await obterHtml();
-      const dados = extrairClassificacao(html);
-      if (!dados.length) {
-        throw new Error('Classificação não encontrada na página do SuperPlacar');
+      let ultimoErro = null;
+      for (const caminho of CAMINHOS_CLASSIFICACAO) {
+        try {
+          const dados = extrairClassificacao(await obterHtml(caminho));
+          if (dados.length) {
+            gravarCache(dados);
+            return dados;
+          }
+          ultimoErro = new Error(
+            `Classificação não encontrada em ${caminho}`,
+          );
+        } catch (e) {
+          ultimoErro = e;
+        }
       }
-      gravarCache(dados);
-      return dados;
+      throw ultimoErro || new Error('Classificação não encontrada');
     } finally {
       buscaEmVoo = null;
     }
@@ -433,6 +463,144 @@ export async function importarRodadaAtualSuperPlacar({ forcar = false } = {}) {
     return { ...aplicar(pacote), origem: 'rede' };
   } catch (erro) {
     if (cache) return { ...aplicar(cache.pacote), origem: 'cache' };
+    throw erro;
+  }
+}
+
+/* ---------- Mata-mata ---------- */
+
+function lerCacheMM() {
+  try {
+    const bruto = localStorage.getItem(CHAVE_CACHE_MM);
+    if (!bruto) return null;
+    const salvo = JSON.parse(bruto);
+    if (!Array.isArray(salvo?.pacote?.confrontos)) return null;
+    return salvo;
+  } catch (e) {
+    return null;
+  }
+}
+
+function gravarCacheMM(pacote) {
+  try {
+    localStorage.setItem(
+      CHAVE_CACHE_MM,
+      JSON.stringify({ quando: Date.now(), pacote }),
+    );
+  } catch (e) {
+    console.warn('SuperPlacar: falha ao salvar cache do mata-mata.', e);
+  }
+}
+
+/* Lê um jogo dentro de uma chave do mata-mata. */
+function lerJogoChave(el) {
+  const casa = el.querySelector('.time.time-1 .nome-time');
+  const fora = el.querySelector('.time.time-2 .nome-time');
+  if (!casa || !fora) return null;
+
+  const placar = (el.querySelector('.placar')?.textContent || '').trim();
+  const m = placar.match(/^(\d+)\s*[-x×]\s*(\d+)$/i);
+
+  return {
+    casaNome: (casa.textContent || '').trim(),
+    foraNome: (fora.textContent || '').trim(),
+    casaGols: m ? m[1] : '',
+    foraGols: m ? m[2] : '',
+    data: (el.querySelector('.data-horario')?.textContent || '').trim(),
+  };
+}
+
+/* Extrai as chaves do mata-mata da página da fase.
+   Cada chave traz a perna de ida e a de volta; o título fica entre os
+   dois jogos, então `titulo-chave` é lido na própria chave. */
+export function extrairFase(html) {
+  const doc = new DOMParser().parseFromString(html, 'text/html');
+  const titulo = (doc.querySelector('.titulo-rodada h2')?.textContent || '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  const chaves = [];
+  for (const el of doc.querySelectorAll('.grupos .chave')) {
+    const jogos = [...el.querySelectorAll('.jogo')]
+      .map(lerJogoChave)
+      .filter(Boolean);
+    if (!jogos.length) continue;
+
+    chaves.push({
+      nome: (el.querySelector('.titulo-chave')?.textContent || '')
+        .replace(/\s+/g, ' ')
+        .trim(),
+      jogos,
+    });
+  }
+
+  return { titulo, chaves };
+}
+
+/* O SuperPlacar mostra a perna de ida e a de volta na mesma chave.
+   Devolve a perna que ainda não foi disputada (sem placar) ou a primeira. */
+function pernaDaChave(jogos) {
+  return jogos.find((j) => j.casaGols === '' || j.foraGols === '') || jogos[0];
+}
+
+function montarLadoChave(porNome, nome, gols) {
+  const sigla = resolverSigla(porNome, nome);
+  const base = getEstado().times.find(
+    (t) => String(t.sigla || '').toUpperCase() === sigla,
+  );
+  const g = gols === '' || gols == null ? null : Math.max(0, Number(gols) || 0);
+
+  if (base) {
+    return {
+      nome: base.nome,
+      sigla: base.sigla,
+      cor: base.cor,
+      escudo: base.escudo || `/escudos/${base.sigla}.png`,
+      gols: g,
+    };
+  }
+
+  return {
+    nome: String(nome).trim().slice(0, 24),
+    sigla: (sigla || String(nome).trim().slice(0, 4)).toUpperCase(),
+    cor: '#4b5563',
+    escudo: null,
+    gols: g,
+  };
+}
+
+/* Lê o mata-mata do SuperPlacar e devolve os confrontos no formato aceito
+   por `mataMataStore.preencherConfrontos`. */
+export async function importarMataMataSuperPlacar({ forcar = false } = {}) {
+  const cache = lerCacheMM();
+  const idade = cache ? Date.now() - (cache.quando || 0) : Infinity;
+  if (!forcar && cache && idade < TTL_CACHE_MS) {
+    return { ...cache.pacote, origem: 'cache' };
+  }
+
+  try {
+    const html = await obterHtml(CAMINHO_MATA_MATA);
+    const fase = extrairFase(html);
+    if (!fase.chaves.length) {
+      throw new Error('Mata-mata não encontrado na página do SuperPlacar');
+    }
+
+    const porNome = mapaSiglas();
+    const pacote = {
+      fase: fase.titulo,
+      confrontos: fase.chaves.map((chave) => {
+        const j = pernaDaChave(chave.jogos);
+        return {
+          casa: montarLadoChave(porNome, j.casaNome, j.casaGols),
+          visitante: montarLadoChave(porNome, j.foraNome, j.foraGols),
+        };
+      }),
+      quando: Date.now(),
+    };
+    gravarCacheMM(pacote);
+    return { ...pacote, origem: 'rede' };
+  } catch (erro) {
+    if (cache) return { ...cache.pacote, origem: 'cache' };
     throw erro;
   }
 }

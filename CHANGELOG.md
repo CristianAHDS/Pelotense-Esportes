@@ -1,5 +1,22 @@
 # Changelog
 
+## 28/09/2026
+
+### Mata-Mata: OITAVAS no chaveamento, download de imagem e confrontos do SuperPlacar
+
+- `/fases-finais` passou a mostrar **OITAVAS · QUARTAS · SEMIFINAL · FINAL**. A primeira rodada usa uma grade compacta de 2 colunas (`GradeCompacta` no `Chaveamento`) para não esticar a altura do chaveamento, e a media query do bracket desceu de 760px para 640px para a prévia do Hub (iframe de 760px) continuar no layout horizontal.
+- Botão **Salvar imagem** em `/mata-mata` e `/fases-finais`: `PainelOitavas` e `PainelChaveamento` viraram `forwardRef` e o `BotaoSalvarImagem` captura o painel. Segue o padrão dos outros overlays (escondido com `?previa`, ao lado do alternador de tema).
+- Novos `importarMataMataSuperPlacar` e `extrairFase` em `superPlacarService.js`: leem a página de fase do SuperPlacar (ex.: `…/2949/quartas-de-final/`), pegam as chaves, o título e as duas pernas de cada confronto. Cache próprio `pelotense:mata-mata:superplacar:v1` com `TTL_CACHE_MS`, reusando o `obterHtml` (agora com caminho) e o proxy `/superplacar`.
+- `mataMataStore.preencherDoSuperPlacar({ fase, confrontos })`: escolhe a fase pela quantidade de confrontos (8 → OITAVAS, 4 → QUARTAS, 2 → SEMI, 1 → FINAL), atualiza o nome da fase e devolve a chave usada. `preencherConfrontos` passou a preservar os gols/pênaltis que vierem no par, em vez de zerá-los sempre.
+- Botão **"Puxar do SuperPlacar"** no `ControleMataMata`, com aviso de sucesso/erro e troca automática para a aba da fase importada.
+- Testes: `extrairFase` e `importarMataMataSuperPlacar` em `superPlacarService.test.js`; novo `mataMataStore.test.js` cobrindo o preenchimento por fase, o corte em cascata e a escolha de fase por quantidade.
+
+### Mata-Mata: "Preencher classificados" gerava confrontos errados
+
+- **Problema**: o botão preenchia sempre `estado.confrontos` (oitavas), independentemente da aba/fase selecionada, e a quantidade de pares era decidida pelo texto de `estado.fase` (`includes('OITAV')`). Clicando nas abas Quartas/Semifinal/Final os times acabavam nos slots errados das oitavas, sobrando confrontos antigos, e `/mata-mata` exibia a lista toda errada.
+- `mataMataStore.preencherConfrontos(chaveFase, pares)`: nova assinatura com a fase alvo. Zera os confrontos sem par correspondente (nada de sobras de preenchimentos anteriores) e zera também as fases seguintes, que dependem dos vencedores da fase refeita.
+- `ControleMataMata.gerarParesDaClassificacao(quantidade)`: monta 1º vs último, 2º vs penúltimo… a partir do **tamanho da fase ativa** (oitavas 8→16 times, quartas 4→8, semi 2→4, final 1→2). O botão não troca mais a aba ao clicar e o `title` mostra a fase alvo.
+
 ## 26/09/2026
 
 ### "Próxima Rodada" vira "Rodada Atual" com dados ao vivo do SuperPlacar

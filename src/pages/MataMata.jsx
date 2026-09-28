@@ -1,10 +1,12 @@
-﻿import styled from 'styled-components';
+﻿import { useRef } from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { getEstado, inscrever } from '../store/mataMataStore';
 import { PainelOitavas } from '../components/PainelOitavas';
 import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
+import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
 
 const ACC = '#a5ef1c ';
 
@@ -99,6 +101,7 @@ const BadgeFase = styled.div`
 export default function MataMata() {
   useFundoTransparente();
   const estado = usePlacarBroadcast({ getEstado, inscrever });
+  const painelRef = useRef(null);
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
 
   return (
@@ -108,7 +111,15 @@ export default function MataMata() {
           ←
         </Voltar>
       )}
-      {!emPrevia && <BotaoAlternarTema />}
+      {!emPrevia && (
+        <>
+          <BotaoAlternarTema aoLado />
+          <BotaoSalvarImagem
+            alvo={painelRef}
+            nome={`${estado.competicao}-${estado.fase}`}
+          />
+        </>
+      )}
 
       <CartaoCabecalho>
         <div>
@@ -118,7 +129,7 @@ export default function MataMata() {
         <BadgeFase>{estado.fase}</BadgeFase>
       </CartaoCabecalho>
 
-      <PainelOitavas estado={estado} />
+      <PainelOitavas ref={painelRef} estado={estado} />
     </Tela>
   );
 }

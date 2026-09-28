@@ -36,6 +36,7 @@ const SCOREBOARDS = [
     accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.2)',
   },
+  /*
   {
     rota: '/placar-broadcast-escalacao-3',
     tag: 'BROADCAST + ESCALAÇÃO 3',
@@ -45,6 +46,7 @@ const SCOREBOARDS = [
     accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.2)',
   },
+  */
   /*
   {
     rota: '/placar-pl',
@@ -168,16 +170,16 @@ const GAUCHAO_A2 = [
   },
   {
     titulo: 'Fases Finais · Chaveamento',
-    tag: 'QUARTAS → FINAL',
+    tag: 'OITAVAS → FINAL',
     descricao:
-      'Chaveamento visual das quartas à final: vencedores avançam automaticamente e campeão ganha selo especial.',
+      'Chaveamento visual das oitavas à final: vencedores avançam automaticamente e campeão ganha selo especial.',
     rota: '/fases-finais',
     controle: '/mata-mata/controle',
     accent: '#a5ef1c ',
     glow: 'rgba(165, 239, 28, 0.16)',
     preview: 'fases',
     altura: 700,
-    emBreve: true,
+    emBreve: false,
   },
 ];
 

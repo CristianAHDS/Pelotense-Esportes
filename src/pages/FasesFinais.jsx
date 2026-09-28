@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useFundoTransparente } from '../components/useFundoTransparente';
@@ -5,6 +6,7 @@ import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
 import { getEstado, inscrever } from '../store/mataMataStore';
 import { PainelChaveamento } from '../components/PainelChaveamento';
 import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
+import { BotaoSalvarImagem } from '../components/BotaoSalvarImagem';
 
 const ACC = '#a5ef1c ';
 
@@ -99,6 +101,7 @@ const BadgeFase = styled.div`
 export default function FasesFinais() {
   useFundoTransparente();
   const estado = usePlacarBroadcast({ getEstado, inscrever });
+  const painelRef = useRef(null);
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
 
   return (
@@ -108,17 +111,25 @@ export default function FasesFinais() {
           ←
         </Voltar>
       )}
-      {!emPrevia && <BotaoAlternarTema />}
+      {!emPrevia && (
+        <>
+          <BotaoAlternarTema aoLado />
+          <BotaoSalvarImagem
+            alvo={painelRef}
+            nome={`${estado.competicao}-chaveamento`}
+          />
+        </>
+      )}
 
       <CartaoCabecalho>
         <div>
           <h1>{estado.competicao}</h1>
-          <span className="sub">Quartas · Semifinal · Final</span>
+          <span className="sub"> Quartas · Semifinal · Final</span>
         </div>
         <BadgeFase>{estado.fase}</BadgeFase>
       </CartaoCabecalho>
 
-      <PainelChaveamento estado={estado} />
+      <PainelChaveamento ref={painelRef} estado={estado} />
     </Tela>
   );
 }

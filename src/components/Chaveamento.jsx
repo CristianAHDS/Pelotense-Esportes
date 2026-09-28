@@ -38,7 +38,7 @@ const Grade = styled.div`
   padding: 22px 18px 20px;
   overflow-x: auto;
 
-  @media (max-width: 760px) {
+  @media (max-width: 640px) {
     flex-direction: column;
     gap: 20px;
   }
@@ -356,14 +356,17 @@ function agruparEmPares(jogos) {
   return pares.length ? pares : [[]];
 }
 
+const FASES_CHAVEAMENTO = [
+  { chave: 'confrontos', rotulo: 'OITAVAS' },
+  { chave: 'quartas', rotulo: 'QUARTAS' },
+  { chave: 'semi', rotulo: 'SEMIFINAL' },
+  { chave: 'final', rotulo: 'FINAL' },
+];
+
 export function Chaveamento({ estado, fases }) {
-  const todas = [
-    { chave: 'confrontos', rotulo: 'OITAVAS' },
-    { chave: 'quartas', rotulo: 'QUARTAS' },
-    { chave: 'semi', rotulo: 'SEMIFINAL' },
-    { chave: 'final', rotulo: 'FINAL' },
-  ];
-  const colunas = fases ? todas.filter((c) => fases.includes(c.chave)) : todas;
+  const colunas = fases
+    ? FASES_CHAVEAMENTO.filter((c) => fases.includes(c.chave))
+    : FASES_CHAVEAMENTO;
   const ultima = colunas[colunas.length - 1]?.chave;
 
   return (
