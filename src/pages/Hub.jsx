@@ -170,9 +170,9 @@ const GAUCHAO_A2 = [
   },
   {
     titulo: 'Fases Finais · Chaveamento',
-    tag: 'OITAVAS → FINAL',
+    tag: 'QUARTAS → FINAL',
     descricao:
-      'Chaveamento visual das oitavas à final: vencedores avançam automaticamente e campeão ganha selo especial.',
+      'Chaveamento visual das quartas à final: vencedores avançam automaticamente e campeão ganha selo especial.',
     rota: '/fases-finais',
     controle: '/mata-mata/controle',
     accent: '#a5ef1c ',

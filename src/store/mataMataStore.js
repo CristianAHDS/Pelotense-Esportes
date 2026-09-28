@@ -328,10 +328,13 @@ const FASE_POR_QUANTIDADE = {
 
 /* Preenche a fase correspondente à quantidade de confrontos recebidos
    (ex.: dados do SuperPlacar) e devolve a chave da fase usada. */
-export function preencherDoSuperPlacar({ fase = '', confrontos = [] } = {}) {
+export function preencherDoSuperPlacar(
+  { fase = '', confrontos = [] } = {},
+  opcoes,
+) {
   const chaveFase = FASE_POR_QUANTIDADE[confrontos.length] || 'quartas';
   if (fase) definirFase(fase);
-  preencherConfrontos(chaveFase, confrontos);
+  preencherConfrontos(chaveFase, confrontos, opcoes);
   return chaveFase;
 }
 
@@ -357,8 +360,11 @@ export function sincronizarDoSuperPlacar({ fase = '', confrontos = [] } = {}) {
     if (!resultadoNovo) return { chaveFase, aplicado: false };
   }
 
-  const chaveUsada = preencherDoSuperPlacar({ fase, confrontos });
-  return { chaveFase: chaveUsada, aplicado: true, mesmoChaveamento };
+  const chaveUsada = preencherDoSuperPlacar(
+    { fase, confrontos },
+    { preservarPlacar: mesmoChaveamento },
+  );
+  return { chaveFase: chaveUsada, aplicado: true };
 }
 
 export function limparPlacares() {

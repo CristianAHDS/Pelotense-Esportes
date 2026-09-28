@@ -10,16 +10,11 @@ import {
   definirCompeticao,
   definirFase,
   atualizarLado,
-  preencherConfrontos,
   preencherDoSuperPlacar,
   limparPlacares,
   limparFase,
 } from '../store/mataMataStore';
 import { importarMataMataSuperPlacar } from '../services/superPlacarService';
-import {
-  getEstado as getTabela,
-  ordenarClassificacao,
-} from '../store/tabelaStore';
 
 const ABAS_FASES = [
   { chave: 'confrontos', rotulo: 'OITAVAS' },
@@ -342,7 +337,7 @@ const MiniJogo = styled.div`
   }
 `;
 
-function PreviewMataMata({ estado }) {
+function PreviewMataMata({ estado, faseAtiva, rotulo }) {
   return (
     <PreviaClicavel
       title="Abrir visualização em nova guia"
@@ -351,8 +346,8 @@ function PreviewMataMata({ estado }) {
       }
     >
       <Cartao style={{ marginBottom: 0 }}>
-        <Rotulo>Prévia · clique para abrir em nova guia</Rotulo>
-        {estado.confrontos.slice(0, 4).map((c, i) => (
+        <Rotulo>Prévia · {rotulo} · clique para abrir em nova guia</Rotulo>
+        {(estado[faseAtiva] || []).slice(0, 4).map((c, i) => (
           <MiniJogo key={i}>
             <span className="time">
               <Escudo
@@ -386,26 +381,13 @@ function PreviewMataMata({ estado }) {
 
 /* ---------- Página ---------- */
 
-/* Monta os confrontos de uma fase a partir da classificação da tabela:
-   1º vs último da faixa, 2º vs penúltimo, e assim por diante. */
-function gerarParesDaClassificacao(quantidade) {
-  const classificados = ordenarClassificacao(getTabela().times).slice(
-    0,
-    quantidade * 2,
-  );
-  const total = classificados.length;
-  return Array.from({ length: Math.floor(total / 2) }, (_, i) => ({
-    casa: classificados[i],
-    visitante: classificados[total - 1 - i],
-  }));
-}
-
 export default function ControleMataMata() {
   const estado = usePlacarBroadcast({ getEstado, inscrever });
-  const [faseAtiva, definirFaseAtiva] = useState('confrontos');
+  const [faseAtiva, definirFaseAtiva] = useState('quartas');
   const [carregando, definirCarregando] = useState(false);
   const [aviso, definirAviso] = useState(null);
   const listaFase = estado[faseAtiva] || estado.confrontos;
+  const rotuloFase = ABAS_FASES.find((f) => f.chave === faseAtiva)?.rotulo;
 
   const puxarSuperPlacar = async () => {
     if (carregando) return;
@@ -419,7 +401,9 @@ export default function ControleMataMata() {
       definirFaseAtiva(chaveFase);
       definirAviso({
         erro: false,
-        texto: `${dados.confrontos.length} confrontos em ${rotulo} importados do SuperPlacar${origem}.`,
+        texto:
+          `${dados.confrontos.length} confrontos em ${rotulo} ` +
+          `importados do SuperPlacar${origem}.`,
       });
     } catch (e) {
       definirAviso({
@@ -562,19 +546,6 @@ export default function ControleMataMata() {
         <Acoes>
           <Botao
             $variante="primario"
-            onClick={() =>
-              preencherConfrontos(
-                faseAtiva,
-                gerarParesDaClassificacao(listaFase.length),
-              )
-            }
-            title={`Preenche os confrontos de ${
-              ABAS_FASES.find((f) => f.chave === faseAtiva)?.rotulo
-            } com os classificados da tabela`}
-          >
-            Preencher classificados
-          </Botao>
-          <Botao
             onClick={puxarSuperPlacar}
             disabled={carregando}
             title="Lê os confrontos da fase eliminatória direto do SuperPlacar"
@@ -592,7 +563,11 @@ export default function ControleMataMata() {
         {aviso && <Aviso $erro={aviso.erro}>{aviso.texto}</Aviso>}
       </Cartao>
 
-      <PreviewMataMata estado={estado} />
+      <PreviewMataMata
+        estado={estado}
+        faseAtiva={faseAtiva}
+        rotulo={rotuloFase}
+      />
     </Tela>
   );
 }

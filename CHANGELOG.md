@@ -2,16 +2,26 @@
 
 ## 28/09/2026
 
-### Mata-Mata: OITAVAS no chaveamento, download de imagem e confrontos do SuperPlacar
+### Classificação: a tabela não atualizava mais (fase corrente sem tabela)
 
-- `/fases-finais` passou a mostrar **OITAVAS · QUARTAS · SEMIFINAL · FINAL**. A primeira rodada usa uma grade compacta de 2 colunas (`GradeCompacta` no `Chaveamento`) para não esticar a altura do chaveamento, e a media query do bracket desceu de 760px para 640px para a prévia do Hub (iframe de 760px) continuar no layout horizontal.
-- Botão **Salvar imagem** em `/mata-mata` e `/fases-finais`: `PainelOitavas` e `PainelChaveamento` viraram `forwardRef` e o `BotaoSalvarImagem` captura o painel. Segue o padrão dos outros overlays (escondido com `?previa`, ao lado do alternador de tema).
-- Novos `importarMataMataSuperPlacar` e `extrairFase` em `superPlacarService.js`: leem a página de fase do SuperPlacar (ex.: `…/2949/quartas-de-final/`), pegam as chaves, o título e as duas pernas de cada confronto. Cache próprio `pelotense:mata-mata:superplacar:v1` com `TTL_CACHE_MS`, reusando o `obterHtml` (agora com caminho) e o proxy `/superplacar`.
-- `mataMataStore.preencherDoSuperPlacar({ fase, confrontos })`: escolhe a fase pela quantidade de confrontos (8 → OITAVAS, 4 → QUARTAS, 2 → SEMI, 1 → FINAL), atualiza o nome da fase e devolve a chave usada. `preencherConfrontos` passou a preservar os gols/pênaltis que vierem no par, em vez de zerá-los sempre.
-- Botão **"Puxar do SuperPlacar"** no `ControleMataMata`, com aviso de sucesso/erro e troca automática para a aba da fase importada.
-- Testes: `extrairFase` e `importarMataMataSuperPlacar` em `superPlacarService.test.js`; novo `mataMataStore.test.js` cobrindo o preenchimento por fase, o corte em cascata e a escolha de fase por quantidade.
+- **Problema**: a classificação era lida de `/campeonato/55/gaucho-serie-a2/`, mas essa URL passou a servir a **fase corrente** (as Quartas de Final), que não tem o bloco `.linha.classificacao` — o import falhava ("Classificação não encontrada"). A tabela continuava exibindo o seed antigo (14 jogos).
+- `CAMINHOS_CLASSIFICACAO` no `superPlacarService.js`: tenta a raiz e, se não vier tabela, cai para a página da Primeira Fase (`…/2803/primeira-fase/`). `buscarClassificacaoSuperPlacar` agora percorre a lista e só devolve dados quando achou classificação de verdade.
+- `tabelaStore.js`: seed `TIMES_PADRAO` e `rodada` atualizados com os números reais da Primeira Fase (15ª rodada, 16 times, 15 jogos) — Passo Fundo 30, Veranópolis 26, Esportivo 25… Lajeadense 5.
+- Testes: `buscarClassificacaoSuperPlacar` (usa a raiz quando ela tem tabela) e o fallback para a Primeira Fase quando a raiz responde só com a fase de mata-mata.
+
+### Mata-Mata: atualização automática do SuperPlacar a cada 30s
+
+- Novo hook `useMataMataSuperPlacar` ligado aos overlays `/mata-mata` e `/fases-finais`: importa a fase e grava no `mataMataStore` a cada 30s. O cache de 3 min do serviço segura o tráfego.
+- `mataMataStore.sincronizarDoSuperPlacar()`: só escreve quando o chaveamento mudou de times ou quando o site traz resultado para um confronto que ainda está sem placar. O placar digitado no controle **não** é apagado a cada atualização (`preencherConfrontos` ganhou a opção `preservarPlacar`).
+- Controle: abre direto na aba **QUARTAS**, o botão "Preencher classificados" foi removido (a classificação não define mais o chaveamento) e sobrou apenas "Puxar do SuperPlacar". A prévia agora mostra a fase selecionada.
+- Botão **Salvar imagem** em `/mata-mata` e `/fases-finais` (`forwardRef` em `PainelOitavas`/`PainelChaveamento` + `BotaoSalvarImagem`, escondido com `?previa`).
+- Novos `importarMataMataSuperPlacar` e `extrairFase` em `superPlacarService.js`: leem a página de fase do SuperPlacar (ex.: `…/2949/quartas-de-final/`) com as chaves, o título e as duas pernas de cada confronto. Cache próprio `pelotense:mata-mata:superplacar:v1`.
+- `mataMataStore.preencherDoSuperPlacar({ fase, confrontos })` escolhe a fase pela quantidade de confrontos (8 → OITAVAS, 4 → QUARTAS, 2 → SEMI, 1 → FINAL).
+- `/fases-finais` segue mostrando **QUARTAS · SEMIFINAL · FINAL**; a media query do bracket desceu de 760px para 640px para a prévia do Hub (iframe de 760px) não quebrar o layout horizontal.
+- Testes: novo `mataMataStore.test.js` (17 casos) cobrindo preenchimento por fase, corte em cascata, escolha de fase por quantidade e a sincronização não destrutiva; `extrairFase`/`importarMataMataSuperPlacar` em `superPlacarService.test.js`.
 
 ### Mata-Mata: "Preencher classificados" gerava confrontos errados
+
 
 - **Problema**: o botão preenchia sempre `estado.confrontos` (oitavas), independentemente da aba/fase selecionada, e a quantidade de pares era decidida pelo texto de `estado.fase` (`includes('OITAV')`). Clicando nas abas Quartas/Semifinal/Final os times acabavam nos slots errados das oitavas, sobrando confrontos antigos, e `/mata-mata` exibia a lista toda errada.
 - `mataMataStore.preencherConfrontos(chaveFase, pares)`: nova assinatura com a fase alvo. Zera os confrontos sem par correspondente (nada de sobras de preenchimentos anteriores) e zera também as fases seguintes, que dependem dos vencedores da fase refeita.

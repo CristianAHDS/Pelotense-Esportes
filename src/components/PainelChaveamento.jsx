@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import styled from 'styled-components';
 import { Chaveamento } from './Chaveamento';
 
-/* Painel independente com o chaveamento completo (oitavas -> final) */
+/* Painel independente com o chaveamento das fases finais (quartas -> final) */
 
 const ACC = '#a5ef1c';
 

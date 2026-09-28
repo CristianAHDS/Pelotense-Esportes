@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useFundoTransparente } from '../components/useFundoTransparente';
 import { usePlacarBroadcast } from '../hooks/usePlacarBroadcast';
+import { useMataMataSuperPlacar } from '../hooks/useMataMataSuperPlacar';
 import { getEstado, inscrever } from '../store/mataMataStore';
 import { PainelChaveamento } from '../components/PainelChaveamento';
 import { BotaoAlternarTema } from '../components/BotaoAlternarTema';
@@ -103,6 +104,7 @@ export default function FasesFinais() {
   const estado = usePlacarBroadcast({ getEstado, inscrever });
   const painelRef = useRef(null);
   const emPrevia = new URLSearchParams(window.location.search).has('previa');
+  useMataMataSuperPlacar();
 
   return (
     <Tela $previa={emPrevia}>
@@ -124,7 +126,7 @@ export default function FasesFinais() {
       <CartaoCabecalho>
         <div>
           <h1>{estado.competicao}</h1>
-          <span className="sub"> Quartas · Semifinal · Final</span>
+          <span className="sub">Quartas · Semifinal · Final</span>
         </div>
         <BadgeFase>{estado.fase}</BadgeFase>
       </CartaoCabecalho>

@@ -156,3 +156,83 @@ describe('mataMataStore — preencherDoSuperPlacar', () => {
     expect(store.getEstado().fase).toBe('SEMIFINAL');
   });
 });
+
+describe('mataMataStore — sincronizarDoSuperPlacar', () => {
+  let store;
+
+  beforeEach(async () => {
+    store = await carregarStore();
+    // Garante a premissa dos testes: a fase alvo nasce vazia, sem herdar
+    // o que o teste anterior gravou no localStorage.
+    for (const chave of ['confrontos', 'quartas', 'semi', 'final']) {
+      store.limparFase(chave);
+    }
+  });
+
+  const quatro = () => [
+    par('APA', 'SCR'),
+    par('BFR', 'PAS'),
+    par('BRA', 'ESP'),
+    par('UFR', 'VER'),
+  ];
+
+  it('aplica quando a fase está vazia', () => {
+    const r = store.sincronizarDoSuperPlacar({ fase: 'Quartas de Final', confrontos: quatro() });
+    expect(r).toEqual({ chaveFase: 'quartas', aplicado: true });
+    expect(store.getEstado().quartas[0].casa.sigla).toBe('APA');
+    expect(store.getEstado().fase).toBe('QUARTAS DE FINAL');
+  });
+
+  it('não escreve nada quando o chaveamento é o mesmo', () => {
+    store.sincronizarDoSuperPlacar({ confrontos: quatro() });
+    store.atualizarLado('quartas', 0, 'casa', 'gols', 2);
+    store.atualizarLado('quartas', 0, 'visitante', 'gols', 0);
+
+    const r = store.sincronizarDoSuperPlacar({ confrontos: quatro() });
+    expect(r).toEqual({ chaveFase: 'quartas', aplicado: false });
+    expect(store.getEstado().quartas[0].casa.gols).toBe(2);
+  });
+
+  it('preserva o placar manual enquanto o exterior não traz resultado', () => {
+    store.sincronizarDoSuperPlacar({ confrontos: quatro() });
+    store.atualizarLado('quartas', 1, 'casa', 'gols', 1);
+    store.atualizarLado('quartas', 1, 'visitante', 'gols', 1);
+    store.atualizarLado('quartas', 1, 'casa', 'pen', 4);
+
+    store.sincronizarDoSuperPlacar({ confrontos: quatro() });
+    expect(store.getEstado().quartas[1].casa.gols).toBe(1);
+    expect(store.getEstado().quartas[1].casa.pen).toBe(4);
+  });
+
+  it('traz o resultado que apareceu no exterior', () => {
+    store.sincronizarDoSuperPlacar({ confrontos: quatro() });
+
+    const comResultado = quatro();
+    comResultado[2].casa.gols = 3;
+    comResultado[2].visitante.gols = 1;
+
+    const r = store.sincronizarDoSuperPlacar({ confrontos: comResultado });
+    expect(r.aplicado).toBe(true);
+    expect(store.getEstado().quartas[2].casa.gols).toBe(3);
+    expect(store.getEstado().quartas[2].visitante.gols).toBe(1);
+  });
+
+  it('reescreve a fase quando os times mudam de ordem', () => {
+    store.sincronizarDoSuperPlacar({ confrontos: quatro() });
+    store.atualizarLado('quartas', 0, 'casa', 'gols', 2);
+
+    const invertido = quatro();
+    invertido[0] = par('SCR', 'APA');
+    store.sincronizarDoSuperPlacar({ confrontos: invertido });
+
+    expect(store.getEstado().quartas[0].casa.sigla).toBe('SCR');
+    expect(store.getEstado().quartas[0].casa.gols).toBeNull();
+  });
+
+  it('ignora uma quantidade de confrontos sem fase correspondente', () => {
+    const r = store.sincronizarDoSuperPlacar({
+      confrontos: [par('APA', 'SCR'), par('BFR', 'PAS'), par('BRA', 'ESP')],
+    });
+    expect(r).toBeNull();
+  });
+});
